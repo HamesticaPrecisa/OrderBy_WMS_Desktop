@@ -1,0 +1,12 @@
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\bin\Debug\en-US.dic
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\bin\Debug\RichTextBoxEx.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\bin\Debug\RichTextBoxEx.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\bin\Debug\RichTextBoxEx.xml
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\bin\Debug\NetSpell.SpellChecker.DLL
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.vbprojResolveAssemblyReference.cache
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.Resources.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.RichTextBoxEx.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.vbproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.xml
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\RichTextBoxEx\obj\Debug\RichTextBoxEx.pdb

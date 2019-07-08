@@ -1,0 +1,7 @@
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Release\MdiTabControl.TabControl.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Release\MdiTabControl.Resources.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Release\MdiTabControl.vbproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Release\MdiTabControl.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Release\MdiTabControl.pdb

@@ -1,0 +1,13 @@
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\bin\Debug\ExpandableGridView.dll
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\bin\Debug\ExpandableGridView.pdb
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\obj\Debug\ExpandableGridView.csprojResolveAssemblyReference.cache
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\obj\Debug\AdvancedDataGridView.Properties.Resources.resources
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\obj\Debug\ExpandableGridView.csproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\obj\Debug\ExpandableGridView.dll
+C:\Users\Victor alejandro\Documents\Visual Studio 2010\Projects\Finanzas\TreeGridView\obj\Debug\ExpandableGridView.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\bin\Debug\ExpandableGridView.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\bin\Debug\ExpandableGridView.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Debug\AdvancedDataGridView.Properties.Resources.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Debug\ExpandableGridView.csproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Debug\ExpandableGridView.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Debug\ExpandableGridView.pdb

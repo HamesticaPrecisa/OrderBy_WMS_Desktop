@@ -1,0 +1,12 @@
+C:\Users\Victor alejandro\Desktop\TreeGridview\TreeGridView\bin\Release\ExpandableGridView.dll
+C:\Users\Victor alejandro\Desktop\TreeGridview\TreeGridView\bin\Release\ExpandableGridView.pdb
+C:\Users\Victor alejandro\Desktop\TreeGridview\TreeGridView\obj\Release\AdvancedDataGridView.Properties.Resources.resources
+C:\Users\Victor alejandro\Desktop\TreeGridview\TreeGridView\obj\Release\ExpandableGridView.csproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Desktop\TreeGridview\TreeGridView\obj\Release\ExpandableGridView.dll
+C:\Users\Victor alejandro\Desktop\TreeGridview\TreeGridView\obj\Release\ExpandableGridView.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\bin\Release\ExpandableGridView.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\bin\Release\ExpandableGridView.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Release\AdvancedDataGridView.Properties.Resources.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Release\ExpandableGridView.csproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Release\ExpandableGridView.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\TreeGridView\obj\Release\ExpandableGridView.pdb

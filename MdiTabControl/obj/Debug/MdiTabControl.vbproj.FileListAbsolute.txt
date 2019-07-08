@@ -1,0 +1,30 @@
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\bin\Debug\MdiTabControl.dll
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\bin\Debug\MdiTabControl.pdb
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\obj\Debug\MdiTabControl.TabControl.resources
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\obj\Debug\MdiTabControl.Resources.resources
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\obj\Debug\MdiTabControl.vbproj.GenerateResource.Cache
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\obj\Debug\MdiTabControl.dll
+C:\Users\programador\Desktop\MdiTabControl\MdiTabControl\obj\Debug\MdiTabControl.pdb
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.dll
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.pdb
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.TabControl.resources
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.Resources.resources
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.vbproj.GenerateResource.Cache
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.dll
+C:\Users\programador\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.pdb
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.dll
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.pdb
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.TabControl.resources
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.Resources.resources
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.dll
+C:\Users\Desarrollo\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\bin\Debug\MdiTabControl.pdb
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.TabControl.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.Resources.resources
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.vbproj.GenerateResource.Cache
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.dll
+C:\Users\Victor alejandro\Desktop\PrecisaFrozen.Win\MdiTabControl\obj\Debug\MdiTabControl.pdb
