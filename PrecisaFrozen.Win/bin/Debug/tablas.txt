@@ -1,0 +1,5 @@
+CREATE TABLE [dbo].[_personas](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[PRIMERNOMBRE] [varchar](50) NOT NULL,
+	[SEGUNDONOMBRE] [varchar](50) NOT NULL
+) ON [PRIMARY]

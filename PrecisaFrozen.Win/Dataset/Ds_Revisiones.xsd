@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_Revisiones" targetNamespace="http://tempuri.org/Ds_Revisiones.xsd" xmlns:mstns="http://tempuri.org/Ds_Revisiones.xsd" xmlns="http://tempuri.org/Ds_Revisiones.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_Revisiones" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_Revisiones" msprop:Generator_UserDSName="Ds_Revisiones">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DsDetalleRevisiones" msprop:Generator_TableClassName="DsDetalleRevisionesDataTable" msprop:Generator_TableVarName="tableDsDetalleRevisiones" msprop:Generator_TablePropName="DsDetalleRevisiones" msprop:Generator_RowDeletingName="DsDetalleRevisionesRowDeleting" msprop:Generator_RowChangingName="DsDetalleRevisionesRowChanging" msprop:Generator_RowEvHandlerName="DsDetalleRevisionesRowChangeEventHandler" msprop:Generator_RowDeletedName="DsDetalleRevisionesRowDeleted" msprop:Generator_UserTableName="DsDetalleRevisiones" msprop:Generator_RowChangedName="DsDetalleRevisionesRowChanged" msprop:Generator_RowEvArgName="DsDetalleRevisionesRowChangeEvent" msprop:Generator_RowClassName="DsDetalleRevisionesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nprecisa" msprop:Generator_ColumnVarNameInTable="columnnprecisa" msprop:Generator_ColumnPropNameInRow="nprecisa" msprop:Generator_ColumnPropNameInTable="nprecisaColumn" msprop:Generator_UserColumnName="nprecisa" type="xs:string" minOccurs="0" />
+              <xs:element name="ncliente" msprop:Generator_ColumnVarNameInTable="columnncliente" msprop:Generator_ColumnPropNameInRow="ncliente" msprop:Generator_ColumnPropNameInTable="nclienteColumn" msprop:Generator_UserColumnName="ncliente" type="xs:string" minOccurs="0" />
+              <xs:element name="producto" msprop:Generator_ColumnVarNameInTable="columnproducto" msprop:Generator_ColumnPropNameInRow="producto" msprop:Generator_ColumnPropNameInTable="productoColumn" msprop:Generator_UserColumnName="producto" type="xs:string" minOccurs="0" />
+              <xs:element name="encargado" msprop:Generator_ColumnVarNameInTable="columnencargado" msprop:Generator_ColumnPropNameInRow="encargado" msprop:Generator_ColumnPropNameInTable="encargadoColumn" msprop:Generator_UserColumnName="encargado" type="xs:string" minOccurs="0" />
+              <xs:element name="envases" msprop:Generator_ColumnVarNameInTable="columnenvases" msprop:Generator_ColumnPropNameInRow="envases" msprop:Generator_ColumnPropNameInTable="envasesColumn" msprop:Generator_UserColumnName="envases" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

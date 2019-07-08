@@ -1,0 +1,2902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C87BF4CF-DE2C-4729-8420-A692708370FF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>PrecisaFrozen.Win.My.MyApplication</StartupObject>
+    <RootNamespace>PrecisaFrozen.Win</RootNamespace>
+    <AssemblyName>PrecisaFrozen.Win</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>C:\AppServ\www\gestion\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://192.168.1.7:70/gestion/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.html</WebPage>
+    <ApplicationRevision>48</ApplicationRevision>
+    <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PrecisaFrozen.Win.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PrecisaFrozen.Win.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>681B59D9A4A9A154201C2CDFCBC30D6CAD6DC737</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>PrecisaFrozen.Win_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>1393294820_105256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="ExpandableGridView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\ExpandableGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="itextsharp, Version=5.2.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MdiTabControl, Version=1.1.5674.31722, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\MdiTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.41329, Culture=neutral, PublicKeyToken=318b389f0db66e46">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UHFReader09CSharp">
+      <HintPath>..\SDK RFID\Csharp\x32\UHFReader09CSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Clases\Ayuda_Codigo.vb" />
+    <Compile Include="Clases\BarCode.vb" />
+    <Compile Include="Clases\Conexion.vb" />
+    <Compile Include="Clases\Formularios.vb" />
+    <Compile Include="Clases\Funciones.vb" />
+    <Compile Include="Clases\ImpresionCOM1.vb" />
+    <Compile Include="Clases\ModPublico.vb" />
+    <Compile Include="Clases\VarPublic.vb" />
+    <Compile Include="Configuracion\Frm_ConfImpresoras.Designer.vb">
+      <DependentUpon>Frm_ConfImpresoras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracion\Frm_ConfImpresoras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controles\ColumnCalendar.Designer.vb">
+      <DependentUpon>ColumnCalendar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\ColumnCalendar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controles\Extencion.vb" />
+    <Compile Include="Controles\InterepStuff.vb" />
+    <Compile Include="Controles\MouseInfo.vb" />
+    <Compile Include="Controles\ProgressbarWithPercentage.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dataset\Ds_Productos.Designer.vb">
+      <DependentUpon>Ds_Productos.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Dataset\Ds_Productos.vb">
+      <DependentUpon>Ds_Productos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Imagenes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_Imagenes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Imagenes.vb">
+      <DependentUpon>Ds_Imagenes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_ImagenesRece.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_ImagenesRece.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_ImagenesRece.vb">
+      <DependentUpon>Ds_ImagenesRece.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Posiciones.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_Posiciones.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Posiciones.vb">
+      <DependentUpon>Ds_Posiciones.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Resumido.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_Resumido.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Resumido.vb">
+      <DependentUpon>Ds_Resumido.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_Revisiones.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_Revisiones.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_StockAcumulado.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_StockAcumulado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_StockAcumuladoContrato.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_StockAcumuladoContrato.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Imag.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Imag.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Imag.vb">
+      <DependentUpon>Imag.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaCamaras.Designer.vb">
+      <DependentUpon>Frm_AyudaCamaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaCamaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaAuditoria.Designer.vb">
+      <DependentUpon>Lst_AyudaAuditoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaAuditoria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.Designer.vb">
+      <DependentUpon>GeneraInforme.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.Designer.vb">
+      <DependentUpon>Frm_Actualizaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Calendario.Designer.vb">
+      <DependentUpon>Frm_Calendario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Calendario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_CambioClave.Designer.vb">
+      <DependentUpon>Frm_CambioClave.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_CambioClave.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Configuraciones.Designer.vb">
+      <DependentUpon>Frm_Configuraciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Configuraciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_IMPetiq.Designer.vb">
+      <DependentUpon>Frm_IMPetiq.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_IMPetiq.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_LlamaDcto.Designer.vb">
+      <DependentUpon>Frm_LlamaDcto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_LlamaDcto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_ParametrosImpresion.Designer.vb">
+      <DependentUpon>Frm_ParametrosImpresion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_ParametrosImpresion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Temperaturas.Designer.vb">
+      <DependentUpon>Frm_Temperaturas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Temperaturas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_UtilidadChoferes.Designer.vb">
+      <DependentUpon>Frm_UtilidadChoferes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_UtilidadChoferes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_UtilidadImprEtRack.Designer.vb">
+      <DependentUpon>Frm_UtilidadImprEtRack.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_UtilidadImprEtRack.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaSopCli.Designer.vb">
+      <DependentUpon>Lst_AyudaSopCli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaSopCli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaAlmacenamiento.Designer.vb">
+      <DependentUpon>Frm_AyudaAlmacenamiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaAlmacenamiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Cobros\Frm_ListadoVas.Designer.vb">
+      <DependentUpon>Frm_ListadoVas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Cobros\Frm_ListadoVas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaServicios.Designer.vb">
+      <DependentUpon>Frm_AyudaServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Facturacion\Frm_Detallemov.Designer.vb">
+      <DependentUpon>Frm_Detallemov.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Facturacion\Frm_Detallemov.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_Cotizaciones.Designer.vb">
+      <DependentUpon>Frm_Cotizaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_Cotizaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesDetalle.Designer.vb">
+      <DependentUpon>Frm_CotizacionesDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesDetalleEscala.Designer.vb">
+      <DependentUpon>Frm_CotizacionesDetalleEscala.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesDetalleEscala.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesListado.Designer.vb">
+      <DependentUpon>Frm_CotizacionesListado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesListado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Monedas\Frm_moneda.Designer.vb">
+      <DependentUpon>Frm_moneda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Monedas\Frm_moneda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Monedas\Frm_monedasAyuda.Designer.vb">
+      <DependentUpon>Frm_monedasAyuda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Monedas\Frm_monedasAyuda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Otros\Frm_AdminCustodia.Designer.vb">
+      <DependentUpon>Frm_AdminCustodia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Otros\Frm_AdminCustodia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Reportes\Rpt_Cotizaciones.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Cotizaciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Reportes\Rpt_EmisionVAS.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EmisionVAS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Reportes\Rpt_EmisionVasAdmin.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EmisionVasAdmin.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\ColoredComboboxItem.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.Designer.vb">
+      <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.Designer.vb">
+      <DependentUpon>Frm_AddPicking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\FrmAddReglas.Designer.vb">
+      <DependentUpon>FrmAddReglas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\FrmAddReglas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddColumna.Designer.vb">
+      <DependentUpon>Frm_AddColumna.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddColumna.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddEnvioEmail.Designer.vb">
+      <DependentUpon>Frm_AddEnvioEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddEnvioEmail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMatPrim.Designer.vb">
+      <DependentUpon>Frm_AddMatPrim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMatPrim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPedidosxTramo.Designer.vb">
+      <DependentUpon>Frm_AddPedidosxTramo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPedidosxTramo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPlanosCamaras.Designer.vb">
+      <DependentUpon>Frm_AddPlanosCamaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPlanosCamaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPosiciones.Designer.vb">
+      <DependentUpon>Frm_AddPosiciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPosiciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddReservas.Designer.vb">
+      <DependentUpon>Frm_AddReservas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddReservas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddSugerenciaPos.Designer.vb">
+      <DependentUpon>Frm_AddSugerenciaPos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddSugerenciaPos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_ConfInicialCamaras.Designer.vb">
+      <DependentUpon>Frm_ConfInicialCamaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_ConfInicialCamaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.Designer.vb">
+      <DependentUpon>Frm_MuestraPallet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Module1.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\CreaInforme.Designer.vb">
+      <DependentUpon>CreaInforme.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\CreaInforme.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\CultureInfo.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\frmConvertirFotos.Designer.vb">
+      <DependentUpon>frmConvertirFotos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\frmConvertirFotos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_AdjuntaFotoDespacho.Designer.vb">
+      <DependentUpon>Frm_AdjuntaFotoDespacho.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_AdjuntaFotoDespacho.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_VerificaServiciosDespa.Designer.vb">
+      <DependentUpon>Frm_VerificaServiciosDespa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_VerificaServiciosDespa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\ArchivoPedidos.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_CambiarPallet.Designer.vb">
+      <DependentUpon>Frm_CambiarPallet.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_CambiarPallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Conf_Pedidos_Xls.Designer.vb">
+      <DependentUpon>Frm_Conf_Pedidos_Xls.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Conf_Pedidos_Xls.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Locales_Pedidos.Designer.vb">
+      <DependentUpon>Frm_Locales_Pedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Locales_Pedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosBloqueoDias.Designer.vb">
+      <DependentUpon>Frm_PedidosBloqueoDias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosBloqueoDias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosPalletAdd.Designer.vb">
+      <DependentUpon>Frm_PedidosPalletAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosPalletAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Pedidos.Designer.vb">
+      <DependentUpon>Frm_Pedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Pedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosDetalle.Designer.vb">
+      <DependentUpon>Frm_PedidosDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosDetalleCajas.Designer.vb">
+      <DependentUpon>Frm_PedidosDetalleCajas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosDetalleCajas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Pedidos_Xls.Designer.vb">
+      <DependentUpon>Frm_Pedidos_Xls.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Pedidos_Xls.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_ProductosCliente.Designer.vb">
+      <DependentUpon>Frm_ProductosCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_ProductosCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\FRM_ProductosClienteLocal.Designer.vb">
+      <DependentUpon>FRM_ProductosClienteLocal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\FRM_ProductosClienteLocal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_UnirPedidos.Designer.vb">
+      <DependentUpon>Frm_UnirPedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_UnirPedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_CajasPedido.Designer.vb">
+      <DependentUpon>Frm_CajasPedido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_CajasPedido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_ListadoPedidos.Designer.vb">
+      <DependentUpon>Frm_ListadoPedidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_ListadoPedidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_MatrisCajas.Designer.vb">
+      <DependentUpon>Frm_MatrisCajas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_MatrisCajas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\FrmFotosServicios.Designer.vb">
+      <DependentUpon>FrmFotosServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\FrmFotosServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_AdjuntaFotoRecepcion.Designer.vb">
+      <DependentUpon>Frm_AdjuntaFotoRecepcion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_AdjuntaFotoRecepcion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ModificaSAG.Designer.vb">
+      <DependentUpon>Frm_ModificaSAG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ModificaSAG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_PlanRece.Designer.vb">
+      <DependentUpon>Frm_PlanRece.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_PlanRece.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ServiciosREC.Designer.vb">
+      <DependentUpon>Frm_ServiciosREC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ServiciosREC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.Designer.vb">
+      <DependentUpon>Frm_VerificaServiciosRece.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\ConfigurationManager.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.Designer.vb">
+      <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Auditorias\GeneraAuditoria.Designer.vb">
+      <DependentUpon>GeneraAuditoria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Auditorias\GeneraAuditoria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_AyudaContenedores.Designer.vb">
+      <DependentUpon>Frm_AyudaContenedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_AyudaContenedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Servicios\Frm_IngresoServiciosAyuda.Designer.vb">
+      <DependentUpon>Frm_IngresoServiciosAyuda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Servicios\Frm_IngresoServiciosAyuda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaProductosFamilia.Designer.vb">
+      <DependentUpon>Lst_AyudaProductosFamilia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaProductosFamilia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_Contratos.Designer.vb">
+      <DependentUpon>Frm_Contratos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_Contratos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_ContratosDetalle.Designer.vb">
+      <DependentUpon>Frm_ContratosDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_ContratosDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_ContratosDetalleEscala.Designer.vb">
+      <DependentUpon>Frm_ContratosDetalleEscala.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_ContratosDetalleEscala.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Facturacion\Frm_Facturacion.Designer.vb">
+      <DependentUpon>Frm_Facturacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Facturacion\Frm_Facturacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Servicios\Frm_IngresoServicios.Designer.vb">
+      <DependentUpon>Frm_IngresoServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Mantenedores\Servicios\Frm_IngresoServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Cobros\Frm_Vas.Designer.vb">
+      <DependentUpon>Frm_Vas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Facturacion\Agregar\Cobros\Frm_Vas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaMonedas.Designer.vb">
+      <DependentUpon>Frm_AyudaMonedas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Frm_AyudaMonedas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.Designer.vb">
+      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.Designer.vb">
+      <DependentUpon>Frm_AddChoferes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddClientes.Designer.vb">
+      <DependentUpon>Frm_AddClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddEnvases.Designer.vb">
+      <DependentUpon>Frm_AddEnvases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddEnvases.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFamilias.Designer.vb">
+      <DependentUpon>Frm_AddFamilias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFamilias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddOrigenes.Designer.vb">
+      <DependentUpon>Frm_AddOrigenes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddOrigenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddProductos.Designer.vb">
+      <DependentUpon>Frm_AddProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_CamionesAndenDespacho.Designer.vb">
+      <DependentUpon>Frm_CamionesAndenDespacho.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_CamionesAndenDespacho.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_Despacho.Designer.vb">
+      <DependentUpon>Frm_Despacho.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_Despacho.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_ListadoDespachados.Designer.vb">
+      <DependentUpon>Frm_ListadoDespachados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_ListadoDespachados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_ListadoPreDespachos.Designer.vb">
+      <DependentUpon>Frm_ListadoPreDespachos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_ListadoPreDespachos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_GuiaPreDespachoAgregar.Designer.vb">
+      <DependentUpon>Frm_GuiaPreDespachoAgregar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_GuiaPreDespachoAgregar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_GuiaPreDespachoRecupera.Designer.vb">
+      <DependentUpon>Frm_GuiaPreDespachoRecupera.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_GuiaPreDespachoRecupera.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_ListadoPredespahos.Designer.vb">
+      <DependentUpon>Frm_ListadoPredespahos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_ListadoPredespahos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_CamionesAndenRecepcion.Designer.vb">
+      <DependentUpon>Frm_CamionesAndenRecepcion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_CamionesAndenRecepcion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_GuiaRecepcionAgregar.Designer.vb">
+      <DependentUpon>Frm_GuiaRecepcionAgregar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_GuiaRecepcionAgregar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_addRecepcionRecupera.Designer.vb">
+      <DependentUpon>Frm_GuiaRecepcionRecupera.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_GuiaRecepcionRecupera.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddSoportantes.Designer.vb">
+      <DependentUpon>Frm_AddSoportantes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddSoportantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMedida.Designer.vb">
+      <DependentUpon>Frm_AddMedida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMedida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clases\IForm.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ListadoRecepciones.Designer.vb">
+      <DependentUpon>Frm_ListadoRecepciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ListadoRecepciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Categorias.Designer.vb">
+      <DependentUpon>Frm_Categorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Categorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_CategoriasAyuda.Designer.vb">
+      <DependentUpon>Frm_CategoriasAyuda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_CategoriasAyuda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_ListadoUsuarios.Designer.vb">
+      <DependentUpon>Frm_ListadoUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_ListadoUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_MantenedorUsuarios.Designer.vb">
+      <DependentUpon>Frm_MantenedorUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_MantenedorUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_SubCategorias.Designer.vb">
+      <DependentUpon>Frm_SubCategorias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_SubCategorias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_SubCategoriasAyuda.Designer.vb">
+      <DependentUpon>Frm_SubCategoriasAyuda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_SubCategoriasAyuda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaChoferes.Designer.vb">
+      <DependentUpon>Lst_AyudaChoferes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaChoferes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaClientes.Designer.vb">
+      <DependentUpon>Lst_AyudaClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaContratos.Designer.vb">
+      <DependentUpon>Lst_AyudaContratos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaContratos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaEnvases.Designer.vb">
+      <DependentUpon>Lst_AyudaEnvases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaEnvases.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaFamilias.Designer.vb">
+      <DependentUpon>Lst_AyudaFamilias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaFamilias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaOrigenes.Designer.vb">
+      <DependentUpon>Lst_AyudaOrigenes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaOrigenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaProductos.Designer.vb">
+      <DependentUpon>Lst_AyudaProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_ayudaRecepciones.Designer.vb">
+      <DependentUpon>Lst_ayudaRecepciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_ayudaRecepciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaSoportantes.Designer.vb">
+      <DependentUpon>Lst_AyudaSoportantes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ayuda\Lst_AyudaSoportantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_BloqueoPallets.Designer.vb">
+      <DependentUpon>Frm_BloqueoPallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_BloqueoPallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_DesbloqImportacion.Designer.vb">
+      <DependentUpon>Frm_DesbloqImportacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_DesbloqImportacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_ListadoImpor.Designer.vb">
+      <DependentUpon>Frm_ListadoImpor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_ListadoImpor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Contenedores\Frm_ContDeta.Designer.vb">
+      <DependentUpon>Frm_ContDeta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Contenedores\Frm_ContDeta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Contenedores\Frm_Contenedores.Designer.vb">
+      <DependentUpon>Frm_Contenedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Contenedores\Frm_Contenedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_Etiquetado.Designer.vb">
+      <DependentUpon>Frm_Etiquetado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_Etiquetado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_EtiquetadoListado.Designer.vb">
+      <DependentUpon>Frm_EtiquetadoListado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_EtiquetadoListado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_RecuperaEtiq.Designer.vb">
+      <DependentUpon>Frm_RecuperaEtiq.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_RecuperaEtiq.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Produccion\Bolsa\Frm_ProcesoBolsa.Designer.vb">
+      <DependentUpon>Frm_ProcesoBolsa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\Produccion\Bolsa\Frm_ProcesoBolsa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\RPC\Frm_ListadoRCP.Designer.vb">
+      <DependentUpon>Frm_ListadoRCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\RPC\Frm_ListadoRCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\RPC\Frm_RCP.Designer.vb">
+      <DependentUpon>Frm_RCP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\RPC\Frm_RCP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\TrazProductos\Frm_TrazProductos.Designer.vb">
+      <DependentUpon>Frm_TrazProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Procesos\TrazProductos\Frm_TrazProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\ConfGENE.Designer.vb">
+      <DependentUpon>ConfGENE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\ConfGENE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.Designer.vb">
+      <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Informes.Designer.vb">
+      <DependentUpon>Lst_Informes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Informes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Otros\Frm_imagenesInformes.Designer.vb">
+      <DependentUpon>Frm_imagenesInformes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Otros\Frm_imagenesInformes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Otros\Frm_MovimientoSoportanteUsuario.Designer.vb">
+      <DependentUpon>Frm_MovimientoSoportanteUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Otros\Frm_MovimientoSoportanteUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\AvisoPalletMalPos.Designer.vb">
+      <DependentUpon>AvisoPalletMalPos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\AvisoPalletMalPos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\ConsultaCajas.Designer.vb">
+      <DependentUpon>ConsultaCajas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\ConsultaCajas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_TrazaProductos.Designer.vb">
+      <DependentUpon>Frm_TrazaProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_TrazaProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\FrmInformeSaldosNoConf.Designer.vb">
+      <DependentUpon>FrmInformeSaldosNoConf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\FrmInformeSaldosNoConf.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.Designer.vb">
+      <DependentUpon>Frm_AndenesAbrir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ServiciosRec.vb">
+      <DependentUpon>Rpt_ServiciosRec.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\FrmGraficStock.Designer.vb">
+      <DependentUpon>FrmGraficStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\FrmGraficStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_Andenes.Designer.vb">
+      <DependentUpon>Frm_Andenes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_Andenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesCerr.Designer.vb">
+      <DependentUpon>Frm_AndenesCerr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesCerr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_CruceDESREC.Designer.vb">
+      <DependentUpon>Frm_CruceDESREC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_CruceDESREC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_detalleautosoportantes.Designer.vb">
+      <DependentUpon>Frm_detalleautosoportantes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_detalleautosoportantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_PackingList.Designer.vb">
+      <DependentUpon>Frm_PackingList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_PackingList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_RecuentoCajRPT.Designer.vb">
+      <DependentUpon>Frm_RecuentoCajRPT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_RecuentoCajRPT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_PedidosTerminados.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PedidosTerminados.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\CapturaTEM.Designer.vb">
+      <DependentUpon>CapturaTEM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\CapturaTEM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\FrmPedidosUsuarios.Designer.vb">
+      <DependentUpon>FrmPedidosUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\FrmPedidosUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\FrmSugeridoREPA.Designer.vb">
+      <DependentUpon>FrmSugeridoREPA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\FrmSugeridoREPA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.Designer.vb">
+      <DependentUpon>Frm_ControlCamionRec.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.Designer.vb">
+      <DependentUpon>Frm_horpedido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_InformeTunel.Designer.vb">
+      <DependentUpon>Frm_InformeTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_InformeTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_NumeralDiario.Designer.vb">
+      <DependentUpon>Frm_NumeralDiario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_NumeralDiario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_PalletTunel.Designer.vb">
+      <DependentUpon>Frm_PalletTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_PalletTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_soportantesEnCamara.Designer.vb">
+      <DependentUpon>Frm_soportantesEnCamara.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_soportantesEnCamara.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_AnormalFrigo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_AnormalFrigo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EnvioCorreos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreosExterno.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EnvioCorreosExterno.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreosInterno1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EnvioCorreosInterno.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PalletTunel.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Frm_Pos.Designer.vb">
+      <DependentUpon>Frm_Pos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Frm_Pos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_GuiaPrecisa.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_GuiaPrecisa.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_cuadraturaFichasDetalles.Designer.vb">
+      <DependentUpon>Frm_cuadraturaFichasDetalles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_cuadraturaFichasDetalles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_ListadoTuneles.Designer.vb">
+      <DependentUpon>Frm_ListadoTuneles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_ListadoTuneles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_AnormalFrigoAnt.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_AnormalFrigoAnt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_MovimientoSoportanteUsuario.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_MovimientoSoportanteUsuario.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosSaldos.vb">
+      <DependentUpon>Rpt_PedidosSaldos.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_PosicionesLibres.Designer.vb">
+      <DependentUpon>Frm_PosicionesLibres.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_PosicionesLibres.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_Revisiones.Designer.vb">
+      <DependentUpon>Frm_Revisiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_Revisiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_Pedidos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Pedidos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_Posiciones.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Posiciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PosicionesLibres.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PosicionesLibres.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_Revisiones.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Revisiones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\AgrosuperDes.vb">
+      <DependentUpon>AgrosuperDes.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Procesos\RptContenedores.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptContenedores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Procesos\RptContenedoresDetallado.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptContenedoresDetallado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Procesos\Rpt_Rcp.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Rcp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\FrmPosicionestotales.Designer.vb">
+      <DependentUpon>FrmPosicionestotales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\FrmPosicionestotales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_NewTRa.Designer.vb">
+      <DependentUpon>Frm_NewTRa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_NewTRa.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_TrazabilidadGuia.Designer.vb">
+      <DependentUpon>Frm_TrazabilidadGuia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_TrazabilidadGuia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Rpt_TrababilidadCaja.vb">
+      <DependentUpon>Rpt_TrababilidadCaja.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_Trazabilidad.Designer.vb">
+      <DependentUpon>Frm_Trazabilidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_Trazabilidad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Camaras.Designer.vb">
+      <DependentUpon>Lst_Camaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Camaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Choferes.Designer.vb">
+      <DependentUpon>Lst_Choferes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Choferes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Clientes.Designer.vb">
+      <DependentUpon>Lst_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Envases.Designer.vb">
+      <DependentUpon>Lst_Envases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Envases.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_familias.Designer.vb">
+      <DependentUpon>Lst_familias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_familias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Medidas.Designer.vb">
+      <DependentUpon>Lst_Medidas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Medidas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Origenes.Designer.vb">
+      <DependentUpon>Lst_Origenes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Origenes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Productos.Designer.vb">
+      <DependentUpon>Lst_Productos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Productos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_soportantes.Designer.vb">
+      <DependentUpon>Lst_soportantes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_soportantes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_DocumentosEmitidos.Designer.vb">
+      <DependentUpon>Frm_DocumentosEmitidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_DocumentosEmitidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_ResumidoFecha.Designer.vb">
+      <DependentUpon>Frm_ResumidoFecha.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_ResumidoFecha.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_AcumuladoContrato.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_AcumuladoContrato.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_ResumidoFecha.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualCliente.vb">
+      <DependentUpon>Rpt_PedidosMensualCliente.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_PedidosMensualClientes.Designer.vb">
+      <DependentUpon>Frm_PedidosMensualClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_PedidosMensualClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletPorVencer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PalletPorVencer.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletVencidos.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PalletVencidos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockTipoSoportante.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_StockTipoSoportante.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualClientes.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PedidosMensualClientes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Frm_PosicionesSopo.Designer.vb">
+      <DependentUpon>Frm_PosicionesSopo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Frm_PosicionesSopo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Rpt_PosicionesSopo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PosicionesSopo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Procesos\RptImportaciones.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptImportaciones.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Procesos\Rpt_Etiquetado.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_Etiquetado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.Designer.vb">
+      <DependentUpon>TrazabilidadCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\ayudaNEW.Designer.vb">
+      <DependentUpon>ayudaNEW.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\ayudaNEW.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\ConfSuperADM.Designer.vb">
+      <DependentUpon>ConfSuperADM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\ConfSuperADM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\Frm_InicioSesion.Designer.vb">
+      <DependentUpon>Frm_InicioSesion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\Frm_InicioSesion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\Frm_Principal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\Frm_Principal.Designer.vb">
+      <DependentUpon>Frm_Principal.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\Presentacion.Designer.vb">
+      <DependentUpon>Presentacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\Presentacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\PrimeraCarga.Designer.vb">
+      <DependentUpon>PrimeraCarga.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\PrimeraCarga.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Agregar\Frm_CheckList.Designer.vb">
+      <DependentUpon>Frm_CheckList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Agregar\Frm_CheckList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Ayuda\Frm_CheckListAyuda.Designer.vb">
+      <DependentUpon>Frm_CheckListAyuda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Ayuda\Frm_CheckListAyuda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_CheckListPendientes.Designer.vb">
+      <DependentUpon>Frm_CheckListPendientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_CheckListPendientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_ListadoChecklist.Designer.vb">
+      <DependentUpon>Frm_ListadoChecklist.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_ListadoChecklist.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_ListadoPorteria.Designer.vb">
+      <DependentUpon>Frm_ListadoPorteria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_ListadoPorteria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_ListarFotos.Designer.vb">
+      <DependentUpon>Frm_ListarFotos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Listar\Frm_ListarFotos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Porteria\Reportes\Rpt_CheckList.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_CheckList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\Application1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_MuestraReporte.Designer.vb">
+      <DependentUpon>Frm_MuestraReporte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_MuestraReporte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_StockResumidoPar.Designer.vb">
+      <DependentUpon>Frm_StockResumidoPar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_StockResumidoPar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockAcumulado.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_StockAcumulado.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockCliente.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_StockCliente.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockDetallado.Designer.vb">
+      <DependentUpon>Rpt_StockDetallado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockDetallado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockHistorico.Designer.vb">
+      <DependentUpon>Rpt_StockHistorico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockHistorico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockResumido.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_StockResumido.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_GuiaDespacho.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_GuiaDespacho.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_GuiaRecepcion.vb">
+      <DependentUpon>Rpt_GuiaRecepcion.rpt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_PreDespacho.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_PreDespacho.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Otros\Frm_PosicionamientoManual.Designer.vb">
+      <DependentUpon>Frm_PosicionamientoManual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Otros\Frm_PosicionamientoManual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Rpt_TrababilidadPallet.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_TrababilidadPallet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Settings.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Configuracion\Frm_ConfImpresoras.resx">
+      <DependentUpon>Frm_ConfImpresoras.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Frm_AyudaCamaras.resx">
+      <DependentUpon>Frm_AyudaCamaras.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaAuditoria.resx">
+      <DependentUpon>Lst_AyudaAuditoria.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.resx">
+      <DependentUpon>GeneraInforme.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.resx">
+      <DependentUpon>Frm_Actualizaciones.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Calendario.resx">
+      <DependentUpon>Frm_Calendario.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_CambioClave.resx">
+      <DependentUpon>Frm_CambioClave.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Configuraciones.resx">
+      <DependentUpon>Frm_Configuraciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_IMPetiq.resx">
+      <DependentUpon>Frm_IMPetiq.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_LlamaDcto.resx">
+      <DependentUpon>Frm_LlamaDcto.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_ParametrosImpresion.resx">
+      <DependentUpon>Frm_ParametrosImpresion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Temperaturas.resx">
+      <DependentUpon>Frm_Temperaturas.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_UtilidadChoferes.resx">
+      <DependentUpon>Frm_UtilidadChoferes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_UtilidadImprEtRack.resx">
+      <DependentUpon>Frm_UtilidadImprEtRack.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaSopCli.resx">
+      <DependentUpon>Lst_AyudaSopCli.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Frm_AyudaAlmacenamiento.resx">
+      <DependentUpon>Frm_AyudaAlmacenamiento.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Cobros\Frm_ListadoVas.resx">
+      <DependentUpon>Frm_ListadoVas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Frm_AyudaServicios.resx">
+      <DependentUpon>Frm_AyudaServicios.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Facturacion\Frm_Detallemov.resx">
+      <DependentUpon>Frm_Detallemov.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_Cotizaciones.resx">
+      <DependentUpon>Frm_Cotizaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesDetalle.resx">
+      <DependentUpon>Frm_CotizacionesDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesDetalleEscala.resx">
+      <DependentUpon>Frm_CotizacionesDetalleEscala.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Cotizaciones\Frm_CotizacionesListado.resx">
+      <DependentUpon>Frm_CotizacionesListado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Monedas\Frm_moneda.resx">
+      <DependentUpon>Frm_moneda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Monedas\Frm_monedasAyuda.resx">
+      <DependentUpon>Frm_monedasAyuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Otros\Frm_AdminCustodia.resx">
+      <DependentUpon>Frm_AdminCustodia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Reportes\Rpt_Cotizaciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Cotizaciones.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Reportes\Rpt_EmisionVAS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EmisionVAS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Reportes\Rpt_EmisionVasAdmin.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EmisionVasAdmin.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.resx">
+      <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.resx">
+      <DependentUpon>Frm_AddPicking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\FrmAddReglas.resx">
+      <DependentUpon>FrmAddReglas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddColumna.resx">
+      <DependentUpon>Frm_AddColumna.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddEnvioEmail.resx">
+      <DependentUpon>Frm_AddEnvioEmail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMatPrim.resx">
+      <DependentUpon>Frm_AddMatPrim.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPedidosxTramo.resx">
+      <DependentUpon>Frm_AddPedidosxTramo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPlanosCamaras.resx">
+      <DependentUpon>Frm_AddPlanosCamaras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPosiciones.resx">
+      <DependentUpon>Frm_AddPosiciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddReservas.resx">
+      <DependentUpon>Frm_AddReservas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddSugerenciaPos.resx">
+      <DependentUpon>Frm_AddSugerenciaPos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_ConfInicialCamaras.resx">
+      <DependentUpon>Frm_ConfInicialCamaras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.resx">
+      <DependentUpon>Frm_MuestraPallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\CreaInforme.resx">
+      <DependentUpon>CreaInforme.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\frmConvertirFotos.resx">
+      <DependentUpon>frmConvertirFotos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_AdjuntaFotoDespacho.resx">
+      <DependentUpon>Frm_AdjuntaFotoDespacho.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_VerificaServiciosDespa.resx">
+      <DependentUpon>Frm_VerificaServiciosDespa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_CambiarPallet.resx">
+      <DependentUpon>Frm_CambiarPallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Conf_Pedidos_Xls.resx">
+      <DependentUpon>Frm_Conf_Pedidos_Xls.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Locales_Pedidos.resx">
+      <DependentUpon>Frm_Locales_Pedidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosBloqueoDias.resx">
+      <DependentUpon>Frm_PedidosBloqueoDias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosPalletAdd.resx">
+      <DependentUpon>Frm_PedidosPalletAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Pedidos.resx">
+      <DependentUpon>Frm_Pedidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosDetalle.resx">
+      <DependentUpon>Frm_PedidosDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_PedidosDetalleCajas.resx">
+      <DependentUpon>Frm_PedidosDetalleCajas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_Pedidos_Xls.resx">
+      <DependentUpon>Frm_Pedidos_Xls.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_ProductosCliente.resx">
+      <DependentUpon>Frm_ProductosCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\FRM_ProductosClienteLocal.resx">
+      <DependentUpon>FRM_ProductosClienteLocal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pedidos\Frm_UnirPedidos.resx">
+      <DependentUpon>Frm_UnirPedidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_CajasPedido.resx">
+      <DependentUpon>Frm_CajasPedido.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_ListadoPedidos.resx">
+      <DependentUpon>Frm_ListadoPedidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_MatrisCajas.resx">
+      <DependentUpon>Frm_MatrisCajas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\FrmFotosServicios.resx">
+      <DependentUpon>FrmFotosServicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_AdjuntaFotoRecepcion.resx">
+      <DependentUpon>Frm_AdjuntaFotoRecepcion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_GuiaRecepcionRecupera.resx">
+      <DependentUpon>Frm_GuiaRecepcionRecupera.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ModificaSAG.resx">
+      <DependentUpon>Frm_ModificaSAG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_PlanRece.resx">
+      <DependentUpon>Frm_PlanRece.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ServiciosREC.resx">
+      <DependentUpon>Frm_ServiciosREC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.resx">
+      <DependentUpon>Frm_VerificaServiciosRece.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.resx">
+      <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Auditorias\GeneraAuditoria.resx">
+      <DependentUpon>GeneraAuditoria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_AyudaContenedores.resx">
+      <DependentUpon>Frm_AyudaContenedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Servicios\Frm_IngresoServiciosAyuda.resx">
+      <DependentUpon>Frm_IngresoServiciosAyuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaProductosFamilia.resx">
+      <DependentUpon>Lst_AyudaProductosFamilia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_Contratos.resx">
+      <DependentUpon>Frm_Contratos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_ContratosDetalle.resx">
+      <DependentUpon>Frm_ContratosDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Contratos\Frm_ContratosDetalleEscala.resx">
+      <DependentUpon>Frm_ContratosDetalleEscala.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Facturacion\Frm_Facturacion.resx">
+      <DependentUpon>Frm_Facturacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Mantenedores\Servicios\Frm_IngresoServicios.resx">
+      <DependentUpon>Frm_IngresoServicios.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Facturacion\Agregar\Cobros\Frm_Vas.resx">
+      <DependentUpon>Frm_Vas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Frm_AyudaMonedas.resx">
+      <DependentUpon>Frm_AyudaMonedas.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.resx">
+      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.resx">
+      <DependentUpon>Frm_AddChoferes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddClientes.resx">
+      <DependentUpon>Frm_AddClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddEnvases.resx">
+      <DependentUpon>Frm_AddEnvases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFamilias.resx">
+      <DependentUpon>Frm_AddFamilias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddOrigenes.resx">
+      <DependentUpon>Frm_AddOrigenes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddProductos.resx">
+      <DependentUpon>Frm_AddProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_CamionesAndenDespacho.resx">
+      <DependentUpon>Frm_CamionesAndenDespacho.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_Despacho.resx">
+      <DependentUpon>Frm_Despacho.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_ListadoDespachados.resx">
+      <DependentUpon>Frm_ListadoDespachados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\Frm_ListadoPreDespachos.resx">
+      <DependentUpon>Frm_ListadoPreDespachos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_GuiaPreDespachoAgregar.resx">
+      <DependentUpon>Frm_GuiaPreDespachoAgregar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_GuiaPreDespachoRecupera.resx">
+      <DependentUpon>Frm_GuiaPreDespachoRecupera.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Pre-despacho\Frm_ListadoPredespahos.resx">
+      <DependentUpon>Frm_ListadoPredespahos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_CamionesAndenRecepcion.resx">
+      <DependentUpon>Frm_CamionesAndenRecepcion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_GuiaRecepcionAgregar.resx">
+      <DependentUpon>Frm_GuiaRecepcionAgregar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddSoportantes.resx">
+      <DependentUpon>Frm_AddSoportantes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMedida.resx">
+      <DependentUpon>Frm_AddMedida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_ListadoRecepciones.resx">
+      <DependentUpon>Frm_ListadoRecepciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Categorias.resx">
+      <DependentUpon>Frm_Categorias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_CategoriasAyuda.resx">
+      <DependentUpon>Frm_CategoriasAyuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_ListadoUsuarios.resx">
+      <DependentUpon>Frm_ListadoUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_MantenedorUsuarios.resx">
+      <DependentUpon>Frm_MantenedorUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_SubCategorias.resx">
+      <DependentUpon>Frm_SubCategorias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_SubCategoriasAyuda.resx">
+      <DependentUpon>Frm_SubCategoriasAyuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaChoferes.resx">
+      <DependentUpon>Lst_AyudaChoferes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaClientes.resx">
+      <DependentUpon>Lst_AyudaClientes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaContratos.resx">
+      <DependentUpon>Lst_AyudaContratos.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaEnvases.resx">
+      <DependentUpon>Lst_AyudaEnvases.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaFamilias.resx">
+      <DependentUpon>Lst_AyudaFamilias.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaOrigenes.resx">
+      <DependentUpon>Lst_AyudaOrigenes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaProductos.resx">
+      <DependentUpon>Lst_AyudaProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_ayudaRecepciones.resx">
+      <DependentUpon>Lst_ayudaRecepciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ayuda\Lst_AyudaSoportantes.resx">
+      <DependentUpon>Lst_AyudaSoportantes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_BloqueoPallets.resx">
+      <DependentUpon>Frm_BloqueoPallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_DesbloqImportacion.resx">
+      <DependentUpon>Frm_DesbloqImportacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Bloq_Desbloq\Frm_ListadoImpor.resx">
+      <DependentUpon>Frm_ListadoImpor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Contenedores\Frm_ContDeta.resx">
+      <DependentUpon>Frm_ContDeta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Contenedores\Frm_Contenedores.resx">
+      <DependentUpon>Frm_Contenedores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_Etiquetado.resx">
+      <DependentUpon>Frm_Etiquetado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_EtiquetadoListado.resx">
+      <DependentUpon>Frm_EtiquetadoListado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Etiquetado\Frm_RecuperaEtiq.resx">
+      <DependentUpon>Frm_RecuperaEtiq.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\Produccion\Bolsa\Frm_ProcesoBolsa.resx">
+      <DependentUpon>Frm_ProcesoBolsa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\RPC\Frm_ListadoRCP.resx">
+      <DependentUpon>Frm_ListadoRCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\RPC\Frm_RCP.resx">
+      <DependentUpon>Frm_RCP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Procesos\TrazProductos\Frm_TrazProductos.resx">
+      <DependentUpon>Frm_TrazProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\ConfGENE.resx">
+      <DependentUpon>ConfGENE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\FRM_ACT_WMS.resx">
+      <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Informes.resx">
+      <DependentUpon>Lst_Informes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Otros\Frm_imagenesInformes.resx">
+      <DependentUpon>Frm_imagenesInformes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Otros\Frm_MovimientoSoportanteUsuario.resx">
+      <DependentUpon>Frm_MovimientoSoportanteUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\AvisoPalletMalPos.resx">
+      <DependentUpon>AvisoPalletMalPos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\ConsultaCajas.resx">
+      <DependentUpon>ConsultaCajas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_TrazaProductos.resx">
+      <DependentUpon>Frm_TrazaProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\FrmInformeSaldosNoConf.resx">
+      <DependentUpon>FrmInformeSaldosNoConf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.resx">
+      <DependentUpon>Frm_AndenesAbrir.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ServiciosRec.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_ServiciosRec.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\FrmGraficStock.resx">
+      <DependentUpon>FrmGraficStock.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_Andenes.resx">
+      <DependentUpon>Frm_Andenes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesCerr.resx">
+      <DependentUpon>Frm_AndenesCerr.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_CruceDESREC.resx">
+      <DependentUpon>Frm_CruceDESREC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_detalleautosoportantes.resx">
+      <DependentUpon>Frm_detalleautosoportantes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_PackingList.resx">
+      <DependentUpon>Frm_PackingList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_RecuentoCajRPT.resx">
+      <DependentUpon>Frm_RecuentoCajRPT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_PedidosTerminados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PedidosTerminados.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\CapturaTEM.resx">
+      <DependentUpon>CapturaTEM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\FrmPedidosUsuarios.resx">
+      <DependentUpon>FrmPedidosUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\FrmSugeridoREPA.resx">
+      <DependentUpon>FrmSugeridoREPA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.resx">
+      <DependentUpon>Frm_ControlCamionRec.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.resx">
+      <DependentUpon>Frm_horpedido.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_InformeTunel.resx">
+      <DependentUpon>Frm_InformeTunel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_NumeralDiario.resx">
+      <DependentUpon>Frm_NumeralDiario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_PalletTunel.resx">
+      <DependentUpon>Frm_PalletTunel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_soportantesEnCamara.resx">
+      <DependentUpon>Frm_soportantesEnCamara.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_AnormalFrigo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_AnormalFrigo.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EnvioCorreos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreosExterno.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EnvioCorreosExterno.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreosInterno.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EnvioCorreosInterno1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PalletTunel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Frm_Pos.resx">
+      <DependentUpon>Frm_Pos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_GuiaPrecisa.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_GuiaPrecisa.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_cuadraturaFichasDetalles.resx">
+      <DependentUpon>Frm_cuadraturaFichasDetalles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_ListadoTuneles.resx">
+      <DependentUpon>Frm_ListadoTuneles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_AnormalFrigoAnt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_AnormalFrigoAnt.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_MovimientoSoportanteUsuario.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_MovimientoSoportanteUsuario.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosSaldos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PedidosSaldos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_PosicionesLibres.resx">
+      <DependentUpon>Frm_PosicionesLibres.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_Revisiones.resx">
+      <DependentUpon>Frm_Revisiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_Pedidos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Pedidos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_Posiciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Posiciones.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PosicionesLibres.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PosicionesLibres.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_Revisiones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Revisiones.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\AgrosuperDes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AgrosuperDes.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Procesos\RptContenedores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptContenedores.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Procesos\RptContenedoresDetallado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptContenedoresDetallado.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Procesos\Rpt_Rcp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Rcp.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\FrmPosicionestotales.resx">
+      <DependentUpon>FrmPosicionestotales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_NewTRa.resx">
+      <DependentUpon>Frm_NewTRa.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_TrazabilidadGuia.resx">
+      <DependentUpon>Frm_TrazabilidadGuia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Rpt_TrababilidadCaja.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_TrababilidadCaja.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_Trazabilidad.resx">
+      <DependentUpon>Frm_Trazabilidad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Camaras.resx">
+      <DependentUpon>Lst_Camaras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Choferes.resx">
+      <DependentUpon>Lst_Choferes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Clientes.resx">
+      <DependentUpon>Lst_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Envases.resx">
+      <DependentUpon>Lst_Envases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_familias.resx">
+      <DependentUpon>Lst_familias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Medidas.resx">
+      <DependentUpon>Lst_Medidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Origenes.resx">
+      <DependentUpon>Lst_Origenes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Productos.resx">
+      <DependentUpon>Lst_Productos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_soportantes.resx">
+      <DependentUpon>Lst_soportantes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_DocumentosEmitidos.resx">
+      <DependentUpon>Frm_DocumentosEmitidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_ResumidoFecha.resx">
+      <DependentUpon>Frm_ResumidoFecha.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_AcumuladoContrato.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_AcumuladoContrato.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_ResumidoFecha.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualCliente.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PedidosMensualCliente.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_PedidosMensualClientes.resx">
+      <DependentUpon>Frm_PedidosMensualClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletPorVencer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PalletPorVencer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletVencidos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PalletVencidos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockTipoSoportante.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_StockTipoSoportante.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualClientes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PedidosMensualClientes.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Frm_PosicionesSopo.resx">
+      <DependentUpon>Frm_PosicionesSopo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Rpt_PosicionesSopo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PosicionesSopo.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Procesos\RptImportaciones.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptImportaciones.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Procesos\Rpt_Etiquetado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_Etiquetado.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.resx">
+      <DependentUpon>TrazabilidadCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\ayudaNEW.resx">
+      <DependentUpon>ayudaNEW.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\ConfSuperADM.resx">
+      <DependentUpon>ConfSuperADM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\Frm_InicioSesion.resx">
+      <DependentUpon>Frm_InicioSesion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\Frm_Principal.resx">
+      <DependentUpon>Frm_Principal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\Presentacion.resx">
+      <DependentUpon>Presentacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\PrimeraCarga.resx">
+      <DependentUpon>PrimeraCarga.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Agregar\Frm_CheckList.resx">
+      <DependentUpon>Frm_CheckList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Ayuda\Frm_CheckListAyuda.resx">
+      <DependentUpon>Frm_CheckListAyuda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Listar\Frm_CheckListPendientes.resx">
+      <DependentUpon>Frm_CheckListPendientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Listar\Frm_ListadoChecklist.resx">
+      <DependentUpon>Frm_ListadoChecklist.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Listar\Frm_ListadoPorteria.resx">
+      <DependentUpon>Frm_ListadoPorteria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Listar\Frm_ListarFotos.resx">
+      <DependentUpon>Frm_ListarFotos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Porteria\Reportes\Rpt_CheckList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_CheckList.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_MuestraReporte.resx">
+      <DependentUpon>Frm_MuestraReporte.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_StockResumidoPar.resx">
+      <DependentUpon>Frm_StockResumidoPar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockAcumulado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_StockAcumulado.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockCliente.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_StockCliente.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockDetallado.resx">
+      <DependentUpon>Rpt_StockDetallado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockHistorico.resx">
+      <DependentUpon>Rpt_StockHistorico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_StockResumido.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_StockResumido.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_GuiaDespacho.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_GuiaDespacho.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_GuiaRecepcion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_GuiaRecepcion.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Posicionamiento\Movimientos\Rpt_PreDespacho.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_PreDespacho.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Otros\Frm_PosicionamientoManual.resx">
+      <DependentUpon>Frm_PosicionamientoManual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Rpt_TrababilidadPallet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_TrababilidadPallet.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="Dataset\Ds_Productos.xsc">
+      <DependentUpon>Ds_Productos.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Productos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_Productos.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\Ds_Productos.xss">
+      <DependentUpon>Ds_Productos.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Imagenes.xsc">
+      <DependentUpon>Ds_Imagenes.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Imagenes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_Imagenes.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Dataset\Ds_Imagenes.xss">
+      <DependentUpon>Ds_Imagenes.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_ImagenesRece.xsc">
+      <DependentUpon>Ds_ImagenesRece.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_ImagenesRece.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_ImagenesRece.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_ImagenesRece.xss">
+      <DependentUpon>Ds_ImagenesRece.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Posiciones.xsc">
+      <DependentUpon>Ds_Posiciones.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Posiciones.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_Posiciones.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_Posiciones.xss">
+      <DependentUpon>Ds_Posiciones.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Resumido.xsc">
+      <DependentUpon>Ds_Resumido.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Resumido.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_Resumido.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_Resumido.xss">
+      <DependentUpon>Ds_Resumido.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Revisiones.xsc">
+      <DependentUpon>Ds_Revisiones.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_Revisiones.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_Revisiones.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_Revisiones.xss">
+      <DependentUpon>Ds_Revisiones.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_StockAcumulado.xsc">
+      <DependentUpon>Ds_StockAcumulado.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_StockAcumulado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_StockAcumulado.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_StockAcumulado.xss">
+      <DependentUpon>Ds_StockAcumulado.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_StockAcumuladoContrato.xsc">
+      <DependentUpon>Ds_StockAcumuladoContrato.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_StockAcumuladoContrato.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_StockAcumuladoContrato.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_StockAcumuladoContrato.xss">
+      <DependentUpon>Ds_StockAcumuladoContrato.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Imag.xsc">
+      <DependentUpon>Imag.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Imag.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Imag.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Imag.xss">
+      <DependentUpon>Imag.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application1.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386270275_File_XLS_Excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button White Check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cliente.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\detalle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Modificar_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\requerido.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list-delete4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo-abstracto-verde.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualizar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondosistema.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bmp-SistemaPrecisa2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mensaje 123.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1372096639_view_detailed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Abajo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\impresora_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_logoZEBRA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ficha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Imprimir_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Printer-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386987639_inkjet_printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386986378_docx_win.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1386986389_pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\conn_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\con_no.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fondo facturación.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rd1.jpg" />
+    <None Include="Resources\PedidoWeb_36240.png" />
+    <None Include="Resources\pedido preparado.jpg" />
+    <None Include="Resources\Listado 2018_04_05.PNG" />
+    <None Include="Resources\MovSoportantes 2018_04_06.PNG" />
+    <None Include="Resources\Listado Semanal 2018_04_02.png" />
+    <None Include="Resources\Vencidos 762173867_2018_04_02.PNG" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\recuadro.png" />
+    <None Include="Resources\ORDERBYDESK.png" />
+    <None Include="Resources\LOGO.png" />
+    <None Include="Resources\tick.png" />
+    <None Include="Resources\iniciar_secion.png" />
+    <None Include="Resources\login1.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\login_cuadrado.png" />
+    <None Include="Resources\lupa.jpg" />
+    <None Include="Resources\verde.png" />
+    <None Include="Resources\rdc1.png" />
+    <None Include="Resources\vencidos.JPG" />
+    <None Include="Resources\usuario_anonimo1.jpg" />
+    <None Include="Resources\Soportantes.JPG" />
+    <None Include="Resources\sinimagen1.jpg" />
+    <None Include="Resources\sinfinalizar.JPG" />
+    <None Include="Resources\semanal.JPG" />
+    <None Include="Resources\posicionescamara.JPG" />
+    <None Include="Resources\pedidoshora.JPG" />
+    <None Include="Resources\pedidopreparado.JPG" />
+    <None Include="Resources\OPPPP.png" />
+    <None Include="Resources\oki.png" />
+    <None Include="Resources\sinimagen.jpg" />
+    <None Include="Resources\point_red.png" />
+    <None Include="Resources\point_green.png" />
+    <None Include="Resources\point_yellow.png" />
+    <None Include="Resources\Lst_cotizaciones.png" />
+    <None Include="Resources\Lst_monedas.png" />
+    <None Include="Resources\lst_servicios.png" />
+    <None Include="Resources\TitleList.png" />
+    <None Include="Resources\TitleList.jpg" />
+    <None Include="Resources\name-tag-style-vip-login-form-psd_54-3869.png" />
+    <None Include="Resources\Presentacion.png" />
+    <None Include="Resources\1390343038_editdelete.png" />
+    <None Include="Resources\BarraSeparadora.png" />
+    <None Include="Resources\Fondo.png" />
+    <None Include="Resources\1391114844_sign-out.png" />
+    <None Include="Resources\1391114862_battery_plug.png" />
+    <None Include="Resources\1391114767_sign-out.png" />
+    <None Include="Resources\1391114781_sign-in.png" />
+    <None Include="Resources\1391546704_Camera.png" />
+    <None Include="Resources\1391547217_File_-_Image_256x256-32.png" />
+    <None Include="Resources\1381452052_Trailer.png" />
+    <None Include="Resources\Camion.png" />
+    <None Include="Resources\blanco.jpg" />
+    <None Include="Resources\1392857135_database_search.png" />
+    <Content Include="1393294820_105256.ico" />
+    <None Include="Resources\1395703895_home.png" />
+    <None Include="Resources\1395703956_fork_truck.png" />
+    <None Include="Resources\1375930470_print.png" />
+    <None Include="Resources\Factura.png" />
+    <None Include="Resources\cont_ok.png" />
+    <None Include="Resources\cont_medio.png" />
+    <None Include="Resources\cont_no.png" />
+    <None Include="Resources\1413851841_icon_22_one_finger-20.png" />
+    <None Include="Resources\1413851891_700103-icon-69-thermometer-half-20.png" />
+    <None Include="Resources\addcorreo.png" />
+    <None Include="Resources\elimina.png" />
+    <None Include="Resources\group_add.png" />
+    <None Include="Resources\icnmatris.png" />
+    <None Include="Resources\icm.png" />
+    <None Include="Resources\FONDO-OP-1.png" />
+    <None Include="Resources\FONDO-OFICIAL-1.png" />
+    <None Include="Resources\FONDO-CON-NOTICIA-1.png" />
+    <None Include="Resources\CAMP.png" />
+    <None Include="Resources\FONDO-OF-2.png" />
+    <None Include="Resources\documentosemitidos.JPG" />
+    <None Include="Resources\fondo_form2.jpg" />
+    <None Include="Resources\fondo_3.jpg" />
+    <None Include="Resources\fondo_31.jpg" />
+    <None Include="Resources\f1.jpg" />
+    <None Include="Resources\fondo_4.jpg" />
+    <None Include="Resources\fondo_2222.jpg" />
+    <None Include="Resources\fondo_32.png" />
+    <None Include="Resources\fondo_321.png" />
+    <None Include="Resources\cuadrados_consombra.png" />
+    <None Include="Resources\fondo_azul.jpg" />
+    <None Include="Resources\fondo4.jpg" />
+    <None Include="Resources\fondo41.jpg" />
+    <None Include="Resources\fondo42.jpg" />
+    <None Include="Resources\cuadro.png" />
+    <None Include="Resources\guardar1.png" />
+    <None Include="Resources\fondo_super.jpg" />
+    <None Include="Resources\fondo_usuario.jpg" />
+    <None Include="Resources\f11.jpg" />
+    <None Include="Resources\fondo_usuario_marca.jpg" />
+    <None Include="Resources\f2.jpg" />
+    <None Include="Resources\barra.jpg" />
+    <None Include="Resources\cuadrado.jpg" />
+    <None Include="Resources\fondorec.jpg" />
+    <None Include="Resources\barra_1.jpg" />
+    <None Include="Resources\fondo_completo.jpg" />
+    <None Include="Resources\fondo_completo1.jpg" />
+    <None Include="Resources\cruz.png" />
+    <None Include="Resources\cruzzzz.png" />
+    <None Include="Resources\f23.jpg" />
+    <None Include="Resources\ffffffffffffff.jpg" />
+    <None Include="Resources\grua.png" />
+    <None Include="Resources\grua2.png" />
+    <None Include="Resources\110binsmadera1.png" />
+    <None Include="Resources\110binsplastico1.png" />
+    <None Include="Resources\110bloque1.png" />
+    <None Include="Resources\110rack1.png" />
+    <None Include="Resources\110tambor1.png" />
+    <None Include="Resources\ffffffffffffff3.png" />
+    <Content Include="Formularios\Otros\SCRIPT1.txt" />
+    <None Include="Resources\camara.jpg" />
+    <None Include="Resources\Code-39.jpg" />
+    <None Include="Resources\exclamation-24158_640.png" />
+    <None Include="Resources\frigo 05_04_2018.PNG" />
+    <None Include="Resources\dispcamaras 2018_04_06.PNG" />
+    <None Include="Resources\DocumentosEmitidos 05_04_2018.png" />
+    <Content Include="Resources\icono-de-jpg-355881.png" />
+    <None Include="Resources\icono-de-jpg-3558811.png" />
+    <None Include="Resources\im.jpg" />
+    <None Include="Resources\icono_guardar.jpg" />
+    <None Include="Resources\icono2.png" />
+    <None Include="Resources\icono3.png" />
+    <None Include="Resources\icono4.png" />
+    <None Include="Resources\icono-lupa.png" />
+    <None Include="Resources\icono-guardar.png" />
+    <None Include="Resources\icono-guardar1.png" />
+    <None Include="Resources\icono-guardar2.png" />
+    <None Include="Resources\icono-impresora.png" />
+    <None Include="Resources\icono-lupa1.png" />
+    <None Include="Resources\icono-hojanueva.png" />
+    <None Include="Resources\icono-hojamenos.png" />
+    <None Include="Resources\icono-salida.png" />
+    <None Include="Resources\icono-hojapincel.png" />
+    <None Include="Resources\icono-impresora2.png" />
+    <None Include="Resources\icono-impresora2%281%29.png" />
+    <None Include="Resources\icono_soportante.png" />
+    <None Include="Resources\icono_xls.png" />
+    <None Include="Resources\icono_xls1.png" />
+    <Content Include="Resources\imagen1.png" />
+    <None Include="Resources\_admin.png" />
+    <None Include="Resources\_Quitar_Todo.png" />
+    <None Include="Resources\_Quitar_1.png" />
+    <None Include="Resources\_Agregar_Todo.png" />
+    <None Include="Resources\_Agregar_1.png" />
+    <None Include="Resources\usuario_anonimo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="stdole">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AccessibilityCplAdminLib">
+      <Guid>{714DD4F6-7676-4BDE-925A-C2FEC2073F36}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

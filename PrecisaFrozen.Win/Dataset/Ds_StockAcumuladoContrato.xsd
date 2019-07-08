@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_StockAcumuladoContrato" targetNamespace="http://tempuri.org/Ds_StockAcumuladoContrato.xsd" xmlns:mstns="http://tempuri.org/Ds_StockAcumuladoContrato.xsd" xmlns="http://tempuri.org/Ds_StockAcumuladoContrato.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_StockAcumuladoContrato" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_StockAcumuladoContrato" msprop:Generator_UserDSName="Ds_StockAcumuladoContrato">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="acumulado" msprop:Generator_TableClassName="acumuladoDataTable" msprop:Generator_TableVarName="tableacumulado" msprop:Generator_TablePropName="acumulado" msprop:Generator_RowDeletingName="acumuladoRowDeleting" msprop:Generator_RowChangingName="acumuladoRowChanging" msprop:Generator_RowEvHandlerName="acumuladoRowChangeEventHandler" msprop:Generator_RowDeletedName="acumuladoRowDeleted" msprop:Generator_UserTableName="acumulado" msprop:Generator_RowChangedName="acumuladoRowChanged" msprop:Generator_RowEvArgName="acumuladoRowChangeEvent" msprop:Generator_RowClassName="acumuladoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CLIENTE" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="CLIENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CONTRATO" msprop:Generator_ColumnVarNameInTable="columnCONTRATO" msprop:Generator_ColumnPropNameInRow="CONTRATO" msprop:Generator_ColumnPropNameInTable="CONTRATOColumn" msprop:Generator_UserColumnName="CONTRATO" type="xs:string" minOccurs="0" />
+              <xs:element name="UNIDADES" msprop:Generator_ColumnVarNameInTable="columnunidades" msprop:Generator_ColumnPropNameInRow="unidades" msprop:Generator_ColumnPropNameInTable="unidadesColumn" msprop:Generator_UserColumnName="UNIDADES" type="xs:int" minOccurs="0" />
+              <xs:element name="KILOS" msprop:Generator_ColumnVarNameInTable="columnkilos" msprop:Generator_ColumnPropNameInRow="kilos" msprop:Generator_ColumnPropNameInTable="kilosColumn" msprop:Generator_UserColumnName="KILOS" type="xs:double" minOccurs="0" />
+              <xs:element name="SOPORTANTES" msprop:Generator_ColumnVarNameInTable="columnSOPORTANTES" msprop:Generator_ColumnPropNameInRow="SOPORTANTES" msprop:Generator_ColumnPropNameInTable="SOPORTANTESColumn" msprop:Generator_UserColumnName="SOPORTANTES" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

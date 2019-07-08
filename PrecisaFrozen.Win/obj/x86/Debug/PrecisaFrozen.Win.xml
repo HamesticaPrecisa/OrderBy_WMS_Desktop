@@ -1,0 +1,979 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PrecisaFrozen.Win
+</name>
+</assembly>
+<members>
+<member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ResourceManager">
+	<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Culture">
+	<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._110binsmadera">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._110binsplastico">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._110bloque">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._110rack">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._110tambor">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1372096639_view_detailed">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1375930470_print">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1381452052_Trailer">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386270275_File_XLS_Excel">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386986378_docx_win">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386986389_pdf">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386987639_inkjet_printer">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1390343038_editdelete">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114767_sign_out">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114781_sign_in">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114844_sign_out">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114862_battery_plug">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391546704_Camera">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391547217_File___Image_256x256_32">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1392857135_database_search">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1395703895_home">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1395703956_fork_truck">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1413851841_icon_22_one_finger_20">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1413851891_700103_icon_69_thermometer_half_20">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._admin">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Agregar_1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Agregar_Todo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Next">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Quitar_1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Quitar_Todo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Abajo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.actualizar">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.addcorreo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Barcode">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.barra">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.barra_1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.BarraSeparadora">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.blanco">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Bmp_SistemaPrecisa2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar_24">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.button_cancel">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Button_White_Check">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.camara">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Camion">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.CAMP">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Cliente">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Code_39">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.con_no">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.conn_ok">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cont_medio">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cont_no">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cont_ok">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cruz">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cruzzzz">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cuadrado">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cuadrados_consombra">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cuadro">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.detalle">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.dispcamaras_2018_04_06">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.documentosemitidos">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.DocumentosEmitidos_05_04_2018">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.elimina">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.eliminar">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Excel">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.excel_2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.exclamation_24158_640">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.f1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.f11">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.f2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.f23">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Factura">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ffffffffffffff">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ffffffffffffff3">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Ficha">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.folder_add">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Fondo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_2222">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_3">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_31">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_32">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_321">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_4">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_abstracto_verde">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_azul">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_completo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_completo1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.FONDO_CON_NOTICIA_1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_facturación">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_form2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.FONDO_OF_2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.FONDO_OFICIAL_1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.FONDO_OP_1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_super">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_usuario">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_usuario_marca">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo4">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo41">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo42">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondorec">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondosistema">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.frigo_05_04_2018">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.group_add">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.grua">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.grua2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Guardar">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.guardar1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icm">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icnmatris">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_de_jpg_355881">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_guardar1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_guardar2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_hojamenos">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_hojanueva">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_hojapincel">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_impresora">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_impresora2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_impresora2_1_">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_lupa">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_lupa1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_salida">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_soportante">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_xls">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono_xls1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono2">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono3">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.icono4">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.im">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.img_logo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.img_logoZEBRA">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.impresora_24">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Imprimir_16">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.iniciar_secion">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.list_delete4">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Listado_2018_04_05">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Listado_Semanal_2018_04_02">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.login">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.login_cuadrado">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.login1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.LOGO">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Lst_cotizaciones">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Lst_monedas">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.lst_servicios">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.lst_servicios1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.lupa">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Mensaje_123">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Modificar_16">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.MovSoportantes_2018_04_06">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.name_tag_style_vip_login_form_psd_54_3869">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Nuevo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Nuevo_16">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ok_16">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.oki">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.OPPPP">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ORDERBYDESK">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.pedido_preparado">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.pedidopreparado">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.pedidoshora">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.PedidoWeb_36240">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.point_green">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.point_red">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.point_yellow">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.posicionescamara">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Presentacion">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Previous">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.printer">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Printer_icon">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.rd">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.rd1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.rdc1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.recuadro">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.requerido">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.salir">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.semanal">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.sinfinalizar">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.sinimagen">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.sinimagen1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Soportantes">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.tick">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.user">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.usuario_anonimo">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.usuario_anonimo1">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.vencidos">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Vencidos_762173867_2018_04_02">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.verde">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.My.Resources.Resources">
+	<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLADataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato.acumuladoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato.acumuladoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato.acumuladoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.ValueChanged">
+	<summary>Occurs when the value of the progress bar is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageDecimalsChanged">
+	<summary>Occurs when the amount of decimals to be displayed in the percentage is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageVisibleChanged">
+	<summary>Occurs when the visibility of the percentage text is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.AutoUpdatePercentageChanged">
+	<summary>Occurs when the automatic updating of the percentage is turned on or off</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.OverlayTextColorChanged">
+	<summary>Occurs when the OverlayTextColor property is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.TextColorChanged">
+	<summary>Occurs when the TextColor property is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageAlignChanged">
+	<summary>Occurs when the align of the percentage text is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.DisplayFormatChanged">
+	<summary>Occurs when the display format is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PaddingChanged">
+	<summary>Occurs when the padding of the percentage text is changed</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.#ctor">
+	<summary>Create a new instance of a ProgressbarWithPercentage</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.PerformStep">
+	<summary>Advances the current possition of the progressbar by the amount of the Step property</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.ShowPercentage">
+	<summary>Show the current percentage as text</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.ShowText(System.String)">
+	<summary>Display a string on the progressbar</summary>
+	<param name="text">Required. String. The string to display</param>
+</member><member name="T:PrecisaFrozen.Win.ProgressbarWithPercentage">
+	<summary>Component that extends the native .net progressbar with percentage properties and the ability to overlay the percentage</summary>
+	<remarks>Component ProgressbarWithPercentage v1.0.10, by De Dauw Jeroen - November 2009</remarks>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="M:PrecisaFrozen.Win.BarCode.EAN13CalcChecksum(System.String)">
+	<summary>
+ Esta función devuelve el dígito de control para un código EAN13
+ </summary>
+	<param name="_code">Código EAN de 12 *** DOCE *** números</param>
+	<returns>Se devuelve como un string el digito 13 que es el dígito de control</returns>
+	<remarks></remarks>
+</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13AutoGenerateChecksum(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
+	<summary>
+ Genera el código de barras EAN13 y auto-calcula el dígito de control
+ </summary>
+	<param name="_code">Código de 12 *** DOCE *** números</param>
+	<param name="GenerateChecksum"></param>
+	<param name="ChecksumText"></param>
+	<param name="Height"></param>
+	<param name="PrintTextInCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
+	<summary>
+ Genera el código de barras EAN13. No se verifica el checksum
+ </summary>
+	<param name="_code">Código de 13 *** TRECE *** números</param>
+	<param name="GenerateChecksum"></param>
+	<param name="ChecksumText"></param>
+	<param name="Height"></param>
+	<param name="PrintTextInCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

@@ -1,0 +1,535 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PrecisaFrozen.Win
+</name>
+</assembly>
+<members>
+<member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato.acumuladoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato.acumuladoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato.acumuladoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1372096639_view_detailed">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1375930470_print">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1381452052_Trailer">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386270275_File_XLS_Excel">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386986378_docx_win">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386986389_pdf">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1386987639_inkjet_printer">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1390343038_editdelete">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114767_sign_out">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114781_sign_in">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114844_sign_out">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391114862_battery_plug">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391546704_Camera">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1391547217_File___Image_256x256_32">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1392857135_database_search">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1395703895_home">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1395703956_fork_truck">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1413851841_icon_22_one_finger_20">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._1413851891_700103_icon_69_thermometer_half_20">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._admin">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Agregar_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Agregar_Todo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Next">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Quitar_1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources._Quitar_Todo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Abajo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.actualizar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.addcorreo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Barcode">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.BarraSeparadora">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.blanco">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Bmp_SistemaPrecisa2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar_24">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.buscar2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.button_cancel">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Button_White_Check">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Camion">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Cliente">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.con_no">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.conn_ok">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cont_medio">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cont_no">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.cont_ok">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.detalle">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.elimina">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.eliminar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Excel">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.excel_2">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Factura">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Ficha">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.folder_add">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Fondo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_abstracto_verde">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondo_facturación">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.fondosistema">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.group_add">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Guardar">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.img_logo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.img_logoZEBRA">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.impresora_24">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Imprimir_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.list_delete4">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Lst_cotizaciones">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Lst_monedas">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.lst_servicios">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.lst_servicios1">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Mensaje_123">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Modificar_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.name_tag_style_vip_login_form_psd_54_3869">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Nuevo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Nuevo_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.ok_16">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.point_green">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.point_red">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.point_yellow">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Presentacion">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Previous">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.printer">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.Printer_icon">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.requerido">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.salir">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:PrecisaFrozen.Win.My.Resources.Resources.usuario_anonimo">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.ValueChanged">
+	<summary>Occurs when the value of the progress bar is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageDecimalsChanged">
+	<summary>Occurs when the amount of decimals to be displayed in the percentage is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageVisibleChanged">
+	<summary>Occurs when the visibility of the percentage text is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.AutoUpdatePercentageChanged">
+	<summary>Occurs when the automatic updating of the percentage is turned on or off</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.OverlayTextColorChanged">
+	<summary>Occurs when the OverlayTextColor property is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.TextColorChanged">
+	<summary>Occurs when the TextColor property is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageAlignChanged">
+	<summary>Occurs when the align of the percentage text is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.DisplayFormatChanged">
+	<summary>Occurs when the display format is changed</summary>
+</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PaddingChanged">
+	<summary>Occurs when the padding of the percentage text is changed</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.#ctor">
+	<summary>Create a new instance of a ProgressbarWithPercentage</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.PerformStep">
+	<summary>Advances the current possition of the progressbar by the amount of the Step property</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.ShowPercentage">
+	<summary>Show the current percentage as text</summary>
+</member><member name="M:PrecisaFrozen.Win.ProgressbarWithPercentage.ShowText(System.String)">
+	<summary>Display a string on the progressbar</summary>
+	<param name="text">Required. String. The string to display</param>
+</member><member name="T:PrecisaFrozen.Win.ProgressbarWithPercentage">
+	<summary>Component that extends the native .net progressbar with percentage properties and the ability to overlay the percentage</summary>
+	<remarks>Component ProgressbarWithPercentage v1.0.10, by De Dauw Jeroen - November 2009</remarks>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="M:PrecisaFrozen.Win.BarCode.EAN13CalcChecksum(System.String)">
+	<summary>
+ Esta función devuelve el dígito de control para un código EAN13
+ </summary>
+	<param name="_code">Código EAN de 12 *** DOCE *** números</param>
+	<returns>Se devuelve como un string el digito 13 que es el dígito de control</returns>
+	<remarks></remarks>
+</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13AutoGenerateChecksum(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
+	<summary>
+ Genera el código de barras EAN13 y auto-calcula el dígito de control
+ </summary>
+	<param name="_code">Código de 12 *** DOCE *** números</param>
+	<param name="GenerateChecksum"></param>
+	<param name="ChecksumText"></param>
+	<param name="Height"></param>
+	<param name="PrintTextInCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
+	<summary>
+ Genera el código de barras EAN13. No se verifica el checksum
+ </summary>
+	<param name="_code">Código de 13 *** TRECE *** números</param>
+	<param name="GenerateChecksum"></param>
+	<param name="ChecksumText"></param>
+	<param name="Height"></param>
+	<param name="PrintTextInCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLADataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+</members>
+</doc>
