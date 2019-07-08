@@ -826,3 +826,11 @@ C:\Users\Programacion\Desktop\prg\PrecisaFrozen.Win\PrecisaFrozen.Win\obj\x86\De
 C:\Users\Programacion\Desktop\prg\PrecisaFrozen.Win\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_TrazaProductos.resources
 C:\Users\WEBMASTER\Desktop\prg\Sistemas Darwin\PrecisaFrozen.Win\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_TrazaProductos.resources
 C:\Users\WEBMASTER\Desktop\prg\Sistemas Darwin\PrecisaFrozen.Win\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_PlanRece.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\bin\Debug\PrecisaFrozen.Win.exe.config
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\Interop.AccessibilityCplAdminLib.dll
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\Interop.AcroPDFLib.dll
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.vbproj.ResolveComReference.cache
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.exe
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.xml
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.pdb
