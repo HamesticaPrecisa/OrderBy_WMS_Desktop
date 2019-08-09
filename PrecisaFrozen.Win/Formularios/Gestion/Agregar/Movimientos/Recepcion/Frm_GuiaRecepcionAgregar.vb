@@ -2677,7 +2677,6 @@ Public Class Frm_GuiaRecepcionAgregar
             report.SetParameterValue("codigo", TxtCodRece.Text)
             frm.Contenedor.ReportSource = report
             frm.ShowDialog()
-
         End If
     End Sub
 
@@ -2691,12 +2690,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql2)
                 If tabla2.Rows.Count > 0 Then
                     camttemp = tabla2.Rows(0)(0).ToString()
-
-
-
                 End If
-
-
 
                 Dim Gracia As Integer = Val(TxtTemp.Text) + Val(TxtTempGracia.Text)
                 Dim sqltemp As String = "SELECT frec_codi+drec_codi AS sopo, isnull(drec_temp,'0.00') FROM TMPDETARECE WHERE frec_codi='" + TxtCodRece.Text + "' " +
@@ -2998,12 +2992,6 @@ Public Class Frm_GuiaRecepcionAgregar
                 Dim tablaEstado As DataTable = fnc.ListarTablasSQL(sqlbloq)
 
                 If tablaEstado.Rows.Count > 0 Then
-                    Dim esttunel As String = "0"
-
-                    If CmboTuneles.Text = "A TUNEL" Then
-                        esttunel = "1"
-                    End If
-
                     If tablaEstado.Rows(0)(0).ToString() = "1" Then
 
                         Dim SQL_BLOQ = "SELECT * FROM Proc_Importaciones WHERE pimp_codrece='" + TxtCodRece.Text + "' "
@@ -3015,12 +3003,19 @@ Public Class Frm_GuiaRecepcionAgregar
                             ESTADO = "5"
                         End If
 
-                        Dim SQL_IMPORTACION = "UPDATE RACKDETA SET racd_estado='" + ESTADO + "',est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
+                        'Dim SQL_IMPORTACION = "UPDATE RACKDETA SET racd_estado='" + ESTADO + "',est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
+                        Dim SQL_IMPORTACION = "UPDATE RACKDETA SET racd_estado='" + ESTADO + "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
                         fnc.MovimientoSQL(SQL_IMPORTACION)
-                    Else
-                        ESTADO = "0"
-                        Dim SQL_IMPORTACION = "UPDATE RACKDETA SET est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
-                        fnc.MovimientoSQL(SQL_IMPORTACION)
+
+                        If CmboTuneles.Text <> "A TUNEL" Then
+                            Dim sqlEstTun As String = "update rackdeta set est_tunel='0' where racd_codi like '" & TxtCodRece.Text.Trim & "%'"
+                            fnc.MovimientoSQL(sqlEstTun)
+                        End If
+
+                        'Else
+                        '    ESTADO = "0"
+                        '    Dim SQL_IMPORTACION = "UPDATE RACKDETA SET est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
+                        '    fnc.MovimientoSQL(SQL_IMPORTACION)
                     End If
                 Else
                     ESTADO = "0"

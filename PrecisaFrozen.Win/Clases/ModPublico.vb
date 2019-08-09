@@ -183,8 +183,8 @@ Module ModPublico
                             If (Date.TryParse(ElGrid.Rows(Fila).Cells(Col).Value.ToString, fecFrm)) Then
                                 'Si es datetime
                                 If (ElGrid.Rows(Fila).Cells(Col).Value.ToString.Trim.Contains(":")) Then
-                                    exHoja.Cells.Item(Fila + 2, Col + 1) = fecFrm.ToString("yyyy-MM-dd hh:mm:ss")
-                                    exHoja.Cells.Item(Fila + 2, Col + 1).NumberFormat = "dd-MM-yyyy hh:mm:ss"
+                                    exHoja.Cells.Item(Fila + 2, Col + 1) = fecFrm.ToString("yyyy-MM-dd HH:mm:ss")
+                                    exHoja.Cells.Item(Fila + 2, Col + 1).NumberFormat = "dd-MM-yyyy HH:mm:ss"
                                 Else
                                     exHoja.Cells.Item(Fila + 2, Col + 1) = fecFrm.ToString("yyyy-MM-dd")
                                     exHoja.Cells.Item(Fila + 2, Col + 1).NumberFormat = "dd-MM-yyyy"

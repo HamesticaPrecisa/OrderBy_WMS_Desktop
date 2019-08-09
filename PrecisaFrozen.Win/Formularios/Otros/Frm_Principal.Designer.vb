@@ -133,6 +133,7 @@ Partial Class Frm_Principal
         Me.IngresoYSalidaTunelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InformeSoportantesParaIngresoTúnelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menNumDia = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemInfoPos = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Otros = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_PerfilesUsuario = New System.Windows.Forms.ToolStripMenuItem()
         Me.M3_Categorias = New System.Windows.Forms.ToolStripMenuItem()
@@ -417,7 +418,7 @@ Partial Class Frm_Principal
         Me.M3_Recepcion.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Recepcion.Enabled = False
         Me.M3_Recepcion.Name = "M3_Recepcion"
-        Me.M3_Recepcion.Size = New System.Drawing.Size(152, 22)
+        Me.M3_Recepcion.Size = New System.Drawing.Size(147, 22)
         Me.M3_Recepcion.Text = "Recepcion "
         '
         'M3_Predespacho
@@ -426,7 +427,7 @@ Partial Class Frm_Principal
         Me.M3_Predespacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Predespacho.Enabled = False
         Me.M3_Predespacho.Name = "M3_Predespacho"
-        Me.M3_Predespacho.Size = New System.Drawing.Size(152, 22)
+        Me.M3_Predespacho.Size = New System.Drawing.Size(147, 22)
         Me.M3_Predespacho.Text = "Pre-despacho"
         '
         'M3_Despacho
@@ -435,7 +436,7 @@ Partial Class Frm_Principal
         Me.M3_Despacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Despacho.Enabled = False
         Me.M3_Despacho.Name = "M3_Despacho"
-        Me.M3_Despacho.Size = New System.Drawing.Size(152, 22)
+        Me.M3_Despacho.Size = New System.Drawing.Size(147, 22)
         Me.M3_Despacho.Text = "Despacho"
         '
         'M2_Soportantes
@@ -808,7 +809,7 @@ Partial Class Frm_Principal
         '
         'M1_Informes
         '
-        Me.M1_Informes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_StockDetallado, Me.M2_StockResumido, Me.M2_StockAcumulado, Me.M2_StockAcumuladoS, Me.IinformeCuadraturaMovimientosToolStripMenuItem, Me.InformaAperturaCierreAndenesToolStripMenuItem, Me.InformeSoportantesEnCamarasToolStripMenuItem, Me.ControlCamionesMovimientosToolStripMenuItem, Me.InformePedidosPorUsuarioToolStripMenuItem, Me.InformeToneladasKilosToolStripMenuItem, Me.InformePalletsMalPosicionadosToolStripMenuItem, Me.CONTROLHOR, Me.ToolStripMenuItem1, Me.ControlServiciosExtraordinariosRecepcionToolStripMenuItem, Me.M2_DocumentosEmitidos, Me.M2_Trazabilidad, Me.M2_TrazabilidadProductos, Me.M2_TrazabilidadGuia, Me.M2_PedidosMensual, Me.M2_PosicionesSoportantes, Me.M2_CapacidadDeCamaras, Me.M2_PosicionesLibres, Me.M2_ProcesosSinFinalizar, Me.M2_RevisionCamaras, Me.M2_SoportantesVencidos, Me.M2_SoportantesPorVencer, Me.InformePackingListToolStripMenuItem, Me.M2_ImpresionDeEtiquetas, Me.InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem, Me.IngresoYSalidaTunelesToolStripMenuItem, Me.InformeSoportantesParaIngresoTúnelToolStripMenuItem, Me.menNumDia})
+        Me.M1_Informes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_StockDetallado, Me.M2_StockResumido, Me.M2_StockAcumulado, Me.M2_StockAcumuladoS, Me.IinformeCuadraturaMovimientosToolStripMenuItem, Me.InformaAperturaCierreAndenesToolStripMenuItem, Me.InformeSoportantesEnCamarasToolStripMenuItem, Me.ControlCamionesMovimientosToolStripMenuItem, Me.InformePedidosPorUsuarioToolStripMenuItem, Me.InformeToneladasKilosToolStripMenuItem, Me.InformePalletsMalPosicionadosToolStripMenuItem, Me.CONTROLHOR, Me.ToolStripMenuItem1, Me.ControlServiciosExtraordinariosRecepcionToolStripMenuItem, Me.M2_DocumentosEmitidos, Me.M2_Trazabilidad, Me.M2_TrazabilidadProductos, Me.M2_TrazabilidadGuia, Me.M2_PedidosMensual, Me.M2_PosicionesSoportantes, Me.M2_CapacidadDeCamaras, Me.M2_PosicionesLibres, Me.M2_ProcesosSinFinalizar, Me.M2_RevisionCamaras, Me.M2_SoportantesVencidos, Me.M2_SoportantesPorVencer, Me.InformePackingListToolStripMenuItem, Me.M2_ImpresionDeEtiquetas, Me.InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem, Me.IngresoYSalidaTunelesToolStripMenuItem, Me.InformeSoportantesParaIngresoTúnelToolStripMenuItem, Me.menNumDia, Me.ToolStripMenuItemInfoPos})
         Me.M1_Informes.Name = "M1_Informes"
         Me.M1_Informes.Size = New System.Drawing.Size(66, 20)
         Me.M1_Informes.Text = "Informes"
@@ -1061,6 +1062,14 @@ Partial Class Frm_Principal
         Me.menNumDia.Text = "Numeral Diario"
         Me.menNumDia.Visible = False
         '
+        'ToolStripMenuItemInfoPos
+        '
+        Me.ToolStripMenuItemInfoPos.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
+        Me.ToolStripMenuItemInfoPos.Enabled = False
+        Me.ToolStripMenuItemInfoPos.Name = "ToolStripMenuItemInfoPos"
+        Me.ToolStripMenuItemInfoPos.Size = New System.Drawing.Size(330, 22)
+        Me.ToolStripMenuItemInfoPos.Text = "Informe Posiciones"
+        '
         'M1_Otros
         '
         Me.M1_Otros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_PerfilesUsuario, Me.SeleccionarImpresoras, Me.ConfiguracionesGeneralesToolStripMenuItem})
@@ -1221,7 +1230,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Precisa Tech 08.07.19.13.00 - BD: Precisa"
+        Me.Text = "Order By WMS - Precisa Tech 09.08.19.11.30 - BD: Precisa"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
@@ -1365,5 +1374,6 @@ Partial Class Frm_Principal
     Friend WithEvents menuLocPed As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_TrazabilidadProductos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_PlanRece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItemInfoPos As System.Windows.Forms.ToolStripMenuItem
 
 End Class

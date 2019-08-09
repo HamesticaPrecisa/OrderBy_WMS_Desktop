@@ -24,12 +24,9 @@ Partial Class Frm_Pedidos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DgvPedidos = New System.Windows.Forms.DataGridView()
-        Me.detalle = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.ELIM = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.PRINT = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.SALDOS = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -41,6 +38,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewImageColumn5 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.txtbus = New System.Windows.Forms.TextBox()
         Me.lblbus = New System.Windows.Forms.Label()
+        Me.btnXls = New System.Windows.Forms.Button()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -51,6 +49,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Orden = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,7 +60,14 @@ Partial Class Frm_Pedidos
         Me.Cajas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EST = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnXls = New System.Windows.Forms.Button()
+        Me.Tipo_Carga = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Exportacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nro_Sol_Sag = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Etiq_Adi = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.detalle = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.ELIM = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.PRINT = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.SALDOS = New System.Windows.Forms.DataGridViewImageColumn()
         CType(Me.DgvPedidos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -70,7 +76,7 @@ Partial Class Frm_Pedidos
         Me.DgvPedidos.AllowUserToAddRows = False
         Me.DgvPedidos.AllowUserToDeleteRows = False
         Me.DgvPedidos.ColumnHeadersHeight = 30
-        Me.DgvPedidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Orden, Me.Cliente, Me.Fecha, Me.Hora, Me.Destino, Me.Sopo, Me.Cajas, Me.Tipo, Me.EST, Me.detalle, Me.ELIM, Me.PRINT, Me.SALDOS})
+        Me.DgvPedidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Orden, Me.Cliente, Me.Fecha, Me.Hora, Me.Destino, Me.Sopo, Me.Cajas, Me.Tipo, Me.EST, Me.Tipo_Carga, Me.Exportacion, Me.Nro_Sol_Sag, Me.Etiq_Adi, Me.detalle, Me.ELIM, Me.PRINT, Me.SALDOS})
         Me.DgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvPedidos.Location = New System.Drawing.Point(9, 43)
         Me.DgvPedidos.Name = "DgvPedidos"
@@ -78,44 +84,6 @@ Partial Class Frm_Pedidos
         Me.DgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DgvPedidos.Size = New System.Drawing.Size(1281, 358)
         Me.DgvPedidos.TabIndex = 0
-        '
-        'detalle
-        '
-        Me.detalle.HeaderText = "DETALLE"
-        Me.detalle.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.detalle
-        Me.detalle.Name = "detalle"
-        Me.detalle.ReadOnly = True
-        Me.detalle.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.detalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.detalle.Width = 55
-        '
-        'ELIM
-        '
-        Me.ELIM.HeaderText = "ELIMINAR"
-        Me.ELIM.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
-        Me.ELIM.Name = "ELIM"
-        Me.ELIM.ReadOnly = True
-        Me.ELIM.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ELIM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.ELIM.Width = 65
-        '
-        'PRINT
-        '
-        Me.PRINT.HeaderText = "PEDIDO"
-        Me.PRINT.Image = Global.PrecisaFrozen.Win.My.Resources.Resources._1375930470_print
-        Me.PRINT.Name = "PRINT"
-        Me.PRINT.ReadOnly = True
-        Me.PRINT.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.PRINT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.PRINT.Width = 55
-        '
-        'SALDOS
-        '
-        Me.SALDOS.HeaderText = "SALDOS"
-        Me.SALDOS.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Ficha
-        Me.SALDOS.Name = "SALDOS"
-        Me.SALDOS.ReadOnly = True
-        Me.SALDOS.Width = 60
         '
         'Label2
         '
@@ -216,9 +184,19 @@ Partial Class Frm_Pedidos
         Me.lblbus.Text = "Buscar"
         Me.lblbus.Visible = False
         '
+        'btnXls
+        '
+        Me.btnXls.Location = New System.Drawing.Point(1115, 6)
+        Me.btnXls.Name = "btnXls"
+        Me.btnXls.Size = New System.Drawing.Size(102, 34)
+        Me.btnXls.TabIndex = 11
+        Me.btnXls.Text = "EXPORTAR EXCEL"
+        Me.btnXls.UseVisualStyleBackColor = True
+        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "pedido"
+        Me.DataGridViewTextBoxColumn1.Frozen = True
         Me.DataGridViewTextBoxColumn1.HeaderText = "CODIGO"
         Me.DataGridViewTextBoxColumn1.MinimumWidth = 2
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
@@ -230,6 +208,7 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "Orden"
+        Me.DataGridViewTextBoxColumn2.Frozen = True
         Me.DataGridViewTextBoxColumn2.HeaderText = "ORDEN"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
@@ -238,6 +217,7 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "cliente"
+        Me.DataGridViewTextBoxColumn3.Frozen = True
         Me.DataGridViewTextBoxColumn3.HeaderText = "CLIENTE"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -246,6 +226,7 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "fecha"
+        Me.DataGridViewTextBoxColumn4.Frozen = True
         Me.DataGridViewTextBoxColumn4.HeaderText = "FECHA CARGA"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -253,6 +234,7 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "hora"
+        Me.DataGridViewTextBoxColumn5.Frozen = True
         Me.DataGridViewTextBoxColumn5.HeaderText = "HORA CARGA"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -260,6 +242,7 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "destino"
+        Me.DataGridViewTextBoxColumn6.Frozen = True
         Me.DataGridViewTextBoxColumn6.HeaderText = "DESTINO"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -269,6 +252,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "sopo"
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn7.Frozen = True
         Me.DataGridViewTextBoxColumn7.HeaderText = "SOPORTANTES"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -276,6 +260,9 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn8
         '
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "codvig"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridViewTextBoxColumn8.Frozen = True
         Me.DataGridViewTextBoxColumn8.HeaderText = "EST"
         Me.DataGridViewTextBoxColumn8.MinimumWidth = 20
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
@@ -287,6 +274,7 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn9
         '
         Me.DataGridViewTextBoxColumn9.DataPropertyName = "codvig"
+        Me.DataGridViewTextBoxColumn9.Frozen = True
         Me.DataGridViewTextBoxColumn9.HeaderText = "EST"
         Me.DataGridViewTextBoxColumn9.MinimumWidth = 2
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
@@ -298,12 +286,26 @@ Partial Class Frm_Pedidos
         'DataGridViewTextBoxColumn10
         '
         Me.DataGridViewTextBoxColumn10.DataPropertyName = "codvig"
+        Me.DataGridViewTextBoxColumn10.Frozen = True
         Me.DataGridViewTextBoxColumn10.HeaderText = "EST"
         Me.DataGridViewTextBoxColumn10.MinimumWidth = 2
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
         Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn10.Width = 2
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "codvig"
+        Me.DataGridViewTextBoxColumn11.Frozen = True
+        Me.DataGridViewTextBoxColumn11.HeaderText = "EST"
+        Me.DataGridViewTextBoxColumn11.MinimumWidth = 2
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn11.Width = 2
         '
         'Codigo
         '
@@ -387,14 +389,71 @@ Partial Class Frm_Pedidos
         Me.EST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.EST.Width = 2
         '
-        'btnXls
+        'Tipo_Carga
         '
-        Me.btnXls.Location = New System.Drawing.Point(1115, 6)
-        Me.btnXls.Name = "btnXls"
-        Me.btnXls.Size = New System.Drawing.Size(102, 34)
-        Me.btnXls.TabIndex = 11
-        Me.btnXls.Text = "EXPORTAR EXCEL"
-        Me.btnXls.UseVisualStyleBackColor = True
+        Me.Tipo_Carga.DataPropertyName = "Tipo_Carga"
+        Me.Tipo_Carga.HeaderText = "TIPO CARGA"
+        Me.Tipo_Carga.Name = "Tipo_Carga"
+        Me.Tipo_Carga.ReadOnly = True
+        '
+        'Exportacion
+        '
+        Me.Exportacion.DataPropertyName = "Tipo_Exportacion"
+        Me.Exportacion.HeaderText = "EXPORTACIÓN"
+        Me.Exportacion.Name = "Exportacion"
+        Me.Exportacion.ReadOnly = True
+        '
+        'Nro_Sol_Sag
+        '
+        Me.Nro_Sol_Sag.DataPropertyName = "Nro_Sol_Sag"
+        Me.Nro_Sol_Sag.HeaderText = "Nº SOL. SAG"
+        Me.Nro_Sol_Sag.Name = "Nro_Sol_Sag"
+        Me.Nro_Sol_Sag.ReadOnly = True
+        '
+        'Etiq_Adi
+        '
+        Me.Etiq_Adi.DataPropertyName = "Etiquetado_Adicional"
+        Me.Etiq_Adi.HeaderText = "ETIQ. ADICIONAL"
+        Me.Etiq_Adi.Name = "Etiq_Adi"
+        Me.Etiq_Adi.ReadOnly = True
+        '
+        'detalle
+        '
+        Me.detalle.HeaderText = "DETALLE"
+        Me.detalle.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.detalle
+        Me.detalle.Name = "detalle"
+        Me.detalle.ReadOnly = True
+        Me.detalle.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.detalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.detalle.Width = 55
+        '
+        'ELIM
+        '
+        Me.ELIM.HeaderText = "ELIMINAR"
+        Me.ELIM.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
+        Me.ELIM.Name = "ELIM"
+        Me.ELIM.ReadOnly = True
+        Me.ELIM.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ELIM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.ELIM.Width = 65
+        '
+        'PRINT
+        '
+        Me.PRINT.HeaderText = "PEDIDO"
+        Me.PRINT.Image = Global.PrecisaFrozen.Win.My.Resources.Resources._1375930470_print
+        Me.PRINT.Name = "PRINT"
+        Me.PRINT.ReadOnly = True
+        Me.PRINT.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.PRINT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.PRINT.Width = 55
+        '
+        'SALDOS
+        '
+        Me.SALDOS.HeaderText = "SALDOS"
+        Me.SALDOS.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Ficha
+        Me.SALDOS.Name = "SALDOS"
+        Me.SALDOS.ReadOnly = True
+        Me.SALDOS.Width = 60
         '
         'Frm_Pedidos
         '
@@ -442,6 +501,9 @@ Partial Class Frm_Pedidos
     Friend WithEvents txtbus As System.Windows.Forms.TextBox
     Friend WithEvents lblbus As System.Windows.Forms.Label
     Friend WithEvents DataGridViewTextBoxColumn9 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnXls As System.Windows.Forms.Button
+    Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Codigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Orden As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Cliente As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -452,10 +514,12 @@ Partial Class Frm_Pedidos
     Friend WithEvents Cajas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Tipo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EST As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Tipo_Carga As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Exportacion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Nro_Sol_Sag As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Etiq_Adi As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents detalle As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents ELIM As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents PRINT As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents SALDOS As System.Windows.Forms.DataGridViewImageColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnXls As System.Windows.Forms.Button
 End Class

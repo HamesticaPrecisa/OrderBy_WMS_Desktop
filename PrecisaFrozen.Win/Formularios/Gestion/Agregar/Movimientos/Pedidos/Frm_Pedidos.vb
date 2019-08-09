@@ -99,6 +99,8 @@ Public Class Frm_Pedidos
             End Try
 
         ElseIf e.RowIndex > -1 AndAlso e.ColumnIndex = 2 Then
+            documentoimp = "Reporte_Pedido_" & Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString()
+
             Dim frm As Frm_MuestraReporte = New Frm_MuestraReporte
             frm.Text = "Asistente de informes - Informe de pedidos"
 
@@ -114,6 +116,8 @@ Public Class Frm_Pedidos
 
             Dim dt As DataTable = fnc.ListarTablasSQL("SELECT * FROM detapedcaja WHERE dpc_codped='" + Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString() + "'")
             If (dt.Rows.Count > 0) Then
+
+                documentoimp = "Reporte_Pedido_Saldos_" & Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString()
 
                 Dim frm As Frm_MuestraReporte = New Frm_MuestraReporte
                 frm.Text = "Asistente de informes - Informe de Saldos"
@@ -173,7 +177,8 @@ Public Class Frm_Pedidos
             '               "WHERE cli_rut=cliente AND terminado <>'3' AND Ped_estpred<>'3' AND codvig='0' AND Orden not in(SELECT fpre_nped FROM fichpred)  ORDER BY orden DESC"
             ''AND Dateadd(day,2,Convert(date,fecha,103))>Convert(date,GETDATE(),103)
 
-            Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
+            'Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
+            Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -232,7 +237,8 @@ Public Class Frm_Pedidos
             '                   "WHERE cli_rut=cliente AND terminado<>'0' AND codvig='0' ORDER BY orden DESC"
 
             'Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Cajas_Marcadas is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select d.Orden,c.Pallet,Cajas_Marcadas=sum(isnull(c.Cajas_Marcadas,0)) from Pedidos_Local c with(nolock) inner join Pedidos_Ficha d with(nolock) on(c.Orden=d.Orden) group by d.Orden,c.Pallet) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
-            Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
+            'Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
+            Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -290,7 +296,8 @@ Public Class Frm_Pedidos
             '                  "WHERE cli_rut=cliente AND codvig='0' ORDER BY orden DESC"
 
             'Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Cajas_Marcadas is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select d.Orden,c.Pallet,Cajas_Marcadas=sum(isnull(c.Cajas_Marcadas,0)) from Pedidos_Local c with(nolock) inner join Pedidos_Ficha d with(nolock) on(c.Orden=d.Orden) group by d.Orden,c.Pallet) c on(a.Orden=c.Orden) WHERE a.codvig='0'ORDER BY a.orden DESC"
-            Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' ORDER BY a.orden DESC"
+            'Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' ORDER BY a.orden DESC"
+            Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.codvig='0' ORDER BY a.orden DESC"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -351,7 +358,8 @@ Public Class Frm_Pedidos
             '               "WHERE cli_rut=cliente AND terminado <>'3' AND Ped_estpred<>'3' AND codvig='0' AND Orden not in(SELECT fpre_nped FROM fichpred)  ORDER BY orden DESC"
             ''AND Dateadd(day,2,Convert(date,fecha,103))>Convert(date,GETDATE(),103)
 
-            Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
+            'Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
+            Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -408,7 +416,8 @@ Public Class Frm_Pedidos
             '                   "FROM pedidos_ficha, clientes " +
             '                   "WHERE cli_rut=cliente AND terminado<>'0' AND codvig='0' ORDER BY orden DESC"
 
-            Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
+            'Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
+            Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -465,7 +474,8 @@ Public Class Frm_Pedidos
             '                  "FROM pedidos_ficha, clientes " +
             '                  "WHERE cli_rut=cliente AND codvig='0' ORDER BY orden DESC"
 
-            Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' ORDER BY a.orden DESC"
+            'Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' ORDER BY a.orden DESC"
+            Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.codvig='0' ORDER BY a.orden DESC"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -530,7 +540,8 @@ Public Class Frm_Pedidos
             '               "WHERE cli_rut=cliente AND terminado<>'3' AND codvig='0' AND Orden not in(SELECT fpre_nped FROM fichpred)  ORDER BY orden DESC"
             ''AND Dateadd(day,2,Convert(date,fecha,103))>Convert(date,GETDATE(),103)
 
-            Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
+            'Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
+            Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -591,7 +602,8 @@ Public Class Frm_Pedidos
             '                   "FROM pedidos_ficha, clientes " +
             '                   "WHERE cli_rut=cliente AND terminado<>'0' AND codvig='0' ORDER BY orden DESC"
 
-            Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
+            'Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
+            Dim sql As String = "SELECT TOP(10) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas, Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.terminado <>'0' AND a.codvig='0' ORDER BY a.orden DESC"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -653,7 +665,8 @@ Public Class Frm_Pedidos
             '                  "FROM pedidos_ficha, clientes " +
             '                  "WHERE cli_rut=cliente AND codvig='0' ORDER BY orden DESC"
 
-            Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' ORDER BY a.orden DESC"
+            'Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' ORDER BY a.orden DESC"
+            Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.codvig='0' ORDER BY a.orden DESC"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -705,7 +718,7 @@ Public Class Frm_Pedidos
 
         End If
     End Sub
- 
+
     Private Sub cbtipo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cbtipo.KeyPress
         e.Handled = True
     End Sub
@@ -723,7 +736,8 @@ Public Class Frm_Pedidos
         '                  "FROM pedidos_ficha, clientes " +
         '                  "WHERE cli_rut=cliente AND codvig='0' and  orden LIKE '" + txtbus.Text + "%'  ORDER BY orden DESC"
 
-        Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' and a.Orden like '" & txtbus.Text.Trim & "%' ORDER BY a.orden DESC"
+        'Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) WHERE a.codvig='0' and a.Orden like '" & txtbus.Text.Trim & "%' ORDER BY a.orden DESC"
+        Dim sql As String = "SELECT TOP(100) a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,a.destino,a.destino AS sopo,a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end FROM pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) WHERE a.codvig='0' and a.Orden like '" & txtbus.Text.Trim & "%' ORDER BY a.orden DESC"
 
         Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 

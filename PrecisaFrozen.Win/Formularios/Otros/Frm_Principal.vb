@@ -823,6 +823,7 @@ Public Class Frm_Principal
             End If
             If tabla.Rows(i)(0).ToString() = "118" Then
                 InformePosicionesToolStripMenuItem.Enabled = True
+                ToolStripMenuItemInfoPos.Enabled = True
             End If
 
             If tabla.Rows(i)(0).ToString() = "114" Then
@@ -1840,6 +1841,19 @@ Public Class Frm_Principal
             F_PlanRece = True
         Else
             TabControl1.TabPages(Frm_PlanRece).Select()
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItemInfoPos_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItemInfoPos.Click
+        If f_possss = False Then
+            Dim f As FrmPosicionestotales
+
+
+            f = FrmPosicionestotales
+            TabControl1.TabPages.Add(f)
+            f_possss = True
+        Else
+            TabControl1.TabPages(FrmPosicionestotales).Select()
         End If
     End Sub
 End Class

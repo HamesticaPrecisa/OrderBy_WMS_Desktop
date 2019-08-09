@@ -83,6 +83,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
         Me.TimeAdicionales = New System.Windows.Forms.Timer(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.Label63 = New System.Windows.Forms.Label()
         Me.chksecimp = New System.Windows.Forms.CheckBox()
         Me.TXTCANTIMP = New System.Windows.Forms.TextBox()
         Me.pblogo = New System.Windows.Forms.PictureBox()
@@ -262,8 +264,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label62 = New System.Windows.Forms.Label()
-        Me.Label63 = New System.Windows.Forms.Label()
         TabPage1 = New System.Windows.Forms.TabPage()
         TabPage1.SuspendLayout()
         CType(Me.pbadvertencia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -817,6 +817,28 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(785, 869)
         Me.Panel3.TabIndex = 68
+        '
+        'Label62
+        '
+        Me.Label62.AutoSize = True
+        Me.Label62.BackColor = System.Drawing.Color.White
+        Me.Label62.ForeColor = System.Drawing.Color.Red
+        Me.Label62.Location = New System.Drawing.Point(305, 831)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(14, 13)
+        Me.Label62.TabIndex = 121
+        Me.Label62.Text = "*"
+        '
+        'Label63
+        '
+        Me.Label63.AutoSize = True
+        Me.Label63.BackColor = System.Drawing.Color.Transparent
+        Me.Label63.ForeColor = System.Drawing.Color.White
+        Me.Label63.Location = New System.Drawing.Point(317, 831)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(146, 13)
+        Me.Label63.TabIndex = 120
+        Me.Label63.Text = "'F5' - Limpiar correlativo"
         '
         'chksecimp
         '
@@ -2098,7 +2120,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.txtsopclie.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtsopclie.Location = New System.Drawing.Point(104, 55)
-        Me.txtsopclie.MaxLength = 17
+        Me.txtsopclie.MaxLength = 14
         Me.txtsopclie.Name = "txtsopclie"
         Me.txtsopclie.Size = New System.Drawing.Size(136, 21)
         Me.txtsopclie.TabIndex = 27
@@ -2775,28 +2797,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn20.HeaderText = "KILOS"
         Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
         Me.DataGridViewTextBoxColumn20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Label62
-        '
-        Me.Label62.AutoSize = True
-        Me.Label62.BackColor = System.Drawing.Color.White
-        Me.Label62.ForeColor = System.Drawing.Color.Red
-        Me.Label62.Location = New System.Drawing.Point(305, 831)
-        Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(14, 13)
-        Me.Label62.TabIndex = 121
-        Me.Label62.Text = "*"
-        '
-        'Label63
-        '
-        Me.Label63.AutoSize = True
-        Me.Label63.BackColor = System.Drawing.Color.Transparent
-        Me.Label63.ForeColor = System.Drawing.Color.White
-        Me.Label63.Location = New System.Drawing.Point(317, 831)
-        Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(146, 13)
-        Me.Label63.TabIndex = 120
-        Me.Label63.Text = "'F5' - Limpiar correlativo"
         '
         'Frm_GuiaRecepcionAgregar
         '
