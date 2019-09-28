@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="PrecisaFrozen.Win.exe" version="1.0.1.48" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="PrecisaFrozen.Win.exe" version="1.0.0.433" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="1393294820_105256.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -143,18 +143,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.AcroPDFLib.dll" size="8192">
-      <assemblyIdentity name="AxInterop.AcroPDFLib" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>leOnSeG5z9LS51wpcVFx9iCWO4c=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExpandableGridView.dll" size="29696">
       <assemblyIdentity name="ExpandableGridView" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -163,18 +151,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>J25beoPf+Pf2mJlloP6Mq2AZ1Fc=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.AcroPDFLib.dll" size="11776">
-      <assemblyIdentity name="Interop.AcroPDFLib" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Cspd1Q1LcAqYz06UgYe5TkhhWJ8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,19 +186,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>louROCBjNcyBAgegwgoNzvKILv4=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualBasic.PowerPacks.Vs.resources.dll" size="47000">
-      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs.resources" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gPhZZDCmM0hSwlmvA8Zvt1auOz0=</dsig:DigestValue>
+        <dsig:DigestValue>ht9gayw7qviBWoZTNeGrJx3jUcI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -239,14 +203,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="22576128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="6201856">
       <assemblyIdentity name="PrecisaFrozen.Win" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>6eOGneWleiouDOc1Dl0GljSvhVI=</dsig:DigestValue>
+        <dsig:DigestValue>ANGSiCo6/l8V8G3wKL2PeOBu5QM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -258,19 +222,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>JPB8qFfxcBIyYYsruWie6tPsG8M=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UHFReader09CSharp.dll" size="20480">
-      <assemblyIdentity name="UHFReader09CSharp" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>S8rTz2qhf7h0T10F2c8yu0HlD/M=</dsig:DigestValue>
+        <dsig:DigestValue>KNXqPPQvMFDHoHscdyVWZZypGYA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -283,31 +235,13 @@
       <dsig:DigestValue>smC8WbIv/nMxQR8GF7yeUF3j6xk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Formularios\Otros\SCRIPT1.txt" size="1660712">
+  <file name="PrecisaFrozen.Win.exe.config" size="1962">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>j7VM5bCnXYixMMIrre8lCijj0K4=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="PrecisaFrozen.Win.exe.config" size="1960">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>JsRirYon++DcJ3m4OZ6M9k5KVHQ=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Resources\icono-de-jpg-355881.png" size="935">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>a5SS8Z2SNjBhAAd5np3JyAxqSRo=</dsig:DigestValue>
+      <dsig:DigestValue>twVIuIzWDFZiyMJbQdX65MWdbHQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\imagen1.png" size="958260">

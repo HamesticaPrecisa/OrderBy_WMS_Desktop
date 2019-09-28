@@ -389,7 +389,8 @@ Public Class Frm_AddClientes
 
         cmd.Parameters.AddWithValue("@codigo", codigo)
         cmd.Parameters.Add("@foto", System.Data.SqlDbType.Image).Value = foto
-        con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        'con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        con.ConnectionString = CONFIG.dbLANConnStr   ' VES Sep 2019
         con.Open()
         Try
             cmd.ExecuteNonQuery()

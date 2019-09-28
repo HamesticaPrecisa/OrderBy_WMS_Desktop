@@ -133,6 +133,32 @@ Module ModPublico
         End If
     End Sub
 
+
+    ' VES Sep 2019
+    ' Validador de campos de entrada de temperatura
+    '
+    Public Sub soloTemperatura(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        Dim x As TextBox = sender
+        If Not IsNumeric(e) Then
+            If e.KeyChar = "." Or e.KeyChar = ChrW(8) Or e.KeyChar = "-" Then
+
+                For i As Integer = 0 To x.Text.Length - 1
+                    If x.Text.Chars(i) = e.KeyChar Then
+                        If Not (x.SelectionStart = 0 AndAlso x.SelectionLength = x.Text.Length) Then
+                            SoloNumeros(sender, e)
+                        End If
+                    ElseIf x.Text.Chars(i) = e.KeyChar Then
+                        SoloNumeros(sender, e)
+                    ElseIf x.Text.Chars(i) = e.KeyChar Then
+                        SoloNumeros(sender, e)
+                    End If
+                Next
+            Else
+                SoloNumeros(sender, e)
+            End If
+        End If
+    End Sub
+
     Public Sub SoloKilos(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Dim KeyAscii As Short = Asc(e.KeyChar)
         If Not ((KeyAscii >= System.Windows.Forms.Keys.D0 And KeyAscii <= System.Windows.Forms.Keys.D9) Or

@@ -340,7 +340,7 @@ Public Class Frm_Principal
 
     End Sub
 
-   
+
     Private Sub cargaimg()
         If CONECTARVARI = "" Then
 
@@ -363,7 +363,7 @@ Public Class Frm_Principal
 
             End If
         End If
-      
+
 
     End Sub
     Public Function ByteArrayToImage(ByVal byteArrayIn As Byte()) As Image
@@ -826,7 +826,7 @@ Public Class Frm_Principal
             End If
 
             If tabla.Rows(i)(0).ToString() = "114" Then
-             
+
                 TiempoTramosPedidosToolStripMenuItem.Enabled = True
             End If
 
@@ -845,11 +845,16 @@ Public Class Frm_Principal
                 M2_PlanRece.Enabled = True
             End If
 
-
+            ' VES Sep 2019
+            If tabla.Rows(i)(1).ToString() = "101" Then
+                M2_Mercados.Enabled = True
+            End If
         Next
 
         menNumDia.Visible = True
         menNumDia.Enabled = True
+        M2_Camaras.Enabled = True ' VES Sep 2019 REMOVE
+        M2_Camaras.Visible = True ' VES SEp 2019 REMOVE
     End Sub
 
     Private Sub Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Salir.Click
@@ -1326,7 +1331,7 @@ Public Class Frm_Principal
 
     End Sub
 
-    Private Sub InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem.Click
+    Private Sub InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem.Click
         If f_MovSopUsu = False Then
             Dim f As Frm_MovimientoSoportanteUsuario
             f = Frm_MovimientoSoportanteUsuario
@@ -1337,11 +1342,11 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub se1_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub se1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
-    Private Sub IinformeCuadraturaMovimientosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles IinformeCuadraturaMovimientosToolStripMenuItem.Click
+    Private Sub IinformeCuadraturaMovimientosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IinformeCuadraturaMovimientosToolStripMenuItem.Click
         If f_Cuadratura = False Then
             Dim f As Frm_cuadraturaFichasDetalles
             f = Frm_cuadraturaFichasDetalles
@@ -1352,7 +1357,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub M2_TrazabilidadGuia_Click(sender As System.Object, e As System.EventArgs) Handles M2_TrazabilidadGuia.Click
+    Private Sub M2_TrazabilidadGuia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_TrazabilidadGuia.Click
         If f_TrazGuia = False Then
             Dim f As Frm_TrazabilidadGuia
             f = Frm_TrazabilidadGuia
@@ -1363,7 +1368,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub M2_TrazabilidadProductos_Click(sender As System.Object, e As System.EventArgs) Handles M2_TrazabilidadProductos.Click
+    Private Sub M2_TrazabilidadProductos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_TrazabilidadProductos.Click
         If f_TrazProd = False Then
             Dim f As Frm_TrazaProductos
             f = Frm_TrazaProductos
@@ -1374,7 +1379,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InformaAperturaCierreAndenesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformaAperturaCierreAndenesToolStripMenuItem.Click
+    Private Sub InformaAperturaCierreAndenesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformaAperturaCierreAndenesToolStripMenuItem.Click
         If f_Andenes = False Then
             Dim f As Frm_Andenes
             f = Frm_Andenes
@@ -1385,7 +1390,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InformePackingListToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformePackingListToolStripMenuItem.Click
+    Private Sub InformePackingListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformePackingListToolStripMenuItem.Click
         If f_plist = False Then
             Dim f As Frm_PackingList
             f = Frm_PackingList
@@ -1396,7 +1401,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub IngresoYSalidaTunelesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles IngresoYSalidaTunelesToolStripMenuItem.Click
+    Private Sub IngresoYSalidaTunelesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IngresoYSalidaTunelesToolStripMenuItem.Click
         If f_tuneles = False Then
             Dim f As Frm_ListadoTuneles
             f = Frm_ListadoTuneles
@@ -1407,7 +1412,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub CruceInfPedidoRecToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub CruceInfPedidoRecToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If f_control = False Then
             Dim f As Frm_ControlCamionRec
             f = Frm_ControlCamionRec
@@ -1418,12 +1423,12 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InfoUsuario_TextChanged(sender As System.Object, e As System.EventArgs) Handles InfoUsuario.TextChanged
+    Private Sub InfoUsuario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InfoUsuario.TextChanged
         cargaimg()
 
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click_1(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem1.Click
+    Private Sub ToolStripMenuItem1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
         If f_cruce = False Then
             Dim f As Frm_CruceDESREC
             f = Frm_CruceDESREC
@@ -1434,7 +1439,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ControlCamionesMovimientosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ControlCamionesMovimientosToolStripMenuItem.Click
+    Private Sub ControlCamionesMovimientosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ControlCamionesMovimientosToolStripMenuItem.Click
         If f_control = False Then
             Dim f As Frm_ControlCamionRec
             f = Frm_ControlCamionRec
@@ -1445,7 +1450,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub CToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CONTROLHOR.Click
+    Private Sub CToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CONTROLHOR.Click
         If f_controlHOR = False Then
             Dim f As Frm_horpedido
             f = Frm_horpedido
@@ -1456,7 +1461,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InformeSoportantesParaIngresoTúnelToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformeSoportantesParaIngresoTúnelToolStripMenuItem.Click
+    Private Sub InformeSoportantesParaIngresoTúnelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformeSoportantesParaIngresoTúnelToolStripMenuItem.Click
         If f_PalletTunel = False Then
             Dim f As Frm_PalletTunel
             f = Frm_PalletTunel
@@ -1467,7 +1472,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub DemoTomaTempToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub DemoTomaTempToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If f_demo = False Then
             Dim f As CapturaTEM
             f = CapturaTEM
@@ -1478,7 +1483,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ControlServiciosExtraordinariosRecepcionToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ControlServiciosExtraordinariosRecepcionToolStripMenuItem.Click
+    Private Sub ControlServiciosExtraordinariosRecepcionToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ControlServiciosExtraordinariosRecepcionToolStripMenuItem.Click
         If f_servicios = False Then
             Dim f As Frm_ServiciosREC
             f = Frm_ServiciosREC
@@ -1489,15 +1494,15 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub M2_Mantenedores_Click(sender As System.Object, e As System.EventArgs) Handles M2_Mantenedores.Click
+    Private Sub M2_Mantenedores_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Mantenedores.Click
 
     End Sub
 
-    Private Sub TabControl1_Load(sender As System.Object, e As System.EventArgs) Handles TabControl1.Load
+    Private Sub TabControl1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TabControl1.Load
 
     End Sub
 
-    Private Sub InformePedidosPorUsuarioToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformePedidosPorUsuarioToolStripMenuItem.Click
+    Private Sub InformePedidosPorUsuarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformePedidosPorUsuarioToolStripMenuItem.Click
         If f_pusu = False Then
             Dim f As FrmPedidosUsuarios
             f = FrmPedidosUsuarios
@@ -1508,7 +1513,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub EnvioDeEmailToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles EnvioDeEmailToolStripMenuItem.Click
+    Private Sub EnvioDeEmailToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EnvioDeEmailToolStripMenuItem.Click
         If f_envioemail = False Then
             Dim f As Frm_AddEnvioEmail
 
@@ -1520,7 +1525,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InformeToneladasKilosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformeToneladasKilosToolStripMenuItem.Click
+    Private Sub InformeToneladasKilosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformeToneladasKilosToolStripMenuItem.Click
         If f_tuneleskilos = False Then
             Dim f As Frm_InformeTunel
 
@@ -1532,7 +1537,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InformeSoportantesEnCamarasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformeSoportantesEnCamarasToolStripMenuItem.Click
+    Private Sub InformeSoportantesEnCamarasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformeSoportantesEnCamarasToolStripMenuItem.Click
         If f_sopcam = False Then
             Dim f As Frm_soportantesEnCamara
 
@@ -1544,7 +1549,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub PosicionesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PosicionesToolStripMenuItem.Click
+    Private Sub PosicionesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PosicionesToolStripMenuItem.Click
         If f_manpos = False Then
             Dim f As Frm_AddPosiciones
 
@@ -1556,7 +1561,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ProcesoJibiaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProcesoJibiaToolStripMenuItem.Click
+    Private Sub ProcesoJibiaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProcesoJibiaToolStripMenuItem.Click
         If f_jibia = False Then
             Dim f As Frm_ProcesoBolsa
 
@@ -1569,7 +1574,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub InformePalletsMalPosicionadosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformePalletsMalPosicionadosToolStripMenuItem.Click
+    Private Sub InformePalletsMalPosicionadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformePalletsMalPosicionadosToolStripMenuItem.Click
         If f_avisopal = False Then
             Dim f As AvisoPalletMalPos
 
@@ -1582,19 +1587,19 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub M2_Medidas_Click(sender As System.Object, e As System.EventArgs) Handles M2_Medidas.Click
+    Private Sub M2_Medidas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Medidas.Click
 
     End Sub
 
-    Private Sub ReservasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub ReservasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
-    Private Sub CamarasPlanoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles CamarasPlanoToolStripMenuItem.Click
-     
+    Private Sub CamarasPlanoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CamarasPlanoToolStripMenuItem.Click
+
     End Sub
 
-    Private Sub ConfiguraciónToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConfiguraciónToolStripMenuItem.Click
+    Private Sub ConfiguraciónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConfiguraciónToolStripMenuItem.Click
         If f_confcam = False Then
             Dim f As Frm_ConfInicialCamaras
 
@@ -1607,7 +1612,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ManualDeUsuarioToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ManualDeUsuarioToolStripMenuItem.Click
+    Private Sub ManualDeUsuarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ManualDeUsuarioToolStripMenuItem.Click
         If f_manual = False Then
             Dim f As ayudaNEW
 
@@ -1623,11 +1628,11 @@ Public Class Frm_Principal
         '  ayudaNEW.ShowDialog()
     End Sub
 
-    Private Sub ReglasAlmacenamientoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ReglasAlmacenamientoToolStripMenuItem.Click
+    Private Sub ReglasAlmacenamientoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReglasAlmacenamientoToolStripMenuItem.Click
 
     End Sub
 
-    Private Sub TiempoTramosPedidosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles TiempoTramosPedidosToolStripMenuItem.Click
+    Private Sub TiempoTramosPedidosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TiempoTramosPedidosToolStripMenuItem.Click
         If f_tramos = False Then
             Dim f As Frm_AddPedidosxTramo
 
@@ -1640,11 +1645,11 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub PickingToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub PickingToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
-    Private Sub FamiliasNoMezclablesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles FamiliasNoMezclablesToolStripMenuItem.Click
+    Private Sub FamiliasNoMezclablesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FamiliasNoMezclablesToolStripMenuItem.Click
         If f_reglas = False Then
             Dim f As FrmAddReglas
 
@@ -1657,7 +1662,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub PosicionesParaPickingToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles PosicionesParaPickingToolStripMenuItem.Click
+    Private Sub PosicionesParaPickingToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PosicionesParaPickingToolStripMenuItem.Click
         If f_picking = False Then
             Dim f As Frm_AddPicking
 
@@ -1670,7 +1675,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub SugerenciasAlmacenamientoToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SugerenciasAlmacenamientoToolStripMenuItem.Click
+    Private Sub SugerenciasAlmacenamientoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SugerenciasAlmacenamientoToolStripMenuItem.Click
         If f_reserv = False Then
             Dim f As Frm_AddReservas
 
@@ -1683,7 +1688,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub Plano2DToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles Plano2DToolStripMenuItem.Click
+    Private Sub Plano2DToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Plano2DToolStripMenuItem.Click
         If f_planocam = False Then
             Dim f As w
 
@@ -1696,7 +1701,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub EtiquetaClientesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles EtiquetaClientesToolStripMenuItem.Click
+    Private Sub EtiquetaClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EtiquetaClientesToolStripMenuItem.Click
         If f_eticli = False Then
             Dim f As Frm_AddFormatoEtiqueta
 
@@ -1709,7 +1714,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ProgramarAuditoriasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ProgramarAuditoriasToolStripMenuItem.Click
+    Private Sub ProgramarAuditoriasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProgramarAuditoriasToolStripMenuItem.Click
         If f_auditoria = False Then
             Dim f As GeneraAuditoria
 
@@ -1735,7 +1740,7 @@ Public Class Frm_Principal
     '    End If
     'End Sub
 
-    Private Sub InformePosicionesToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles InformePosicionesToolStripMenuItem.Click
+    Private Sub InformePosicionesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InformePosicionesToolStripMenuItem.Click
         If f_possss = False Then
             Dim f As FrmPosicionestotales
 
@@ -1748,7 +1753,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub menNumDia_Click(sender As System.Object, e As System.EventArgs) Handles menNumDia.Click
+    Private Sub menNumDia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles menNumDia.Click
         If (f_NumDia = False) Then
             Dim f As FRM_NumeralDiario
             f = FRM_NumeralDiario
@@ -1759,7 +1764,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ConfiguracionesGenelaresToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConfiguracionesGenelaresToolStripMenuItem.Click
+    Private Sub ConfiguracionesGenelaresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConfiguracionesGenelaresToolStripMenuItem.Click
         If f_confgene = False Then
             Dim f As ConfGENE
 
@@ -1772,7 +1777,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ReservaHorasPedidosToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ReservaHorasPedidosToolStripMenuItem.Click
+    Private Sub ReservaHorasPedidosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReservaHorasPedidosToolStripMenuItem.Click
         If (f_bloqDias = False) Then
             Dim f As Frm_PedidosBloqueoDias
 
@@ -1784,7 +1789,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub ActualizacionesDelSistemaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ActualizacionesDelSistemaToolStripMenuItem.Click
+    Private Sub ActualizacionesDelSistemaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ActualizacionesDelSistemaToolStripMenuItem.Click
         If (f_actWms = False) Then
             Dim f As FRM_ACT_WMS
 
@@ -1796,7 +1801,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub MenuArchPed_Click(sender As System.Object, e As System.EventArgs) Handles MenuArchPed.Click
+    Private Sub MenuArchPed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuArchPed.Click
         If (f_pedidos_xls = False) Then
             Dim f As Frm_Pedidos_Xls
 
@@ -1808,7 +1813,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub MenuConfArchPed_Click(sender As System.Object, e As System.EventArgs) Handles MenuConfArchPed.Click
+    Private Sub MenuConfArchPed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuConfArchPed.Click
         If (f_conf_pedidos_xls = False) Then
             Dim f As Frm_Conf_Pedidos_Xls
 
@@ -1820,7 +1825,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub menuLocPed_Click(sender As System.Object, e As System.EventArgs) Handles menuLocPed.Click
+    Private Sub menuLocPed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles menuLocPed.Click
         If (f_locs_pedidos = False) Then
             Dim f As Frm_Locales_Pedidos
 
@@ -1832,7 +1837,7 @@ Public Class Frm_Principal
         End If
     End Sub
 
-    Private Sub M2_PlanRece_Click(sender As System.Object, e As System.EventArgs) Handles M2_PlanRece.Click
+    Private Sub M2_PlanRece_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_PlanRece.Click
         If F_PlanRece = False Then
             Dim f As Form
             f = Frm_PlanRece
@@ -1840,6 +1845,17 @@ Public Class Frm_Principal
             F_PlanRece = True
         Else
             TabControl1.TabPages(Frm_PlanRece).Select()
+        End If
+    End Sub
+
+    Private Sub M2_Mercados_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Mercados.Click
+        If f_lstMercados = False Then
+            Dim f As Form
+            f = Lst_Mercados
+            TabControl1.TabPages.Add(f)
+            f_lstMercados = True
+        Else
+            TabControl1.TabPages(Lst_Mercados).Select()
         End If
     End Sub
 End Class

@@ -307,7 +307,8 @@ Public Class Frm_InicioSesion
         If rlocal.Checked = True Then
             validacone = ""
             CONECTARVARI = "LOCAL"
-            ip = "192.168.1.90"
+            'ip = "192.168.1.90"
+            ip = CONFIG.lanIP ' VES Sep 2019
 
 
             llenacom()
@@ -322,8 +323,9 @@ Public Class Frm_InicioSesion
         If rwlan.Checked = True Then
             validacone = ""
             CONECTARVARI = "WLAN"
-            ip = "186.67.106.109"
+            'ip = "186.67.106.109"
             'ip = "192.168.1.68"
+            ip = CONFIG.wlanIP  ' VES Sep 2019
 
             llenacom()
 

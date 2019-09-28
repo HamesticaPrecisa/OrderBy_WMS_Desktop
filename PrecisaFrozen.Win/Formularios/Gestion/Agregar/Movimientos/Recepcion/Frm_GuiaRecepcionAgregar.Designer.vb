@@ -25,18 +25,20 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.components = New System.ComponentModel.Container()
         Dim TabPage1 As System.Windows.Forms.TabPage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_GuiaRecepcionAgregar))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lbladv = New System.Windows.Forms.Label()
         Me.Txtobs = New System.Windows.Forms.TextBox()
         Me.pbadvertencia = New System.Windows.Forms.PictureBox()
         Me.Gb_Cliente = New System.Windows.Forms.GroupBox()
+        Me.cboMercado = New System.Windows.Forms.ComboBox()
+        Me.Label64 = New System.Windows.Forms.Label()
         Me.lblkilguia = New System.Windows.Forms.Label()
         Me.lblenvguia = New System.Windows.Forms.Label()
         Me.txtkilguia = New System.Windows.Forms.TextBox()
@@ -83,6 +85,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.PrintForm1 = New Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(Me.components)
         Me.TimeAdicionales = New System.Windows.Forms.Timer(Me.components)
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.Label63 = New System.Windows.Forms.Label()
         Me.chksecimp = New System.Windows.Forms.CheckBox()
         Me.TXTCANTIMP = New System.Windows.Forms.TextBox()
         Me.pblogo = New System.Windows.Forms.PictureBox()
@@ -262,8 +266,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label62 = New System.Windows.Forms.Label()
-        Me.Label63 = New System.Windows.Forms.Label()
         TabPage1 = New System.Windows.Forms.TabPage()
         TabPage1.SuspendLayout()
         CType(Me.pbadvertencia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -312,7 +314,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.lbladv.Size = New System.Drawing.Size(284, 26)
         Me.lbladv.TabIndex = 68
         Me.lbladv.Text = "ADVERTENCIA! no se modificaran ni servicios a " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "etiquetado ni bloqueos a tuneles " & _
-    ""
+            ""
         Me.lbladv.Visible = False
         '
         'Txtobs
@@ -338,6 +340,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'Gb_Cliente
         '
+        Me.Gb_Cliente.Controls.Add(Me.cboMercado)
+        Me.Gb_Cliente.Controls.Add(Me.Label64)
         Me.Gb_Cliente.Controls.Add(Me.lblkilguia)
         Me.Gb_Cliente.Controls.Add(Me.lblenvguia)
         Me.Gb_Cliente.Controls.Add(Me.txtkilguia)
@@ -380,10 +384,34 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Gb_Cliente.TabIndex = 56
         Me.Gb_Cliente.TabStop = False
         '
+        'cboMercado
+        '
+        Me.cboMercado.BackColor = System.Drawing.Color.White
+        Me.cboMercado.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.cboMercado.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboMercado.FormattingEnabled = True
+        Me.cboMercado.Items.AddRange(New Object() {"CONVENCIONAL", "ORGANICO"})
+        Me.cboMercado.Location = New System.Drawing.Point(104, 159)
+        Me.cboMercado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cboMercado.Name = "cboMercado"
+        Me.cboMercado.Size = New System.Drawing.Size(164, 21)
+        Me.cboMercado.TabIndex = 62
+        '
+        'Label64
+        '
+        Me.Label64.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(16, 159)
+        Me.Label64.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(78, 21)
+        Me.Label64.TabIndex = 67
+        Me.Label64.Text = "MERCADO"
+        Me.Label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'lblkilguia
         '
         Me.lblkilguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblkilguia.Location = New System.Drawing.Point(16, 209)
+        Me.lblkilguia.Location = New System.Drawing.Point(175, 210)
         Me.lblkilguia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblkilguia.Name = "lblkilguia"
         Me.lblkilguia.Size = New System.Drawing.Size(78, 21)
@@ -395,7 +423,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'lblenvguia
         '
         Me.lblenvguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblenvguia.Location = New System.Drawing.Point(16, 182)
+        Me.lblenvguia.Location = New System.Drawing.Point(16, 209)
         Me.lblenvguia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblenvguia.Name = "lblenvguia"
         Me.lblenvguia.Size = New System.Drawing.Size(78, 21)
@@ -406,34 +434,34 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'txtkilguia
         '
-        Me.txtkilguia.Location = New System.Drawing.Point(104, 209)
+        Me.txtkilguia.Location = New System.Drawing.Point(263, 210)
         Me.txtkilguia.Name = "txtkilguia"
         Me.txtkilguia.Size = New System.Drawing.Size(64, 21)
-        Me.txtkilguia.TabIndex = 64
+        Me.txtkilguia.TabIndex = 65
         Me.txtkilguia.Visible = False
         '
         'txtenvguia
         '
-        Me.txtenvguia.Location = New System.Drawing.Point(104, 182)
+        Me.txtenvguia.Location = New System.Drawing.Point(104, 209)
         Me.txtenvguia.Name = "txtenvguia"
         Me.txtenvguia.Size = New System.Drawing.Size(64, 21)
-        Me.txtenvguia.TabIndex = 63
+        Me.txtenvguia.TabIndex = 64
         Me.txtenvguia.Visible = False
         '
         'chkdatosguia
         '
         Me.chkdatosguia.AutoSize = True
-        Me.chkdatosguia.Location = New System.Drawing.Point(104, 159)
+        Me.chkdatosguia.Location = New System.Drawing.Point(104, 188)
         Me.chkdatosguia.Name = "chkdatosguia"
-        Me.chkdatosguia.Size = New System.Drawing.Size(101, 17)
-        Me.chkdatosguia.TabIndex = 62
+        Me.chkdatosguia.Size = New System.Drawing.Size(100, 17)
+        Me.chkdatosguia.TabIndex = 63
         Me.chkdatosguia.Text = "DATOS GUIA"
         Me.chkdatosguia.UseVisualStyleBackColor = True
         '
         'CHKEMB
         '
         Me.CHKEMB.AutoSize = True
-        Me.CHKEMB.Location = New System.Drawing.Point(547, 138)
+        Me.CHKEMB.Location = New System.Drawing.Point(543, 135)
         Me.CHKEMB.Name = "CHKEMB"
         Me.CHKEMB.Size = New System.Drawing.Size(90, 17)
         Me.CHKEMB.TabIndex = 61
@@ -444,9 +472,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label23.AutoSize = True
         Me.Label23.ForeColor = System.Drawing.Color.Gold
-        Me.Label23.Location = New System.Drawing.Point(302, 159)
+        Me.Label23.Location = New System.Drawing.Point(353, 162)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(249, 13)
+        Me.Label23.Size = New System.Drawing.Size(248, 13)
         Me.Label23.TabIndex = 59
         Me.Label23.Text = "FORMATO CONTENEDOR: ABCD 123456-7"
         '
@@ -475,7 +503,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'TxtContenedor
         '
         Me.TxtContenedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtContenedor.Location = New System.Drawing.Point(437, 132)
+        Me.TxtContenedor.Location = New System.Drawing.Point(432, 133)
         Me.TxtContenedor.MaxLength = 20
         Me.TxtContenedor.Name = "TxtContenedor"
         Me.TxtContenedor.Size = New System.Drawing.Size(104, 21)
@@ -495,7 +523,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Label49
         '
         Me.Label49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label49.Location = New System.Drawing.Point(337, 132)
+        Me.Label49.Location = New System.Drawing.Point(337, 133)
         Me.Label49.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(93, 21)
@@ -543,7 +571,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'txtsello
         '
         Me.txtsello.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsello.Location = New System.Drawing.Point(264, 132)
+        Me.txtsello.Location = New System.Drawing.Point(262, 133)
         Me.txtsello.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtsello.MaxLength = 10
         Me.txtsello.Name = "txtsello"
@@ -564,7 +592,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Label20
         '
         Me.Label20.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(194, 134)
+        Me.Label20.Location = New System.Drawing.Point(192, 133)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(68, 21)
@@ -605,7 +633,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'txtguia
         '
         Me.txtguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtguia.Location = New System.Drawing.Point(104, 132)
+        Me.txtguia.Location = New System.Drawing.Point(104, 133)
         Me.txtguia.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtguia.MaxLength = 12
         Me.txtguia.Name = "txtguia"
@@ -634,7 +662,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Label15
         '
         Me.Label15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(16, 132)
+        Me.Label15.Location = New System.Drawing.Point(16, 133)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(78, 21)
@@ -726,46 +754,46 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.OpcionImprimir.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator3, Me.IMPRIMIRETIQUETAToolStripMenuItem, Me.ToolStripSeparator1, Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem, Me.ToolStripSeparator2, Me.ETIQUETASDECAJASToolStripMenuItem, Me.ToolStripSeparator4})
         Me.OpcionImprimir.Name = "OpcionImprimir"
-        Me.OpcionImprimir.Size = New System.Drawing.Size(307, 94)
+        Me.OpcionImprimir.Size = New System.Drawing.Size(305, 94)
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(301, 6)
         '
         'IMPRIMIRETIQUETAToolStripMenuItem
         '
         Me.IMPRIMIRETIQUETAToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IMPRIMIRETIQUETAToolStripMenuItem.Name = "IMPRIMIRETIQUETAToolStripMenuItem"
-        Me.IMPRIMIRETIQUETAToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
+        Me.IMPRIMIRETIQUETAToolStripMenuItem.Size = New System.Drawing.Size(304, 22)
         Me.IMPRIMIRETIQUETAToolStripMenuItem.Text = "IMPRIMIR ETIQUETA"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(301, 6)
         '
         'DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem
         '
         Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Name = "DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem"
-        Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
+        Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Size = New System.Drawing.Size(304, 22)
         Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Text = "DESBLOQUEAR TRAQUEO DE SOPORTANTE"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(301, 6)
         '
         'ETIQUETASDECAJASToolStripMenuItem
         '
         Me.ETIQUETASDECAJASToolStripMenuItem.Name = "ETIQUETASDECAJASToolStripMenuItem"
-        Me.ETIQUETASDECAJASToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
+        Me.ETIQUETASDECAJASToolStripMenuItem.Size = New System.Drawing.Size(304, 22)
         Me.ETIQUETASDECAJASToolStripMenuItem.Text = "ETIQUETAS DE CAJAS"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(301, 6)
         '
         'ImageList1
         '
@@ -818,6 +846,28 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Panel3.Size = New System.Drawing.Size(785, 869)
         Me.Panel3.TabIndex = 68
         '
+        'Label62
+        '
+        Me.Label62.AutoSize = True
+        Me.Label62.BackColor = System.Drawing.Color.White
+        Me.Label62.ForeColor = System.Drawing.Color.Red
+        Me.Label62.Location = New System.Drawing.Point(305, 831)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(14, 13)
+        Me.Label62.TabIndex = 121
+        Me.Label62.Text = "*"
+        '
+        'Label63
+        '
+        Me.Label63.AutoSize = True
+        Me.Label63.BackColor = System.Drawing.Color.Transparent
+        Me.Label63.ForeColor = System.Drawing.Color.White
+        Me.Label63.Location = New System.Drawing.Point(317, 831)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(146, 13)
+        Me.Label63.TabIndex = 120
+        Me.Label63.Text = "'F5' - Limpiar correlativo"
+        '
         'chksecimp
         '
         Me.chksecimp.AutoSize = True
@@ -825,7 +875,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.chksecimp.ForeColor = System.Drawing.Color.White
         Me.chksecimp.Location = New System.Drawing.Point(404, 792)
         Me.chksecimp.Name = "chksecimp"
-        Me.chksecimp.Size = New System.Drawing.Size(220, 17)
+        Me.chksecimp.Size = New System.Drawing.Size(219, 17)
         Me.chksecimp.TabIndex = 88
         Me.chksecimp.Text = "COPIAS AL IMPRIMIR ETIQUETAS"
         Me.chksecimp.UseVisualStyleBackColor = True
@@ -888,7 +938,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label22.ForeColor = System.Drawing.Color.White
         Me.Label22.Location = New System.Drawing.Point(27, 831)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(215, 13)
+        Me.Label22.Size = New System.Drawing.Size(214, 13)
         Me.Label22.TabIndex = 75
         Me.Label22.Text = "'F2' - Para modificar una recepcion.-"
         '
@@ -899,7 +949,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label53.ForeColor = System.Drawing.Color.White
         Me.Label53.Location = New System.Drawing.Point(28, 812)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(255, 13)
+        Me.Label53.Size = New System.Drawing.Size(254, 13)
         Me.Label53.TabIndex = 74
         Me.Label53.Text = "'F1' - Para poder recuperar una recepcion.-"
         '
@@ -932,7 +982,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label41.ForeColor = System.Drawing.Color.White
         Me.Label41.Location = New System.Drawing.Point(317, 812)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(311, 13)
+        Me.Label41.Size = New System.Drawing.Size(310, 13)
         Me.Label41.TabIndex = 71
         Me.Label41.Text = "'F3' - Para imprimir las etiquetas de los soportantes.-"
         '
@@ -1013,7 +1063,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label27.ForeColor = System.Drawing.Color.White
         Me.Label27.Location = New System.Drawing.Point(208, 14)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(93, 13)
+        Me.Label27.Size = New System.Drawing.Size(92, 13)
         Me.Label27.TabIndex = 60
         Me.Label27.Text = "SOPORTANTES"
         '
@@ -1844,8 +1894,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Cant_Pallets
         '
         Me.Cant_Pallets.DataPropertyName = "drec_unidades"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cant_Pallets.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cant_Pallets.DefaultCellStyle = DataGridViewCellStyle9
         Me.Cant_Pallets.HeaderText = "ENV."
         Me.Cant_Pallets.Name = "Cant_Pallets"
         Me.Cant_Pallets.ReadOnly = True
@@ -1855,10 +1905,10 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Peso
         '
         Me.Peso.DataPropertyName = "drec_peso"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Peso.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle10.Format = "N2"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.Peso.DefaultCellStyle = DataGridViewCellStyle10
         Me.Peso.HeaderText = "KILOS"
         Me.Peso.Name = "Peso"
         Me.Peso.ReadOnly = True
@@ -1869,9 +1919,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Elaboracion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.Elaboracion.DataPropertyName = "drec_fecprod"
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.Elaboracion.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle11.Format = "d"
+        DataGridViewCellStyle11.NullValue = Nothing
+        Me.Elaboracion.DefaultCellStyle = DataGridViewCellStyle11
         Me.Elaboracion.HeaderText = "ELABORACION"
         Me.Elaboracion.Name = "Elaboracion"
         Me.Elaboracion.ReadOnly = True
@@ -1882,9 +1932,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Vencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.Vencimiento.DataPropertyName = "Fechavencimiento"
-        DataGridViewCellStyle4.Format = "d"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Vencimiento.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle12.Format = "d"
+        DataGridViewCellStyle12.NullValue = Nothing
+        Me.Vencimiento.DefaultCellStyle = DataGridViewCellStyle12
         Me.Vencimiento.HeaderText = "VENCIMIENTO"
         Me.Vencimiento.Name = "Vencimiento"
         Me.Vencimiento.ReadOnly = True
@@ -2057,7 +2107,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label34.AutoSize = True
         Me.Label34.Location = New System.Drawing.Point(427, 101)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(59, 13)
+        Me.Label34.Size = New System.Drawing.Size(58, 13)
         Me.Label34.TabIndex = 79
         Me.Label34.Text = "ESTADO "
         '
@@ -2126,7 +2176,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label26.AutoSize = True
         Me.Label26.Location = New System.Drawing.Point(10, 35)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(85, 13)
+        Me.Label26.Size = New System.Drawing.Size(84, 13)
         Me.Label26.TabIndex = 23
         Me.Label26.Text = "SOPORTANTE"
         '
@@ -2198,7 +2248,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(10, 58)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(88, 13)
+        Me.Label16.Size = New System.Drawing.Size(86, 13)
         Me.Label16.TabIndex = 28
         Me.Label16.Text = "SOP. CLIENTE"
         '
@@ -2540,7 +2590,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(6, 13)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(87, 12)
+        Me.Label8.Size = New System.Drawing.Size(86, 12)
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "TEMPERATURA"
         '
@@ -2558,7 +2608,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label11.ForeColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(167, 13)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(85, 12)
+        Me.Label11.Size = New System.Drawing.Size(84, 12)
         Me.Label11.TabIndex = 84
         Me.Label11.Text = "TEMP. GRACIA"
         '
@@ -2634,8 +2684,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "drec_unidades"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle13
         Me.DataGridViewTextBoxColumn6.HeaderText = "Unid."
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -2645,10 +2695,10 @@ Partial Class Frm_GuiaRecepcionAgregar
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "drec_peso"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N2"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle14.Format = "N2"
+        DataGridViewCellStyle14.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle14
         Me.DataGridViewTextBoxColumn7.HeaderText = "Peso"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -2659,9 +2709,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "drec_fecprod"
-        DataGridViewCellStyle7.Format = "d"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle15.Format = "d"
+        DataGridViewCellStyle15.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle15
         Me.DataGridViewTextBoxColumn8.HeaderText = "Elaboración"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
@@ -2671,9 +2721,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.DataGridViewTextBoxColumn9.DataPropertyName = "Fechavencimiento"
-        DataGridViewCellStyle8.Format = "d"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle16.Format = "d"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle16
         Me.DataGridViewTextBoxColumn9.HeaderText = "Vencimiento"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
@@ -2775,28 +2825,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn20.HeaderText = "KILOS"
         Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
         Me.DataGridViewTextBoxColumn20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Label62
-        '
-        Me.Label62.AutoSize = True
-        Me.Label62.BackColor = System.Drawing.Color.White
-        Me.Label62.ForeColor = System.Drawing.Color.Red
-        Me.Label62.Location = New System.Drawing.Point(305, 831)
-        Me.Label62.Name = "Label62"
-        Me.Label62.Size = New System.Drawing.Size(14, 13)
-        Me.Label62.TabIndex = 121
-        Me.Label62.Text = "*"
-        '
-        'Label63
-        '
-        Me.Label63.AutoSize = True
-        Me.Label63.BackColor = System.Drawing.Color.Transparent
-        Me.Label63.ForeColor = System.Drawing.Color.White
-        Me.Label63.Location = New System.Drawing.Point(317, 831)
-        Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(146, 13)
-        Me.Label63.TabIndex = 120
-        Me.Label63.Text = "'F5' - Limpiar correlativo"
         '
         'Frm_GuiaRecepcionAgregar
         '
@@ -3076,4 +3104,6 @@ Partial Class Frm_GuiaRecepcionAgregar
     Friend WithEvents ki As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label62 As System.Windows.Forms.Label
     Friend WithEvents Label63 As System.Windows.Forms.Label
+    Friend WithEvents Label64 As System.Windows.Forms.Label
+    Friend WithEvents cboMercado As System.Windows.Forms.ComboBox
 End Class

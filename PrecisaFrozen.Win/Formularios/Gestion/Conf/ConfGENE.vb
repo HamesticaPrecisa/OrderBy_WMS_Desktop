@@ -67,7 +67,8 @@ Public Class ConfGENE
         cmd.Parameters.AddWithValue("@codigo", codigo)
         cmd.Parameters.Add("@foto", System.Data.SqlDbType.Image).Value = foto
         cmd.Parameters.AddWithValue("@foto2", foto2)
-        con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        'con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        con.ConnectionString = CONFIG.dbLANConnStr   ' VES Sep 2019
         con.Open()
         Try
             cmd.ExecuteNonQuery()

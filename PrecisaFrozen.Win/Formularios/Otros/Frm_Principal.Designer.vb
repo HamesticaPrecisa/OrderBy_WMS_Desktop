@@ -152,6 +152,7 @@ Partial Class Frm_Principal
         Me.LBLSU = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblsucursal = New System.Windows.Forms.ToolStripStatusLabel()
         Me.LBLSUCU = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.M2_Mercados = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.AccesosDirectos.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -417,7 +418,7 @@ Partial Class Frm_Principal
         Me.M3_Recepcion.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Recepcion.Enabled = False
         Me.M3_Recepcion.Name = "M3_Recepcion"
-        Me.M3_Recepcion.Size = New System.Drawing.Size(152, 22)
+        Me.M3_Recepcion.Size = New System.Drawing.Size(147, 22)
         Me.M3_Recepcion.Text = "Recepcion "
         '
         'M3_Predespacho
@@ -426,7 +427,7 @@ Partial Class Frm_Principal
         Me.M3_Predespacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Predespacho.Enabled = False
         Me.M3_Predespacho.Name = "M3_Predespacho"
-        Me.M3_Predespacho.Size = New System.Drawing.Size(152, 22)
+        Me.M3_Predespacho.Size = New System.Drawing.Size(147, 22)
         Me.M3_Predespacho.Text = "Pre-despacho"
         '
         'M3_Despacho
@@ -435,7 +436,7 @@ Partial Class Frm_Principal
         Me.M3_Despacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Despacho.Enabled = False
         Me.M3_Despacho.Name = "M3_Despacho"
-        Me.M3_Despacho.Size = New System.Drawing.Size(152, 22)
+        Me.M3_Despacho.Size = New System.Drawing.Size(147, 22)
         Me.M3_Despacho.Text = "Despacho"
         '
         'M2_Soportantes
@@ -557,7 +558,7 @@ Partial Class Frm_Principal
         '
         'M1_Mantenedores
         '
-        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem})
+        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem, Me.M2_Mercados})
         Me.M1_Mantenedores.Name = "M1_Mantenedores"
         Me.M1_Mantenedores.Size = New System.Drawing.Size(95, 20)
         Me.M1_Mantenedores.Text = "Mantenedores"
@@ -1202,6 +1203,13 @@ Partial Class Frm_Principal
         Me.LBLSUCU.Name = "LBLSUCU"
         Me.LBLSUCU.Size = New System.Drawing.Size(0, 17)
         '
+        'M2_Mercados
+        '
+        Me.M2_Mercados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
+        Me.M2_Mercados.Name = "M2_Mercados"
+        Me.M2_Mercados.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Mercados.Text = "Mercados"
+        '
         'Frm_Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1365,5 +1373,6 @@ Partial Class Frm_Principal
     Friend WithEvents menuLocPed As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_TrazabilidadProductos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_PlanRece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents M2_Mercados As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -87,11 +87,19 @@
     <ApplicationIcon>1393294820_105256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="ExpandableGridView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\ExpandableGridView.dll</HintPath>
@@ -147,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Clases\appConfig.vb" />
     <Compile Include="Clases\Ayuda_Codigo.vb" />
     <Compile Include="Clases\BarCode.vb" />
     <Compile Include="Clases\Conexion.vb" />
@@ -154,6 +163,7 @@
     <Compile Include="Clases\Funciones.vb" />
     <Compile Include="Clases\ImpresionCOM1.vb" />
     <Compile Include="Clases\ModPublico.vb" />
+    <Compile Include="Clases\sqlCmdResult.vb" />
     <Compile Include="Clases\VarPublic.vb" />
     <Compile Include="Configuracion\Frm_ConfImpresoras.Designer.vb">
       <DependentUpon>Frm_ConfImpresoras.vb</DependentUpon>
@@ -405,10 +415,22 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\ColoredComboboxItem.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.Designer.vb">
+      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.Designer.vb">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.Designer.vb">
+      <DependentUpon>Frm_AddMercados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.Designer.vb">
@@ -709,12 +731,6 @@
     <Compile Include="Formularios\Ayuda\Frm_AyudaMonedas.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.Designer.vb">
-      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.Designer.vb">
       <DependentUpon>Frm_AddChoferes.vb</DependentUpon>
     </Compile>
@@ -1004,10 +1020,22 @@
     <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Camaras.Designer.vb">
+      <DependentUpon>Lst_Camaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\Lst_Camaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Listados\Lst_Informes.Designer.vb">
       <DependentUpon>Lst_Informes.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Listados\Lst_Informes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\lst_Mercados.Designer.vb">
+      <DependentUpon>lst_Mercados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\lst_Mercados.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Otros\Frm_imagenesInformes.Designer.vb">
@@ -1320,12 +1348,6 @@
       <DependentUpon>Frm_Trazabilidad.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_Trazabilidad.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Listados\Lst_Camaras.Designer.vb">
-      <DependentUpon>Lst_Camaras.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Listados\Lst_Camaras.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Listados\Lst_Choferes.Designer.vb">
@@ -1743,8 +1765,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_EmisionVasAdmin.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.resx">
+      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.resx">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.resx">
+      <DependentUpon>Frm_AddMercados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.resx">
       <DependentUpon>Frm_AddPicking.vb</DependentUpon>
@@ -1899,9 +1927,6 @@
       <DependentUpon>Frm_AyudaMonedas.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.resx">
-      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.resx">
       <DependentUpon>Frm_AddChoferes.vb</DependentUpon>
     </EmbeddedResource>
@@ -2049,8 +2074,14 @@
     <EmbeddedResource Include="Formularios\Gestion\Conf\FRM_ACT_WMS.resx">
       <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Camaras.resx">
+      <DependentUpon>Lst_Camaras.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Informes.resx">
       <DependentUpon>Lst_Informes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\lst_Mercados.resx">
+      <DependentUpon>lst_Mercados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Otros\Frm_imagenesInformes.resx">
       <DependentUpon>Frm_imagenesInformes.vb</DependentUpon>
@@ -2228,9 +2259,6 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_Trazabilidad.resx">
       <DependentUpon>Frm_Trazabilidad.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Camaras.resx">
-      <DependentUpon>Lst_Camaras.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Choferes.resx">
       <DependentUpon>Lst_Choferes.vb</DependentUpon>
     </EmbeddedResource>
@@ -2402,7 +2430,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram2.cd" />
     <None Include="Dataset\Ds_Productos.xsc">
       <DependentUpon>Ds_Productos.xsd</DependentUpon>
@@ -2590,7 +2620,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -2875,9 +2905,9 @@
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
-      <VersionMinor>7</VersionMinor>
+      <VersionMinor>4</VersionMinor>
       <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

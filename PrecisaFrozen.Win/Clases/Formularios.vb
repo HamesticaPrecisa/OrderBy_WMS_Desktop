@@ -17,6 +17,7 @@
     Public f_recuentoCjRPT As Boolean = False
     Public clientesbusc As String = ""
     Public F_PlanRece As Boolean = False
+    Public f_addmercados As Boolean = False ' VES Sep 2019
 
     'listado de datas
     Public f_lstClientes As Boolean = False
@@ -28,6 +29,7 @@
     Public f_LstMedidas As Boolean = False
     Public f_LstOrigen As Boolean = False
     Public f_detallado As Boolean = False
+    Public f_lstMercados As Boolean = False   ' VES Sep 2019
 
     ' perfiles de usuario
 
