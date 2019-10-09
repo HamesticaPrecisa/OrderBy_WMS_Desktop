@@ -6,23 +6,7 @@ PrecisaFrozen.Win
 </name>
 </assembly>
 <members>
-<member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.ValueChanged">
+<member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.ValueChanged">
 	<summary>Occurs when the value of the progress bar is changed</summary>
 </member><member name="E:PrecisaFrozen.Win.ProgressbarWithPercentage.PercentageDecimalsChanged">
 	<summary>Occurs when the amount of decimals to be displayed in the percentage is changed</summary>
@@ -52,83 +36,6 @@ Represents a strongly typed in-memory cache of data.
 </member><member name="T:PrecisaFrozen.Win.ProgressbarWithPercentage">
 	<summary>Component that extends the native .net progressbar with percentage properties and the ability to overlay the percentage</summary>
 	<remarks>Component ProgressbarWithPercentage v1.0.10, by De Dauw Jeroen - November 2009</remarks>
-</member><member name="M:PrecisaFrozen.Win.BarCode.EAN13CalcChecksum(System.String)">
-	<summary>
- Esta función devuelve el dígito de control para un código EAN13
- </summary>
-	<param name="_code">Código EAN de 12 *** DOCE *** números</param>
-	<returns>Se devuelve como un string el digito 13 que es el dígito de control</returns>
-	<remarks></remarks>
-</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13AutoGenerateChecksum(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
-	<summary>
- Genera el código de barras EAN13 y auto-calcula el dígito de control
- </summary>
-	<param name="_code">Código de 12 *** DOCE *** números</param>
-	<param name="GenerateChecksum"></param>
-	<param name="ChecksumText"></param>
-	<param name="Height"></param>
-	<param name="PrintTextInCode"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
-	<summary>
- Genera el código de barras EAN13. No se verifica el checksum
- </summary>
-	<param name="_code">Código de 13 *** TRECE *** números</param>
-	<param name="GenerateChecksum"></param>
-	<param name="ChecksumText"></param>
-	<param name="Height"></param>
-	<param name="PrintTextInCode"></param>
-	<returns></returns>
-	<remarks></remarks>
-</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Resumido">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Productos">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
 </member><member name="T:PrecisaFrozen.Win.Ds_ImagenesRece.ImgDataTable">
 	<summary>
 Represents the strongly named DataTable class.
@@ -910,51 +817,19 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
 </summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLADataTable">
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARow">
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARowChangeEvent">
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos.ProductosRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:PrecisaFrozen.Win.Imag">
+</member><member name="T:PrecisaFrozen.Win.Ds_Productos">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
@@ -971,6 +846,131 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member><member name="T:PrecisaFrozen.Win.Ds_StockAcumuladoContrato">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLADataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones.TABLARowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Posiciones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="M:PrecisaFrozen.Win.BarCode.EAN13CalcChecksum(System.String)">
+	<summary>
+ Esta función devuelve el dígito de control para un código EAN13
+ </summary>
+	<param name="_code">Código EAN de 12 *** DOCE *** números</param>
+	<returns>Se devuelve como un string el digito 13 que es el dígito de control</returns>
+	<remarks></remarks>
+</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13AutoGenerateChecksum(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
+	<summary>
+ Genera el código de barras EAN13 y auto-calcula el dígito de control
+ </summary>
+	<param name="_code">Código de 12 *** DOCE *** números</param>
+	<param name="GenerateChecksum"></param>
+	<param name="ChecksumText"></param>
+	<param name="Height"></param>
+	<param name="PrintTextInCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:PrecisaFrozen.Win.BarCode.CodeEAN13(System.String,System.Boolean,System.Single,System.Boolean,System.Boolean)">
+	<summary>
+ Genera el código de barras EAN13. No se verifica el checksum
+ </summary>
+	<param name="_code">Código de 13 *** TRECE *** números</param>
+	<param name="GenerateChecksum"></param>
+	<param name="ChecksumText"></param>
+	<param name="Height"></param>
+	<param name="PrintTextInCode"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag.ImagenesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Imag">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes.ImagenesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Imagenes">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido.ResumidoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Resumido">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>

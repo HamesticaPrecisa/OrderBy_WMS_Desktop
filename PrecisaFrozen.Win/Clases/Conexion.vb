@@ -14,19 +14,26 @@ Public Class Conexion
     ' Abre una conexion con la BD
     '
     Private Sub openConn(ByVal tipo As String, ByVal catalog As String)
-        con.ConnectionString = String.Empty
+        Dim newConnStr As String = ""
         Select Case (tipo)
             Case "LOCAL"
-                con.ConnectionString = CONFIG.lanConnStr
+                newConnStr = CONFIG.lanConnStr
 
             Case "WLAN"
-                con.ConnectionString = CONFIG.wlanConnStr
+                newConnStr = CONFIG.wlanConnStr
 
         End Select
 
-        If (con.ConnectionString <> String.Empty) Then
-            con.ConnectionString = con.ConnectionString + ";Initial catalog=" + catalog + ";"
+        If (newConnStr <> String.Empty) Then
+            newConnStr = newConnStr + ";Initial catalog=" + catalog + ";"
             Try
+                If newConnStr <> con.ConnectionString Then
+                    If con.State = ConnectionState.Open Then
+                        con.Close()
+                    End If
+                    con.ConnectionString = newConnStr
+                End If
+
                 Debug.WriteLine("[openConn] Connecting to " + con.ConnectionString)
                 con.Open()
                 Debug.WriteLine("[openConn] Connected")
@@ -34,6 +41,8 @@ Public Class Conexion
             Catch ex As SqlException
                 validacone = "NC"
                 Debug.WriteLine("[openConn] " + ex.Message)
+                MsgBox(ex.Message, MsgBoxStyle.Critical, "Conexion")
+                MsgBox(con.ConnectionString, MsgBoxStyle.Critical, "Tipo: " & tipo)
             End Try
 
         Else
