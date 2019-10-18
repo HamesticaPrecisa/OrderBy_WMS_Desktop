@@ -90,6 +90,7 @@ Partial Class Frm_Principal
         Me.FamiliasNoMezclablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PosicionesParaPickingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SugerenciasAlmacenamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.M2_Mercados = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Procesos = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_DesbloquearSoportantes = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Etiquetado = New System.Windows.Forms.ToolStripMenuItem()
@@ -152,7 +153,7 @@ Partial Class Frm_Principal
         Me.LBLSU = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblsucursal = New System.Windows.Forms.ToolStripStatusLabel()
         Me.LBLSUCU = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.M2_Mercados = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProcesoDeTúnelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.AccesosDirectos.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -729,6 +730,13 @@ Partial Class Frm_Principal
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Text = "Sugerencias Almacenamiento"
         '
+        'M2_Mercados
+        '
+        Me.M2_Mercados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
+        Me.M2_Mercados.Name = "M2_Mercados"
+        Me.M2_Mercados.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Mercados.Text = "Mercados"
+        '
         'M1_Procesos
         '
         Me.M1_Procesos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_DesbloquearSoportantes, Me.M2_Etiquetado, Me.M2_Contenedores, Me.M2_IngresoRCP, Me.BloqueoDeSoportantes, Me.ProcesoJibiaToolStripMenuItem})
@@ -1110,7 +1118,7 @@ Partial Class Frm_Principal
         'ConfiguracionesGeneralesToolStripMenuItem
         '
         Me.ConfiguracionesGeneralesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
-        Me.ConfiguracionesGeneralesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguracionesGenelaresToolStripMenuItem, Me.ReservaHorasPedidosToolStripMenuItem, Me.ActualizacionesDelSistemaToolStripMenuItem})
+        Me.ConfiguracionesGeneralesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguracionesGenelaresToolStripMenuItem, Me.ReservaHorasPedidosToolStripMenuItem, Me.ActualizacionesDelSistemaToolStripMenuItem, Me.ProcesoDeTúnelToolStripMenuItem})
         Me.ConfiguracionesGeneralesToolStripMenuItem.Name = "ConfiguracionesGeneralesToolStripMenuItem"
         Me.ConfiguracionesGeneralesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
         Me.ConfiguracionesGeneralesToolStripMenuItem.Text = "Configuraciones"
@@ -1203,12 +1211,12 @@ Partial Class Frm_Principal
         Me.LBLSUCU.Name = "LBLSUCU"
         Me.LBLSUCU.Size = New System.Drawing.Size(0, 17)
         '
-        'M2_Mercados
+        'ProcesoDeTúnelToolStripMenuItem
         '
-        Me.M2_Mercados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
-        Me.M2_Mercados.Name = "M2_Mercados"
-        Me.M2_Mercados.Size = New System.Drawing.Size(202, 22)
-        Me.M2_Mercados.Text = "Mercados"
+        Me.ProcesoDeTúnelToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.ProcesoDeTúnelToolStripMenuItem.Name = "ProcesoDeTúnelToolStripMenuItem"
+        Me.ProcesoDeTúnelToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ProcesoDeTúnelToolStripMenuItem.Text = "Proceso de túnel"
         '
         'Frm_Principal
         '
@@ -1374,5 +1382,6 @@ Partial Class Frm_Principal
     Friend WithEvents M2_TrazabilidadProductos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_PlanRece As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_Mercados As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProcesoDeTúnelToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

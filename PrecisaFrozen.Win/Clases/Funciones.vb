@@ -292,6 +292,12 @@ Public Class Funciones
         End Try
         Return resp
     End Function
+    Public Function runSqlCmd(ByVal sqlCmdText As String, ByVal paramName As String, ByVal paramValue As Object) As sqlCmdResult
+        Return runSqlCmd(sqlCmdText, New SqlParameter() {New SqlParameter(paramName, paramValue)})
+    End Function
+    Public Function runSqlCmd(ByVal sqlCmdText As String, ByVal paramValue As Object) As sqlCmdResult
+        Return runSqlCmd(sqlCmdText, "@p0", paramValue)
+    End Function
 
 
     ' VES Sep 2019
@@ -307,6 +313,13 @@ Public Class Funciones
         End If
         Return result
     End Function
+    Public Function sqlExecuteRow(ByVal sqlSelect As String, ByVal paramName As String, ByVal paramValue As Object)
+        Return sqlExecuteRow(sqlSelect, New SqlParameter() {New SqlParameter(paramName, paramValue)})
+    End Function
+    Public Function sqlExecuteRow(ByVal sqlSelect As String, ByVal paramValue As Object)
+        Return sqlExecuteRow(sqlSelect, New SqlParameter() {New SqlParameter("@p0", paramValue)})
+    End Function
+
 
 
     Public Function UltimoRegistro(ByVal Consulta_sql)

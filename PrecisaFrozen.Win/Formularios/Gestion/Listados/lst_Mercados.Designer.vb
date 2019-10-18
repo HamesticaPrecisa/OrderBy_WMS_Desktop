@@ -25,6 +25,9 @@ Partial Class Lst_Mercados
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Temp = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.mer_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -50,17 +53,12 @@ Partial Class Lst_Mercados
         Me.txtbusca = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.rb_horas = New System.Windows.Forms.RadioButton()
         Me.Rb_temp = New System.Windows.Forms.RadioButton()
         Me.Rb_descrip = New System.Windows.Forms.RadioButton()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Temp = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Horas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.mer_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,7 +85,7 @@ Partial Class Lst_Mercados
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.DataGridView1.ColumnHeadersHeight = 25
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nombre, Me.Temp, Me.Horas, Me.mer_id})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Nombre, Me.Temp, Me.mer_id})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(20, 83)
         Me.DataGridView1.MultiSelect = False
@@ -96,6 +94,31 @@ Partial Class Lst_Mercados
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(672, 448)
         Me.DataGridView1.TabIndex = 1
+        '
+        'Nombre
+        '
+        Me.Nombre.DataPropertyName = "mer_nombre"
+        Me.Nombre.HeaderText = "Descripcion"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Nombre.Width = 300
+        '
+        'Temp
+        '
+        Me.Temp.DataPropertyName = "mer_temp"
+        Me.Temp.HeaderText = "º Temp."
+        Me.Temp.Name = "Temp"
+        Me.Temp.ReadOnly = True
+        Me.Temp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'mer_id
+        '
+        Me.mer_id.DataPropertyName = "mer_id"
+        Me.mer_id.HeaderText = "mer_id"
+        Me.mer_id.Name = "mer_id"
+        Me.mer_id.ReadOnly = True
+        Me.mer_id.Visible = False
         '
         'BindingNavigator1
         '
@@ -264,27 +287,15 @@ Partial Class Lst_Mercados
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox2.Controls.Add(Me.rb_horas)
         Me.GroupBox2.Controls.Add(Me.Rb_temp)
         Me.GroupBox2.Controls.Add(Me.Rb_descrip)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(10, 18)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(456, 53)
+        Me.GroupBox2.Size = New System.Drawing.Size(277, 53)
         Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ordenar por"
-        '
-        'rb_horas
-        '
-        Me.rb_horas.AutoSize = True
-        Me.rb_horas.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rb_horas.Location = New System.Drawing.Point(304, 19)
-        Me.rb_horas.Name = "rb_horas"
-        Me.rb_horas.Size = New System.Drawing.Size(62, 18)
-        Me.rb_horas.TabIndex = 3
-        Me.rb_horas.Text = "Horas"
-        Me.rb_horas.UseVisualStyleBackColor = True
         '
         'Rb_temp
         '
@@ -338,39 +349,6 @@ Partial Class Lst_Mercados
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.Visible = False
         '
-        'Nombre
-        '
-        Me.Nombre.DataPropertyName = "mer_nombre"
-        Me.Nombre.HeaderText = "Descripcion"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Nombre.Width = 300
-        '
-        'Temp
-        '
-        Me.Temp.DataPropertyName = "mer_temp"
-        Me.Temp.HeaderText = "º Temp."
-        Me.Temp.Name = "Temp"
-        Me.Temp.ReadOnly = True
-        Me.Temp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Horas
-        '
-        Me.Horas.DataPropertyName = "mer_horas"
-        Me.Horas.HeaderText = "Horas"
-        Me.Horas.Name = "Horas"
-        Me.Horas.ReadOnly = True
-        Me.Horas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'mer_id
-        '
-        Me.mer_id.DataPropertyName = "mer_id"
-        Me.mer_id.HeaderText = "mer_id"
-        Me.mer_id.Name = "mer_id"
-        Me.mer_id.ReadOnly = True
-        Me.mer_id.Visible = False
-        '
         'Lst_Mercados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -423,13 +401,11 @@ Partial Class Lst_Mercados
     Friend WithEvents ToolStripLabel3 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents txtbusca As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents rb_horas As System.Windows.Forms.RadioButton
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Nombre As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Temp As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Horas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents mer_id As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

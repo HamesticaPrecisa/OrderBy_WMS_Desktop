@@ -12,7 +12,7 @@ Public Class Lst_Mercados
     Private Sub Lst_Mercados_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' VES Sep 2019
         ' Se modifico el query para incuir la descripcion del tipo de camara
-        mainSQL = "SELECT a.mer_id,a.mer_nombre, a.mer_temp, a.mer_horas" +
+        mainSQL = "SELECT a.mer_nombre, a.mer_temp, a.mer_id" +
                   "  FROM mercados a "
         BindingSource1.DataSource = fnc.ListarTablasSQL(mainSQL + " ORDER BY a.mer_nombre ASC")
         BindingNavigator1.BindingSource = BindingSource1
@@ -30,7 +30,7 @@ Public Class Lst_Mercados
     End Sub
 
 
-    Private Sub Rb_horas_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Rb_temp.CheckedChanged, rb_horas.CheckedChanged
+    Private Sub Rb_horas_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Rb_temp.CheckedChanged
         BindingSource1.DataSource = fnc.ListarTablasSQL(mainSQL + " ORDER BY mer_horas")
         BindingNavigator1.BindingSource = BindingSource1
         DataGridView1.DataSource = BindingSource1
@@ -74,15 +74,17 @@ Public Class Lst_Mercados
             Dim frm As New Frm_AddMercados
 
 
-            Dim sql = "SELECT mer_id,mer_nombre,mer_temp,mer_horas FROM mercados WHERE mer_id=@id"
+            Dim sql = "SELECT mer_id,mer_nombre,mer_temp,mer_horas, mer_trt, mer_crifec FROM mercados WHERE mer_id=@id"
+            Dim mer_id As Integer = CInt(DataGridView1.Rows(posi.Text - 1).Cells(2).Value)
 
-            Dim tabla As DataTable = fnc.ListarTablasSQL(sql, New SqlParameter() {New SqlParameter("@id", SqlDbType.Int) With {.value = DataGridView1.Rows(posi.Text - 1).Cells(0).Value}})
-
-            If tabla.Rows.Count > 0 Then
-                frm.mer_id = DataGridView1.Rows(e.RowIndex).Cells(0).Value
-                frm.txtNombre.Text = DataGridView1.Rows(e.RowIndex).Cells(1).Value.ToString()
-                frm.txttemp.Text = DataGridView1.Rows(e.RowIndex).Cells(2).Value
-                frm.txtHoras.Text = DataGridView1.Rows(e.RowIndex).Cells(3).Value
+            Dim row As DataRow = fnc.sqlExecuteRow(sql, New SqlParameter() {New SqlParameter("@id", SqlDbType.Int) With {.Value = mer_id}})
+            If row IsNot Nothing Then
+                frm.mer_id = mer_id
+                frm.txtNombre.Text = row("mer_nombre").ToString().Trim()
+                frm.txttemp.Text = row("mer_temp").ToString().Trim()
+                frm.txtHoras.Text = row("mer_horas").ToString().Trim()
+                frm.txtTRT.Text = row("mer_trt").ToString().Trim()
+                frm.cboCriFec.Text = row("mer_crifec").ToString().Trim()
                 frm.txtNombre.Enabled = False
             End If
             frm.ShowDialog()

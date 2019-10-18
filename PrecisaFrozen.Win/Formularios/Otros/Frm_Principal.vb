@@ -1858,4 +1858,15 @@ Public Class Frm_Principal
             TabControl1.TabPages(Lst_Mercados).Select()
         End If
     End Sub
+
+    Private Sub ProcesoDeTúnelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProcesoDeTúnelToolStripMenuItem.Click
+        If f_confTunel = False Then
+            Dim f As Form
+            f = Frm_ConfProcesoTunel
+            TabControl1.TabPages.Add(f)
+            f_confTunel = True
+        Else
+            TabControl1.TabPages(Frm_ConfProcesoTunel).Select()
+        End If
+    End Sub
 End Class

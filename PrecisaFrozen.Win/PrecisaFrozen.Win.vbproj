@@ -282,12 +282,6 @@
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_CambioClave.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Configuraciones.Designer.vb">
-      <DependentUpon>Frm_Configuraciones.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Configuraciones.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_IMPetiq.Designer.vb">
       <DependentUpon>Frm_IMPetiq.vb</DependentUpon>
     </Compile>
@@ -1500,6 +1494,12 @@
     <Compile Include="Formularios\Otros\ConfSuperADM.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Otros\frm_ConfProcesoTunel.Designer.vb">
+      <DependentUpon>frm_ConfProcesoTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ConfProcesoTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Otros\Frm_InicioSesion.Designer.vb">
       <DependentUpon>Frm_InicioSesion.vb</DependentUpon>
     </Compile>
@@ -1511,6 +1511,12 @@
     </Compile>
     <Compile Include="Formularios\Otros\Frm_Principal.Designer.vb">
       <DependentUpon>Frm_Principal.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaFCT.Designer.vb">
+      <DependentUpon>frm_ReglaFCT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaFCT.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Otros\Presentacion.Designer.vb">
@@ -1687,9 +1693,6 @@
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_CambioClave.resx">
       <DependentUpon>Frm_CambioClave.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Configuraciones.resx">
-      <DependentUpon>Frm_Configuraciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_IMPetiq.resx">
       <DependentUpon>Frm_IMPetiq.vb</DependentUpon>
@@ -2344,11 +2347,17 @@
     <EmbeddedResource Include="Formularios\Otros\ConfSuperADM.resx">
       <DependentUpon>ConfSuperADM.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\frm_ConfProcesoTunel.resx">
+      <DependentUpon>frm_ConfProcesoTunel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Frm_InicioSesion.resx">
       <DependentUpon>Frm_InicioSesion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Frm_Principal.resx">
       <DependentUpon>Frm_Principal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\frm_ReglaFCT.resx">
+      <DependentUpon>frm_ReglaFCT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Presentacion.resx">
       <DependentUpon>Presentacion.vb</DependentUpon>

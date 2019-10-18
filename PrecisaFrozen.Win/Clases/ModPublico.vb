@@ -159,6 +159,36 @@ Module ModPublico
         End If
     End Sub
 
+
+    ' VES OCt 2019
+    ' Determina si un valor  esta vacio
+    '
+    Public Function IsEmpty(ByVal value As String) As Boolean
+        Return If(value.Trim().Length = 0, True, False)
+    End Function
+    Public Function IsEmpty(ByVal control As TextBox) As Boolean
+        Return IsEmpty(control.Text)
+    End Function
+    Public Function IsEmpty(ByVal value As Integer) As Boolean
+        Return If(value = 0, True, False)
+    End Function
+    Public Function IsEmpty(ByVal value As Decimal) As Boolean
+        Return If(value = 0.0, True, False)
+    End Function
+
+
+    ' VES Oct 2019
+    ' Dialogo de confirmacion
+    '
+    Public Function Confirmar(ByVal mensaje As String, ByVal titulo As String) As Boolean
+        Dim result As Boolean = False
+        If MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then result = True
+        Return result
+    End Function
+    Public Function Confirmar(ByVal mensaje) As Boolean
+        Return Confirmar(mensaje, "Atención")
+    End Function
+
     Public Sub SoloKilos(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Dim KeyAscii As Short = Asc(e.KeyChar)
         If Not ((KeyAscii >= System.Windows.Forms.Keys.D0 And KeyAscii <= System.Windows.Forms.Keys.D9) Or

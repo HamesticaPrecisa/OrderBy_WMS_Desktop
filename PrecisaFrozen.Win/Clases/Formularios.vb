@@ -105,4 +105,6 @@
     Public f_locs_pedidos As Boolean = False
 
     Public documentoimp As String = ""
+
+    Public f_confTunel As Boolean = False ' VES Oct 2019
 End Module

@@ -159,7 +159,6 @@ Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaF
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_Actualizaciones.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_Calendario.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_CambioClave.resources
-Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_Configuraciones.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_IMPetiq.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_LlamaDcto.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_ParametrosImpresion.resources
@@ -581,3 +580,5 @@ Y:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaF
 Y:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.vbproj.GenerateResource.Cache
 Y:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.exe.manifest
 Y:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.application
+Z:\Work\Fuentes\NOI\dev\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.Frm_ConfProcesoTunel.resources
+Z:\Work\Fuentes\NOI\dev\ptech\desktop\PrecisaFrozen.Win\obj\x86\Release\PrecisaFrozen.Win.frm_ReglaFCT.resources

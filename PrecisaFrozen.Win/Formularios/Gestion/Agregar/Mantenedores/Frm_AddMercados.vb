@@ -16,6 +16,10 @@ Public Class Frm_AddMercados
             valor += 1
         ElseIf txtHoras.Text = "" Then
             valor += 1
+        ElseIf txtTRT.Text = "" Then
+            valor += 1
+        ElseIf cboCriFec.Text = "SELECCIONAR" Then
+            valor += 1
         End If
 
         Return valor
@@ -35,11 +39,14 @@ Public Class Frm_AddMercados
                                                      New SqlParameter() {New SqlParameter("@nombre", SqlDbType.VarChar) With {.Value = txtNombre.Text}})
 
             If check Is Nothing Then
-                Dim sql = "INSERT INTO mercados (mer_nombre, mer_temp, mer_horas, mer_status) VALUES (@nombre, @temp, @horas, 'ACTIVO')"
+                Dim sql = "INSERT INTO mercados (mer_nombre, mer_temp, mer_horas, met_trt, mer_status, mer_crifec) " +
+                          "     VALUES (@nombre, @temp, @horas, @trt, 'ACTIVO', @crifec)"
                 Dim params() = New SqlParameter() {
-                    New SqlParameter("@nombre", SqlDbType.VarChar) with {.Value = txtNombre.Text},
-                    New SqlParameter("@temp", SqlDbType.Decimal) with {.Value = Decimal.Parse(txttemp.Text) },
-                    New SqlParameter("@horas", SqlDbType.Int) With {.Value = Int32.Parse(txtHoras.Text)}
+                    New SqlParameter("@nombre", SqlDbType.VarChar) With {.Value = txtNombre.Text},
+                    New SqlParameter("@temp", SqlDbType.Decimal) With {.Value = Decimal.Parse(txttemp.Text)},
+                    New SqlParameter("@horas", SqlDbType.Int) With {.Value = Int32.Parse(txtHoras.Text)},
+                    New SqlParameter("@trt", SqlDbType.Int) With {.Value = Int32.Parse(txtTRT.Text)},
+                    New SqlParameter("@crifec", SqlDbType.NVarChar) With {.Value = cboCriFec.SelectedValue}
                 }
 
                 If fnc.runSQLCmd(sql, params).result Then
@@ -54,11 +61,13 @@ Public Class Frm_AddMercados
                     Exit Sub
                 End If
 
-                Dim sql = "UPDATE mercados SET mer_temp = @temp, mer_horas = @horas WHERE mer_id = @id"
+                Dim sql = "UPDATE mercados SET mer_temp = @temp, mer_horas = @horas, mer_trt = @trt, mer_crifec = @crifec WHERE mer_id = @id"
                 Dim params() = New SqlParameter() {
                     New SqlParameter("@id", SqlDbType.Int) With {.Value = mer_id},
                     New SqlParameter("@temp", SqlDbType.Decimal) With {.Value = Decimal.Parse(txttemp.Text)},
-                    New SqlParameter("@horas", SqlDbType.Int) With {.Value = Int32.Parse(txtHoras.Text)}
+                    New SqlParameter("@horas", SqlDbType.Int) With {.Value = Int32.Parse(txtHoras.Text)},
+                    New SqlParameter("@trt", SqlDbType.Int) With {.Value = Int32.Parse(txtTRT.Text)},
+                    New SqlParameter("@crifec", SqlDbType.NVarChar, 15) With {.Value = cboCriFec.Text}
                 }
 
                 If fnc.runSQLCmd(sql, params).result Then
@@ -78,6 +87,9 @@ Public Class Frm_AddMercados
     Private Sub btn_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_nuevo.Click
 
         LimpiarCajas(GroupBox3)
+        cboCriFec.Text = "ELABORACION"
+        txtHoras.Text = "120"
+        txtTRT.Text = "48"
         txtNombre.Enabled = True
         txtNombre.Focus()
     End Sub
@@ -136,5 +148,9 @@ Public Class Frm_AddMercados
 
     Private Sub txttemp_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txttemp.KeyPress
         soloTemperatura(sender, e)
+    End Sub
+
+    Private Sub cboCriFec_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboCriFec.KeyPress
+        e.Handled = True
     End Sub
 End Class

@@ -178,7 +178,7 @@ Public Class Frm_InicioSesion
         Me.Close()
     End Sub
 
-    Private Sub rlocal_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rlocal.CheckedChanged
+    Private Sub rlocal_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rlocal.CheckedChanged
         If rlocal.Checked = True Then
             validacone = ""
             CONECTARVARI = "LOCAL"
@@ -194,7 +194,7 @@ Public Class Frm_InicioSesion
 
     End Sub
 
-    Private Sub rwlan_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles rwlan.CheckedChanged
+    Private Sub rwlan_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rwlan.CheckedChanged
         If rwlan.Checked = True Then
             validacone = ""
             CONECTARVARI = "WLAN"
@@ -208,7 +208,7 @@ Public Class Frm_InicioSesion
         End If
     End Sub
 
-    Private Sub cbodesbod_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbodesbod.SelectedIndexChanged
+    Private Sub cbodesbod_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbodesbod.SelectedIndexChanged
 
     End Sub
 

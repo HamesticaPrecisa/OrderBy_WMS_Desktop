@@ -34,6 +34,12 @@ Partial Class Frm_AddMercados
         Me.txtHoras = New System.Windows.Forms.TextBox()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboCriFec = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtTRT = New System.Windows.Forms.TextBox()
+        Me.btnReglas = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
@@ -43,7 +49,7 @@ Partial Class Frm_AddMercados
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(7, 47)
+        Me.Label2.Location = New System.Drawing.Point(5, 47)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(93, 13)
         Me.Label2.TabIndex = 3
@@ -55,7 +61,7 @@ Partial Class Frm_AddMercados
         Me.txttemp.MaxLength = 5
         Me.txttemp.Name = "txttemp"
         Me.txttemp.Size = New System.Drawing.Size(80, 21)
-        Me.txttemp.TabIndex = 5
+        Me.txttemp.TabIndex = 1
         '
         'GroupBox2
         '
@@ -64,7 +70,7 @@ Partial Class Frm_AddMercados
         Me.GroupBox2.Controls.Add(Me.btn_guardar)
         Me.GroupBox2.Controls.Add(Me.btn_salir)
         Me.GroupBox2.Controls.Add(Me.btn_nuevo)
-        Me.GroupBox2.Location = New System.Drawing.Point(407, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(441, 12)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(78, 271)
         Me.GroupBox2.TabIndex = 32
@@ -117,6 +123,12 @@ Partial Class Frm_AddMercados
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox3.Controls.Add(Me.btnReglas)
+        Me.GroupBox3.Controls.Add(Me.Label5)
+        Me.GroupBox3.Controls.Add(Me.txtTRT)
+        Me.GroupBox3.Controls.Add(Me.Label3)
+        Me.GroupBox3.Controls.Add(Me.cboCriFec)
+        Me.GroupBox3.Controls.Add(Me.Label1)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.txtHoras)
         Me.GroupBox3.Controls.Add(Me.txtNombre)
@@ -125,7 +137,7 @@ Partial Class Frm_AddMercados
         Me.GroupBox3.Controls.Add(Me.txttemp)
         Me.GroupBox3.Location = New System.Drawing.Point(11, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(390, 350)
+        Me.GroupBox3.Size = New System.Drawing.Size(424, 350)
         Me.GroupBox3.TabIndex = 33
         Me.GroupBox3.TabStop = False
         '
@@ -134,19 +146,19 @@ Partial Class Frm_AddMercados
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(6, 76)
+        Me.Label4.Location = New System.Drawing.Point(43, 74)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(88, 13)
+        Me.Label4.Size = New System.Drawing.Size(55, 13)
         Me.Label4.TabIndex = 20
-        Me.Label4.Text = "HORAS TUNEL"
+        Me.Label4.Text = "MAXIMO"
         '
         'txtHoras
         '
-        Me.txtHoras.Location = New System.Drawing.Point(100, 72)
+        Me.txtHoras.Location = New System.Drawing.Point(100, 71)
         Me.txtHoras.MaxLength = 3
         Me.txtHoras.Name = "txtHoras"
-        Me.txtHoras.Size = New System.Drawing.Size(80, 21)
-        Me.txtHoras.TabIndex = 21
+        Me.txtHoras.Size = New System.Drawing.Size(43, 21)
+        Me.txtHoras.TabIndex = 2
         '
         'txtNombre
         '
@@ -154,8 +166,8 @@ Partial Class Frm_AddMercados
         Me.txtNombre.Enabled = False
         Me.txtNombre.Location = New System.Drawing.Point(100, 17)
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.Size = New System.Drawing.Size(284, 21)
-        Me.txtNombre.TabIndex = 1
+        Me.txtNombre.Size = New System.Drawing.Size(306, 21)
+        Me.txtNombre.TabIndex = 0
         '
         'Label11
         '
@@ -167,6 +179,65 @@ Partial Class Frm_AddMercados
         Me.Label11.Size = New System.Drawing.Size(56, 13)
         Me.Label11.TabIndex = 3
         Me.Label11.Text = "NOMBRE"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(15, 100)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(82, 13)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "A PARTIR DE"
+        '
+        'cboCriFec
+        '
+        Me.cboCriFec.FormattingEnabled = True
+        Me.cboCriFec.Items.AddRange(New Object() {"RECEPCION", "ELABORACION"})
+        Me.cboCriFec.Location = New System.Drawing.Point(100, 97)
+        Me.cboCriFec.Name = "cboCriFec"
+        Me.cboCriFec.Size = New System.Drawing.Size(141, 21)
+        Me.cboCriFec.TabIndex = 3
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(149, 74)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(48, 13)
+        Me.Label3.TabIndex = 24
+        Me.Label3.Text = "HORAS"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(192, 47)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(136, 13)
+        Me.Label5.TabIndex = 25
+        Me.Label5.Text = "HORAS REQ DE TUNEL"
+        '
+        'txtTRT
+        '
+        Me.txtTRT.Location = New System.Drawing.Point(332, 44)
+        Me.txtTRT.MaxLength = 3
+        Me.txtTRT.Name = "txtTRT"
+        Me.txtTRT.Size = New System.Drawing.Size(43, 21)
+        Me.txtTRT.TabIndex = 4
+        '
+        'btnReglas
+        '
+        Me.btnReglas.Location = New System.Drawing.Point(379, 43)
+        Me.btnReglas.Name = "btnReglas"
+        Me.btnReglas.Size = New System.Drawing.Size(26, 23)
+        Me.btnReglas.TabIndex = 5
+        Me.btnReglas.Text = "..."
+        Me.btnReglas.UseVisualStyleBackColor = True
         '
         'Frm_AddMercados
         '
@@ -198,4 +269,10 @@ Partial Class Frm_AddMercados
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtHoras As System.Windows.Forms.TextBox
+    Friend WithEvents cboCriFec As System.Windows.Forms.ComboBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents btnReglas As System.Windows.Forms.Button
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtTRT As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 End Class
