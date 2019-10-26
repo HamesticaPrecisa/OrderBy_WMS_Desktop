@@ -25,10 +25,6 @@ Public Class Frm_ConfProcesoTunel
                     txtHoraBase.Text = prfValue
                 Case "permitirOTParcial"
                     chkPermitirGuiaParcial.Checked = If(prfValue = "True", True, False)
-                Case "frecCorreoStatusTuneles"
-                    cboFrecCorreo.Text = prfValue
-                Case "destinatariosCorreo"
-                    txtDestinatariosCorreo.Text = prfValue.Replace(";", vbCrLf)
                 Case "limAlertaInicioDemorado"
                     cboAlertaInicioDemorado.Text = prfValue
                 Case "limAlertaDetencion"
@@ -96,21 +92,6 @@ Public Class Frm_ConfProcesoTunel
     Private Sub cboCantFotos_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboCantFotos.SelectedIndexChanged
         savePref("ptech.tunel.cantFotosPorMuestra", cboCantFotos.Text)
     End Sub
-
-    Private Sub cboFrecCorreo_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboFrecCorreo.SelectedIndexChanged
-        savePref("ptech.tunel.frecCorreoStatusTuneles", cboCantFotos.Text)
-    End Sub
-
-    Private Sub txtDestinatariosCorreo_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles txtDestinatariosCorreo.Validating
-        '
-        '   TODO: VALIDAR CORREOS INDIVIDUALES
-        '
-    End Sub
-
-    Private Sub txtDestinatariosCorreo_Validated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDestinatariosCorreo.Validated
-        savePref("ptech.tunel.destinatariosCorreo", txtDestinatariosCorreo.Text.Replace(vbCrLf, ";"))
-    End Sub
-
 
     Private Sub requeryReglas()
         Dim sql As String = "SELECT a.fct_id, ISNULL(b.fam_descr,CAST('(CUALQUIERA)' AS NVARCHAR(40))) AS fam_descr, " +

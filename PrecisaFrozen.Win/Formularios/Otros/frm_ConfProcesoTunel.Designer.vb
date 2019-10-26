@@ -22,7 +22,7 @@ Partial Class Frm_ConfProcesoTunel
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.dgrReglas = New System.Windows.Forms.DataGridView()
@@ -41,6 +41,7 @@ Partial Class Frm_ConfProcesoTunel
         Me.txtHoraBase = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cboAlertaDetencion = New System.Windows.Forms.ComboBox()
         Me.cboAlertaInicioDemorado = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -49,13 +50,6 @@ Partial Class Frm_ConfProcesoTunel
         Me.cboCantMuestras = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.txtDestinatariosCorreo = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.cboFrecCorreo = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -63,12 +57,10 @@ Partial Class Frm_ConfProcesoTunel
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cboAlertaDetencion = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgrReglas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -108,9 +100,9 @@ Partial Class Frm_ConfProcesoTunel
         Me.dgrReglas.Name = "dgrReglas"
         Me.dgrReglas.ReadOnly = True
         Me.dgrReglas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        Me.dgrReglas.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        Me.dgrReglas.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgrReglas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgrReglas.Size = New System.Drawing.Size(655, 428)
         Me.dgrReglas.TabIndex = 5
@@ -252,6 +244,16 @@ Partial Class Frm_ConfProcesoTunel
         Me.GroupBox3.TabIndex = 9
         Me.GroupBox3.TabStop = False
         '
+        'cboAlertaDetencion
+        '
+        Me.cboAlertaDetencion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAlertaDetencion.FormattingEnabled = True
+        Me.cboAlertaDetencion.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "12", "24"})
+        Me.cboAlertaDetencion.Location = New System.Drawing.Point(251, 143)
+        Me.cboAlertaDetencion.Name = "cboAlertaDetencion"
+        Me.cboAlertaDetencion.Size = New System.Drawing.Size(49, 21)
+        Me.cboAlertaDetencion.TabIndex = 14
+        '
         'cboAlertaInicioDemorado
         '
         Me.cboAlertaInicioDemorado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -327,75 +329,6 @@ Partial Class Frm_ConfProcesoTunel
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Calidad"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.txtDestinatariosCorreo)
-        Me.GroupBox4.Controls.Add(Me.Label10)
-        Me.GroupBox4.Controls.Add(Me.Label9)
-        Me.GroupBox4.Controls.Add(Me.cboFrecCorreo)
-        Me.GroupBox4.Controls.Add(Me.Label5)
-        Me.GroupBox4.Controls.Add(Me.Label8)
-        Me.GroupBox4.Location = New System.Drawing.Point(22, 321)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(341, 215)
-        Me.GroupBox4.TabIndex = 10
-        Me.GroupBox4.TabStop = False
-        '
-        'txtDestinatariosCorreo
-        '
-        Me.txtDestinatariosCorreo.AcceptsReturn = True
-        Me.txtDestinatariosCorreo.Location = New System.Drawing.Point(24, 98)
-        Me.txtDestinatariosCorreo.Multiline = True
-        Me.txtDestinatariosCorreo.Name = "txtDestinatariosCorreo"
-        Me.txtDestinatariosCorreo.Size = New System.Drawing.Size(295, 97)
-        Me.txtDestinatariosCorreo.TabIndex = 14
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(21, 82)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(169, 13)
-        Me.Label10.TabIndex = 13
-        Me.Label10.Text = "DESTINATARIOS (1 POR LINEA)"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(152, 48)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(45, 13)
-        Me.Label9.TabIndex = 12
-        Me.Label9.Text = "HORAS"
-        '
-        'cboFrecCorreo
-        '
-        Me.cboFrecCorreo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboFrecCorreo.FormattingEnabled = True
-        Me.cboFrecCorreo.Items.AddRange(New Object() {"1", "2", "3", "4"})
-        Me.cboFrecCorreo.Location = New System.Drawing.Point(106, 45)
-        Me.cboFrecCorreo.Name = "cboFrecCorreo"
-        Me.cboFrecCorreo.Size = New System.Drawing.Size(40, 21)
-        Me.cboFrecCorreo.TabIndex = 11
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 16)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(96, 13)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Text = "Estado de Túneles"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(21, 48)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(79, 13)
-        Me.Label8.TabIndex = 10
-        Me.Label8.Text = "ENVIAR CADA"
-        '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "fam_descr"
@@ -453,23 +386,12 @@ Partial Class Frm_ConfProcesoTunel
         Me.DataGridViewTextBoxColumn7.Visible = False
         Me.DataGridViewTextBoxColumn7.Width = 80
         '
-        'cboAlertaDetencion
-        '
-        Me.cboAlertaDetencion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboAlertaDetencion.FormattingEnabled = True
-        Me.cboAlertaDetencion.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "12", "24"})
-        Me.cboAlertaDetencion.Location = New System.Drawing.Point(251, 143)
-        Me.cboAlertaDetencion.Name = "cboAlertaDetencion"
-        Me.cboAlertaDetencion.Size = New System.Drawing.Size(49, 21)
-        Me.cboAlertaDetencion.TabIndex = 14
-        '
         'Frm_ConfProcesoTunel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(1061, 555)
-        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -485,8 +407,6 @@ Partial Class Frm_ConfProcesoTunel
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -504,13 +424,6 @@ Partial Class Frm_ConfProcesoTunel
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents cboCantMuestras As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents txtDestinatariosCorreo As System.Windows.Forms.TextBox
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents cboFrecCorreo As System.Windows.Forms.ComboBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents dgrReglas As System.Windows.Forms.DataGridView
     Friend WithEvents btnEliminar As System.Windows.Forms.Button
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn

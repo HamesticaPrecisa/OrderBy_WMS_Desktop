@@ -10,7 +10,7 @@ Public Class Frm_AddEnvioEmail
     Private _vem1 As Integer = -1
 
 
-    Private Sub Btn_BuscaCliente_Click(sender As System.Object, e As System.EventArgs) Handles Btn_BuscaCliente.Click
+    Private Sub Btn_BuscaCliente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_BuscaCliente.Click
         CHEC = "0"
         Dim frm As New Lst_AyudaClientes
         frm.cliente = "SI"
@@ -36,7 +36,7 @@ Public Class Frm_AddEnvioEmail
             txtrsocial.Text = tabla.Rows(0)(1).ToString()
             txtgiro.Text = tabla.Rows(0)(2).ToString()
 
-           
+
 
 
             btn_agregarmail.Enabled = True
@@ -119,7 +119,7 @@ Public Class Frm_AddEnvioEmail
         Return _corr
     End Function
 
-    Private Sub Btn_Nuevo_Click(sender As System.Object, e As System.EventArgs) Handles Btn_Nuevo.Click
+    Private Sub Btn_Nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Nuevo.Click
         txtgiro.Text = ""
         txtrsocial.Text = ""
         txtrut.Text = ""
@@ -159,13 +159,29 @@ Public Class Frm_AddEnvioEmail
         grptiempo.Visible = False
         grptiempo.Enabled = False
         txtminutos.Enabled = False
+
+        ' VES ODCT 2019
+        rbtFrecManual.Enabled = True
+        rbtFrecRepetir.Enabled = True
+        rbtFrecManual.Checked = False
+        rbtFrecRepetir.Checked = True
+        txtFrec.Text = "1"
+        cboInterv.SelectedIndex = 0
+        txthora.Text = "08:00"
+        txtHoraH.Text = "08:00"
+
+        txtFrec.Enabled = True
+        cboInterv.Enabled = True
+        txtHoraH.Enabled = True
+        actualizarUIFrecuencia()
+
     End Sub
 
-    Private Sub Btn_Salir_Click(sender As System.Object, e As System.EventArgs) Handles Btn_Salir.Click
+    Private Sub Btn_Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Salir.Click
         Close()
     End Sub
 
-    Private Sub chkinterno_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkinterno.CheckedChanged
+    Private Sub chkinterno_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkinterno.CheckedChanged
         If chkinterno.Checked = True Then
             txtrsocial.Text = "INTERNO"
             txtgiro.Text = "ALMACENAMIENTO Y DEPOSITOS"
@@ -191,6 +207,14 @@ Public Class Frm_AddEnvioEmail
             _em1.Enabled = True
             btn_informes.Enabled = False
             btn_imagenes.Enabled = True
+
+            ' VES ODCT 2019
+            rbtFrecManual.Enabled = True
+            rbtFrecRepetir.Enabled = True
+            txtFrec.Enabled = True
+            cboInterv.Enabled = True
+            txtHoraH.Enabled = True
+            actualizarUIFrecuencia()
         Else
             txtgiro.Text = ""
             txtrsocial.Text = ""
@@ -231,10 +255,17 @@ Public Class Frm_AddEnvioEmail
             grptiempo.Visible = False
             grptiempo.Enabled = False
             txtminutos.Enabled = False
+
+            ' VES ODCT 2019
+            rbtFrecManual.Enabled = False
+            rbtFrecRepetir.Enabled = False
+            txtFrec.Enabled = False
+            cboInterv.Enabled = False
+            txtHoraH.Enabled = False
         End If
     End Sub
 
-    Private Sub chktodos_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chktodos.CheckedChanged
+    Private Sub chktodos_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chktodos.CheckedChanged
         If chktodos.Checked = True Then
             chklunes.Checked = True
             chkmartes.Checked = True
@@ -254,7 +285,7 @@ Public Class Frm_AddEnvioEmail
         End If
     End Sub
 
-    Private Sub cboinformes_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboinformes.SelectedIndexChanged
+    Private Sub cboinformes_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboinformes.SelectedIndexChanged
 
         Try
             If cboinformes.SelectedValue.ToString() <> "System.Data.DataRowView" Then
@@ -348,12 +379,21 @@ Public Class Frm_AddEnvioEmail
                 rdiactivado.Checked = False
             End Try
 
-            Dim sqlChk = "SELECT prg_Lunes,prg_martes,prg_miercoles,prg_jueves,prg_viernes, prg_sabado, prg_domingo, prg_hora, prg_emp, prg_min" +
+            Dim sqlChk = "SELECT prg_Lunes,prg_martes,prg_miercoles,prg_jueves,prg_viernes, prg_sabado, prg_domingo, prg_hora, prg_emp, prg_min, prg_frec, prg_interv, prg_horah" +
                          " FROM informes_programa WHERE prg_rut_cli='" + RutCliente + "' AND prg_inf_cod='" + id_informes + "'"
             Dim tablachk As DataTable = fnc.ListarTablasSQL(sqlChk)
             Dim contador As Integer = 0
 
             Try
+                ' VES ODCT 2019
+                Dim intervalo As Integer
+                intervalo = CInt(tablachk(0)(11))
+                txtFrec.Text = tablachk.Rows(0)(10)
+                cboInterv.SelectedIndex = IIf(intervalo < 4, intervalo, 0)
+                txtHoraH.Text = tablachk.Rows(0)(12)
+                rbtFrecRepetir.Checked = (intervalo < 4)
+                rbtFrecManual.Checked = (intervalo = 4)
+
                 If tablachk.Rows(0)(0) = "si" Then 'Lunes
                     chklunes.Checked = True
                     contador = contador + 1
@@ -416,6 +456,11 @@ Public Class Frm_AddEnvioEmail
                     btn_imagenes.Enabled = False
                     rdiactivado.Enabled = False
                     rdidesactivado.Enabled = False
+
+                    ' VES ODCT 2019
+                    txtFrec.Enabled = False
+                    cboInterv.Enabled = False
+                    txtHoraH.Text = "23:59"
                 Else
                     chklunes.Enabled = True
                     chkmartes.Enabled = True
@@ -429,6 +474,10 @@ Public Class Frm_AddEnvioEmail
                     btn_imagenes.Enabled = True
                     rdiactivado.Enabled = True
                     rdidesactivado.Enabled = True
+
+                    ' VES ODCT 2019
+                    txtFrec.Enabled = True
+                    cboInterv.Enabled = True
                 End If
 
                 If id_informes = "12" Then
@@ -455,7 +504,8 @@ Public Class Frm_AddEnvioEmail
             Dim estado As String
 
             verificarDias()
-            verificarHora()
+            verificarHora(txthora)
+            verificarHora(txtHoraH)
 
             If rdiactivado.Checked = True Then
                 estado = "Activado"
@@ -463,14 +513,23 @@ Public Class Frm_AddEnvioEmail
                 estado = "Desactivado"
             End If
 
+            Dim intervalo As Integer
+            intervalo = cboInterv.SelectedIndex
+            If rbtFrecManual.Checked = True Then
+                intervalo = 4  '' Manual
+            End If
+
+
             If chkinterno.Checked = True Then
                 sqlGuardar = " INSERT INTO informes_programa " +
-               "(prg_rut_cli, prg_inf_cod, prg_emp, prg_hora, prg_mail, prg_lunes, prg_martes, prg_miercoles, prg_jueves, prg_viernes, prg_sabado, prg_domingo, prg_estado, prg_min) " +
-               " VALUES ('" + RutCliente + "','" + codigoInforme + "','0','" + txthora.Text + "','" + RetornaCorreos(dtgcorreos) + "','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa + "','" + Dom + "','" + estado + "','" + txtminutos.Text + "')"
+               "(prg_rut_cli, prg_inf_cod, prg_emp, prg_hora, prg_mail, prg_lunes, prg_martes, prg_miercoles, prg_jueves, prg_viernes, prg_sabado, prg_domingo, prg_estado, prg_min, prg_frec, prg_interv, prg_horah) " +
+               " VALUES ('" + RutCliente + "','" + codigoInforme + "','0','" + txthora.Text + "','" + RetornaCorreos(dtgcorreos) + "','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa +
+               "','" + Dom + "','" + estado + "','" + txtminutos.Text + "'," + txtFrec.Text + "," + intervalo.ToString() + ",'" + txtHoraH.Text + "')"
             Else
                 sqlGuardar = " INSERT INTO informes_programa " +
-             "(prg_rut_cli, prg_inf_cod, prg_emp, prg_lunes, prg_martes, prg_miercoles, prg_jueves, prg_viernes, prg_sabado, prg_domingo, prg_estado, prg_min) " +
-             " VALUES ('" + RutCliente + "','" + codigoInforme + "','1','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa + "','" + Dom + "','" + estado + "','" + txtminutos.Text + "')"
+             "(prg_rut_cli, prg_inf_cod, prg_emp, prg_lunes, prg_martes, prg_miercoles, prg_jueves, prg_viernes, prg_sabado, prg_domingo, prg_estado, prg_min, prg_frec, prg_interv, prg_horah) " +
+             " VALUES ('" + RutCliente + "','" + codigoInforme + "','1','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa +
+             "','" + Dom + "','" + estado + "','" + txtminutos.Text + "'," + txtFrec.Text + "," + intervalo.ToString() + ",'" + txtHoraH.Text + "')"
             End If
 
             If fnc.MovimientoSQL(sqlGuardar) > 0 Then
@@ -527,23 +586,23 @@ Public Class Frm_AddEnvioEmail
 
     End Sub
 
-    Sub verificarHora()
+    Sub verificarHora(ByRef sender As MaskedTextBox)
         Try
-            If Trim(txthora.Text).Length = 5 Then
-                Dim hora As String = Replace(txthora.Text, ":", "")
+            If Trim(sender.Text).Length = 5 Then
+                Dim hora As String = Replace(sender.Text, ":", "")
                 Dim H As Integer = Convert.ToInt32(hora.Substring(0, 2))
                 Dim M As Integer = Convert.ToInt32(hora.Substring(2, 2))
 
                 If ((H < 0 Or H > 23) Or (M < 0 Or M > 59)) Then
-                    txthora.Text = "21:00"
+                    sender.Text = "21:00"
                 End If
 
             Else
-                txthora.Text = "00:00"
+                sender.Text = "00:00"
             End If
         Catch ex As FormatException
-            txthora.Text = "00:00"
-            MsgBox(txthora.Text)
+            sender.Text = "00:00"
+            MsgBox(sender.Text)
         End Try
 
 
@@ -557,7 +616,8 @@ Public Class Frm_AddEnvioEmail
             Dim estado As String
             Dim campo As String
             verificarDias()
-            verificarHora()
+            verificarHora(txthora)
+            verificarHora(txtHoraH)
 
 
             If rdiactivado.Checked = True Then
@@ -566,9 +626,18 @@ Public Class Frm_AddEnvioEmail
                 estado = "Desactivado"
             End If
 
+            Dim intervalo As Integer
+            intervalo = cboInterv.SelectedIndex
+            If rbtFrecManual.Checked = True Then
+                intervalo = 4  '' Manual
+            End If
+
+
             If chkinterno.Checked = True Then
                 sqlGuardar = "  UPDATE informes_programa SET prg_hora='" + txthora.Text + "' , prg_mail='" + RetornaCorreos(dtgcorreos) + "', prg_lunes='" + Lu + "', prg_martes='" + Ma + "'," +
-                         "prg_miercoles='" + Mi + "', prg_jueves='" + Ju + "', prg_viernes='" + Vi + "', prg_sabado='" + Sa + "', prg_domingo='" + Dom + "', prg_estado='" + estado + "', prg_min='" + txtminutos.Text + "' WHERE prg_rut_cli='" + RutCliente + "' AND prg_inf_cod='" + codigoInforme + "'"
+                         "prg_miercoles='" + Mi + "', prg_jueves='" + Ju + "', prg_viernes='" + Vi + "', prg_sabado='" + Sa + "', prg_domingo='" + Dom + "', prg_estado='" + estado + "', prg_min='" +
+                         txtminutos.Text + "', prg_frec=" + txtFrec.Text + ", prg_interv=" + intervalo.ToString() + ", prg_horah='" + txtHoraH.Text + "'" +
+                         "WHERE prg_rut_cli='" + RutCliente + "' AND prg_inf_cod='" + codigoInforme + "'"
             Else
 
                 If codigoInforme = "4" Then
@@ -600,7 +669,7 @@ Public Class Frm_AddEnvioEmail
         Dim valor = 0
         If chkinterno.Checked = True Then
 
-            If chklunes.Checked = False And chkmartes.Checked = False And chkmiercoles.Checked = False And chkjueves.Checked = False And
+            If rbtFrecRepetir.Checked = True And chklunes.Checked = False And chkmartes.Checked = False And chkmiercoles.Checked = False And chkjueves.Checked = False And
                chkviernes.Checked = False And chksabado.Checked = False And chkdomingo.Checked = False Then
                 MsgBox("Debe ingresar a lo menos 1 día", MsgBoxStyle.Critical, "Aviso")
                 valor += 1
@@ -618,7 +687,7 @@ Public Class Frm_AddEnvioEmail
                 Exit Function
             End If
 
-            Else
+        Else
             If rdiactivado.Checked = False And rdidesactivado.Checked = False Then
                 MsgBox("Debe ingresar un estado", MsgBoxStyle.Critical, "Aviso")
                 valor += 1
@@ -626,9 +695,9 @@ Public Class Frm_AddEnvioEmail
                 Exit Function
             End If
 
-            End If
+        End If
 
-            Return valor
+        Return valor
     End Function
 
     Sub buscarRegistro()
@@ -642,7 +711,7 @@ Public Class Frm_AddEnvioEmail
 
 
     End Sub
-    Private Sub Btn_Guardar_Click(sender As System.Object, e As System.EventArgs) Handles Btn_Guardar.Click
+    Private Sub Btn_Guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Guardar.Click
 
         If verificarPrograma(codigoInforme) = False Then
             'MsgBox("Se guardara")
@@ -676,11 +745,11 @@ Public Class Frm_AddEnvioEmail
 
     End Function
 
-    Private Sub Frm_AddEnvioEmail_FormClosing(sender As System.Object, e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub Frm_AddEnvioEmail_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         f_envioemail = False
     End Sub
 
-    Private Sub btn_agregarmail_Click(sender As System.Object, e As System.EventArgs) Handles btn_agregarmail.Click
+    Private Sub btn_agregarmail_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_agregarmail.Click
         If validar_Mail(_em1.Text) = True Then
             If _vem1 > -1 Then
                 dtgcorreos.Rows(_vem1).Cells(0).Value = _em1.Text
@@ -697,31 +766,31 @@ Public Class Frm_AddEnvioEmail
         End If
     End Sub
 
-    Private Sub btn_quitarmail_Click(sender As System.Object, e As System.EventArgs) Handles btn_quitarmail.Click
+    Private Sub btn_quitarmail_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_quitarmail.Click
         _vem1 = -1
         _em1.Text = ""
         _em1.Focus()
     End Sub
 
-    Private Sub dtgcorreos_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dtgcorreos.CellClick
+    Private Sub dtgcorreos_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dtgcorreos.CellClick
         If e.RowIndex > -1 AndAlso e.ColumnIndex = 1 Then
             dtgcorreos.Rows.RemoveAt(e.RowIndex)
         End If
     End Sub
 
-    Private Sub btn_informes_Click(sender As System.Object, e As System.EventArgs) Handles btn_informes.Click
+    Private Sub btn_informes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_informes.Click
         Dim f As Form
         f = Lst_Informes
         f.ShowDialog()
     End Sub
 
-    Private Sub btn_imagenes_Click(sender As System.Object, e As System.EventArgs) Handles btn_imagenes.Click
+    Private Sub btn_imagenes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_imagenes.Click
         Dim f As Form
         f = Frm_imagenesInformes
         f.ShowDialog()
     End Sub
 
-    Private Sub btn_pdf_Click(sender As System.Object, e As System.EventArgs) Handles btn_pdf.Click
+    Private Sub btn_pdf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_pdf.Click
 
         If txtrsocial.Text = "" Then
 
@@ -767,7 +836,81 @@ Public Class Frm_AddEnvioEmail
 
     End Sub
 
-    Private Sub Frm_AddEnvioEmail_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_AddEnvioEmail_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub rdidesactivado_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdidesactivado.CheckedChanged
+
+    End Sub
+
+    Private Sub lblhora_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+
+    '
+    '       VES OCT 2019
+    '       ACTUALIZA LA UI DE FRECUENCIA EN BASE A LAS
+    '       LAS OPCIONES SELECCIONADAS
+    '
+    Private Sub actualizarUIFrecuencia()
+        txtFrec.Visible = IIf(rbtFrecRepetir.Checked = True, True, False)
+        cboInterv.Visible = txtFrec.Visible
+        lblHoraD.Visible = txtFrec.Visible
+        txthora.Visible = txtFrec.Visible
+        lblHoraH.Visible = txtFrec.Visible
+        txtHoraH.Visible = txtFrec.Visible
+        chktodos.Visible = txtFrec.Visible
+        chklunes.Visible = txtFrec.Visible
+        chkmartes.Visible = txtFrec.Visible
+        chkmiercoles.Visible = txtFrec.Visible
+        chkjueves.Visible = txtFrec.Visible
+        chkviernes.Visible = txtFrec.Visible
+        chksabado.Visible = txtFrec.Visible
+        chkdomingo.Visible = txtFrec.Visible
+
+        If rbtFrecRepetir.Checked = True Then
+            Dim diario As Boolean
+            diario = IIf(cboInterv.SelectedIndex > 0 Or txtFrec.Text = "1", True, False)
+            chktodos.Visible = diario
+            chklunes.Visible = diario
+            chkmartes.Visible = diario
+            chkmiercoles.Visible = diario
+            chkjueves.Visible = diario
+            chkviernes.Visible = diario
+            chksabado.Visible = diario
+            chkdomingo.Visible = diario
+            If diario = False Then
+                chktodos.Checked = True
+            End If
+            If cboInterv.SelectedIndex = 0 Then
+                lblHoraH.Visible = False
+                txtHoraH.Visible = False
+                lblHoraD.Text = "a las"
+            Else
+                lblHoraH.Visible = True
+                txtHoraH.Visible = True
+                lblHoraD.Text = "entre las"
+            End If
+        End If
+
+
+    End Sub
+
+    Private Sub rbtRepetitivo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbtFrecRepetir.CheckedChanged
+        actualizarUIFrecuencia()
+    End Sub
+
+    Private Sub rbtFrecManual_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbtFrecManual.CheckedChanged
+        actualizarUIFrecuencia()
+    End Sub
+
+    Private Sub txtFrec_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFrec.TextChanged
+        actualizarUIFrecuencia()
+    End Sub
+
+    Private Sub cboInterv_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboInterv.SelectedIndexChanged
+        actualizarUIFrecuencia()
     End Sub
 End Class
