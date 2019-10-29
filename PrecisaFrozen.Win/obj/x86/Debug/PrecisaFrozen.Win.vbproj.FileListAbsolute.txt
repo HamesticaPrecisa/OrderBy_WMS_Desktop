@@ -855,7 +855,6 @@ Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\bin\Debug\ExpandableGrid
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\bin\Debug\MdiTabControl.pdb
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\bin\Debug\Interop.AcroPDFLib.dll
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\bin\Debug\AxInterop.AcroPDFLib.dll
-Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.vbprojResolveAssemblyReference.cache
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_ConfImpresoras.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_AyudaCamaras.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Lst_AyudaAuditoria.resources
