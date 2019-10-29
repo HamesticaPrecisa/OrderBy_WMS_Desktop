@@ -926,6 +926,22 @@ Row event argument class
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_GuiasPendTunel.Dt_GuiasPendTunelDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_GuiasPendTunel.Dt_GuiasPendTunelRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_GuiasPendTunel.Dt_GuiasPendTunelRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_GuiasPendTunel">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
 </member><member name="T:PrecisaFrozen.Win.Ds_StockAcumulado.AcumuladoDataTable">
 	<summary>
 Represents the strongly named DataTable class.

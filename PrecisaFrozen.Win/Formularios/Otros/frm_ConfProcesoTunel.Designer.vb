@@ -22,7 +22,7 @@ Partial Class Frm_ConfProcesoTunel
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.dgrReglas = New System.Windows.Forms.DataGridView()
@@ -57,10 +57,22 @@ Partial Class Frm_ConfProcesoTunel
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.cboAlertasTunel1 = New System.Windows.Forms.ComboBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cboAlertasTunel2 = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.cboAlertasTunel3 = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.dgrReglas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -100,9 +112,9 @@ Partial Class Frm_ConfProcesoTunel
         Me.dgrReglas.Name = "dgrReglas"
         Me.dgrReglas.ReadOnly = True
         Me.dgrReglas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        Me.dgrReglas.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        Me.dgrReglas.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.dgrReglas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgrReglas.Size = New System.Drawing.Size(655, 428)
         Me.dgrReglas.TabIndex = 5
@@ -386,12 +398,124 @@ Partial Class Frm_ConfProcesoTunel
         Me.DataGridViewTextBoxColumn7.Visible = False
         Me.DataGridViewTextBoxColumn7.Width = 80
         '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Label9)
+        Me.GroupBox4.Controls.Add(Me.cboAlertasTunel3)
+        Me.GroupBox4.Controls.Add(Me.Label15)
+        Me.GroupBox4.Controls.Add(Me.Label5)
+        Me.GroupBox4.Controls.Add(Me.cboAlertasTunel2)
+        Me.GroupBox4.Controls.Add(Me.Label8)
+        Me.GroupBox4.Controls.Add(Me.Label14)
+        Me.GroupBox4.Controls.Add(Me.cboAlertasTunel1)
+        Me.GroupBox4.Controls.Add(Me.Label10)
+        Me.GroupBox4.Controls.Add(Me.Label13)
+        Me.GroupBox4.Location = New System.Drawing.Point(22, 324)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(341, 197)
+        Me.GroupBox4.TabIndex = 10
+        Me.GroupBox4.TabStop = False
+        '
+        'cboAlertasTunel1
+        '
+        Me.cboAlertasTunel1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAlertasTunel1.FormattingEnabled = True
+        Me.cboAlertasTunel1.Items.AddRange(New Object() {"24", "18", "12", "6", "3", "2", "1", "0"})
+        Me.cboAlertasTunel1.Location = New System.Drawing.Point(140, 41)
+        Me.cboAlertasTunel1.Name = "cboAlertasTunel1"
+        Me.cboAlertasTunel1.Size = New System.Drawing.Size(40, 21)
+        Me.cboAlertasTunel1.TabIndex = 7
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(21, 45)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(106, 13)
+        Me.Label10.TabIndex = 6
+        Me.Label10.Text = "1RA ALERTA A LAS"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(6, 16)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(127, 13)
+        Me.Label13.TabIndex = 2
+        Me.Label13.Text = "Alertas de Inicio de Tunel"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(186, 45)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(45, 13)
+        Me.Label14.TabIndex = 15
+        Me.Label14.Text = "HORAS"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(185, 72)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(45, 13)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "HORAS"
+        '
+        'cboAlertasTunel2
+        '
+        Me.cboAlertasTunel2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAlertasTunel2.FormattingEnabled = True
+        Me.cboAlertasTunel2.Items.AddRange(New Object() {"24", "18", "12", "6", "3", "2", "1", "0"})
+        Me.cboAlertasTunel2.Location = New System.Drawing.Point(139, 68)
+        Me.cboAlertasTunel2.Name = "cboAlertasTunel2"
+        Me.cboAlertasTunel2.Size = New System.Drawing.Size(40, 21)
+        Me.cboAlertasTunel2.TabIndex = 17
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(20, 72)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(106, 13)
+        Me.Label8.TabIndex = 16
+        Me.Label8.Text = "2DA ALERTA A LAS"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(186, 101)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(45, 13)
+        Me.Label9.TabIndex = 21
+        Me.Label9.Text = "HORAS"
+        '
+        'cboAlertasTunel3
+        '
+        Me.cboAlertasTunel3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboAlertasTunel3.FormattingEnabled = True
+        Me.cboAlertasTunel3.Items.AddRange(New Object() {"24", "18", "12", "6", "3", "2", "1", "0"})
+        Me.cboAlertasTunel3.Location = New System.Drawing.Point(140, 97)
+        Me.cboAlertasTunel3.Name = "cboAlertasTunel3"
+        Me.cboAlertasTunel3.Size = New System.Drawing.Size(40, 21)
+        Me.cboAlertasTunel3.TabIndex = 20
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(21, 101)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(106, 13)
+        Me.Label15.TabIndex = 19
+        Me.Label15.Text = "3RA ALERTA A LAS"
+        '
         'Frm_ConfProcesoTunel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(1061, 555)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -407,6 +531,8 @@ Partial Class Frm_ConfProcesoTunel
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -444,4 +570,15 @@ Partial Class Frm_ConfProcesoTunel
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents cboAlertaInicioDemorado As System.Windows.Forms.ComboBox
     Friend WithEvents cboAlertaDetencion As System.Windows.Forms.ComboBox
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents cboAlertasTunel1 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents cboAlertasTunel3 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents cboAlertasTunel2 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 End Class

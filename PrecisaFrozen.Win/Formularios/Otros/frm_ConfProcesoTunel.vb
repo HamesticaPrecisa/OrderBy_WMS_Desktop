@@ -29,6 +29,12 @@ Public Class Frm_ConfProcesoTunel
                     cboAlertaInicioDemorado.Text = prfValue
                 Case "limAlertaDetencion"
                     cboAlertaDetencion.Text = prfValue
+                Case "alertasInicioTunel1"
+                    cboAlertasTunel1.Text = prfValue
+                Case "alertasInicioTunel2"
+                    cboAlertasTunel2.Text = prfValue
+                Case "alertasInicioTunel3"
+                    cboAlertasTunel3.Text = prfValue
             End Select
         Next
         requeryReglas()
@@ -155,5 +161,17 @@ Public Class Frm_ConfProcesoTunel
 
     Private Sub cboAlertaDetencion_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertaDetencion.SelectedIndexChanged
         savePref("ptech.tunel.limAlertaDetencion", cboAlertaInicioDemorado.Text)
+    End Sub
+
+    Private Sub cboAlertasTunel1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertasTunel1.SelectedIndexChanged
+        savePref("ptech.tunel.alertasInicioTunel1", cboAlertasTunel1.Text)
+    End Sub
+
+    Private Sub cboAlertasTunel2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertasTunel2.SelectedIndexChanged
+        savePref("ptech.tunel.alertasInicioTunel2", cboAlertasTunel2.Text)
+    End Sub
+
+    Private Sub cboAlertasTunel3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertasTunel3.SelectedIndexChanged
+        savePref("ptech.tunel.alertasInicioTunel3", cboAlertasTunel3.Text)
     End Sub
 End Class

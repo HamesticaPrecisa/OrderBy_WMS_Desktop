@@ -183,6 +183,11 @@
     <Compile Include="Controles\ProgressbarWithPercentage.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dataset\Ds_GuiasPendTunel.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\Ds_Productos.Designer.vb">
       <DependentUpon>Ds_Productos.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1074,6 +1079,12 @@
     <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.vb">
+      <DependentUpon>Rpt_ResumidoFecha.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ServiciosRec.vb">
       <DependentUpon>Rpt_ServiciosRec.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1152,6 +1163,12 @@
     <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_GuiasPendTunel.Designer.vb">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_GuiasPendTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.Designer.vb">
       <DependentUpon>Frm_horpedido.vb</DependentUpon>
     </Compile>
@@ -1204,6 +1221,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Rpt_EnvioCorreosInterno.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_GuiasPendTunel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_GuiasPendTunel.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.vb">
@@ -1408,12 +1431,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Rpt_AcumuladoContrato.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rpt_ResumidoFecha.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualCliente.vb">
@@ -2107,6 +2124,10 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.resx">
       <DependentUpon>Frm_AndenesAbrir.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_ResumidoFecha.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ServiciosRec.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_ServiciosRec.vb</LastGenOutput>
@@ -2148,6 +2169,9 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.resx">
       <DependentUpon>Frm_ControlCamionRec.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_GuiasPendTunel.resx">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.resx">
       <DependentUpon>Frm_horpedido.vb</DependentUpon>
     </EmbeddedResource>
@@ -2178,6 +2202,10 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreosInterno.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_EnvioCorreosInterno1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_GuiasPendTunel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_GuiasPendTunel.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2295,10 +2323,6 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_AcumuladoContrato.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_AcumuladoContrato.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Rpt_ResumidoFecha.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualCliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2443,6 +2467,17 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram2.cd" />
+    <None Include="Dataset\Ds_GuiasPendTunel.xsc">
+      <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_GuiasPendTunel.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_GuiasPendTunel.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_GuiasPendTunel.xss">
+      <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
+    </None>
     <None Include="Dataset\Ds_Productos.xsc">
       <DependentUpon>Ds_Productos.xsd</DependentUpon>
     </None>
@@ -2542,6 +2577,8 @@
     <None Include="Dataset\Imag.xss">
       <DependentUpon>Imag.xsd</DependentUpon>
     </None>
+    <None Include="Formularios\Gestion\Reportes\Otros\CrystalReport1.mht" />
+    <None Include="Formularios\Gestion\Reportes\Otros\Rpt_GuiasPendTunel_old.rpt" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

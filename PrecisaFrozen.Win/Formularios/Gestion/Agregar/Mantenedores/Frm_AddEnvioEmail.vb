@@ -526,10 +526,23 @@ Public Class Frm_AddEnvioEmail
                " VALUES ('" + RutCliente + "','" + codigoInforme + "','0','" + txthora.Text + "','" + RetornaCorreos(dtgcorreos) + "','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa +
                "','" + Dom + "','" + estado + "','" + txtminutos.Text + "'," + txtFrec.Text + "," + intervalo.ToString() + ",'" + txtHoraH.Text + "')"
             Else
+                Dim campo As String
+                If codigoInforme = "4" Then
+                    campo = "cli_mail" 'PEDIDOS WEB
+                ElseIf codigoInforme = "1" Then
+                    campo = "CLI_CRYD" 'RECEPCION CHEKLIST DESPACHO
+                ElseIf codigoInforme = "7" Then
+                    campo = "Mail2" 'PEDIDOS PRE DESPACHO
+                ElseIf codigoInforme = "5" Then
+                    campo = "CLI_PVENC" 'VENCIDOS
+                Else
+                    campo = "cli_mail"
+                End If
                 sqlGuardar = " INSERT INTO informes_programa " +
-             "(prg_rut_cli, prg_inf_cod, prg_emp, prg_lunes, prg_martes, prg_miercoles, prg_jueves, prg_viernes, prg_sabado, prg_domingo, prg_estado, prg_min, prg_frec, prg_interv, prg_horah) " +
-             " VALUES ('" + RutCliente + "','" + codigoInforme + "','1','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa +
-             "','" + Dom + "','" + estado + "','" + txtminutos.Text + "'," + txtFrec.Text + "," + intervalo.ToString() + ",'" + txtHoraH.Text + "')"
+                             "(prg_rut_cli, prg_inf_cod, prg_emp, prg_hora, prg_lunes, prg_martes, prg_miercoles, prg_jueves, prg_viernes, prg_sabado, prg_domingo, prg_estado, prg_min, prg_frec, prg_interv, prg_horah) " +
+                             " VALUES ('" + RutCliente + "','" + codigoInforme + "','1','" + txthora.Text + "','" + Lu + "','" + Ma + "','" + Mi + "','" + Ju + "','" + Vi + "','" + Sa +
+                             "','" + Dom + "','" + estado + "','" + txtminutos.Text + "'," + txtFrec.Text + "," + intervalo.ToString() + ",'" + txtHoraH.Text + "');" +
+                             "UPDATE Clientes SET " + campo + "='" + RetornaCorreos(dtgcorreos) + "' WHERE cli_rut='" + RutCliente + "';"
             End If
 
             If fnc.MovimientoSQL(sqlGuardar) > 0 Then

@@ -35,6 +35,8 @@ Partial Class Frm_AddEnvioEmail
         Me.rdidesactivado = New System.Windows.Forms.RadioButton()
         Me.rdiactivado = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.rbtFrecManual = New System.Windows.Forms.RadioButton()
+        Me.rbtFrecRepetir = New System.Windows.Forms.RadioButton()
         Me.txtHoraH = New System.Windows.Forms.MaskedTextBox()
         Me.chktodos = New System.Windows.Forms.CheckBox()
         Me.lblHoraH = New System.Windows.Forms.Label()
@@ -71,8 +73,6 @@ Partial Class Frm_AddEnvioEmail
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Btn_BuscaCliente = New System.Windows.Forms.Button()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rbtFrecManual = New System.Windows.Forms.RadioButton()
-        Me.rbtFrecRepetir = New System.Windows.Forms.RadioButton()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         Me.grptiempo.SuspendLayout()
@@ -105,7 +105,7 @@ Partial Class Frm_AddEnvioEmail
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Location = New System.Drawing.Point(14, 44)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(725, 665)
+        Me.GroupBox3.Size = New System.Drawing.Size(740, 665)
         Me.GroupBox3.TabIndex = 38
         Me.GroupBox3.TabStop = False
         '
@@ -266,6 +266,30 @@ Partial Class Frm_AddEnvioEmail
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Frecuencia"
         '
+        'rbtFrecManual
+        '
+        Me.rbtFrecManual.AutoSize = True
+        Me.rbtFrecManual.Enabled = False
+        Me.rbtFrecManual.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtFrecManual.Location = New System.Drawing.Point(11, 23)
+        Me.rbtFrecManual.Name = "rbtFrecManual"
+        Me.rbtFrecManual.Size = New System.Drawing.Size(60, 17)
+        Me.rbtFrecManual.TabIndex = 0
+        Me.rbtFrecManual.Text = "Manual"
+        Me.rbtFrecManual.UseVisualStyleBackColor = True
+        '
+        'rbtFrecRepetir
+        '
+        Me.rbtFrecRepetir.AutoSize = True
+        Me.rbtFrecRepetir.Enabled = False
+        Me.rbtFrecRepetir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtFrecRepetir.Location = New System.Drawing.Point(11, 51)
+        Me.rbtFrecRepetir.Name = "rbtFrecRepetir"
+        Me.rbtFrecRepetir.Size = New System.Drawing.Size(91, 17)
+        Me.rbtFrecRepetir.TabIndex = 1
+        Me.rbtFrecRepetir.Text = "Ejecutar cada"
+        Me.rbtFrecRepetir.UseVisualStyleBackColor = True
+        '
         'txtHoraH
         '
         Me.txtHoraH.Enabled = False
@@ -353,6 +377,7 @@ Partial Class Frm_AddEnvioEmail
         '
         'cboInterv
         '
+        Me.cboInterv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboInterv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboInterv.FormattingEnabled = True
         Me.cboInterv.Items.AddRange(New Object() {"dias", "horas", "minutos"})
@@ -676,30 +701,6 @@ Partial Class Frm_AddEnvioEmail
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 340
-        '
-        'rbtFrecManual
-        '
-        Me.rbtFrecManual.AutoSize = True
-        Me.rbtFrecManual.Enabled = False
-        Me.rbtFrecManual.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbtFrecManual.Location = New System.Drawing.Point(11, 23)
-        Me.rbtFrecManual.Name = "rbtFrecManual"
-        Me.rbtFrecManual.Size = New System.Drawing.Size(60, 17)
-        Me.rbtFrecManual.TabIndex = 0
-        Me.rbtFrecManual.Text = "Manual"
-        Me.rbtFrecManual.UseVisualStyleBackColor = True
-        '
-        'rbtFrecRepetir
-        '
-        Me.rbtFrecRepetir.AutoSize = True
-        Me.rbtFrecRepetir.Enabled = False
-        Me.rbtFrecRepetir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbtFrecRepetir.Location = New System.Drawing.Point(11, 51)
-        Me.rbtFrecRepetir.Name = "rbtFrecRepetir"
-        Me.rbtFrecRepetir.Size = New System.Drawing.Size(91, 17)
-        Me.rbtFrecRepetir.TabIndex = 1
-        Me.rbtFrecRepetir.Text = "Ejecutar cada"
-        Me.rbtFrecRepetir.UseVisualStyleBackColor = True
         '
         'Label6
         '

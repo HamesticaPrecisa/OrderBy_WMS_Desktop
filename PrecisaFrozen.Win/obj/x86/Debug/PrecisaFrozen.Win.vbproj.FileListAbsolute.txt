@@ -1052,3 +1052,4 @@ Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFro
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.vbproj.GenerateResource.Cache
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.exe.manifest
 Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.application
+Z:\Work\Fuentes\NOI\DEV\ptech\desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_GuiasPendTunel.resources

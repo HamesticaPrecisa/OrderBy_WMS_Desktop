@@ -66,6 +66,366 @@ Public Class Frm_Principal
     End Sub
 #End Region
 
+
+    Private Sub Frm_Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        '  CONECTARVARI = "LOCAL"  
+        InfoUsuario.Text = "001"
+        If Not My.Computer.Name = " PROGRAMACION-PC" Then
+            Presentacion.ShowDialog()
+
+            Frm_InicioSesion.ShowDialog()
+
+        Else
+            veri_conn.Start()
+            Timer1.Start()
+            verificaPrivilegios()
+            VerifConectados.Start()
+            PictureBox1.Image = Nothing
+            cargaimg()
+
+        End If
+        'Odbc()
+        nuevoodbc()
+        If File.Exists("C:\Imagenlogo.jpg") Then
+            My.Computer.FileSystem.DeleteFile("C:\Imagenlogo.jpg")
+        End If
+        If File.Exists("C:\Windows\Imagenlogo.jpg") Then
+
+            My.Computer.FileSystem.DeleteFile("C:\Windows\Imagenlogo.jpg")
+        End If
+
+
+
+
+        Dim strr As String = "1"
+
+        'Buscar Puerto COM Lector RFID
+        Dim pathCOM = Directory.GetCurrentDirectory.Trim & "\RFIDCOMPORT.txt"
+        'MessageBox.Show(pathCOM)
+
+        If (File.Exists(pathCOM)) Then
+            Using reader As New StreamReader(pathCOM)
+                PuertoRFID = reader.ReadLine().Trim
+            End Using
+            'Else
+            '    MessageBox.Show("No existe archivo!")
+        End If
+        'Fin buscar Puerto COM Lector RFID
+
+
+        'veri_conn.Start()
+        'Timer1.Start()
+        'verificaPrivilegios()
+        'VerifConectados.Start()
+        'PictureBox1.Image = Nothing
+        'cargaimg()
+        'lblsucursal.Text = sucursalglo
+    End Sub
+
+
+    Sub verificaPrivilegios()
+
+        For Each e As ToolStripMenuItem In MenuStrip1.Items
+            'Console.WriteLine(e.Text)
+            If e.Text <> "&Inicio" Then
+                Console.WriteLine(e.GetType)
+
+                For Each a As ToolStripItem In e.DropDownItems
+                    If e.GetType.ToString() = "System.Windows.Forms.ToolStripMenuItem" Then
+                        If a.Name <> "SeleccionarImpresoras" AndAlso a.Name <> "UltimaActualizaciones" Then
+                            a.Enabled = False
+                            Console.WriteLine(a.Name)
+                        End If
+                    End If
+                Next
+
+            End If
+        Next
+
+
+
+        'Exit Sub
+
+        Dim sql As String = ""
+        Dim tabla As DataTable = Nothing
+
+
+        sql = "SELECT Spriv_Id, Spriv_PrivId FROM UsuariosFunciones AS uf ,PrivilegiosSubSeccion AS us , Usuarios " +
+              "WHERE uf.Usu_Rut = Usuarios.usu_rut AND uf.Usu_SprivId = us.Spriv_Id  AND usu_codigo='" + InfoUsuario.Text + "'"
+
+        tabla = fnc.ListarTablasSQL(sql)
+
+        For i As Integer = 0 To tabla.Rows.Count - 1
+            Console.WriteLine(tabla.Rows(i)(0).ToString() + " " + tabla.Rows(i)(1).ToString())
+            If tabla.Rows(i)(1).ToString() = "001" Then
+                M2_Productos.Enabled = True
+                M3_Recepcion.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "002" Then
+                M2_Productos.Enabled = True
+                M3_Predespacho.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "003" Then
+                M2_Productos.Enabled = True
+                M3_Despacho.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "004" Then
+                M2_Clientes.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "005" Then
+                M2_Envases.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "006" Then
+                M2_Camaras.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "007" Then
+                M2_Choferes.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "008" Then
+                M2_MSoportantes.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "009" Then
+                M2_Familias.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "010" Then
+                M2_Medidas.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "011" Then
+                M2_MProductos.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "012" Then
+                M2_Origenes.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "014" Then
+                M2_PerfilesUsuario.Enabled = True
+                M3_Usuarios.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "039" Then
+                M3_Contratos.Enabled = True
+            End If
+
+            'If tabla.Rows(i)(0).ToString() = "016" Then
+            '    M3_Servicios.Enabled = True
+            'End If
+
+            If tabla.Rows(i)(0).ToString() = "037" Then
+                M2_Soportantes.Enabled = True
+                M3_Posicionamiento.Enabled = True
+            End If
+
+            'If tabla.Rows(i)(0).ToString() = "042" Then
+            '    M3_Servicios.Enabled = True
+            'End If
+
+            If tabla.Rows(i)(0).ToString() = "043" Then
+                M2_Transportes.Enabled = True
+                M3_RegistroDeCamiones.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "044" Then
+                M2_Transportes.Enabled = True
+                M3_MovimientoCamiones.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "045" Then
+                M2_Transportes.Enabled = True
+                M3_HistorialCamiones.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "047" Then
+                M2_StockDetallado.Enabled = True
+                M2_StockResumido.Enabled = True
+                M2_StockAcumulado.Enabled = True
+                '  DemoTomaTempToolStripMenuItem.Enabled = True
+                'InformeCajasRepetidasToolStripMenuItem.Enabled = True
+                ToolStripMenuItem1.Enabled = True
+                InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem.Enabled = True
+                IinformeCuadraturaMovimientosToolStripMenuItem.Enabled = True
+                InformePackingListToolStripMenuItem.Enabled = True
+                ControlCamionesMovimientosToolStripMenuItem.Enabled = True
+                InformaAperturaCierreAndenesToolStripMenuItem.Enabled = True
+                M2_DocumentosEmitidos.Enabled = True
+                M2_Trazabilidad.Enabled = True
+                M2_TrazabilidadGuia.Enabled = True
+                M2_TrazabilidadProductos.Enabled = True
+                IngresoYSalidaTunelesToolStripMenuItem.Enabled = True
+                M2_PedidosMensual.Enabled = True
+                M2_PosicionesSoportantes.Enabled = True
+                M2_CapacidadDeCamaras.Enabled = True
+                M2_PosicionesLibres.Enabled = True
+                InformeSoportantesEnCamarasToolStripMenuItem.Enabled = True
+                M2_RevisionCamaras.Enabled = True
+                M2_SoportantesVencidos.Enabled = True
+                M2_SoportantesPorVencer.Enabled = True
+                M2_ProcesosSinFinalizar.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "049" Then
+                M2_ImpresionDeEtiquetas.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "055" Then
+                M2_DesbloquearSoportantes.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "056" Then
+                M2_Etiquetado.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "065" Then
+                M2_Pedidos.Enabled = True
+            End If
+
+            'If tabla.Rows(i)(1).ToString() = "028" Then
+            '    M3_Cotizaciones.Enabled = True
+            'End If
+
+            '*** MODULO CONTENEDORES ***
+
+            If RealizarAccion("024", "072", False) = False AndAlso RealizarAccion("024", "073", False) = False Then
+                M2_Contenedores.Enabled = False
+            Else
+                M2_Contenedores.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "074" Then
+                M2_IngresoRCP.Enabled = True
+
+            End If
+
+            'If tabla.Rows(i)(0).ToString() = "068" Then
+            '    M2_IngresoDeCobrosF.Enabled = True
+            'End If
+
+            'If tabla.Rows(i)(0).ToString() = "069" Then
+            '    M2_IngresoDeCobrosA.Enabled = True
+            'End If
+
+            If tabla.Rows(i)(0).ToString() = "090" Then
+                M2_PerfilesUsuario.Enabled = True
+                M3_Categorias.Enabled = True
+            End If
+
+            If tabla.Rows(i)(1).ToString() = "022" Then
+                M2_Pedidos.Enabled = True
+                M3_ListadoDePedidos.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "091" Then
+                M2_PerfilesUsuario.Enabled = True
+                M3_SubCategorias.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "092" Then
+                M2_Mantenedores.Enabled = True
+                '  M3_Monedas.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "093" Then
+                '   M2_Facturacion.Enabled = True
+                '  M3_Facturacion.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "094" Then
+                BloqueoDeSoportantes.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "100" Then
+                CONTROLHOR.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "101" Then
+                InformeSoportantesParaIngresoTúnelToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "102" Then
+                ControlServiciosExtraordinariosRecepcionToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "104" Then
+                InformePedidosPorUsuarioToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "105" Then
+                EnvioDeEmailToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "106" Then
+                InformeToneladasKilosToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "107" Then
+                PosicionesToolStripMenuItem.Enabled = True
+                ProcesoJibiaToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "108" Then
+                ProcesoJibiaToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "109" Then
+                InformePalletsMalPosicionadosToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "110" Then
+                SugerenciasAlmacenamientoToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "112" Then
+                ConfiguraciónToolStripMenuItem.Enabled = True
+                CamarasPlanoToolStripMenuItem.Enabled = True
+                Plano2DToolStripMenuItem.Enabled = True
+                ReglasAlmacenamientoToolStripMenuItem.Enabled = True
+                PosicionesParaPickingToolStripMenuItem.Enabled = True
+                FamiliasNoMezclablesToolStripMenuItem.Enabled = True
+                ProgramarAuditoriasToolStripMenuItem.Enabled = True
+                ' InformePosicionesToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "118" Then
+                InformePosicionesToolStripMenuItem.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "114" Then
+
+                TiempoTramosPedidosToolStripMenuItem.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "116" Then
+
+                EtiquetaClientesToolStripMenuItem.Enabled = True
+            End If
+
+            If tabla.Rows(i)(0).ToString() = "117" Then
+
+                ConfiguracionesGeneralesToolStripMenuItem.Enabled = True
+            End If
+            '
+
+            If tabla.Rows(i)(0).ToString() = "120" Then
+                M2_PlanRece.Enabled = True
+            End If
+
+            ' VES Sep 2019
+            If tabla.Rows(i)(1).ToString() = "101" Then
+                M2_Mercados.Enabled = True
+            End If
+
+            ' VES Oct 2019
+            If tabla.Rows(i)(0).ToString() = "204" Then
+                GuiasPorEntrarATunelToolStripMenuItem.Enabled = True
+            End If
+        Next
+
+        menNumDia.Visible = True
+        menNumDia.Enabled = True
+        'M2_Camaras.Enabled = True ' VES Sep 2019 REMOVE
+        'M2_Camaras.Visible = True ' VES SEp 2019 REMOVE
+        'GuiasPorEntrarATunelToolStripMenuItem.Enabled = True
+        'GuiasPorEntrarATunelToolStripMenuItem.Visible = True
+    End Sub
+
     Private Sub MinimizaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MinimizaToolStripMenuItem.Click
         If minimizar_barra = True Then
             minimizar_barra = False
@@ -492,60 +852,7 @@ Public Class Frm_Principal
 
 
 
-    Private Sub Frm_Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        '  CONECTARVARI = "LOCAL"  
-        InfoUsuario.Text = "001"
-        If Not My.Computer.Name = " PROGRAMACION-PC" Then
-            Presentacion.ShowDialog()
-
-            Frm_InicioSesion.ShowDialog()
-
-        Else
-            veri_conn.Start()
-            Timer1.Start()
-            verificaPrivilegios()
-            VerifConectados.Start()
-            PictureBox1.Image = Nothing
-            cargaimg()
-
-        End If
-        'Odbc()
-        nuevoodbc()
-        If File.Exists("C:\Imagenlogo.jpg") Then
-            My.Computer.FileSystem.DeleteFile("C:\Imagenlogo.jpg")
-        End If
-        If File.Exists("C:\Windows\Imagenlogo.jpg") Then
-
-            My.Computer.FileSystem.DeleteFile("C:\Windows\Imagenlogo.jpg")
-        End If
-
-
-
-
-        Dim strr As String = "1"
-
-        'Buscar Puerto COM Lector RFID
-        Dim pathCOM = Directory.GetCurrentDirectory.Trim & "\RFIDCOMPORT.txt"
-        'MessageBox.Show(pathCOM)
-
-        If (File.Exists(pathCOM)) Then
-            Using reader As New StreamReader(pathCOM)
-                PuertoRFID = reader.ReadLine().Trim
-            End Using
-            'Else
-            '    MessageBox.Show("No existe archivo!")
-        End If
-        'Fin buscar Puerto COM Lector RFID
-
-
-        'veri_conn.Start()
-        'Timer1.Start()
-        'verificaPrivilegios()
-        'VerifConectados.Start()
-        'PictureBox1.Image = Nothing
-        'cargaimg()
-        'lblsucursal.Text = sucursalglo
-    End Sub
+  
 
     Private Function GetReference(ByVal nombreControl As String) As Control
 
@@ -561,301 +868,7 @@ Public Class Frm_Principal
     End Function
 
 
-    Sub verificaPrivilegios()
-
-        For Each e As ToolStripMenuItem In MenuStrip1.Items
-            'Console.WriteLine(e.Text)
-            If e.Text <> "&Inicio" Then
-                Console.WriteLine(e.GetType)
-
-                For Each a As ToolStripItem In e.DropDownItems
-                    If e.GetType.ToString() = "System.Windows.Forms.ToolStripMenuItem" Then
-                        If a.Name <> "SeleccionarImpresoras" AndAlso a.Name <> "UltimaActualizaciones" Then
-                            a.Enabled = False
-                            Console.WriteLine(a.Name)
-                        End If
-                    End If
-                Next
-
-            End If
-        Next
-
-
-
-        'Exit Sub
-
-        Dim sql As String = ""
-        Dim tabla As DataTable = Nothing
-
-
-        sql = "SELECT Spriv_Id, Spriv_PrivId FROM UsuariosFunciones AS uf ,PrivilegiosSubSeccion AS us , Usuarios " +
-              "WHERE uf.Usu_Rut = Usuarios.usu_rut AND uf.Usu_SprivId = us.Spriv_Id  AND usu_codigo='" + InfoUsuario.Text + "'"
-
-        tabla = fnc.ListarTablasSQL(sql)
-
-        For i As Integer = 0 To tabla.Rows.Count - 1
-            Console.WriteLine(tabla.Rows(i)(0).ToString() + " " + tabla.Rows(i)(1).ToString())
-            If tabla.Rows(i)(1).ToString() = "001" Then
-                M2_Productos.Enabled = True
-                M3_Recepcion.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "002" Then
-                M2_Productos.Enabled = True
-                M3_Predespacho.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "003" Then
-                M2_Productos.Enabled = True
-                M3_Despacho.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "004" Then
-                M2_Clientes.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "005" Then
-                M2_Envases.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "006" Then
-                M2_Camaras.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "007" Then
-                M2_Choferes.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "008" Then
-                M2_MSoportantes.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "009" Then
-                M2_Familias.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "010" Then
-                M2_Medidas.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "011" Then
-                M2_MProductos.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "012" Then
-                M2_Origenes.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "014" Then
-                M2_PerfilesUsuario.Enabled = True
-                M3_Usuarios.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "039" Then
-                M3_Contratos.Enabled = True
-            End If
-
-            'If tabla.Rows(i)(0).ToString() = "016" Then
-            '    M3_Servicios.Enabled = True
-            'End If
-
-            If tabla.Rows(i)(0).ToString() = "037" Then
-                M2_Soportantes.Enabled = True
-                M3_Posicionamiento.Enabled = True
-            End If
-
-            'If tabla.Rows(i)(0).ToString() = "042" Then
-            '    M3_Servicios.Enabled = True
-            'End If
-
-            If tabla.Rows(i)(0).ToString() = "043" Then
-                M2_Transportes.Enabled = True
-                M3_RegistroDeCamiones.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "044" Then
-                M2_Transportes.Enabled = True
-                M3_MovimientoCamiones.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "045" Then
-                M2_Transportes.Enabled = True
-                M3_HistorialCamiones.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "047" Then
-                M2_StockDetallado.Enabled = True
-                M2_StockResumido.Enabled = True
-                M2_StockAcumulado.Enabled = True
-                '  DemoTomaTempToolStripMenuItem.Enabled = True
-                'InformeCajasRepetidasToolStripMenuItem.Enabled = True
-                ToolStripMenuItem1.Enabled = True
-                InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem.Enabled = True
-                IinformeCuadraturaMovimientosToolStripMenuItem.Enabled = True
-                InformePackingListToolStripMenuItem.Enabled = True
-                ControlCamionesMovimientosToolStripMenuItem.Enabled = True
-                InformaAperturaCierreAndenesToolStripMenuItem.Enabled = True
-                M2_DocumentosEmitidos.Enabled = True
-                M2_Trazabilidad.Enabled = True
-                M2_TrazabilidadGuia.Enabled = True
-                M2_TrazabilidadProductos.Enabled = True
-                IngresoYSalidaTunelesToolStripMenuItem.Enabled = True
-                M2_PedidosMensual.Enabled = True
-                M2_PosicionesSoportantes.Enabled = True
-                M2_CapacidadDeCamaras.Enabled = True
-                M2_PosicionesLibres.Enabled = True
-                InformeSoportantesEnCamarasToolStripMenuItem.Enabled = True
-                M2_RevisionCamaras.Enabled = True
-                M2_SoportantesVencidos.Enabled = True
-                M2_SoportantesPorVencer.Enabled = True
-                M2_ProcesosSinFinalizar.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "049" Then
-                M2_ImpresionDeEtiquetas.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "055" Then
-                M2_DesbloquearSoportantes.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "056" Then
-                M2_Etiquetado.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "065" Then
-                M2_Pedidos.Enabled = True
-            End If
-
-            'If tabla.Rows(i)(1).ToString() = "028" Then
-            '    M3_Cotizaciones.Enabled = True
-            'End If
-
-            '*** MODULO CONTENEDORES ***
-
-            If RealizarAccion("024", "072", False) = False AndAlso RealizarAccion("024", "073", False) = False Then
-                M2_Contenedores.Enabled = False
-            Else
-                M2_Contenedores.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "074" Then
-                M2_IngresoRCP.Enabled = True
-
-            End If
-
-            'If tabla.Rows(i)(0).ToString() = "068" Then
-            '    M2_IngresoDeCobrosF.Enabled = True
-            'End If
-
-            'If tabla.Rows(i)(0).ToString() = "069" Then
-            '    M2_IngresoDeCobrosA.Enabled = True
-            'End If
-
-            If tabla.Rows(i)(0).ToString() = "090" Then
-                M2_PerfilesUsuario.Enabled = True
-                M3_Categorias.Enabled = True
-            End If
-
-            If tabla.Rows(i)(1).ToString() = "022" Then
-                M2_Pedidos.Enabled = True
-                M3_ListadoDePedidos.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "091" Then
-                M2_PerfilesUsuario.Enabled = True
-                M3_SubCategorias.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "092" Then
-                M2_Mantenedores.Enabled = True
-                '  M3_Monedas.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "093" Then
-                '   M2_Facturacion.Enabled = True
-                '  M3_Facturacion.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "094" Then
-                BloqueoDeSoportantes.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "100" Then
-                CONTROLHOR.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "101" Then
-                InformeSoportantesParaIngresoTúnelToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "102" Then
-                ControlServiciosExtraordinariosRecepcionToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "104" Then
-                InformePedidosPorUsuarioToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "105" Then
-                EnvioDeEmailToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "106" Then
-                InformeToneladasKilosToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "107" Then
-                PosicionesToolStripMenuItem.Enabled = True
-                ProcesoJibiaToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "108" Then
-                ProcesoJibiaToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "109" Then
-                InformePalletsMalPosicionadosToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "110" Then
-                SugerenciasAlmacenamientoToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "112" Then
-                ConfiguraciónToolStripMenuItem.Enabled = True
-                CamarasPlanoToolStripMenuItem.Enabled = True
-                Plano2DToolStripMenuItem.Enabled = True
-                ReglasAlmacenamientoToolStripMenuItem.Enabled = True
-                PosicionesParaPickingToolStripMenuItem.Enabled = True
-                FamiliasNoMezclablesToolStripMenuItem.Enabled = True
-                ProgramarAuditoriasToolStripMenuItem.Enabled = True
-                ' InformePosicionesToolStripMenuItem.Enabled = True
-            End If
-            If tabla.Rows(i)(0).ToString() = "118" Then
-                InformePosicionesToolStripMenuItem.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "114" Then
-
-                TiempoTramosPedidosToolStripMenuItem.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "116" Then
-
-                EtiquetaClientesToolStripMenuItem.Enabled = True
-            End If
-
-            If tabla.Rows(i)(0).ToString() = "117" Then
-
-                ConfiguracionesGeneralesToolStripMenuItem.Enabled = True
-            End If
-            '
-
-            If tabla.Rows(i)(0).ToString() = "120" Then
-                M2_PlanRece.Enabled = True
-            End If
-
-            ' VES Sep 2019
-            If tabla.Rows(i)(1).ToString() = "101" Then
-                M2_Mercados.Enabled = True
-            End If
-        Next
-
-        menNumDia.Visible = True
-        menNumDia.Enabled = True
-        M2_Camaras.Enabled = True ' VES Sep 2019 REMOVE
-        M2_Camaras.Visible = True ' VES SEp 2019 REMOVE
-    End Sub
+ 
 
     Private Sub Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Salir.Click
         Me.Close()
@@ -1867,6 +1880,17 @@ Public Class Frm_Principal
             f_confTunel = True
         Else
             TabControl1.TabPages(Frm_ConfProcesoTunel).Select()
+        End If
+    End Sub
+
+    Private Sub GuiasPorEntrarATunelToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GuiasPorEntrarATunelToolStripMenuItem.Click
+        If f_guiasPendTunel = False Then
+            Dim f As Form
+            f = Frm_GuiasPendTunel
+            TabControl1.TabPages.Add(f)
+            f_guiasPendTunel = True
+        Else
+            TabControl1.TabPages(Frm_GuiasPendTunel).Select()
         End If
     End Sub
 End Class

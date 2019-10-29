@@ -91,6 +91,8 @@
     Public f_NumDia As Boolean = False
     Public f_bloqDias As Boolean = False
     Public f_actWms As Boolean = False
+    Public f_guiasPendTunel As Boolean = False
+
     'PROCESOS
     Public f_procdesbloq As Boolean = False
     Public f_etiquetado As Boolean = False
