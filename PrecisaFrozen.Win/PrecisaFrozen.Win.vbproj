@@ -1163,12 +1163,6 @@
     <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_GuiasPendTunel.Designer.vb">
-      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_GuiasPendTunel.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.Designer.vb">
       <DependentUpon>Frm_horpedido.vb</DependentUpon>
     </Compile>
@@ -1497,6 +1491,18 @@
       <DependentUpon>TrazabilidadCaja.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.Designer.vb">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.Designer.vb">
+      <DependentUpon>Frm_Tuneles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Otros\ayudaNEW.Designer.vb">
@@ -2169,9 +2175,6 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_ControlCamionRec.resx">
       <DependentUpon>Frm_ControlCamionRec.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_GuiasPendTunel.resx">
-      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Frm_horpedido.resx">
       <DependentUpon>Frm_horpedido.vb</DependentUpon>
     </EmbeddedResource>
@@ -2364,6 +2367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.resx">
       <DependentUpon>TrazabilidadCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.resx">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.resx">
+      <DependentUpon>Frm_Tuneles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\ayudaNEW.resx">
       <DependentUpon>ayudaNEW.vb</DependentUpon>

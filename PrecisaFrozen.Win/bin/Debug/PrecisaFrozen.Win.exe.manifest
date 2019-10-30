@@ -150,7 +150,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pnY3KYWJTJFKQL9ZQzQPe708U/M=</dsig:DigestValue>
+        <dsig:DigestValue>4NSCdpdtNj8NLkbSfVDAWiGD5JM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -174,7 +174,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9WTdjmUULs0r9zkgELM7ID6mBtw=</dsig:DigestValue>
+        <dsig:DigestValue>TnkViSF6oGOjMV12/ds538otCLg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -227,14 +227,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="22593024">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="22605824">
       <assemblyIdentity name="PrecisaFrozen.Win" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>GnEu/uqrjVcV0CxOQmmP/+S70DQ=</dsig:DigestValue>
+        <dsig:DigestValue>c/KzPUtzpIzhHMnNLrj/+VwPlBQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

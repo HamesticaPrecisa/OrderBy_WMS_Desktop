@@ -408,12 +408,12 @@ Public Class Frm_Principal
             End If
 
             ' VES Sep 2019
-            If tabla.Rows(i)(1).ToString() = "101" Then
+            If tabla.Rows(i)(1).ToString() = "901" Then
                 M2_Mercados.Enabled = True
             End If
 
             ' VES Oct 2019
-            If tabla.Rows(i)(0).ToString() = "204" Then
+            If tabla.Rows(i)(0).ToString() = "904" Then
                 GuiasPorEntrarATunelToolStripMenuItem.Enabled = True
             End If
         Next
