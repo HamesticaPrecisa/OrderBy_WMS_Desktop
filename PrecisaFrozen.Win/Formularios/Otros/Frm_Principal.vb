@@ -71,7 +71,6 @@ Public Class Frm_Principal
             minimizar_barra = False
             MinimizaToolStripMenuItem.Checked = True
             AccesosDirectos.Visible = False
-
         Else
             minimizar_barra = True
             MinimizaToolStripMenuItem.Checked = False
@@ -519,9 +518,6 @@ Public Class Frm_Principal
             My.Computer.FileSystem.DeleteFile("C:\Windows\Imagenlogo.jpg")
         End If
 
-
-
-
         Dim strr As String = "1"
 
         'Buscar Puerto COM Lector RFID
@@ -848,6 +844,8 @@ Public Class Frm_Principal
 
 
         Next
+
+        menLimPedExp.Enabled = True
 
         menNumDia.Visible = True
         menNumDia.Enabled = True
@@ -1193,7 +1191,6 @@ Public Class Frm_Principal
         Else
             TabControl1.TabPages(Frm_PosicionesSopo).Select()
         End If
-
     End Sub
 
     Private Sub ListadoDePedidosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M3_ListadoDePedidos.Click
@@ -1834,14 +1831,14 @@ Public Class Frm_Principal
     End Sub
 
     Private Sub M2_PlanRece_Click(sender As System.Object, e As System.EventArgs) Handles M2_PlanRece.Click
-        If F_PlanRece = False Then
-            Dim f As Form
-            f = Frm_PlanRece
-            TabControl1.TabPages.Add(f)
-            F_PlanRece = True
-        Else
-            TabControl1.TabPages(Frm_PlanRece).Select()
-        End If
+        'If F_PlanRece = False Then
+        '    Dim f As Form
+        '    f = Frm_PlanRece
+        '    TabControl1.TabPages.Add(f)
+        '    F_PlanRece = True
+        'Else
+        '    TabControl1.TabPages(Frm_PlanRece).Select()
+        'End If
     End Sub
 
     Private Sub ToolStripMenuItemInfoPos_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItemInfoPos.Click
@@ -1854,6 +1851,83 @@ Public Class Frm_Principal
             f_possss = True
         Else
             TabControl1.TabPages(FrmPosicionestotales).Select()
+        End If
+    End Sub
+
+    Private Sub menLimPedExp_Click(sender As System.Object, e As System.EventArgs) Handles menLimPedExp.Click
+        If f_LimPedExp = False Then
+            Dim f As Form
+            f = Limite_Pedidos_Exportacion
+            TabControl1.TabPages.Add(f)
+            f_LimPedExp = True
+        Else
+            TabControl1.TabPages(Limite_Pedidos_Exportacion).Select()
+        End If
+    End Sub
+
+    Private Sub MenCtrPallet_Click(sender As System.Object, e As System.EventArgs) Handles MenCtrPallet.Click
+        If f_CtrPallet = False Then
+            Dim f As Form
+            f = Control_Pallets
+            TabControl1.TabPages.Add(f)
+            f_CtrPallet = True
+        Else
+            TabControl1.TabPages(Control_Pallets).Select()
+        End If
+    End Sub
+
+    Private Sub MenCtrPalletArr_Click(sender As System.Object, e As System.EventArgs) Handles MenCtrPalletArr.Click
+        If f_CtrPalletArr = False Then
+            Dim f As Form
+            f = Control_Pallets_Arriendo
+            TabControl1.TabPages.Add(f)
+            f_CtrPalletArr = True
+        Else
+            TabControl1.TabPages(Control_Pallets_Arriendo).Select()
+        End If
+    End Sub
+
+    Private Sub MenConfigHrsRece_Click(sender As System.Object, e As System.EventArgs) Handles MenConfigHrsRece.Click
+        If f_ConfigHrsRece = False Then
+            Dim f As Form
+            f = Recepciones_Programacion_Horarios
+            TabControl1.TabPages.Add(f)
+            f_ConfigHrsRece = True
+        Else
+            TabControl1.TabPages(Recepciones_Programacion_Horarios).Select()
+        End If
+    End Sub
+
+    Private Sub MenConfigBloqHrsRece_Click(sender As System.Object, e As System.EventArgs) Handles MenConfigBloqHrsRece.Click
+        If f_ConfigBloqHrsRece = False Then
+            Dim f As Form
+            f = Recepciones_Programacion_Bloqueos
+            TabControl1.TabPages.Add(f)
+            f_ConfigBloqHrsRece = True
+        Else
+            TabControl1.TabPages(Recepciones_Programacion_Bloqueos).Select()
+        End If
+    End Sub
+
+    Private Sub MenConfigTipCarRece_Click(sender As System.Object, e As System.EventArgs) Handles MenConfigTipCarRece.Click
+        If f_ConfigBloqCargas = False Then
+            Dim f As Form
+            f = Recepciones_Programacion_Cargas
+            TabControl1.TabPages.Add(f)
+            f_ConfigBloqCargas = True
+        Else
+            TabControl1.TabPages(Recepciones_Programacion_Cargas).Select()
+        End If
+    End Sub
+
+    Private Sub MenListRece_Click(sender As System.Object, e As System.EventArgs) Handles MenListRece.Click
+        If f_ReceProgList = False Then
+            Dim f As Form
+            f = Recepcion_Programacion_Listado
+            TabControl1.TabPages.Add(f)
+            f_ReceProgList = True
+        Else
+            TabControl1.TabPages(Recepcion_Programacion_Listado).Select()
         End If
     End Sub
 End Class

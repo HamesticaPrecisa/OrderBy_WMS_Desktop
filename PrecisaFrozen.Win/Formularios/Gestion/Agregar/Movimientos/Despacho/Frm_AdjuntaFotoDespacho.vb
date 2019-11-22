@@ -73,7 +73,8 @@ Public Class Frm_AdjuntaFotoDespacho
     End Sub
 
     Sub TraeImagenes()
-        Dim sql As String = "SELECT dimg_imagen,dimg_num FROM despaimagen WHERE dimg_despcodi= '" + Frm_Despacho.lblcodigo.Text + "'"
+        'Dim sql As String = "SELECT dimg_imagen,dimg_num FROM despaimagen WHERE dimg_despcodi= '" + Frm_Despacho.lblcodigo.Text + "'"
+        Dim sql As String = "SELECT dimg_imagen,dimg_num FROM despaimagen WHERE dimg_despcodi= '" + Frm_Despacho.txtCodDesp.Text + "'"
         Dim tablaimagen As DataTable = fnc.ListarTablasSQL(sql)
 
         If tablaimagen.Rows.Count > 0 Then

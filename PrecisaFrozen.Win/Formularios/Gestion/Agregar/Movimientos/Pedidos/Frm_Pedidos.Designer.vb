@@ -50,6 +50,11 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Orden = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,7 +63,7 @@ Partial Class Frm_Pedidos
         Me.Destino = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Sopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cajas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Kilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EST = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tipo_Carga = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Exportacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -68,6 +73,8 @@ Partial Class Frm_Pedidos
         Me.ELIM = New System.Windows.Forms.DataGridViewImageColumn()
         Me.PRINT = New System.Windows.Forms.DataGridViewImageColumn()
         Me.SALDOS = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Fecha_Frm = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DgvPedidos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -75,14 +82,15 @@ Partial Class Frm_Pedidos
         '
         Me.DgvPedidos.AllowUserToAddRows = False
         Me.DgvPedidos.AllowUserToDeleteRows = False
+        Me.DgvPedidos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.DgvPedidos.ColumnHeadersHeight = 30
-        Me.DgvPedidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Orden, Me.Cliente, Me.Fecha, Me.Hora, Me.Destino, Me.Sopo, Me.Cajas, Me.Tipo, Me.EST, Me.Tipo_Carga, Me.Exportacion, Me.Nro_Sol_Sag, Me.Etiq_Adi, Me.detalle, Me.ELIM, Me.PRINT, Me.SALDOS})
+        Me.DgvPedidos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Orden, Me.Cliente, Me.Fecha, Me.Hora, Me.Destino, Me.Sopo, Me.Cajas, Me.Kilos, Me.EST, Me.Tipo_Carga, Me.Exportacion, Me.Nro_Sol_Sag, Me.Etiq_Adi, Me.detalle, Me.ELIM, Me.PRINT, Me.SALDOS, Me.Fecha_Frm, Me.Tipo})
         Me.DgvPedidos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvPedidos.Location = New System.Drawing.Point(9, 43)
         Me.DgvPedidos.Name = "DgvPedidos"
         Me.DgvPedidos.ReadOnly = True
         Me.DgvPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvPedidos.Size = New System.Drawing.Size(1281, 358)
+        Me.DgvPedidos.Size = New System.Drawing.Size(1906, 605)
         Me.DgvPedidos.TabIndex = 0
         '
         'Label2
@@ -203,16 +211,18 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn1.Visible = False
         Me.DataGridViewTextBoxColumn1.Width = 2
         '
         'DataGridViewTextBoxColumn2
         '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "Orden"
         Me.DataGridViewTextBoxColumn2.Frozen = True
         Me.DataGridViewTextBoxColumn2.HeaderText = "ORDEN"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 80
+        Me.DataGridViewTextBoxColumn2.Width = 71
         '
         'DataGridViewTextBoxColumn3
         '
@@ -230,6 +240,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn4.HeaderText = "FECHA CARGA"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 103
         '
         'DataGridViewTextBoxColumn5
         '
@@ -238,6 +249,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn5.HeaderText = "HORA CARGA"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 103
         '
         'DataGridViewTextBoxColumn6
         '
@@ -246,6 +258,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn6.HeaderText = "DESTINO"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 78
         '
         'DataGridViewTextBoxColumn7
         '
@@ -256,6 +269,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn7.HeaderText = "SOPORTANTES"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 105
         '
         'DataGridViewTextBoxColumn8
         '
@@ -293,6 +307,7 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
         Me.DataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn10.Visible = False
         Me.DataGridViewTextBoxColumn10.Width = 2
         '
         'DataGridViewTextBoxColumn11
@@ -305,162 +320,257 @@ Partial Class Frm_Pedidos
         Me.DataGridViewTextBoxColumn11.ReadOnly = True
         Me.DataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DataGridViewTextBoxColumn11.Visible = False
         Me.DataGridViewTextBoxColumn11.Width = 2
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Tipo_Exportacion"
+        Me.DataGridViewTextBoxColumn12.Frozen = True
+        Me.DataGridViewTextBoxColumn12.HeaderText = "EXPORTACIÓN"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        Me.DataGridViewTextBoxColumn12.Width = 94
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Nro_Sol_Sag"
+        Me.DataGridViewTextBoxColumn13.Frozen = True
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Nº SOL. SAG"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.ReadOnly = True
+        Me.DataGridViewTextBoxColumn13.Width = 103
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "Etiquetado_Adicional"
+        Me.DataGridViewTextBoxColumn14.Frozen = True
+        Me.DataGridViewTextBoxColumn14.HeaderText = "ETIQ. ADICIONAL"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.ReadOnly = True
+        Me.DataGridViewTextBoxColumn14.Width = 94
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "Etiquetado_Adicional"
+        Me.DataGridViewTextBoxColumn15.Frozen = True
+        Me.DataGridViewTextBoxColumn15.HeaderText = "ETIQ. ADICIONAL"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.ReadOnly = True
+        Me.DataGridViewTextBoxColumn15.Visible = False
+        Me.DataGridViewTextBoxColumn15.Width = 119
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "Fecha_Frm"
+        Me.DataGridViewTextBoxColumn16.Frozen = True
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Fecha_Frm"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        Me.DataGridViewTextBoxColumn16.Visible = False
+        Me.DataGridViewTextBoxColumn16.Width = 90
         '
         'Codigo
         '
         Me.Codigo.DataPropertyName = "pedido"
+        Me.Codigo.Frozen = True
         Me.Codigo.HeaderText = "CODIGO"
         Me.Codigo.MinimumWidth = 2
         Me.Codigo.Name = "Codigo"
         Me.Codigo.ReadOnly = True
         Me.Codigo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Codigo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Codigo.Width = 2
+        Me.Codigo.Visible = False
+        Me.Codigo.Width = 74
         '
         'Orden
         '
+        Me.Orden.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.Orden.DataPropertyName = "Orden"
+        Me.Orden.Frozen = True
         Me.Orden.HeaderText = "ORDEN"
         Me.Orden.Name = "Orden"
         Me.Orden.ReadOnly = True
-        Me.Orden.Width = 80
+        Me.Orden.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Orden.Width = 69
         '
         'Cliente
         '
         Me.Cliente.DataPropertyName = "cliente"
+        Me.Cliente.Frozen = True
         Me.Cliente.HeaderText = "CLIENTE"
         Me.Cliente.Name = "Cliente"
         Me.Cliente.ReadOnly = True
-        Me.Cliente.Width = 300
+        Me.Cliente.Width = 73
         '
         'Fecha
         '
         Me.Fecha.DataPropertyName = "fecha"
-        Me.Fecha.HeaderText = "FECHA CARGA"
+        Me.Fecha.Frozen = True
+        Me.Fecha.HeaderText = "FECHA"
         Me.Fecha.Name = "Fecha"
         Me.Fecha.ReadOnly = True
+        Me.Fecha.Width = 65
         '
         'Hora
         '
         Me.Hora.DataPropertyName = "hora"
-        Me.Hora.HeaderText = "HORA CARGA"
+        Me.Hora.Frozen = True
+        Me.Hora.HeaderText = "HORA"
         Me.Hora.Name = "Hora"
         Me.Hora.ReadOnly = True
+        Me.Hora.Width = 62
         '
         'Destino
         '
         Me.Destino.DataPropertyName = "destino"
+        Me.Destino.Frozen = True
         Me.Destino.HeaderText = "DESTINO"
         Me.Destino.Name = "Destino"
         Me.Destino.ReadOnly = True
+        Me.Destino.Width = 78
         '
         'Sopo
         '
         Me.Sopo.DataPropertyName = "sopo"
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.Sopo.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Sopo.HeaderText = "SOPORTANTES"
+        Me.Sopo.Frozen = True
+        Me.Sopo.HeaderText = "SOPO."
         Me.Sopo.Name = "Sopo"
         Me.Sopo.ReadOnly = True
+        Me.Sopo.Width = 63
         '
         'Cajas
         '
         Me.Cajas.DataPropertyName = "Cajas"
+        Me.Cajas.Frozen = True
         Me.Cajas.HeaderText = "CAJAS"
         Me.Cajas.Name = "Cajas"
         Me.Cajas.ReadOnly = True
+        Me.Cajas.Width = 62
         '
-        'Tipo
+        'Kilos
         '
-        Me.Tipo.DataPropertyName = "Tipo"
-        Me.Tipo.HeaderText = "TIPO"
-        Me.Tipo.Name = "Tipo"
-        Me.Tipo.ReadOnly = True
+        Me.Kilos.DataPropertyName = "Kilos"
+        Me.Kilos.Frozen = True
+        Me.Kilos.HeaderText = "KILOS"
+        Me.Kilos.Name = "Kilos"
+        Me.Kilos.ReadOnly = True
+        Me.Kilos.Width = 61
         '
         'EST
         '
         Me.EST.DataPropertyName = "codvig"
+        Me.EST.Frozen = True
         Me.EST.HeaderText = "EST"
         Me.EST.MinimumWidth = 2
         Me.EST.Name = "EST"
         Me.EST.ReadOnly = True
         Me.EST.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.EST.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.EST.Width = 2
+        Me.EST.Visible = False
+        Me.EST.Width = 50
         '
         'Tipo_Carga
         '
         Me.Tipo_Carga.DataPropertyName = "Tipo_Carga"
-        Me.Tipo_Carga.HeaderText = "TIPO CARGA"
+        Me.Tipo_Carga.Frozen = True
+        Me.Tipo_Carga.HeaderText = "CARGA"
         Me.Tipo_Carga.Name = "Tipo_Carga"
         Me.Tipo_Carga.ReadOnly = True
+        Me.Tipo_Carga.Width = 67
         '
         'Exportacion
         '
         Me.Exportacion.DataPropertyName = "Tipo_Exportacion"
-        Me.Exportacion.HeaderText = "EXPORTACIÓN"
+        Me.Exportacion.Frozen = True
+        Me.Exportacion.HeaderText = "EXP."
         Me.Exportacion.Name = "Exportacion"
         Me.Exportacion.ReadOnly = True
+        Me.Exportacion.Width = 51
         '
         'Nro_Sol_Sag
         '
         Me.Nro_Sol_Sag.DataPropertyName = "Nro_Sol_Sag"
-        Me.Nro_Sol_Sag.HeaderText = "Nº SOL. SAG"
+        Me.Nro_Sol_Sag.Frozen = True
+        Me.Nro_Sol_Sag.HeaderText = "SOL. SAG"
         Me.Nro_Sol_Sag.Name = "Nro_Sol_Sag"
         Me.Nro_Sol_Sag.ReadOnly = True
+        Me.Nro_Sol_Sag.Width = 78
         '
         'Etiq_Adi
         '
         Me.Etiq_Adi.DataPropertyName = "Etiquetado_Adicional"
-        Me.Etiq_Adi.HeaderText = "ETIQ. ADICIONAL"
+        Me.Etiq_Adi.Frozen = True
+        Me.Etiq_Adi.HeaderText = "ETIQ. ADI."
         Me.Etiq_Adi.Name = "Etiq_Adi"
         Me.Etiq_Adi.ReadOnly = True
+        Me.Etiq_Adi.Width = 84
         '
         'detalle
         '
-        Me.detalle.HeaderText = "DETALLE"
+        Me.detalle.Frozen = True
+        Me.detalle.HeaderText = "DET."
         Me.detalle.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.detalle
         Me.detalle.Name = "detalle"
         Me.detalle.ReadOnly = True
         Me.detalle.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.detalle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.detalle.Width = 55
+        Me.detalle.Width = 35
         '
         'ELIM
         '
-        Me.ELIM.HeaderText = "ELIMINAR"
+        Me.ELIM.Frozen = True
+        Me.ELIM.HeaderText = "ELIM."
         Me.ELIM.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
         Me.ELIM.Name = "ELIM"
         Me.ELIM.ReadOnly = True
         Me.ELIM.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.ELIM.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.ELIM.Width = 65
+        Me.ELIM.Width = 60
         '
         'PRINT
         '
+        Me.PRINT.Frozen = True
         Me.PRINT.HeaderText = "PEDIDO"
         Me.PRINT.Image = Global.PrecisaFrozen.Win.My.Resources.Resources._1375930470_print
         Me.PRINT.Name = "PRINT"
         Me.PRINT.ReadOnly = True
         Me.PRINT.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.PRINT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.PRINT.Width = 55
+        Me.PRINT.Width = 53
         '
         'SALDOS
         '
+        Me.SALDOS.Frozen = True
         Me.SALDOS.HeaderText = "SALDOS"
         Me.SALDOS.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Ficha
         Me.SALDOS.Name = "SALDOS"
         Me.SALDOS.ReadOnly = True
-        Me.SALDOS.Width = 60
+        Me.SALDOS.Width = 53
+        '
+        'Fecha_Frm
+        '
+        Me.Fecha_Frm.DataPropertyName = "Fecha_Frm"
+        Me.Fecha_Frm.Frozen = True
+        Me.Fecha_Frm.HeaderText = "Fecha_Frm"
+        Me.Fecha_Frm.Name = "Fecha_Frm"
+        Me.Fecha_Frm.ReadOnly = True
+        Me.Fecha_Frm.Visible = False
+        Me.Fecha_Frm.Width = 90
+        '
+        'Tipo
+        '
+        Me.Tipo.DataPropertyName = "Tipo"
+        Me.Tipo.Frozen = True
+        Me.Tipo.HeaderText = "TIPO"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Width = 56
         '
         'Frm_Pedidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1299, 423)
+        Me.ClientSize = New System.Drawing.Size(1924, 670)
         Me.Controls.Add(Me.btnXls)
         Me.Controls.Add(Me.lblbus)
         Me.Controls.Add(Me.txtbus)
@@ -504,6 +614,11 @@ Partial Class Frm_Pedidos
     Friend WithEvents DataGridViewTextBoxColumn10 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btnXls As System.Windows.Forms.Button
     Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn15 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Codigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Orden As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Cliente As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -512,7 +627,7 @@ Partial Class Frm_Pedidos
     Friend WithEvents Destino As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Sopo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Cajas As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Tipo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Kilos As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EST As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Tipo_Carga As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Exportacion As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -522,4 +637,6 @@ Partial Class Frm_Pedidos
     Friend WithEvents ELIM As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents PRINT As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents SALDOS As System.Windows.Forms.DataGridViewImageColumn
+    Friend WithEvents Fecha_Frm As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Tipo As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

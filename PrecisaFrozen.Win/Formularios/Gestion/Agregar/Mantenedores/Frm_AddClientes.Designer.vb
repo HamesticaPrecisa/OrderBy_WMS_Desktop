@@ -125,6 +125,8 @@ Partial Class Frm_AddClientes
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.chkVentaDirectaPallet = New System.Windows.Forms.CheckBox()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -143,11 +145,13 @@ Partial Class Frm_AddClientes
         Me.TabPage1.SuspendLayout()
         CType(Me.DgvContactos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox3.Controls.Add(Me.GroupBox6)
         Me.GroupBox3.Controls.Add(Me.GroupBox5)
         Me.GroupBox3.Controls.Add(Me.txtHrsCongCam)
         Me.GroupBox3.Controls.Add(Me.Label19)
@@ -190,7 +194,7 @@ Partial Class Frm_AddClientes
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Location = New System.Drawing.Point(11, 35)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(797, 713)
+        Me.GroupBox3.Size = New System.Drawing.Size(797, 789)
         Me.GroupBox3.TabIndex = 32
         Me.GroupBox3.TabStop = False
         '
@@ -1331,13 +1335,35 @@ Partial Class Frm_AddClientes
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Width = 340
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.chkVentaDirectaPallet)
+        Me.GroupBox6.ForeColor = System.Drawing.Color.White
+        Me.GroupBox6.Location = New System.Drawing.Point(16, 709)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(470, 58)
+        Me.GroupBox6.TabIndex = 75
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "VENTA DIRECTA / ARRIENDO PALLET"
+        '
+        'chkVentaDirectaPallet
+        '
+        Me.chkVentaDirectaPallet.AutoSize = True
+        Me.chkVentaDirectaPallet.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkVentaDirectaPallet.Location = New System.Drawing.Point(16, 24)
+        Me.chkVentaDirectaPallet.Name = "chkVentaDirectaPallet"
+        Me.chkVentaDirectaPallet.Size = New System.Drawing.Size(220, 19)
+        Me.chkVentaDirectaPallet.TabIndex = 34
+        Me.chkVentaDirectaPallet.Text = "¿Se aplica venta directa de pallets?"
+        Me.chkVentaDirectaPallet.UseVisualStyleBackColor = True
+        '
         'Frm_AddClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(848, 750)
+        Me.ClientSize = New System.Drawing.Size(848, 836)
         Me.Controls.Add(Me.Btn_BuscaCliente)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Label10)
@@ -1377,6 +1403,8 @@ Partial Class Frm_AddClientes
         Me.TabPage1.PerformLayout()
         CType(Me.DgvContactos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1483,4 +1511,6 @@ Partial Class Frm_AddClientes
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents txthorasabado As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txthorasemana As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents chkVentaDirectaPallet As System.Windows.Forms.CheckBox
 End Class

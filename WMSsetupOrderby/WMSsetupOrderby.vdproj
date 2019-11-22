@@ -5337,7 +5337,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WMSsetupOrderby"
         "ProductCode" = "8:{47F53ECD-8E6A-437A-8B6C-CCA8F009F0E5}"
-        "PackageCode" = "8:{C2E1854E-77FC-4984-9B43-ACB346CC7BB8}"
+        "PackageCode" = "8:{C6886C3D-F57E-446C-B053-16D9FCDC9E45}"
         "UpgradeCode" = "8:{08AC9600-F84E-4B01-B398-189A85389851}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

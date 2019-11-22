@@ -254,6 +254,12 @@
     <Compile Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Control_Pallets_Fotos.Designer.vb">
+      <DependentUpon>Control_Pallets_Fotos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Control_Pallets_Fotos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.Designer.vb">
       <DependentUpon>Frm_Actualizaciones.vb</DependentUpon>
     </Compile>
@@ -405,6 +411,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\ColoredComboboxItem.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.Designer.vb">
+      <DependentUpon>Control_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.Designer.vb">
+      <DependentUpon>Control_Pallets_Arriendo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.Designer.vb">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
     </Compile>
@@ -481,6 +499,18 @@
       <DependentUpon>Frm_MuestraPallet.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion.Designer.vb">
+      <DependentUpon>Limite_Pedidos_Exportacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion_Buscar.Designer.vb">
+      <DependentUpon>Limite_Pedidos_Exportacion_Buscar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion_Buscar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Module1.vb" />
@@ -634,6 +664,12 @@
       <DependentUpon>Frm_VerificaServiciosRece.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.Designer.vb">
+      <DependentUpon>Recepcion_Custodia_Intercambio_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\ConfigurationManager.vb" />
@@ -1002,6 +1038,36 @@
       <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Bloqueos_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Cargas.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Cargas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Cargas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Horarios.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Horarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Horarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.Designer.vb">
+      <DependentUpon>Recepcion_Programacion_Listado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Listados\Lst_Informes.Designer.vb">
@@ -1654,6 +1720,9 @@
     <EmbeddedResource Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.resx">
       <DependentUpon>GeneraInforme.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Control_Pallets_Fotos.resx">
+      <DependentUpon>Control_Pallets_Fotos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.resx">
       <DependentUpon>Frm_Actualizaciones.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1743,6 +1812,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_EmisionVasAdmin.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.resx">
+      <DependentUpon>Control_Pallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.resx">
+      <DependentUpon>Control_Pallets_Arriendo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.resx">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
     </EmbeddedResource>
@@ -1781,6 +1856,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.resx">
       <DependentUpon>Frm_MuestraPallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion.resx">
+      <DependentUpon>Limite_Pedidos_Exportacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion_Buscar.resx">
+      <DependentUpon>Limite_Pedidos_Exportacion_Buscar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\CreaInforme.resx">
       <DependentUpon>CreaInforme.vb</DependentUpon>
@@ -1860,6 +1941,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.resx">
       <DependentUpon>Frm_VerificaServiciosRece.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.resx">
+      <DependentUpon>Recepcion_Custodia_Intercambio_Pallets.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.resx">
       <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
@@ -2048,6 +2132,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Conf\FRM_ACT_WMS.resx">
       <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.resx">
+      <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.resx">
+      <DependentUpon>Recepciones_Programacion_Bloqueos_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Cargas.resx">
+      <DependentUpon>Recepciones_Programacion_Cargas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Horarios.resx">
+      <DependentUpon>Recepciones_Programacion_Horarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.resx">
+      <DependentUpon>Recepcion_Programacion_Listado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Informes.resx">
       <DependentUpon>Lst_Informes.vb</DependentUpon>

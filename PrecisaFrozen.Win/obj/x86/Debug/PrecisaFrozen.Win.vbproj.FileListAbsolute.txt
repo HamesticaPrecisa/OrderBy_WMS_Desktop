@@ -1039,3 +1039,14 @@ C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x8
 C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.vbproj.GenerateResource.Cache
 C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.exe.manifest
 C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.application
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Limite_Pedidos_Exportacion.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Limite_Pedidos_Exportacion_Buscar.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Control_Pallets.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Control_Pallets_Fotos.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Control_Pallets_Arriendo.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepciones_Programacion_Horarios.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepciones_Programacion_Bloqueos.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepciones_Programacion_Bloqueos_Clientes.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepciones_Programacion_Cargas.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepcion_Programacion_Listado.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.vbprojResolveAssemblyReference.cache

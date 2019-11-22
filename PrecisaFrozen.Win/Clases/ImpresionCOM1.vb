@@ -6,7 +6,6 @@ Imports System.ComponentModel
 Imports System.Runtime.InteropServices
 
 Public Class ImpresionCOM1
-
     Dim fnc As New Funciones
 
     Public Const GENERIC_WRITE = &H40000000
@@ -15,7 +14,7 @@ Public Class ImpresionCOM1
 
     Dim LPTPORT As String
     Dim PuertoImpresion As String = "COM1"
-   
+
     'Friend WithEvents btnImpresion As System.Windows.Forms.Button
     'Friend WithEvents btnSalir As System.Windows.Forms.Button
     Dim hPort As Integer
@@ -175,10 +174,8 @@ Public Class ImpresionCOM1
             fileWriter.Write("^FO50,190")
             fileWriter.Write("^A0,40,25^FDCLIENTE            :  " & Cliente & "^FS")
 
-
             fileWriter.Write("^FO50,240")
             fileWriter.Write("^A0,40,25^FDPALLET             :  " & Pallet & "^FS")
-
 
             fileWriter.Write("^FO50,380")
             fileWriter.Write("^A0,200,160^FD" & foliopequenio & "^FS")
@@ -197,8 +194,5 @@ Public Class ImpresionCOM1
         Catch ex As Exception
             MsgBox("Error al intentar imprimir la etiqueta N° " + foliocaja, MsgBoxStyle.Information, "Aviso")
         End Try
-
     End Sub
-
-
 End Class

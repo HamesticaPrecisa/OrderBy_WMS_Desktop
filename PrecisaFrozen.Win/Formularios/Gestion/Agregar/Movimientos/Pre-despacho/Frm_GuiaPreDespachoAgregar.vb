@@ -36,7 +36,6 @@ Public Class Frm_GuiaPreDespachoAgregar
             validacioningreso = False
         End If
 
-
         If TxtSello.Text = "" Then
             mensaje = mensaje + "Ingresar sello" + vbCrLf
             validacioningreso = False
@@ -1975,7 +1974,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                 End If
 
                 'Dim sql_Actualiza As String = "UPDATE pedidos_ficha SET Ped_EstPred='1' WHERE orden='" + Frm_Principal.buscavalor.ToString() + "'"
-                Dim sql_Actualiza As String = "SP_Pedidos_Estados_Actualizar '" & Frm_Principal.buscavalor.ToString.Trim & "','P','1'"
+                Dim sql_Actualiza As String = "SP_Pedidos_Estados_Actualizar '" & _mm(0).ToString.Trim & "','P','1'"
                 fnc.MovimientoSQL(sql_Actualiza)
 
                 'select ordenconjunta from Pedidos_ficha

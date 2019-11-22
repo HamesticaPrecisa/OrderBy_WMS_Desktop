@@ -1,0 +1,3 @@
+﻿Public Class Recepcion_Custodia_Intercambio_Pallets
+
+End Class

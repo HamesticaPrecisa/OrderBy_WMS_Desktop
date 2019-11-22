@@ -2,7 +2,7 @@
 
     Dim fnc As New Funciones
 
-    Private Sub Btn_Calcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Calcular.Click
+    Sub listarDatos()
         Dim SQL As String = "SELECT frec_codi, 'RECEPCION' AS TIPO, ori_descr, descri,cli_nomb , frec_totsopo, frec_totunidad, frec_totpeso,CASE frec_RecepTunel WHEN '1' THEN 'NO' WHEN '2' THEN 'SI' END AS frec_RecepTunel  " +
                             "FROM FICHRECE INNER JOIN clientes ON cli_rut=frec_rutcli " +
                             "INNER JOIN origen ON ori_codi=frec_origen " +
@@ -47,8 +47,12 @@
         tu.Text = FormatNumber(SUMAUNID.ToString(), 0)
         tk.Text = FormatNumber(SUMAPESO.ToString(), 2)
 
-        Dtfecha.Enabled = False
-        btn_nuevo.Enabled = True
+        'Dtfecha.Enabled = False
+        'btn_nuevo.Enabled = True
+    End Sub
+
+    Private Sub Btn_Calcular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Calcular.Click
+        listarDatos()
     End Sub
 
     Private Sub btn_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_nuevo.Click
@@ -76,6 +80,9 @@
         ts.Text = "0"
         tu.Text = "0"
         tk.Text = "0"
+
+        listarDatos()
+        btn_nuevo.Enabled = True
     End Sub
 
     Private Sub DgvEmitidos_CellDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvEmitidos.CellDoubleClick
@@ -115,4 +122,7 @@
         frm.ShowDialog()
     End Sub
 
+    Private Sub Dtfecha_TextChanged(sender As Object, e As System.EventArgs) Handles Dtfecha.TextChanged
+        listarDatos()
+    End Sub
 End Class

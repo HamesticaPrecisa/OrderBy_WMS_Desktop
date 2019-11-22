@@ -24,7 +24,7 @@ Partial Class Frm_Principal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Principal))
-        Dim ToolStripProfessionalRenderer1 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
+        Dim ToolStripProfessionalRenderer14 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.MinimizaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccesosDirectos = New System.Windows.Forms.ToolStrip()
@@ -55,6 +55,8 @@ Partial Class Frm_Principal
         Me.M3_Predespacho = New System.Windows.Forms.ToolStripMenuItem()
         Me.M3_Despacho = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Soportantes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenCtrPallet = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenCtrPalletArr = New System.Windows.Forms.ToolStripMenuItem()
         Me.M3_Posicionamiento = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Transportes = New System.Windows.Forms.ToolStripMenuItem()
         Me.M3_RegistroDeCamiones = New System.Windows.Forms.ToolStripMenuItem()
@@ -68,6 +70,10 @@ Partial Class Frm_Principal
         Me.MenuConfArchPed = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuLocPed = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_PlanRece = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenListRece = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenConfigHrsRece = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenConfigBloqHrsRece = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenConfigTipCarRece = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Mantenedores = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Clientes = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Envases = New System.Windows.Forms.ToolStripMenuItem()
@@ -90,6 +96,7 @@ Partial Class Frm_Principal
         Me.FamiliasNoMezclablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PosicionesParaPickingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SugerenciasAlmacenamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menLimPedExp = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Procesos = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_DesbloquearSoportantes = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Etiquetado = New System.Windows.Forms.ToolStripMenuItem()
@@ -331,8 +338,8 @@ Partial Class Frm_Principal
         Me.TabControl1.ForeColor = System.Drawing.Color.Black
         Me.TabControl1.KeyTabEnabled = False
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        ToolStripProfessionalRenderer1.RoundedEdges = True
-        Me.TabControl1.MenuRenderer = ToolStripProfessionalRenderer1
+        ToolStripProfessionalRenderer14.RoundedEdges = True
+        Me.TabControl1.MenuRenderer = ToolStripProfessionalRenderer14
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.Size = New System.Drawing.Size(928, 509)
         Me.TabControl1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality
@@ -418,7 +425,7 @@ Partial Class Frm_Principal
         Me.M3_Recepcion.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Recepcion.Enabled = False
         Me.M3_Recepcion.Name = "M3_Recepcion"
-        Me.M3_Recepcion.Size = New System.Drawing.Size(147, 22)
+        Me.M3_Recepcion.Size = New System.Drawing.Size(152, 22)
         Me.M3_Recepcion.Text = "Recepcion "
         '
         'M3_Predespacho
@@ -427,7 +434,7 @@ Partial Class Frm_Principal
         Me.M3_Predespacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Predespacho.Enabled = False
         Me.M3_Predespacho.Name = "M3_Predespacho"
-        Me.M3_Predespacho.Size = New System.Drawing.Size(147, 22)
+        Me.M3_Predespacho.Size = New System.Drawing.Size(152, 22)
         Me.M3_Predespacho.Text = "Pre-despacho"
         '
         'M3_Despacho
@@ -436,17 +443,33 @@ Partial Class Frm_Principal
         Me.M3_Despacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Despacho.Enabled = False
         Me.M3_Despacho.Name = "M3_Despacho"
-        Me.M3_Despacho.Size = New System.Drawing.Size(147, 22)
+        Me.M3_Despacho.Size = New System.Drawing.Size(152, 22)
         Me.M3_Despacho.Text = "Despacho"
         '
         'M2_Soportantes
         '
         Me.M2_Soportantes.BackColor = System.Drawing.Color.Transparent
         Me.M2_Soportantes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
-        Me.M2_Soportantes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M3_Posicionamiento})
+        Me.M2_Soportantes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenCtrPallet, Me.MenCtrPalletArr, Me.M3_Posicionamiento})
         Me.M2_Soportantes.Name = "M2_Soportantes"
         Me.M2_Soportantes.Size = New System.Drawing.Size(211, 22)
         Me.M2_Soportantes.Text = "Soportantes"
+        '
+        'MenCtrPallet
+        '
+        Me.MenCtrPallet.BackColor = System.Drawing.Color.Transparent
+        Me.MenCtrPallet.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenCtrPallet.Name = "MenCtrPallet"
+        Me.MenCtrPallet.Size = New System.Drawing.Size(206, 22)
+        Me.MenCtrPallet.Text = "Custodia"
+        '
+        'MenCtrPalletArr
+        '
+        Me.MenCtrPalletArr.BackColor = System.Drawing.Color.Transparent
+        Me.MenCtrPalletArr.BackgroundImage = CType(resources.GetObject("MenCtrPalletArr.BackgroundImage"), System.Drawing.Image)
+        Me.MenCtrPalletArr.Name = "MenCtrPalletArr"
+        Me.MenCtrPalletArr.Size = New System.Drawing.Size(206, 22)
+        Me.MenCtrPalletArr.Text = "Arriendo"
         '
         'M3_Posicionamiento
         '
@@ -552,13 +575,46 @@ Partial Class Frm_Principal
         '
         Me.M2_PlanRece.BackColor = System.Drawing.Color.Transparent
         Me.M2_PlanRece.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.M2_PlanRece.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenListRece, Me.MenConfigHrsRece, Me.MenConfigBloqHrsRece, Me.MenConfigTipCarRece})
         Me.M2_PlanRece.Name = "M2_PlanRece"
         Me.M2_PlanRece.Size = New System.Drawing.Size(211, 22)
         Me.M2_PlanRece.Text = "Planificación Recepciones"
         '
+        'MenListRece
+        '
+        Me.MenListRece.BackColor = System.Drawing.Color.Transparent
+        Me.MenListRece.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenListRece.Name = "MenListRece"
+        Me.MenListRece.Size = New System.Drawing.Size(268, 22)
+        Me.MenListRece.Text = "Listado Recepciones Pendientes"
+        '
+        'MenConfigHrsRece
+        '
+        Me.MenConfigHrsRece.BackColor = System.Drawing.Color.Transparent
+        Me.MenConfigHrsRece.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenConfigHrsRece.Name = "MenConfigHrsRece"
+        Me.MenConfigHrsRece.Size = New System.Drawing.Size(268, 22)
+        Me.MenConfigHrsRece.Text = "Configurar Horarios"
+        '
+        'MenConfigBloqHrsRece
+        '
+        Me.MenConfigBloqHrsRece.BackColor = System.Drawing.Color.Transparent
+        Me.MenConfigBloqHrsRece.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenConfigBloqHrsRece.Name = "MenConfigBloqHrsRece"
+        Me.MenConfigBloqHrsRece.Size = New System.Drawing.Size(268, 22)
+        Me.MenConfigBloqHrsRece.Text = "Configurar Bloqueos"
+        '
+        'MenConfigTipCarRece
+        '
+        Me.MenConfigTipCarRece.BackColor = System.Drawing.Color.Transparent
+        Me.MenConfigTipCarRece.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenConfigTipCarRece.Name = "MenConfigTipCarRece"
+        Me.MenConfigTipCarRece.Size = New System.Drawing.Size(268, 22)
+        Me.MenConfigTipCarRece.Text = "Configurar Capacidad Tipo Descarga"
+        '
         'M1_Mantenedores
         '
-        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem})
+        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem, Me.menLimPedExp})
         Me.M1_Mantenedores.Name = "M1_Mantenedores"
         Me.M1_Mantenedores.Size = New System.Drawing.Size(95, 20)
         Me.M1_Mantenedores.Text = "Mantenedores"
@@ -568,7 +624,7 @@ Partial Class Frm_Principal
         Me.M2_Clientes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Clientes.Enabled = False
         Me.M2_Clientes.Name = "M2_Clientes"
-        Me.M2_Clientes.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Clientes.Size = New System.Drawing.Size(217, 22)
         Me.M2_Clientes.Text = "Clientes"
         '
         'M2_Envases
@@ -576,7 +632,7 @@ Partial Class Frm_Principal
         Me.M2_Envases.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Envases.Enabled = False
         Me.M2_Envases.Name = "M2_Envases"
-        Me.M2_Envases.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Envases.Size = New System.Drawing.Size(217, 22)
         Me.M2_Envases.Text = "Envases"
         '
         'M2_Camaras
@@ -584,7 +640,7 @@ Partial Class Frm_Principal
         Me.M2_Camaras.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Camaras.Enabled = False
         Me.M2_Camaras.Name = "M2_Camaras"
-        Me.M2_Camaras.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Camaras.Size = New System.Drawing.Size(217, 22)
         Me.M2_Camaras.Text = "Camaras"
         Me.M2_Camaras.Visible = False
         '
@@ -593,7 +649,7 @@ Partial Class Frm_Principal
         Me.M2_Choferes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Choferes.Enabled = False
         Me.M2_Choferes.Name = "M2_Choferes"
-        Me.M2_Choferes.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Choferes.Size = New System.Drawing.Size(217, 22)
         Me.M2_Choferes.Text = "Choferes"
         '
         'M2_MSoportantes
@@ -601,7 +657,7 @@ Partial Class Frm_Principal
         Me.M2_MSoportantes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_MSoportantes.Enabled = False
         Me.M2_MSoportantes.Name = "M2_MSoportantes"
-        Me.M2_MSoportantes.Size = New System.Drawing.Size(202, 22)
+        Me.M2_MSoportantes.Size = New System.Drawing.Size(217, 22)
         Me.M2_MSoportantes.Text = "Soportantes"
         '
         'M2_Familias
@@ -609,7 +665,7 @@ Partial Class Frm_Principal
         Me.M2_Familias.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Familias.Enabled = False
         Me.M2_Familias.Name = "M2_Familias"
-        Me.M2_Familias.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Familias.Size = New System.Drawing.Size(217, 22)
         Me.M2_Familias.Text = "Familias"
         '
         'M2_Medidas
@@ -617,7 +673,7 @@ Partial Class Frm_Principal
         Me.M2_Medidas.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Medidas.Enabled = False
         Me.M2_Medidas.Name = "M2_Medidas"
-        Me.M2_Medidas.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Medidas.Size = New System.Drawing.Size(217, 22)
         Me.M2_Medidas.Text = "Medidas"
         Me.M2_Medidas.Visible = False
         '
@@ -626,14 +682,14 @@ Partial Class Frm_Principal
         Me.M2_MProductos.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_MProductos.Enabled = False
         Me.M2_MProductos.Name = "M2_MProductos"
-        Me.M2_MProductos.Size = New System.Drawing.Size(202, 22)
+        Me.M2_MProductos.Size = New System.Drawing.Size(217, 22)
         Me.M2_MProductos.Text = "Productos"
         '
         'EtiquetaClientesToolStripMenuItem
         '
         Me.EtiquetaClientesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
         Me.EtiquetaClientesToolStripMenuItem.Name = "EtiquetaClientesToolStripMenuItem"
-        Me.EtiquetaClientesToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.EtiquetaClientesToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.EtiquetaClientesToolStripMenuItem.Text = "Etiqueta Clientes"
         '
         'M2_Origenes
@@ -641,7 +697,7 @@ Partial Class Frm_Principal
         Me.M2_Origenes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Origenes.Enabled = False
         Me.M2_Origenes.Name = "M2_Origenes"
-        Me.M2_Origenes.Size = New System.Drawing.Size(202, 22)
+        Me.M2_Origenes.Size = New System.Drawing.Size(217, 22)
         Me.M2_Origenes.Text = "Origenes"
         '
         'EnvioDeEmailToolStripMenuItem
@@ -649,14 +705,14 @@ Partial Class Frm_Principal
         Me.EnvioDeEmailToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.EnvioDeEmailToolStripMenuItem.Enabled = False
         Me.EnvioDeEmailToolStripMenuItem.Name = "EnvioDeEmailToolStripMenuItem"
-        Me.EnvioDeEmailToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.EnvioDeEmailToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.EnvioDeEmailToolStripMenuItem.Text = "Envio de E-mail"
         '
         'PosicionesToolStripMenuItem
         '
         Me.PosicionesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.PosicionesToolStripMenuItem.Name = "PosicionesToolStripMenuItem"
-        Me.PosicionesToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.PosicionesToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.PosicionesToolStripMenuItem.Text = "Posiciones"
         Me.PosicionesToolStripMenuItem.Visible = False
         '
@@ -666,7 +722,7 @@ Partial Class Frm_Principal
         Me.CamarasPlanoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraciónToolStripMenuItem, Me.Plano2DToolStripMenuItem, Me.ProgramarAuditoriasToolStripMenuItem, Me.InformePosicionesToolStripMenuItem})
         Me.CamarasPlanoToolStripMenuItem.Enabled = False
         Me.CamarasPlanoToolStripMenuItem.Name = "CamarasPlanoToolStripMenuItem"
-        Me.CamarasPlanoToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.CamarasPlanoToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.CamarasPlanoToolStripMenuItem.Text = "Camaras/Plano"
         '
         'ConfiguraciónToolStripMenuItem
@@ -705,7 +761,7 @@ Partial Class Frm_Principal
         Me.ReglasAlmacenamientoToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
         Me.ReglasAlmacenamientoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FamiliasNoMezclablesToolStripMenuItem, Me.PosicionesParaPickingToolStripMenuItem, Me.SugerenciasAlmacenamientoToolStripMenuItem})
         Me.ReglasAlmacenamientoToolStripMenuItem.Name = "ReglasAlmacenamientoToolStripMenuItem"
-        Me.ReglasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.ReglasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(217, 22)
         Me.ReglasAlmacenamientoToolStripMenuItem.Text = "Reglas Almacenamiento"
         '
         'FamiliasNoMezclablesToolStripMenuItem
@@ -728,6 +784,13 @@ Partial Class Frm_Principal
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Name = "SugerenciasAlmacenamientoToolStripMenuItem"
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Text = "Sugerencias Almacenamiento"
+        '
+        'menLimPedExp
+        '
+        Me.menLimPedExp.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.menLimPedExp.Name = "menLimPedExp"
+        Me.menLimPedExp.Size = New System.Drawing.Size(217, 22)
+        Me.menLimPedExp.Text = "Límite Pedidos Exportación"
         '
         'M1_Procesos
         '
@@ -1230,7 +1293,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Precisa Tech 09.08.19.11.30 - BD: Precisa"
+        Me.Text = "Order By WMS - Precisa Tech 21.11.19.10.30 - BD: Precisa_Backup"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
@@ -1375,5 +1438,12 @@ Partial Class Frm_Principal
     Friend WithEvents M2_TrazabilidadProductos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents M2_PlanRece As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItemInfoPos As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menLimPedExp As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenCtrPallet As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenCtrPalletArr As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenConfigHrsRece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenListRece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenConfigBloqHrsRece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenConfigTipCarRece As System.Windows.Forms.ToolStripMenuItem
 
 End Class

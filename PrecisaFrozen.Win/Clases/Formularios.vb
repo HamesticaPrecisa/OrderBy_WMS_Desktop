@@ -102,5 +102,15 @@
     Public f_conf_pedidos_xls As Boolean = False
     Public f_locs_pedidos As Boolean = False
 
+    Public f_LimPedExp As Boolean = False
+
+    Public f_CtrPallet As Boolean = False
+    Public f_CtrPalletArr As Boolean = False
+
+    Public f_ConfigHrsRece As Boolean = False
+    Public f_ConfigBloqHrsRece As Boolean = False
+    Public f_ConfigBloqCargas As Boolean = False
+    Public f_ReceProgList As Boolean = False
+
     Public documentoimp As String = ""
 End Module
