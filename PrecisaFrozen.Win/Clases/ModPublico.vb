@@ -123,14 +123,19 @@ Module ModPublico
         Return Val(str)
     End Function
 
-    Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+    Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs, ByVal allowDec As Boolean)
         If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf allowDec = True And e.KeyChar = "." Then
             e.Handled = False
         ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
         Else
             e.Handled = True
         End If
+    End Sub
+    Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        SoloNumeros(sender, e, False)
     End Sub
 
 

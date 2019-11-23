@@ -87,19 +87,10 @@
     <ApplicationIcon>1393294820_105256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="ExpandableGridView, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\ExpandableGridView.dll</HintPath>
@@ -182,6 +173,19 @@
     <Compile Include="Controles\MouseInfo.vb" />
     <Compile Include="Controles\ProgressbarWithPercentage.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dataset\Ds_ContenidoTuneles.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_ContenidoTuneles.vb">
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_EstadoTuneles.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_EstadoTuneles.xsd</DependentUpon>
     </Compile>
     <Compile Include="Dataset\Ds_GuiasPendTunel.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -1217,10 +1221,28 @@
       <DependentUpon>Rpt_EnvioCorreosInterno.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_GuiasPendTunel.vb">
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_ContenidoTuneles.Designer.vb">
+      <DependentUpon>Frm_ContenidoTuneles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_ContenidoTuneles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.Designer.vb">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Rpt_ContenidoTuneles.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Rpt_GuiasPendTunel.rpt</DependentUpon>
+      <DependentUpon>Rpt_ContenidoTuneles.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Rpt_EstadoTuneles.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EstadoTuneles.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.vb">
@@ -1493,17 +1515,17 @@
     <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.Designer.vb">
-      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.Designer.vb">
       <DependentUpon>Frm_Tuneles.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Rpt_GuiasPendTunel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_GuiasPendTunel.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Otros\ayudaNEW.Designer.vb">
       <DependentUpon>ayudaNEW.vb</DependentUpon>
@@ -1540,6 +1562,12 @@
       <DependentUpon>frm_ReglaFCT.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Otros\frm_ReglaFCT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaRCT.Designer.vb">
+      <DependentUpon>frm_ReglaRCT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaRCT.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Otros\Presentacion.Designer.vb">
@@ -2206,9 +2234,19 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_EnvioCorreosInterno1.vb</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_GuiasPendTunel.rpt">
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_ContenidoTuneles.resx">
+      <DependentUpon>Frm_ContenidoTuneles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.resx">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Rpt_ContenidoTuneles.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Rpt_GuiasPendTunel.vb</LastGenOutput>
+      <LastGenOutput>Rpt_ContenidoTuneles.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Rpt_EstadoTuneles.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EstadoTuneles.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2368,11 +2406,12 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.resx">
       <DependentUpon>TrazabilidadCaja.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.resx">
-      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.resx">
       <DependentUpon>Frm_Tuneles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Rpt_GuiasPendTunel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_GuiasPendTunel.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\ayudaNEW.resx">
       <DependentUpon>ayudaNEW.vb</DependentUpon>
@@ -2391,6 +2430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\frm_ReglaFCT.resx">
       <DependentUpon>frm_ReglaFCT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\frm_ReglaRCT.resx">
+      <DependentUpon>frm_ReglaRCT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Presentacion.resx">
       <DependentUpon>Presentacion.vb</DependentUpon>
@@ -2476,6 +2518,28 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram2.cd" />
+    <None Include="Dataset\Ds_ContenidoTuneles.xsc">
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_ContenidoTuneles.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_ContenidoTuneles.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_ContenidoTuneles.xss">
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_EstadoTuneles.xsc">
+      <DependentUpon>Ds_EstadoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_EstadoTuneles.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_EstadoTuneles.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_EstadoTuneles.xss">
+      <DependentUpon>Ds_EstadoTuneles.xsd</DependentUpon>
+    </None>
     <None Include="Dataset\Ds_GuiasPendTunel.xsc">
       <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
     </None>
@@ -2594,6 +2658,7 @@
       <LastGenOutput>Application1.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="My Project\DataSources\Ds_EstadoTuneles.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -2911,22 +2976,22 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

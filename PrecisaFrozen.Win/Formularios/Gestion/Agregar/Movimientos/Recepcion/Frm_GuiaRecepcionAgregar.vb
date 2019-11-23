@@ -48,6 +48,7 @@ Public Class Frm_GuiaRecepcionAgregar
 
         ' Add any initialization after the InitializeComponent() call.
         loadMercados()
+        setMercado(1)
     End Sub
 
     ' VES Sep 2019
@@ -56,11 +57,13 @@ Public Class Frm_GuiaRecepcionAgregar
     ' asociado al id indicado, aunque el mismo haya sido eliminado.
     '
     Public Sub loadMercados(ByVal id As Integer)
-        cboMercado.DataSource = fnc.ListarTablasSQL("SELECT mer_id,mer_nombre FROM mercados WHERE mer_status='ACTIVO' or mer_id = @id ORDER BY mer_nombre",
+        Dim merDs = fnc.ListarTablasSQL("SELECT mer_id,mer_nombre FROM mercados WHERE mer_status='ACTIVO' or mer_id = @id ORDER BY mer_nombre",
                                                     New SqlParameter() {New SqlParameter("@id", SqlDbType.Int) With {.Value = id}})
         If validacone = "NC" Then
             MsgBox("No existe una conexion habilitada ", MsgBoxStyle.Critical, "Aviso")
         Else
+            merDs.PrimaryKey = New DataColumn() {merDs.Columns("mer_id")}
+            cboMercado.DataSource = merDs
             cboMercado.ValueMember = "mer_id"
             cboMercado.DisplayMember = "mer_nombre"
             cboMercado.Text = "SELECCIONAR"
@@ -68,6 +71,17 @@ Public Class Frm_GuiaRecepcionAgregar
     End Sub
     Public Sub loadMercados()
         loadMercados(0)
+    End Sub
+
+    Public Sub setMercado(ByVal merId As Integer)
+        Dim merDS As DataTable = cboMercado.DataSource
+        If merId > 0 Then
+            cboMercado.SelectedValue = merId
+            cboMercado.Text = merDS.Rows.Find(merId)("mer_nombre").ToString()
+        Else
+            cboMercado.SelectedIndex = -1
+            cboMercado.Text = "SELECCIONAR"
+        End If
     End Sub
 
 #End Region
@@ -872,7 +886,7 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
 
         'If (TxtContenedor.Text = "" Or ValidadorContenedor(TxtContenedor.Text.Trim) = False) AndAlso Cmbotiporece.Enabled = False Then
-        If (Cmbotiporece.Enabled And Cmbotiporece.SelectedValue = "2") Then
+        If (Cmbotiporece.Enabled And Cmbotiporece.SelectedValue.ToString() = "2") Then
             If (TxtContenedor.Text = "" Or ValidadorContenedor(TxtContenedor.Text.Trim) = False) Then
                 mensaje = mensaje & vbCrLf & "- Debe ingresar un numero de contenedor valido"
                 valor += 1
@@ -1969,7 +1983,8 @@ Public Class Frm_GuiaRecepcionAgregar
                     TimeAdicionales.Start()
                 End If
 
-                cboMercado.Text = "SELECCIONAR"  ' VES Sep 2019
+                setMercado(1)  ' VES Sep 2019
+
 
                 btn_BuscaCliente.Enabled = True
                 Btn_BuscaContrato.Enabled = True
@@ -2565,7 +2580,9 @@ Public Class Frm_GuiaRecepcionAgregar
                 produa.Text = servicio
             End If
 
-            cboMercado.SelectedValue = tabla.Rows(0)("mer_id")
+            setMercado(CInt(tabla.Rows(0)("mer_id")))
+    
+
 
 
             TxtCodRece.Enabled = False
@@ -2872,7 +2889,7 @@ Public Class Frm_GuiaRecepcionAgregar
                                     "'" + txtsello.Text + "','" + Cmbotiporece.SelectedValue.ToString() + "','" + Cmbo_Almacenamiento.Text.ToString() + "','" + EstadoCheckBox(Cb_OloresExtraños.CheckState) + "'," +
                                     "'" + (Convert.ToInt16(Rb_higieneB.Checked)).ToString() + "','" + (Convert.ToInt16(Rb_EstibaB.Checked)).ToString() + "','" + EstadoCheckBox(cbdañado.CheckState).ToString() + "', " +
                                     "'" + cmbAnden.SelectedValue.ToString() + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + cbonumtun.Text + "','" + sucursalglo + "','" + datosguia.Trim() + "','" +
-                                    txtenvguia.Text.Trim() + "','" + txtkilguia.Text.Trim() + "','" + cboProductotip.Text.Trim() + "','" + SERV + "," +
+                                    txtenvguia.Text.Trim() + "','" + txtkilguia.Text.Trim() + "','" + cboProductotip.Text.Trim() + "','" + SERV + "'," +
                                     cboMercado.SelectedValue.ToString() + ")"
 
 
@@ -2984,7 +3001,7 @@ Public Class Frm_GuiaRecepcionAgregar
                     End If
 
                 Else
-                    MsgBox("Ocurrio un error al ingresar la recepcion", MsgBoxStyle.Critical, "Aviso")
+                    MsgBox("Ocurrio un error al ingresar la recepcion: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
                 End If
                 BuscaRecepcionCompleta()
             Else
@@ -3108,7 +3125,7 @@ Public Class Frm_GuiaRecepcionAgregar
 
                     guardaVasAutomatico()
                 Else
-                    MsgBox("Error al modificar guia", MsgBoxStyle.Critical, "Aviso")
+                    MsgBox("Error al modificar guia: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
                 End If
             End If
         End If
@@ -3500,7 +3517,6 @@ Public Class Frm_GuiaRecepcionAgregar
         produa.ValueMember = "productoa"
         produa.DisplayMember = "productoa"
 
-
     End Sub
 
     Private Sub SumaTotalPallets()
@@ -3782,7 +3798,7 @@ Public Class Frm_GuiaRecepcionAgregar
         TxtNpallets = "0"
         TxtPromTemp = "0"
 
-        cboMercado.Text = "SELECCIONAR"  ' VES Sep 2019
+        setMercado(1)
 
     End Sub
 
@@ -3995,6 +4011,10 @@ Public Class Frm_GuiaRecepcionAgregar
             cbonumtun.SelectedIndex = 0
             cbonumtun.Text = ""
         End If
+        If CmboTuneles.SelectedValue.ToString() = "2" Then
+            cboMercado.SelectedIndex = -1
+            cboMercado.Text = "SELECCIONAR"
+        End If
         'If CmboTuneles.SelectedIndex = 0 Then
 
         '    cbonumtun.Enabled = False
@@ -4016,9 +4036,6 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
-    Private Sub TxtCodRece_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCodRece.KeyUp
-
-    End Sub
 
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkdatosguia.CheckedChanged
         If chkdatosguia.Checked = True Then

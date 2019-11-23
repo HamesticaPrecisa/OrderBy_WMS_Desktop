@@ -52,6 +52,8 @@ Public Class Frm_GuiasPendTunel
     Private Sub Frm_GuiasPendTunel_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Frm_Principal.buscavalor = ""
         Btn_Calcular.Enabled = True
+        lblLastUpd.Text = ""
+        Procesa()
     End Sub
 
 
@@ -62,6 +64,7 @@ Public Class Frm_GuiasPendTunel
         thread.Start()
         Me.Btn_Calcular.Enabled = False
         Me.GroupBox1.Enabled = False
+        Timer1.Enabled = True
     End Sub
 
     Sub Procesa()
@@ -79,7 +82,7 @@ Public Class Frm_GuiasPendTunel
 
         End If
 
-        Dim sql As String = "SELECT frec_codi, cli_nomb, frec_fecrec, drec_fecprod, mer_nombre, hpt, numpallets" +
+        Dim sql As String = "SELECT frec_codi, cli_nomb, frec_fecrec, drec_fecprod, mer_nombre, numpallets, kilos, cajas, hpt, het" +
                             "  FROM vwGuiasPendTunel "
         If LblCliente.Text.Trim().Length > 0 Then
             WhereR = "frec_rutcli = @frec_rutcli"
@@ -92,6 +95,7 @@ Public Class Frm_GuiasPendTunel
                               "                WHERE a.drec_codpro = @drec_codpro)"
         End If
         If WhereR.Length > 0 Then sql = sql + " WHERE " + WhereR
+        sql = sql + " ORDER BY hpt ASC, kilos DESC"
 
         Dim tabla As DataTable = fnc.ListarTablasSQL(sql, New SqlParameter() {
                                                         New SqlParameter("@frec_rutcli", LblCliente.Text.Trim()),
@@ -102,19 +106,24 @@ Public Class Frm_GuiasPendTunel
         ProgressBar1.Value = 0
         ProgressBar1.Maximum = tabla.Rows.Count
         For Each row As DataRow In tabla.Rows
-            DgvResultado.Rows.Add(row(0), row(1), row(2), row(3), row(4), row(5), row(6))
+            DgvResultado.Rows.Add(row(0), row(1), row(2), row(3), row(4), row(5), row(6), row(7), row(8), row(9))
             ProgressBar1.Increment(1)
         Next
 
         Threading.Thread.Sleep(1000)
         ProgressBar1.Value = 0
+        DgvResultado.ReadOnly = False
         btn_nuevo.Enabled = True
         btn_Imprimir.Enabled = True
-
+        lblLastUpd.Text = "Actualizado al " + DateTime.Now.ToString()
     End Sub
 
 
     Private Sub btn_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_nuevo.Click
+        LimpiarForm()
+    End Sub
+
+    Private Sub LimpiarForm()
         btn_nuevo.Enabled = False
         Txtcliente.Text = ""
         TxtProducto.Text = ""
@@ -123,6 +132,8 @@ Public Class Frm_GuiasPendTunel
         For i As Integer = 0 To DgvResultado.RowCount - 1
             DgvResultado.Rows.RemoveAt(0)
         Next
+        Btn_Calcular.Enabled = True
+        Timer1.Enabled = False
     End Sub
 
     Private Sub btn_Imprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Imprimir.Click
@@ -143,7 +154,11 @@ Public Class Frm_GuiasPendTunel
             Ds.Dt_GuiasPendTunel.AddDt_GuiasPendTunelRow(row.Cells(0).Value.ToString(),
                                          row.Cells(1).Value.ToString(),
                                          row.Cells(4).Value.ToString(),
-                                         row.Cells(5).Value.ToString())
+                                         row.Cells(5).Value.ToString(),
+                                         row.Cells(6).Value.ToString(),
+                                         row.Cells(7).Value.ToString(),
+                                         row.Cells(2).Value.ToString(),
+                                         row.Cells(9).Value.ToString())
         Next
         Dim crt As New Rpt_GuiasPendTunel()
         crt.SetDataSource(Ds)
@@ -156,10 +171,47 @@ Public Class Frm_GuiasPendTunel
 
     Private Sub Frm_GuiasPendTunel_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         f_guiasPendTunel = False
+        Timer1.Enabled = False
     End Sub
 
     Private Sub Btn_Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Salir.Click
         Close()
+    End Sub
+
+
+    Private Sub Label3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub Label8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label8.Click
+
+    End Sub
+
+    Private Sub Label9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label9.Click
+
+    End Sub
+
+    Private Sub DgvResultado_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DgvResultado.DoubleClick
+
+    End Sub
+
+    Private Sub DgvResultado_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvResultado.CellContentClick
+        Dim rowindex As Integer = e.RowIndex
+        Dim colindex As Integer = e.ColumnIndex
+        DgvResultado.CommitEdit(DataGridViewDataErrorContexts.Commit)
+        Dim guia As String = DgvResultado.CurrentRow.Cells(0).Value
+        Dim value As Object = DgvResultado.CurrentRow.Cells(colindex).Value
+        fnc.MovimientoSQL("UPDATE fichrece SET frec_rtun=@value WHERE frec_codi=@guia",
+                          New SqlParameter() {
+                              New SqlParameter("@value", value),
+                              New SqlParameter("@guia", guia)
+                          })
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        LimpiarForm()
+        Procesa()
+        Timer1.Enabled = True
     End Sub
 
 

@@ -92,6 +92,8 @@
     Public f_bloqDias As Boolean = False
     Public f_actWms As Boolean = False
     Public f_guiasPendTunel As Boolean = False
+    Public f_estadoTuneles As Boolean = False
+    Public f_contenidoTuneles As Boolean = False
 
     'PROCESOS
     Public f_procdesbloq As Boolean = False

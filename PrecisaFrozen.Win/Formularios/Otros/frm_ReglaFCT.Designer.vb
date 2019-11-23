@@ -34,11 +34,22 @@ Partial Class frm_ReglaFCT
         Me.txtTmpIni = New System.Windows.Forms.TextBox()
         Me.txttmpFin = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtHoras = New System.Windows.Forms.TextBox()
+        Me.txtHorasD = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtKilos = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.rbtFijo = New System.Windows.Forms.RadioButton()
+        Me.rbtDinamico = New System.Windows.Forms.RadioButton()
+        Me.txtHorasF = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btnOk
@@ -47,7 +58,7 @@ Partial Class frm_ReglaFCT
         Me.btnOk.Location = New System.Drawing.Point(469, 241)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.Size = New System.Drawing.Size(100, 30)
-        Me.btnOk.TabIndex = 5
+        Me.btnOk.TabIndex = 9
         Me.btnOk.Text = "Aceptar"
         Me.btnOk.UseVisualStyleBackColor = True
         '
@@ -68,7 +79,7 @@ Partial Class frm_ReglaFCT
         Me.TxtClirut.MaxLength = 8
         Me.TxtClirut.Name = "TxtClirut"
         Me.TxtClirut.Size = New System.Drawing.Size(82, 20)
-        Me.TxtClirut.TabIndex = 48
+        Me.TxtClirut.TabIndex = 1
         '
         'btn_BuscaCliente
         '
@@ -106,83 +117,87 @@ Partial Class frm_ReglaFCT
         Me.cboFamProd.Location = New System.Drawing.Point(76, 18)
         Me.cboFamProd.Name = "cboFamProd"
         Me.cboFamProd.Size = New System.Drawing.Size(497, 21)
-        Me.cboFamProd.TabIndex = 50
+        Me.cboFamProd.TabIndex = 0
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(12, 87)
+        Me.Label2.Location = New System.Drawing.Point(304, 150)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(57, 13)
+        Me.Label2.Size = New System.Drawing.Size(22, 13)
         Me.Label2.TabIndex = 51
-        Me.Label2.Text = "T. INICIAL"
+        Me.Label2.Text = "DE"
         '
         'txtTmpIni
         '
-        Me.txtTmpIni.Location = New System.Drawing.Point(76, 84)
+        Me.txtTmpIni.Enabled = False
+        Me.txtTmpIni.Location = New System.Drawing.Point(330, 170)
         Me.txtTmpIni.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtTmpIni.MaxLength = 8
         Me.txtTmpIni.Name = "txtTmpIni"
-        Me.txtTmpIni.Size = New System.Drawing.Size(82, 20)
-        Me.txtTmpIni.TabIndex = 52
+        Me.txtTmpIni.Size = New System.Drawing.Size(43, 20)
+        Me.txtTmpIni.TabIndex = 7
         '
         'txttmpFin
         '
-        Me.txttmpFin.Location = New System.Drawing.Point(76, 110)
+        Me.txttmpFin.Enabled = False
+        Me.txttmpFin.Location = New System.Drawing.Point(330, 194)
         Me.txttmpFin.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txttmpFin.MaxLength = 8
         Me.txttmpFin.Name = "txttmpFin"
-        Me.txttmpFin.Size = New System.Drawing.Size(82, 20)
-        Me.txttmpFin.TabIndex = 54
+        Me.txttmpFin.Size = New System.Drawing.Size(43, 20)
+        Me.txttmpFin.TabIndex = 8
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(12, 113)
+        Me.Label3.Location = New System.Drawing.Point(378, 197)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(50, 13)
+        Me.Label3.Size = New System.Drawing.Size(66, 13)
         Me.Label3.TabIndex = 53
-        Me.Label3.Text = "T. FINAL"
+        Me.Label3.Text = "GRADOS C."
         '
-        'txtHoras
+        'txtHorasD
         '
-        Me.txtHoras.Location = New System.Drawing.Point(243, 84)
-        Me.txtHoras.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.txtHoras.MaxLength = 8
-        Me.txtHoras.Name = "txtHoras"
-        Me.txtHoras.Size = New System.Drawing.Size(82, 20)
-        Me.txtHoras.TabIndex = 56
+        Me.txtHorasD.Enabled = False
+        Me.txtHorasD.Location = New System.Drawing.Point(330, 124)
+        Me.txtHorasD.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.txtHorasD.MaxLength = 8
+        Me.txtHorasD.Name = "txtHorasD"
+        Me.txtHorasD.Size = New System.Drawing.Size(44, 20)
+        Me.txtHorasD.TabIndex = 5
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(193, 87)
+        Me.Label5.Location = New System.Drawing.Point(380, 127)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(45, 13)
+        Me.Label5.Size = New System.Drawing.Size(163, 13)
         Me.Label5.TabIndex = 55
-        Me.Label5.Text = "HORAS"
+        Me.Label5.Text = "HORAS PARA BAJAR LA TEMP"
         '
         'txtKilos
         '
-        Me.txtKilos.Location = New System.Drawing.Point(243, 110)
+        Me.txtKilos.Enabled = False
+        Me.txtKilos.Location = New System.Drawing.Point(330, 147)
         Me.txtKilos.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtKilos.MaxLength = 8
         Me.txtKilos.Name = "txtKilos"
-        Me.txtKilos.Size = New System.Drawing.Size(82, 20)
-        Me.txtKilos.TabIndex = 58
+        Me.txtKilos.Size = New System.Drawing.Size(79, 20)
+        Me.txtKilos.TabIndex = 6
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(193, 113)
+        Me.Label6.Location = New System.Drawing.Point(410, 150)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(38, 13)
+        Me.Label6.Size = New System.Drawing.Size(120, 13)
         Me.Label6.TabIndex = 57
-        Me.Label6.Text = "KILOS"
+        Me.Label6.Text = "KILOS DE PRODUCTO"
         '
         'btnCancel
         '
@@ -190,9 +205,124 @@ Partial Class frm_ReglaFCT
         Me.btnCancel.Location = New System.Drawing.Point(356, 241)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(100, 30)
-        Me.btnCancel.TabIndex = 59
+        Me.btnCancel.TabIndex = 10
         Me.btnCancel.Text = "Cancelar"
         Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'rbtFijo
+        '
+        Me.rbtFijo.AutoSize = True
+        Me.rbtFijo.Checked = True
+        Me.rbtFijo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtFijo.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.rbtFijo.Location = New System.Drawing.Point(15, 92)
+        Me.rbtFijo.Name = "rbtFijo"
+        Me.rbtFijo.Size = New System.Drawing.Size(50, 19)
+        Me.rbtFijo.TabIndex = 2
+        Me.rbtFijo.TabStop = True
+        Me.rbtFijo.Text = "FIJO"
+        Me.rbtFijo.UseVisualStyleBackColor = True
+        '
+        'rbtDinamico
+        '
+        Me.rbtDinamico.AutoSize = True
+        Me.rbtDinamico.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.rbtDinamico.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.rbtDinamico.Location = New System.Drawing.Point(262, 92)
+        Me.rbtDinamico.Name = "rbtDinamico"
+        Me.rbtDinamico.Size = New System.Drawing.Size(84, 19)
+        Me.rbtDinamico.TabIndex = 3
+        Me.rbtDinamico.Text = "DINAMICO"
+        Me.rbtDinamico.UseVisualStyleBackColor = True
+        '
+        'txtHorasF
+        '
+        Me.txtHorasF.Location = New System.Drawing.Point(76, 122)
+        Me.txtHorasF.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.txtHorasF.MaxLength = 8
+        Me.txtHorasF.Name = "txtHorasF"
+        Me.txtHorasF.Size = New System.Drawing.Size(46, 20)
+        Me.txtHorasF.TabIndex = 4
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.ForeColor = System.Drawing.Color.White
+        Me.Label7.Location = New System.Drawing.Point(12, 127)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(63, 13)
+        Me.Label7.TabIndex = 62
+        Me.Label7.Text = "REQUIERE"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.ForeColor = System.Drawing.Color.White
+        Me.Label8.Location = New System.Drawing.Point(129, 127)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(77, 13)
+        Me.Label8.TabIndex = 64
+        Me.Label8.Text = "HORAS PARA"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.ForeColor = System.Drawing.Color.White
+        Me.Label9.Location = New System.Drawing.Point(12, 150)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(185, 13)
+        Me.Label9.TabIndex = 65
+        Me.Label9.Text = "PARA LOGRAR LA TEMPERATURA"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.ForeColor = System.Drawing.Color.White
+        Me.Label10.Location = New System.Drawing.Point(12, 174)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(74, 13)
+        Me.Label10.TabIndex = 66
+        Me.Label10.Text = "REQUERIDA."
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.ForeColor = System.Drawing.Color.White
+        Me.Label11.Location = New System.Drawing.Point(263, 127)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(63, 13)
+        Me.Label11.TabIndex = 67
+        Me.Label11.Text = "REQUIERE"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.ForeColor = System.Drawing.Color.White
+        Me.Label12.Location = New System.Drawing.Point(304, 174)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(22, 13)
+        Me.Label12.TabIndex = 68
+        Me.Label12.Text = "DE"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.ForeColor = System.Drawing.Color.White
+        Me.Label13.Location = New System.Drawing.Point(378, 174)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(66, 13)
+        Me.Label13.TabIndex = 69
+        Me.Label13.Text = "GRADOS C."
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.ForeColor = System.Drawing.Color.White
+        Me.Label14.Location = New System.Drawing.Point(312, 197)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(14, 13)
+        Me.Label14.TabIndex = 70
+        Me.Label14.Text = "A"
         '
         'frm_ReglaFCT
         '
@@ -200,10 +330,21 @@ Partial Class frm_ReglaFCT
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(582, 282)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtHorasF)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.rbtDinamico)
+        Me.Controls.Add(Me.rbtFijo)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.txtKilos)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.txtHoras)
+        Me.Controls.Add(Me.txtHorasD)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txttmpFin)
         Me.Controls.Add(Me.Label3)
@@ -235,9 +376,20 @@ Partial Class frm_ReglaFCT
     Friend WithEvents txtTmpIni As System.Windows.Forms.TextBox
     Friend WithEvents txttmpFin As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txtHoras As System.Windows.Forms.TextBox
+    Friend WithEvents txtHorasD As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtKilos As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents rbtFijo As System.Windows.Forms.RadioButton
+    Friend WithEvents rbtDinamico As System.Windows.Forms.RadioButton
+    Friend WithEvents txtHorasF As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
 End Class

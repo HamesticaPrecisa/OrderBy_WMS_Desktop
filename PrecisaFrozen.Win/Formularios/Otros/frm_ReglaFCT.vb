@@ -12,6 +12,7 @@ Public Class frm_ReglaFCT
     Dim fnc As New Funciones()
 
     Public regla As DataRow = Nothing
+    Private familias As DataTable
 
     Private Sub frm_ReglaFCT_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Text = If(regla Is Nothing, "Nueva regla", "Modificar regla")
@@ -25,7 +26,8 @@ Public Class frm_ReglaFCT
                             "SELECT 1 AS orden, fam_codi, fam_unica, fam_descr " +
                             "  FROM famprod " +
                             " ORDER BY fam_descr"
-        cboFamProd.DataSource = fnc.ListarTablasSQL(sql)
+        familias = fnc.ListarTablasSQL(sql)
+        cboFamProd.DataSource = familias
         cboFamProd.DisplayMember = "fam_descr"
         cboFamProd.ValueMember = "fam_unica"
         cboFamProd.SelectedIndex = 0
@@ -42,10 +44,19 @@ Public Class frm_ReglaFCT
             End If
             TxtClirut.Text = regla("cli_rut").ToString.Trim()
             validarCliente(TxtClirut.Text)
-            txtTmpIni.Text = regla("fct_tmpini").ToString().Trim()
-            txttmpFin.Text = regla("fct_tmpfin").ToString().Trim()
-            txtHoras.Text = regla("fct_horas").ToString().Trim()
-            txtKilos.Text = regla("fct_kilos").ToString().Trim()
+
+            If CInt(regla("fct_tmpini")) = 0 Then
+                rbtFijo.Checked = True
+                txtHorasF.Text = regla("fct_horas").ToString().Trim()
+            Else
+                rbtDinamico.Checked = True
+                txtTmpIni.Text = regla("fct_tmpini").ToString().Trim()
+                txttmpFin.Text = regla("fct_tmpfin").ToString().Trim()
+                txtHorasD.Text = regla("fct_horas").ToString().Trim()
+                txtKilos.Text = regla("fct_kilos").ToString().Trim()
+                txtHorasF.Enabled = False
+            End If
+
 
             cboFamProd.Enabled = False
             TxtClirut.Enabled = False
@@ -83,7 +94,7 @@ Public Class frm_ReglaFCT
         soloTemperatura(sender, e)
     End Sub
 
-    Private Sub txtHoras_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHoras.KeyPress
+    Private Sub txtHoras_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHorasD.KeyPress
         SoloNumeros(sender, e)
     End Sub
 
@@ -99,17 +110,19 @@ Public Class frm_ReglaFCT
         Dim falta As Control = Nothing
         If cboFamProd.SelectedIndex = 0 And IsEmpty(TxtClirut) And TxtClirut.Enabled Then
             falta = TxtClirut
-        ElseIf IsEmpty(txtTmpIni) Then
+        ElseIf rbtDinamico.Checked = True And IsEmpty(txtTmpIni) Then
             falta = txtTmpIni
-        ElseIf IsEmpty(txttmpFin) Then
+        ElseIf rbtDinamico.Checked = True And IsEmpty(txttmpFin) Then
             falta = txttmpFin
-        ElseIf IsEmpty(txtHoras) Or IsEmpty(CInt("0" + txtHoras.Text)) Then
-            falta = txtHoras
-        ElseIf IsEmpty(txtKilos) Or IsEmpty(CInt("0" + txtKilos.Text)) Then
+        ElseIf rbtDinamico.Checked = True And IsEmpty(txtHorasD) Or IsEmpty(CInt("0" + txtHorasD.Text)) Then
+            falta = txtHorasD
+        ElseIf rbtDinamico.Checked = True And IsEmpty(txtKilos) Or IsEmpty(CInt("0" + txtKilos.Text)) Then
             falta = txtKilos
+        ElseIf rbtFijo.Checked = True And (IsEmpty(txtHorasF) Or IsEmpty(CInt("0" + txtHorasF.Text))) Then
+            falta = txtHorasF
         End If
         If falta IsNot Nothing Then
-            MsgBox("Faltan valores obligatorios", MsgBoxStyle.Exclamation, "Aviso")
+            MsgBox("Faltan valores obligatorios:" + falta.Name, MsgBoxStyle.Exclamation, "Aviso")
             falta.Focus()
             Return False
         End If
@@ -119,7 +132,7 @@ Public Class frm_ReglaFCT
         '   VERIFICAMOS LA INTEGRIDAD DE LOS DATOS
         '   INTRODUCIDOS
         '
-        If CInt(txttmpFin.Text) > CInt(txtTmpIni.Text) Then
+        If rbtDinamico.Checked = True And CInt(txttmpFin.Text) > CInt(txtTmpIni.Text) Then
             MsgBox("La temperatura final debe ser menor que la inicial", MsgBoxStyle.Exclamation, "Aviso")
             txttmpFin.Focus()
             Return False
@@ -171,13 +184,18 @@ Public Class frm_ReglaFCT
         End If
 
         Dim result As sqlCmdResult
+        Dim tmpini As Integer = IIf(rbtDinamico.Checked = True, CInt(txtTmpIni.Text), 0)
+        Dim tmpfin As Integer = IIf(rbtDinamico.Checked = True, CInt(txttmpFin.Text), 0)
+        Dim horas As Integer = IIf(rbtDinamico.Checked = True, CInt("0" + txtHorasD.Text), CInt("0" + txtHorasF.Text))
+        Dim kilos As Integer = IIf(rbtDinamico.Checked = True, CInt("0" + txtKilos.Text), 0)
+
         result = fnc.runSQLCmd(sql, New SqlParameter() {
                                     New SqlParameter("@fam_unica", SqlDbType.UniqueIdentifier) With {.Value = famprod},
                                     New SqlParameter("@cli_rut", clirut),
-                                    New SqlParameter("@fct_tmpini", CInt(txtTmpIni.Text)),
-                                    New SqlParameter("@fct_tmpfin", CInt(txttmpFin.Text)),
-                                    New SqlParameter("@fct_horas", CInt(txtHoras.Text)),
-                                    New SqlParameter("@fct_kilos", CInt(txtKilos.Text)),
+                                    New SqlParameter("@fct_tmpini", tmpini),
+                                    New SqlParameter("@fct_tmpfin", tmpfin),
+                                    New SqlParameter("@fct_horas", horas),
+                                    New SqlParameter("@fct_kilos", kilos),
                                     New SqlParameter("@fct_nivel", nivel),
                                     New SqlParameter("@fct_usucod", Frm_Principal.InfoUsuario.Text),
                                     New SqlParameter("@fct_id", fct_id)
@@ -216,6 +234,37 @@ Public Class frm_ReglaFCT
             End If
         Else
             SoloNumeros(sender, e)
+        End If
+    End Sub
+
+
+
+    Private Sub Label7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label7.Click
+
+    End Sub
+
+
+    Private Sub rbtFijo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbtFijo.CheckedChanged
+        If rbtFijo.Checked = True Then
+            txtHorasF.Enabled = True
+            txtHorasF.Focus()
+        Else
+            txtHorasF.Enabled = False
+        End If
+    End Sub
+
+    Private Sub rbtDinamico_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rbtDinamico.CheckedChanged
+        If rbtDinamico.Checked = True Then
+            txtTmpIni.Enabled = True
+            txttmpFin.Enabled = True
+            txtHorasD.Enabled = True
+            txtKilos.Enabled = True
+            txtHorasD.Focus()
+        Else
+            txtTmpIni.Enabled = False
+            txttmpFin.Enabled = False
+            txtHorasD.Enabled = False
+            txtKilos.Enabled = False
         End If
     End Sub
 End Class

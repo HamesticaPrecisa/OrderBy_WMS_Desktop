@@ -69,7 +69,14 @@ Public Class Frm_Principal
 
     Private Sub Frm_Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '  CONECTARVARI = "LOCAL"  
+        '
+        '       VES NOV 2019
+        '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
+        '       EL NOMBRE DE LA BD ACTIVA
+        '
+        Me.Text = "Order By WMS - Precisa Tech 18.11.19.23.15 - BD: " + CONFIG.mainCatalog
         InfoUsuario.Text = "001"
+
         If Not My.Computer.Name = " PROGRAMACION-PC" Then
             Presentacion.ShowDialog()
 
@@ -120,6 +127,8 @@ Public Class Frm_Principal
         'PictureBox1.Image = Nothing
         'cargaimg()
         'lblsucursal.Text = sucursalglo
+
+
     End Sub
 
 
@@ -415,6 +424,14 @@ Public Class Frm_Principal
             ' VES Oct 2019
             If tabla.Rows(i)(0).ToString() = "904" Then
                 GuiasPorEntrarATunelToolStripMenuItem.Enabled = True
+            End If
+
+            ' VES Oct 2019
+            If tabla.Rows(i)(0).ToString() = "905" Then
+                EstadoDeTunelesToolStripMenuItem.Enabled = True
+            End If
+            If tabla.Rows(i)(0).ToString() = "906" Then
+                ContenidoDeTunelesToolStripMenuItem.Enabled = True
             End If
         Next
 
@@ -1891,6 +1908,28 @@ Public Class Frm_Principal
             f_guiasPendTunel = True
         Else
             TabControl1.TabPages(Frm_GuiasPendTunel).Select()
+        End If
+    End Sub
+
+    Private Sub EstadoDeTunelesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstadoDeTunelesToolStripMenuItem.Click
+        If f_estadoTuneles = False Then
+            Dim f As Form
+            f = Frm_Tuneles
+            TabControl1.TabPages.Add(f)
+            f_estadoTuneles = True
+        Else
+            TabControl1.TabPages(Frm_Tuneles).Select()
+        End If
+    End Sub
+
+    Private Sub ContenidoDeTunelesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContenidoDeTunelesToolStripMenuItem.Click
+        If f_contenidoTuneles = False Then
+            Dim f As Form
+            f = Frm_ContenidoTuneles
+            TabControl1.TabPages.Add(f)
+            f_contenidoTuneles = True
+        Else
+            TabControl1.TabPages(Frm_ContenidoTuneles).Select()
         End If
     End Sub
 End Class

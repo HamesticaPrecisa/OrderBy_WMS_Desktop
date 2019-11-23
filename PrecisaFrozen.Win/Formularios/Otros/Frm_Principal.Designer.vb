@@ -43,7 +43,6 @@ Partial Class Frm_Principal
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New MdiTabControl.TabControl()
-        Me.CachedRpt_AcumuladoContrato1 = New PrecisaFrozen.Win.CachedRpt_AcumuladoContrato()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.M1_Inicio = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Salir = New System.Windows.Forms.ToolStripMenuItem()
@@ -135,6 +134,8 @@ Partial Class Frm_Principal
         Me.InformeSoportantesParaIngresoTúnelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menNumDia = New System.Windows.Forms.ToolStripMenuItem()
         Me.GuiasPorEntrarATunelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EstadoDeTunelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContenidoDeTunelesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Otros = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_PerfilesUsuario = New System.Windows.Forms.ToolStripMenuItem()
         Me.M3_Categorias = New System.Windows.Forms.ToolStripMenuItem()
@@ -155,6 +156,7 @@ Partial Class Frm_Principal
         Me.LBLSU = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblsucursal = New System.Windows.Forms.ToolStripStatusLabel()
         Me.LBLSUCU = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.CachedRpt_AcumuladoContrato1 = New PrecisaFrozen.Win.CachedRpt_AcumuladoContrato()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.AccesosDirectos.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -818,7 +820,7 @@ Partial Class Frm_Principal
         '
         'M1_Informes
         '
-        Me.M1_Informes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_StockDetallado, Me.M2_StockResumido, Me.M2_StockAcumulado, Me.M2_StockAcumuladoS, Me.IinformeCuadraturaMovimientosToolStripMenuItem, Me.InformaAperturaCierreAndenesToolStripMenuItem, Me.InformeSoportantesEnCamarasToolStripMenuItem, Me.ControlCamionesMovimientosToolStripMenuItem, Me.InformePedidosPorUsuarioToolStripMenuItem, Me.InformeToneladasKilosToolStripMenuItem, Me.InformePalletsMalPosicionadosToolStripMenuItem, Me.CONTROLHOR, Me.ToolStripMenuItem1, Me.ControlServiciosExtraordinariosRecepcionToolStripMenuItem, Me.M2_DocumentosEmitidos, Me.M2_Trazabilidad, Me.M2_TrazabilidadProductos, Me.M2_TrazabilidadGuia, Me.M2_PedidosMensual, Me.M2_PosicionesSoportantes, Me.M2_CapacidadDeCamaras, Me.M2_PosicionesLibres, Me.M2_ProcesosSinFinalizar, Me.M2_RevisionCamaras, Me.M2_SoportantesVencidos, Me.M2_SoportantesPorVencer, Me.InformePackingListToolStripMenuItem, Me.M2_ImpresionDeEtiquetas, Me.InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem, Me.IngresoYSalidaTunelesToolStripMenuItem, Me.InformeSoportantesParaIngresoTúnelToolStripMenuItem, Me.menNumDia, Me.GuiasPorEntrarATunelToolStripMenuItem})
+        Me.M1_Informes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_StockDetallado, Me.M2_StockResumido, Me.M2_StockAcumulado, Me.M2_StockAcumuladoS, Me.IinformeCuadraturaMovimientosToolStripMenuItem, Me.InformaAperturaCierreAndenesToolStripMenuItem, Me.InformeSoportantesEnCamarasToolStripMenuItem, Me.ControlCamionesMovimientosToolStripMenuItem, Me.InformePedidosPorUsuarioToolStripMenuItem, Me.InformeToneladasKilosToolStripMenuItem, Me.InformePalletsMalPosicionadosToolStripMenuItem, Me.CONTROLHOR, Me.ToolStripMenuItem1, Me.ControlServiciosExtraordinariosRecepcionToolStripMenuItem, Me.M2_DocumentosEmitidos, Me.M2_Trazabilidad, Me.M2_TrazabilidadProductos, Me.M2_TrazabilidadGuia, Me.M2_PedidosMensual, Me.M2_PosicionesSoportantes, Me.M2_CapacidadDeCamaras, Me.M2_PosicionesLibres, Me.M2_ProcesosSinFinalizar, Me.M2_RevisionCamaras, Me.M2_SoportantesVencidos, Me.M2_SoportantesPorVencer, Me.InformePackingListToolStripMenuItem, Me.M2_ImpresionDeEtiquetas, Me.InformeMovimientoDeSoportantesPorUsuarioToolStripMenuItem, Me.IngresoYSalidaTunelesToolStripMenuItem, Me.InformeSoportantesParaIngresoTúnelToolStripMenuItem, Me.menNumDia, Me.GuiasPorEntrarATunelToolStripMenuItem, Me.EstadoDeTunelesToolStripMenuItem, Me.ContenidoDeTunelesToolStripMenuItem})
         Me.M1_Informes.Name = "M1_Informes"
         Me.M1_Informes.Size = New System.Drawing.Size(66, 20)
         Me.M1_Informes.Text = "Informes"
@@ -1077,6 +1079,20 @@ Partial Class Frm_Principal
         Me.GuiasPorEntrarATunelToolStripMenuItem.Name = "GuiasPorEntrarATunelToolStripMenuItem"
         Me.GuiasPorEntrarATunelToolStripMenuItem.Size = New System.Drawing.Size(330, 22)
         Me.GuiasPorEntrarATunelToolStripMenuItem.Text = "Guias por entrar a tunel"
+        '
+        'EstadoDeTunelesToolStripMenuItem
+        '
+        Me.EstadoDeTunelesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.EstadoDeTunelesToolStripMenuItem.Name = "EstadoDeTunelesToolStripMenuItem"
+        Me.EstadoDeTunelesToolStripMenuItem.Size = New System.Drawing.Size(330, 22)
+        Me.EstadoDeTunelesToolStripMenuItem.Text = "Estado de tuneles"
+        '
+        'ContenidoDeTunelesToolStripMenuItem
+        '
+        Me.ContenidoDeTunelesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.ContenidoDeTunelesToolStripMenuItem.Name = "ContenidoDeTunelesToolStripMenuItem"
+        Me.ContenidoDeTunelesToolStripMenuItem.Size = New System.Drawing.Size(330, 22)
+        Me.ContenidoDeTunelesToolStripMenuItem.Text = "Contenido de tuneles"
         '
         'M1_Otros
         '
@@ -1392,5 +1408,7 @@ Partial Class Frm_Principal
     Friend WithEvents M2_Mercados As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProcesoDeTúnelToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GuiasPorEntrarATunelToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EstadoDeTunelesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ContenidoDeTunelesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

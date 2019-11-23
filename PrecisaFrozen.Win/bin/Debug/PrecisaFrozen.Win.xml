@@ -6,7 +6,23 @@ PrecisaFrozen.Win
 </name>
 </assembly>
 <members>
-<member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesDataTable">
+<member name="T:PrecisaFrozen.Win.Ds_EstadoTuneles.Dt_EstadoTunelesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_EstadoTuneles.Dt_EstadoTunelesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_EstadoTuneles.Dt_EstadoTunelesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_EstadoTuneles">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_Revisiones.DsDetalleRevisionesDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -923,6 +939,22 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member><member name="T:PrecisaFrozen.Win.Ds_Posiciones">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ContenidoTuneles.Dt_ContenidoTunelesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ContenidoTuneles.Dt_ContenidoTunelesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ContenidoTuneles.Dt_ContenidoTunelesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:PrecisaFrozen.Win.Ds_ContenidoTuneles">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>

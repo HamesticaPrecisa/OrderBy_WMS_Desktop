@@ -153,4 +153,8 @@ Public Class Frm_AddMercados
     Private Sub cboCriFec_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboCriFec.KeyPress
         e.Handled = True
     End Sub
+
+    Private Sub btnReglas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
 End Class

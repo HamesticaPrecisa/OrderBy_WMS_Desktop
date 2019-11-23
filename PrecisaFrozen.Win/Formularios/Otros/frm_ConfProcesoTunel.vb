@@ -9,7 +9,8 @@
 Public Class Frm_ConfProcesoTunel
 
     Dim fnc As New Funciones()
-    Dim reglas As DataTable
+    Dim reglasFCT As DataTable
+    Dim reglasRCT As DataTable
 
     Private Sub Frm_ConfProcesoTunel_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim prefs As DataTable = fnc.ListarTablasSQL("SELECT * FROM dbo.fnListPrefs('ptech.tunel.*')")
@@ -35,9 +36,12 @@ Public Class Frm_ConfProcesoTunel
                     cboAlertasTunel2.Text = prfValue
                 Case "alertasInicioTunel3"
                     cboAlertasTunel3.Text = prfValue
+                Case "maxPalletsPorTunel"
+                    cboMaxPalletsPorTunel.Text = prfValue
             End Select
         Next
-        requeryReglas()
+        requeryReglasFCT()
+        requeryReglasRCT()
     End Sub
 
     Private Sub txtHoraBase_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHoraBase.KeyPress
@@ -99,7 +103,7 @@ Public Class Frm_ConfProcesoTunel
         savePref("ptech.tunel.cantFotosPorMuestra", cboCantFotos.Text)
     End Sub
 
-    Private Sub requeryReglas()
+    Private Sub requeryReglasFCT()
         Dim sql As String = "SELECT a.fct_id, ISNULL(b.fam_descr,CAST('(CUALQUIERA)' AS NVARCHAR(40))) AS fam_descr, " +
                             "       ISNULL(c.cli_nomb,CAST('(CUALQUIERA)' AS NVARCHAR(50))) AS cli_nomb, " +
                             "       a.fct_tmpini, a.fct_tmpfin, a.fct_horas, a.fct_kilos " +
@@ -108,16 +112,26 @@ Public Class Frm_ConfProcesoTunel
                             "  LEFT JOIN clientes c ON c.cli_rut = a.cli_rut " +
                             " WHERE fct_status = 'ACTIVA' " +
                             " ORDER BY a.fct_nivel, b.fam_descr, c.cli_nomb"
-        reglas = fnc.ListarTablasSQL(sql)
-        dgrReglas.DataSource = reglas
+        reglasFCT = fnc.ListarTablasSQL(sql)
+        dgrReglas.DataSource = reglasFCT
         btnEliminar.Visible = False
     End Sub
 
 
+    Private Sub requeryReglasRCT()
+        Dim sql As String = "SELECT a.rct_id, a.rct_desde, a.rct_hasta, a.rct_factor " +
+                            "  FROM cnfrct a " +
+                            " WHERE rct_status = 'ACTIVA' " +
+                            " ORDER BY a.rct_desde"
+        reglasRCT = fnc.ListarTablasSQL(sql)
+        dgrRCT.DataSource = reglasRCT
+        cmdDropRCT.Visible = False
+    End Sub
+
     Private Sub btnIncluirRegla_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnIncluirRegla.Click
         Dim f As New frm_ReglaFCT
         f.ShowDialog()
-        requeryReglas()
+        requeryReglasFCT()
     End Sub
 
     Private Sub dgrReglas_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgrReglas.SelectionChanged
@@ -129,25 +143,29 @@ Public Class Frm_ConfProcesoTunel
     End Sub
 
     Private Sub dgrReglas_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgrReglas.DoubleClick
-        Dim regla As DataRow = reglas.Rows(dgrReglas.CurrentRow.Index)
+        Dim regla As DataRow = reglasFCT.Rows(dgrReglas.CurrentRow.Index)
         Dim fct_id As Integer = CInt(regla("fct_id").ToString())
         Dim row As DataRow = fnc.sqlExecuteRow("SELECT * FROM cnffct WHERE fct_id = @p0", fct_id)
         Dim f As New frm_ReglaFCT
         f.regla = row
         f.ShowDialog()
-        requeryReglas()
+        requeryReglasFCT()
     End Sub
 
     Private Sub btnEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminar.Click
         If Confirmar("Desea eliminar esta regla?") = False Then Return
-        Dim regla As DataRow = reglas.Rows(dgrReglas.CurrentRow.Index)
+        Dim regla As DataRow = reglasFCT.Rows(dgrReglas.CurrentRow.Index)
         Dim fct_id As Integer = CInt(regla("fct_id").ToString())
-        Dim r As sqlCmdResult = fnc.runSQLCmd("UPDATE cnffct SET fct_status = 'ANULADA' WHERE fct_id = @p0", fct_id)
+        Dim r As sqlCmdResult = fnc.runSQLCmd("UPDATE cnffct SET fct_status = 'ANULADA', fct_ultact=GETDATE(), fct_usucod=@user WHERE fct_id = @id",
+                                              New SqlParameter() {
+                                                  New SqlParameter("@user", Frm_Principal.InfoUsuario.Text),
+                                                  New SqlParameter("@id", fct_id)
+                                              })
         If r.result = False Then
             MsgBox(r.errorMsg, MsgBoxStyle.Critical, "Cuidado")
             Return
         End If
-        requeryReglas()
+        requeryReglasFCT()
     End Sub
 
     Private Sub Frm_ConfProcesoTunel_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
@@ -173,5 +191,50 @@ Public Class Frm_ConfProcesoTunel
 
     Private Sub cboAlertasTunel3_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertasTunel3.SelectedIndexChanged
         savePref("ptech.tunel.alertasInicioTunel3", cboAlertasTunel3.Text)
+    End Sub
+
+    Private Sub cmdAddRCT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAddRCT.Click
+        Dim f As New frm_ReglaRCT
+        f.ShowDialog()
+        requeryReglasRCT()
+    End Sub
+
+    Private Sub cmdDropRCT_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDropRCT.Click
+        If Confirmar("Desea eliminar esta regla?") = False Then Return
+        Dim regla As DataRow = reglasRCT.Rows(dgrRCT.CurrentRow.Index)
+        Dim rct_id As Integer = CInt(regla("rct_id").ToString())
+        Dim r As sqlCmdResult = fnc.runSQLCmd("UPDATE cnfrct SET rct_status = 'ANULADA', rct_ultact=GETDATE(), rct_usucod = @user WHERE fct_id = @id",
+                                              New SqlParameter() {
+                                                  New SqlParameter("@user", Frm_Principal.InfoUsuario.Text),
+                                                  New SqlParameter("@id", rct_id)
+                                              })
+        If r.result = False Then
+            MsgBox(r.errorMsg, MsgBoxStyle.Critical, "Cuidado")
+            Return
+        End If
+        requeryReglasRCT()
+    End Sub
+
+
+    Private Sub dgrRCT_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgrRCT.DoubleClick
+        Dim regla As DataRow = reglasRCT.Rows(dgrRCT.CurrentRow.Index)
+        Dim rct_id As Integer = CInt(regla("rct_id").ToString())
+        Dim row As DataRow = fnc.sqlExecuteRow("SELECT * FROM cnfrct WHERE rct_id = @p0", rct_id)
+        Dim f As New frm_ReglaRCT
+        f.regla = row
+        f.ShowDialog()
+        requeryReglasRCT()
+    End Sub
+
+    Private Sub dgrRCT_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dgrRCT.SelectionChanged
+        If dgrRCT.CurrentRow IsNot Nothing Then
+            cmdDropRCT.Visible = True
+        Else
+            cmdDropRCt.Visible = False
+        End If
+    End Sub
+
+    Private Sub cboMaxPalletsPorTunel_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboMaxPalletsPorTunel.SelectedIndexChanged
+        savePref("ptech.tunel.maxPalletsPorTunel", cboMaxPalletsPorTunel.Text)
     End Sub
 End Class

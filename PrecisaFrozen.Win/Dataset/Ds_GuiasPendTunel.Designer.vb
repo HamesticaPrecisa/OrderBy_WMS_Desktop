@@ -291,6 +291,14 @@ Partial Public Class Ds_GuiasPendTunel
         
         Private columnhpt As Global.System.Data.DataColumn
         
+        Private columnkilos As Global.System.Data.DataColumn
+        
+        Private columncajas As Global.System.Data.DataColumn
+        
+        Private columndrec_fecrec As Global.System.Data.DataColumn
+        
+        Private columnhet As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -359,6 +367,38 @@ Partial Public Class Ds_GuiasPendTunel
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property kilosColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnkilos
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property cajasColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncajas
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property drec_fecrecColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndrec_fecrec
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property hetColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnhet
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -395,9 +435,9 @@ Partial Public Class Ds_GuiasPendTunel
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddDt_GuiasPendTunelRow(ByVal frec_codi As String, ByVal cli_nomb As String, ByVal mer_nombre As String, ByVal hpt As String) As Dt_GuiasPendTunelRow
+        Public Overloads Function AddDt_GuiasPendTunelRow(ByVal frec_codi As String, ByVal cli_nomb As String, ByVal mer_nombre As String, ByVal hpt As String, ByVal kilos As String, ByVal cajas As String, ByVal drec_fecrec As String, ByVal het As String) As Dt_GuiasPendTunelRow
             Dim rowDt_GuiasPendTunelRow As Dt_GuiasPendTunelRow = CType(Me.NewRow,Dt_GuiasPendTunelRow)
-            Dim columnValuesArray() As Object = New Object() {frec_codi, cli_nomb, mer_nombre, hpt}
+            Dim columnValuesArray() As Object = New Object() {frec_codi, cli_nomb, mer_nombre, hpt, kilos, cajas, drec_fecrec, het}
             rowDt_GuiasPendTunelRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDt_GuiasPendTunelRow)
             Return rowDt_GuiasPendTunelRow
@@ -424,6 +464,10 @@ Partial Public Class Ds_GuiasPendTunel
             Me.columncli_nomb = MyBase.Columns("cli_nomb")
             Me.columnmer_nombre = MyBase.Columns("mer_nombre")
             Me.columnhpt = MyBase.Columns("hpt")
+            Me.columnkilos = MyBase.Columns("kilos")
+            Me.columncajas = MyBase.Columns("cajas")
+            Me.columndrec_fecrec = MyBase.Columns("drec_fecrec")
+            Me.columnhet = MyBase.Columns("het")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -437,6 +481,14 @@ Partial Public Class Ds_GuiasPendTunel
             MyBase.Columns.Add(Me.columnmer_nombre)
             Me.columnhpt = New Global.System.Data.DataColumn("hpt", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnhpt)
+            Me.columnkilos = New Global.System.Data.DataColumn("kilos", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnkilos)
+            Me.columncajas = New Global.System.Data.DataColumn("cajas", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncajas)
+            Me.columndrec_fecrec = New Global.System.Data.DataColumn("drec_fecrec", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndrec_fecrec)
+            Me.columnhet = New Global.System.Data.DataColumn("het", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhet)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -643,6 +695,66 @@ Partial Public Class Ds_GuiasPendTunel
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property kilos() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDt_GuiasPendTunel.kilosColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'kilos' in table 'Dt_GuiasPendTunel' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDt_GuiasPendTunel.kilosColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property cajas() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDt_GuiasPendTunel.cajasColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'cajas' in table 'Dt_GuiasPendTunel' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDt_GuiasPendTunel.cajasColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property drec_fecrec() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDt_GuiasPendTunel.drec_fecrecColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'drec_fecrec' in table 'Dt_GuiasPendTunel' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDt_GuiasPendTunel.drec_fecrecColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property het() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDt_GuiasPendTunel.hetColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'het' in table 'Dt_GuiasPendTunel' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDt_GuiasPendTunel.hetColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isfrec_codiNull() As Boolean
             Return Me.IsNull(Me.tableDt_GuiasPendTunel.frec_codiColumn)
         End Function
@@ -687,6 +799,54 @@ Partial Public Class Ds_GuiasPendTunel
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SethptNull()
             Me(Me.tableDt_GuiasPendTunel.hptColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IskilosNull() As Boolean
+            Return Me.IsNull(Me.tableDt_GuiasPendTunel.kilosColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetkilosNull()
+            Me(Me.tableDt_GuiasPendTunel.kilosColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IscajasNull() As Boolean
+            Return Me.IsNull(Me.tableDt_GuiasPendTunel.cajasColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetcajasNull()
+            Me(Me.tableDt_GuiasPendTunel.cajasColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isdrec_fecrecNull() As Boolean
+            Return Me.IsNull(Me.tableDt_GuiasPendTunel.drec_fecrecColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setdrec_fecrecNull()
+            Me(Me.tableDt_GuiasPendTunel.drec_fecrecColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IshetNull() As Boolean
+            Return Me.IsNull(Me.tableDt_GuiasPendTunel.hetColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SethetNull()
+            Me(Me.tableDt_GuiasPendTunel.hetColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

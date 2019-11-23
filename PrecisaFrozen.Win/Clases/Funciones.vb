@@ -837,6 +837,23 @@ Public Class Funciones
     End Function
 
 
+    '
+    '   VES 2019
+    '   CONVIERTE UN STRING EN UN VALOR DATETIME. SI LA 
+    '   CONVERSION NO ES POSIBLE, DEVUELVE EL VALOR 
+    '   ORIGINAL
+    '
+    Function ctod(ByVal sdate As String) As Object
+        Dim rdate As Object
+        Try
+            rdate = DateTime.Parse(sdate.Trim())
+        Catch ex As Exception
+            rdate = sdate
+        End Try
+        Return rdate
+    End Function
+
+
 
 
 End Class
