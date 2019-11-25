@@ -1050,3 +1050,4 @@ C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x8
 C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepciones_Programacion_Cargas.resources
 C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepcion_Programacion_Listado.resources
 C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.vbprojResolveAssemblyReference.cache
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Recepcion_Custodia_Intercambio_Pallets.resources
