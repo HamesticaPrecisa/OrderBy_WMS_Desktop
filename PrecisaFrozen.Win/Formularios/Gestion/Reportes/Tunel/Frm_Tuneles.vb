@@ -26,6 +26,9 @@ Public Class Frm_Tuneles
         Btn_Calcular.Enabled = True
         lblLastUpd.Text = ""
         Procesa()
+        Btn_Calcular.Enabled = False
+        btn_nuevo.Enabled = True
+        Timer1.Enabled = True
     End Sub
 
 

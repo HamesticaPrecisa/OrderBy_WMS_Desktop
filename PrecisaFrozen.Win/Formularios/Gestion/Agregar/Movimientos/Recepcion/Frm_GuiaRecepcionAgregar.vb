@@ -2455,7 +2455,8 @@ Public Class Frm_GuiaRecepcionAgregar
                 "cho_empresa, frec_observ, frec_tipdesc, frec_origen, frec_receptunel, frec_numsello, frec_tiporecepcion, " +
                 "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
                 "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
-                "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv,mer_id " +
+                "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
+                "ISNULL(mer_id,1) AS mer_id " +
                 "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
                 "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
                 "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "'"
@@ -2466,7 +2467,8 @@ Public Class Frm_GuiaRecepcionAgregar
     "cho_empresa, frec_observ, frec_tipdesc, frec_origen, frec_receptunel, frec_numsello, frec_tiporecepcion, " +
     "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
     "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
-    "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv, mer_id " +
+    "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
+    "ISNULL(mer_id,1) AS mer_id " +
     "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
     "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
     "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "' and fichrece.cod_bod ='" + sucursalglo + "'"
