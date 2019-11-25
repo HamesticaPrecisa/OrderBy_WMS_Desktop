@@ -178,7 +178,7 @@ Public Class Frm_ConfProcesoTunel
     End Sub
 
     Private Sub cboAlertaDetencion_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertaDetencion.SelectedIndexChanged
-        savePref("ptech.tunel.limAlertaDetencion", cboAlertaInicioDemorado.Text)
+        savePref("ptech.tunel.limAlertaDetencion", cboAlertaDetencion.Text)
     End Sub
 
     Private Sub cboAlertasTunel1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAlertasTunel1.SelectedIndexChanged

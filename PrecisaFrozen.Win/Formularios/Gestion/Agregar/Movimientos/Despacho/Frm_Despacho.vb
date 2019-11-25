@@ -6,6 +6,7 @@ Public Class Frm_Despacho
     Dim fnc As New Funciones
     Public foliopu As String = ""
     Public nomcli As String = ""
+
     Private Sub validapago()
 
         Dim rut As String = txtrutcli.Text
@@ -60,13 +61,13 @@ Public Class Frm_Despacho
             sqlFich = "SELECT fpre_rutcli, carga, cincuenta, cli_nomb, fpre_sello, fpre_contenedor, fpre_rampla, " +
       "fpre_destino, fpre_observacion, fpre_fechact, fpre_tem, fpre_totsopo, fpre_totunidad, " +
       "fpre_totpeso, fpre_activa, fpre_horades, fpre_etiq, fpre_nped " +
-      "FROM FICHPRED INNER JOIN clientes ON fpre_rutcli=cli_rut INNER JOIN cincuenta ON folio=fpre_codi " +
+      "FROM FICHPRED INNER JOIN clientes ON fpre_rutcli=cli_rut inner join cincuenta ON folio=fpre_codi " +
       "WHERE fpre_codvig='0' AND  fpre_codi='" + codigo + "' "
         Else
             sqlFich = "SELECT fpre_rutcli, carga, cincuenta, cli_nomb, fpre_sello, fpre_contenedor, fpre_rampla, " +
 "fpre_destino, fpre_observacion, fpre_fechact, fpre_tem, fpre_totsopo, fpre_totunidad, " +
 "fpre_totpeso, fpre_activa, fpre_horades, fpre_etiq, fpre_nped " +
-"FROM FICHPRED INNER JOIN clientes ON fpre_rutcli=cli_rut INNER JOIN cincuenta ON folio=fpre_codi " +
+"FROM FICHPRED INNER JOIN clientes ON fpre_rutcli=cli_rut inner join cincuenta ON folio=fpre_codi " +
 "WHERE fpre_codvig='0' AND  fpre_codi='" + codigo + "' and fichpred.cod_bod ='" + sucursalglo + "' "
 
 
@@ -169,6 +170,9 @@ Public Class Frm_Despacho
             btn_guardar.Enabled = True
             'lblcodigo.Text = BuscaCorrelativo("009")
             txtCodDesp.Text = BuscaCorrelativo("009")
+
+            corregirCorrelativo()
+
             horaInic.Text = tabla.Rows(0)(15).ToString()
 
             'If tabla.Rows(0)(16).ToString() = "1" Then
@@ -323,8 +327,8 @@ Public Class Frm_Despacho
             If (dtConfValRut.Rows(0).Item(0).ToString.Trim <> "0") Then
                 If cho.Length < 8 Then
                     MsgBox("Debe agregar el rut completo", MsgBoxStyle.Information, "Aviso")
+                    Exit Sub
                 End If
-                Exit Sub
             End If
         End If
 
@@ -397,7 +401,7 @@ Public Class Frm_Despacho
 
 
             If validacionIngreso() Then
-                'Validacion codifo despacho vacio HAmestica 14/08/18
+                'Validacion codigo despacho vacio HAmestica 14/08/18
                 Dim CodDesp = txtCodDesp.Text.Trim
                 If (CodDesp = "" Or CodDesp = "0000000") Then
                     CodDesp = BuscaCorrelativo("009")
@@ -557,6 +561,71 @@ Public Class Frm_Despacho
 
                         fnc.MovimientoSQL(_MovPallet)
 
+
+                        'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+                        Dim NumPal As String = DetaDespa.Rows(i).Cells(0).Value.ToString.Trim
+                        Dim RutCli As String = txtrutcli.Text.Trim
+                        Dim CodCont As String = DetaDespa.Rows(i).Cells(7).Value.ToString.Trim
+                        Dim TipPal As String = "000" & DetaDespa.Rows(i).Cells(9).Value.ToString.Trim
+                        Dim TipPalFrm As String = TipPal.Substring(TipPal.Length - 3, 3)
+                        Dim DocAsoc As String = txtCodDesp.Text.Trim
+                        Dim CantEnt As Integer = 1
+                        Dim CantSal As Integer = 0
+                        Dim Obs As String = "Despacho " & DocAsoc & ", Pallet " & NumPal & "."
+                        Dim Est As String = "1"
+                        Dim CodUsu As String = Frm_Principal.InfoUsuario.Text.Trim
+
+                        Dim TipCar As String = ""
+
+                        Dim sqlTipCar As String = "select a.tcar_descr from P_TipoCargaDescarga a with(nolock) inner join fichdespa b with(nolock) on(a.tcar_codi=b.fdes_tipcarga) where b.fdes_codi='" & DocAsoc & "'"
+                        Dim dtTipCar As New DataTable
+
+                        dtTipCar = fnc.ListarTablasSQL(sqlTipCar)
+
+                        If (dtTipCar.Rows.Count > 0) Then
+                            TipCar = dtTipCar.Rows(0).Item(0).ToString.Trim
+                        End If
+
+                        If (TipCar = "MECANICA") Then
+                            Dim sqlEsArr As String = "select EsArr=count(ID) from Control_Pallet_Arriendo with(nolock) where Codigo_Soportante='" & NumPal & "' and Estado_Arriendo='A'"
+                            Dim dtEsArr As New DataTable
+
+                            dtEsArr = fnc.ListarTablasSQL(sqlEsArr)
+
+                            If (dtEsArr.Rows.Count > 0) Then
+                                Dim EsArr As Integer = CInt(dtEsArr.Rows(0).Item(0).ToString.Trim)
+
+                                If (EsArr > 0) Then
+                                    Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
+                                    Dim dtVent As New DataTable
+
+                                    dtVent = fnc.ListarTablasSQL(sqlVent)
+
+                                    Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
+                                    Dim dtMovArr As New DataTable
+
+                                    dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
+                                End If
+                            End If
+                        ElseIf (TipCar = "MANUAL") Then
+                            Dim sqlEsCust As String = "select EsCust=count(ID) from V_Control_Pallet with(nolock) where Observacion like '%Pallet " & NumPal & "%'"
+                            Dim dtEsCust As New DataTable
+
+                            dtEsCust = fnc.ListarTablasSQL(sqlEsCust)
+
+                            If (dtEsCust.Rows.Count > 0) Then
+                                Dim EsCust As Integer = CInt(dtEsCust.Rows(0).Item(0).ToString.Trim)
+
+                                If (EsCust > 0) Then
+                                    Dim sqlCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','" & CantEnt & "','" & CantSal & "','" & Obs & "','" & Est & "','" & CodUsu & "'"
+                                    Dim dtCust As New DataTable
+
+                                    dtCust = fnc.ListarTablasSQL(sqlCust)
+                                End If
+                            End If
+                        End If
+                        'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+
                     Next
 
                     'Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + lblcodigo.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
@@ -700,6 +769,42 @@ Public Class Frm_Despacho
 
         End If
 
+    End Sub
+
+    Sub corregirCorrelativo()
+        Dim sqlCorrAct As String = "select a.cor_correact from correlat a with(nolock) where a.cor_codi='009'"
+        Dim dtCorrAct As New DataTable
+        dtCorrAct = fnc.ListarTablasSQL(sqlCorrAct)
+
+        If (dtCorrAct.Rows.Count > 0) Then
+            Dim Err As Boolean = False
+
+            Dim CorrForm As String = txtCodDesp.Text.Trim
+            Dim CorrFormFrm As Integer = 0
+
+            Dim CorrAct As String = dtCorrAct.Rows(0).Item(0).ToString.Trim
+            Dim CorrActFrm As Integer = CInt(CorrAct)
+
+            If (Not Integer.TryParse(CorrForm, CorrFormFrm)) Then
+                Err = True
+            Else
+                If ((CorrFormFrm - CorrActFrm) < -5 Or (CorrFormFrm - CorrActFrm) > 5) Then
+                    Err = True
+                End If
+            End If
+
+            If (CorrFormFrm.ToString.Length <> CorrActFrm.ToString.Length) Then
+                Err = True
+            End If
+
+            If (Err) Then
+                Dim sqlCorrLim As String = "delete from Correlat_salto where tmps_correl='009' and tmps_personal='" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                fnc.MovimientoSQL(sqlCorrLim)
+
+                Frm_Principal.buscavalor = ""
+                txtCodDesp.Text = BuscaCorrelativo("009")
+            End If
+        End If
     End Sub
 
     Private Function validacionIngreso() As Boolean
@@ -954,6 +1059,24 @@ Public Class Frm_Despacho
 
     Sub CARGA_SERVICIOS_ADICIONALES()
 
+        rbprecisa.Checked = False
+
+        Dim sqlVasGui As String = "select top 1 Cobro_Guia=isnull(Cobro_Guia,0) from Despachos_Guia_Cliente with(nolock) where Codigo_Despacho='" & txtCodDesp.Text.Trim & "'"
+        Dim dtVasGui As New DataTable
+        dtVasGui = fnc.ListarTablasSQL(sqlVasGui)
+        If (dtVasGui.Rows.Count > 0) Then
+            If (dtVasGui.Rows(0).Item(0).ToString.Trim = "1") Then
+                rbcliente.Checked = True
+                Rbsinguia.Checked = False
+            Else
+                rbcliente.Checked = False
+                Rbsinguia.Checked = True
+            End If
+        Else
+            rbcliente.Checked = False
+            Rbsinguia.Checked = True
+        End If
+
         'DataAdicionales.DataSource = fnc.ListarTablasSQL("SELECT  'False' AS Dvas_Est, Serv_Cod, Serv_Nom,'0' AS Dvas_Unid,'0' AS dvas_cajas,'0' AS dvas_kilos FROM FacServicios WHERE Serv_Incluir = '2' OR Serv_Incluir = '3' ORDER BY Serv_ordd ASC")
 
         'Dim Cobros_Automaticos As String = "SELECT dvas_est, Serv_cod, Serv_Nom, Dvas_Unid, Dvas_Cajas, REPLACE(Dvas_Kilos,',','.') AS Dvas_Kilos  " +
@@ -1016,29 +1139,18 @@ Public Class Frm_Despacho
                     'If DataAdicionales.Rows(i).Cells("se").Value = "034" Then
                     '    rbprecisa.Checked = True
                     'End If
+
+                    If (DataAdicionales.Rows(i).Cells("se").Value = "034" And Rbsinguia.Checked) Then
+                        DataAdicionales.Rows(i).Cells("cb").Value = False
+                    End If
+                Else
+                    If (DataAdicionales.Rows(i).Cells("se").Value = "034" And rbcliente.Checked) Then
+                        DataAdicionales.Rows(i).Cells("cb").Value = True
+                    End If
                 End If
             Next
         Else
 
-        End If
-
-        'Cargar info VAS guía cliente emitida y Cobro estadía excento
-        rbprecisa.Checked = False
-
-        Dim sqlVasGui As String = "select top 1 Cobro_Guia=isnull(Cobro_Guia,0) from Despachos_Guia_Cliente with(nolock) where Codigo_Despacho='" & txtCodDesp.Text.Trim & "'"
-        Dim dtVasGui As New DataTable
-        dtVasGui = fnc.ListarTablasSQL(sqlVasGui)
-        If (dtVasGui.Rows.Count > 0) Then
-            If (dtVasGui.Rows(0).Item(0).ToString.Trim = "1") Then
-                rbcliente.Checked = True
-                Rbsinguia.Checked = False
-            Else
-                rbcliente.Checked = False
-                Rbsinguia.Checked = True
-            End If
-        Else
-            rbcliente.Checked = False
-            Rbsinguia.Checked = True
         End If
 
         Dim sqlCobEst As String = "select isnull(a.Cobro_Excento,'0') from V_Despacho_Cobro_Estadia with(nolock) where Codigo_Despacho='" & txtCodDesp.Text.Trim & "'"
@@ -1051,9 +1163,8 @@ Public Class Frm_Despacho
                 chkSinCobEst.Checked = False
             End If
         Else
-            chkSinCobEst.Checked=False
+            chkSinCobEst.Checked = False
         End If
-        'Fin cargar info VAS guía cliente emitida y Cobro estadía excento
     End Sub
 
     Private Sub btn_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_nuevo.Click
@@ -1272,98 +1383,222 @@ Public Class Frm_Despacho
     Private Sub TimerAdicionales_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TimerAdicionales.Tick
         If txtcodigo.Enabled = False Then
             Try
-                If CbCarga.SelectedValue.ToString() = "1" Then
-                    activa_desactiva(3, True)
-                Else
-                    activa_desactiva(3, False)
-                End If
+                'If CbCarga.SelectedValue.ToString() = "1" Then
+                '    activa_desactiva(3, True)
+                'Else
+                '    activa_desactiva(3, False)
+                'End If
 
-                If CbRecargo.CheckState = CheckState.Checked Then
-                    activa_desactiva(6, True)
-                Else
-                    activa_desactiva(6, False)
-                End If
+                'If CbRecargo.CheckState = CheckState.Checked Then
+                '    activa_desactiva(6, True)
+                'Else
+                '    activa_desactiva(6, False)
+                'End If
 
-                If CbCustodia.CheckState = CheckState.Checked Then
-                    If IsNumeric(TxtCustodia.Text) Then
-                        DataAdicionales.Rows(4).Cells("cb").Value = True
-                        DataAdicionales.Rows(4).Cells("un").Value = TxtCustodia.Text
-                        DataAdicionales.Rows(4).Cells("caj").Value = "0"
-                        DataAdicionales.Rows(4).Cells("ki").Value = "0"
-                    End If
-                Else
-                    activa_desactiva(4, False)
-                End If
+                'If CbCustodia.CheckState = CheckState.Checked Then
+                '    If IsNumeric(TxtCustodia.Text) Then
+                '        DataAdicionales.Rows(4).Cells("cb").Value = True
+                '        DataAdicionales.Rows(4).Cells("un").Value = TxtCustodia.Text
+                '        DataAdicionales.Rows(4).Cells("caj").Value = "0"
+                '        DataAdicionales.Rows(4).Cells("ki").Value = "0"
+                '    End If
+                'Else
+                '    activa_desactiva(4, False)
+                'End If
 
-                If DataAdicionales.RowCount = 10 Then
-                    If CbRepa.Checked = True Then
-                        If IsNumeric(TxtRepa.Text) Then
-                            DataAdicionales.Rows(9).Cells("cb").Value = True
-                            DataAdicionales.Rows(9).Cells("un").Value = TxtRepa.Text
-                            DataAdicionales.Rows(9).Cells("caj").Value = "0"
-                            DataAdicionales.Rows(9).Cells("ki").Value = "0"
+                'If DataAdicionales.RowCount = 10 Then
+                '    If CbRepa.Checked = True Then
+                '        If IsNumeric(TxtRepa.Text) Then
+                '            DataAdicionales.Rows(9).Cells("cb").Value = True
+                '            DataAdicionales.Rows(9).Cells("un").Value = TxtRepa.Text
+                '            DataAdicionales.Rows(9).Cells("caj").Value = "0"
+                '            DataAdicionales.Rows(9).Cells("ki").Value = "0"
+                '        Else
+                '            activa_desactiva(9, False)
+                '        End If
+                '    Else
+                '        activa_desactiva(9, False)
+                '    End If
+                'End If
+
+                'If rbcliente.Checked = True Then
+                '    DataAdicionales.Rows(7).Cells("cb").Value = True
+                '    DataAdicionales.Rows(7).Cells("un").Value = "1"
+                '    DataAdicionales.Rows(7).Cells("caj").Value = "0"
+                '    DataAdicionales.Rows(7).Cells("ki").Value = "0"
+                'Else
+                '    activa_desactiva(7, False)
+                'End If
+
+                'If rbprecisa.Checked = True Then
+                '    DataAdicionales.Rows(8).Cells("cb").Value = True
+                '    DataAdicionales.Rows(8).Cells("un").Value = "1"
+                '    DataAdicionales.Rows(8).Cells("caj").Value = "0"
+                '    DataAdicionales.Rows(8).Cells("ki").Value = "0"
+                'Else
+                '    activa_desactiva(8, False)
+                'End If
+
+                'If Rbsinguia.Checked = True Then
+                '    activa_desactiva(7, False)
+                '    activa_desactiva(8, False)
+                'End If
+
+                'Dim suma_derecho As Integer = 0
+
+                'For i As Integer = 0 To DetaDespa.Rows.Count - 1
+                '    If IsNumeric(DetaDespa.Rows(i).Cells("dpre_estadia").Value.ToString()) Then
+                '        If Val(DetaDespa.Rows(i).Cells("dpre_estadia").Value) < Val(txtderecho.Text) Then
+                '            suma_derecho += 1
+                '        End If
+                '    End If
+                'Next
+
+                'If suma_derecho > 0 Then
+                '    DataAdicionales.Rows(2).Cells("cb").Value = True
+                '    DataAdicionales.Rows(2).Cells("un").Value = suma_derecho
+                '    DataAdicionales.Rows(2).Cells("caj").Value = 0
+                '    DataAdicionales.Rows(2).Cells("ki").Value = 0
+                'Else
+                '    activa_desactiva(2, False)
+                'End If
+
+                'If Cb_Postura.CheckState = CheckState.Checked Then
+                '    If IsNumeric(TxtFilm.Text) Then
+                '        DataAdicionales.Rows(5).Cells("cb").Value = True
+                '        DataAdicionales.Rows(5).Cells("un").Value = TxtFilm.Text
+                '        DataAdicionales.Rows(5).Cells("caj").Value = 0
+                '        DataAdicionales.Rows(5).Cells("ki").Value = 0
+                '    Else
+                '        activa_desactiva(5, False)
+                '    End If
+                'Else
+                '    activa_desactiva(5, False)
+                'End If
+
+                Dim CantPals As Integer = CInt(txttotsopo.Text.Trim)
+
+                For i = 0 To DataAdicionales.RowCount - 1
+                    Dim DescServ As String = DataAdicionales.Rows(i).Cells("de").Value.ToString.Trim
+
+                    If (DescServ = "CARGA MANUAL") Then
+                        If CbCarga.SelectedValue.ToString() = "1" Then
+                            activa_desactiva(i, True)
                         Else
-                            activa_desactiva(9, False)
+                            activa_desactiva(i, False)
                         End If
-                    Else
-                        activa_desactiva(9, False)
                     End If
-                End If
 
-                If rbcliente.Checked = True Then
-                    DataAdicionales.Rows(7).Cells("cb").Value = True
-                    DataAdicionales.Rows(7).Cells("un").Value = "1"
-                    DataAdicionales.Rows(7).Cells("caj").Value = "0"
-                    DataAdicionales.Rows(7).Cells("ki").Value = "0"
-                Else
-                    activa_desactiva(7, False)
-                End If
+                    If (DescServ = "SOLICITUD DE PRODUCTOS MENOR A 24 HORAS") Then
+                        If CbRecargo.CheckState = CheckState.Checked Then
+                            activa_desactiva(i, True)
+                        Else
+                            activa_desactiva(i, False)
+                        End If
+                    End If
 
-                If rbprecisa.Checked = True Then
-                    DataAdicionales.Rows(8).Cells("cb").Value = True
-                    DataAdicionales.Rows(8).Cells("un").Value = "1"
-                    DataAdicionales.Rows(8).Cells("caj").Value = "0"
-                    DataAdicionales.Rows(8).Cells("ki").Value = "0"
-                Else
-                    activa_desactiva(8, False)
-                End If
+                    If (DescServ = "ADMINISTRACION  DE PALLETS") Then
+                        If CbCustodia.CheckState = CheckState.Checked Then
+                            If IsNumeric(TxtCustodia.Text) Then
+                                Dim CantCust As Integer = CInt(TxtCustodia.Text.Trim)
 
-                If Rbsinguia.Checked = True Then
-                    activa_desactiva(7, False)
-                    activa_desactiva(8, False)
-                End If
+                                If (CantCust > CantPals) Then
+                                    CantCust = CantPals
+                                    TxtCustodia.Text = CantPals
+                                End If
 
-                Dim suma_derecho As Integer = 0
+                                DataAdicionales.Rows(i).Cells("cb").Value = True
+                                DataAdicionales.Rows(i).Cells("un").Value = CantCust
+                                DataAdicionales.Rows(i).Cells("caj").Value = "0"
+                                DataAdicionales.Rows(i).Cells("ki").Value = "0"
+                            End If
+                        Else
+                            activa_desactiva(i, False)
+                        End If
+                    End If
 
-                For i As Integer = 0 To DetaDespa.Rows.Count - 1
-                    If IsNumeric(DetaDespa.Rows(i).Cells("dpre_estadia").Value.ToString()) Then
-                        If Val(DetaDespa.Rows(i).Cells("dpre_estadia").Value) < Val(txtderecho.Text) Then
-                            suma_derecho += 1
+                    If (DescServ = "REPALETIZADO") Then
+                        If CbRepa.Checked = True Then
+                            If (IsNumeric(TxtRepa.Text.Trim)) Then
+                                Dim CantRepa As Integer = CInt(TxtRepa.Text.Trim)
+
+                                If (CantRepa > CantPals) Then
+                                    CantRepa = CantPals
+                                    TxtRepa.Text = CantPals
+                                End If
+
+                                DataAdicionales.Rows(i).Cells("cb").Value = True
+                                DataAdicionales.Rows(i).Cells("un").Value = CantRepa
+                                DataAdicionales.Rows(i).Cells("caj").Value = "0"
+                                DataAdicionales.Rows(i).Cells("ki").Value = "0"
+                            Else
+                                activa_desactiva(i, False)
+                            End If
+                        Else
+                            activa_desactiva(i, False)
+                        End If
+                    End If
+
+                    If (DescServ = "EMISION DE GUIAS DE DESPACHO CLIENTE") Then
+                        If rbcliente.Checked = True Then
+                            DataAdicionales.Rows(i).Cells("cb").Value = True
+                            DataAdicionales.Rows(i).Cells("un").Value = "1"
+                            DataAdicionales.Rows(i).Cells("caj").Value = "0"
+                            DataAdicionales.Rows(i).Cells("ki").Value = "0"
+                        Else
+                            activa_desactiva(i, False)
+                        End If
+                    End If
+
+                    If (DescServ = "DERECHO ENTRADA/ESTADIA (MENOR A 15 DIAS)") Then
+                        Dim suma_derecho As Integer = 0
+
+                        For j As Integer = 0 To DetaDespa.Rows.Count - 1
+                            If IsNumeric(DetaDespa.Rows(j).Cells("dpre_estadia").Value.ToString()) Then
+                                If Val(DetaDespa.Rows(j).Cells("dpre_estadia").Value) < Val(txtderecho.Text) Then
+                                    suma_derecho += 1
+                                End If
+                            End If
+                        Next
+
+                        If suma_derecho > 0 And chkSinCobEst.Checked = False Then
+                            DataAdicionales.Rows(i).Cells("cb").Value = True
+                            DataAdicionales.Rows(i).Cells("un").Value = suma_derecho
+                            DataAdicionales.Rows(i).Cells("caj").Value = 0
+                            DataAdicionales.Rows(i).Cells("ki").Value = 0
+                        Else
+                            activa_desactiva(i, False)
+                        End If
+                    End If
+
+                    If (DescServ = "POSTURA DE FILM") Then
+                        If Cb_Postura.CheckState = CheckState.Checked Then
+                            If IsNumeric(TxtFilm.Text) Then
+                                Dim CantFilm As Integer = CInt(TxtFilm.Text.Trim)
+
+                                If (CantFilm > CantPals) Then
+                                    CantFilm = CantPals
+                                    TxtFilm.Text = CantPals
+                                End If
+
+                                DataAdicionales.Rows(i).Cells("cb").Value = True
+                                DataAdicionales.Rows(i).Cells("un").Value = CantFilm
+                                DataAdicionales.Rows(i).Cells("caj").Value = 0
+                                DataAdicionales.Rows(i).Cells("ki").Value = 0
+                            Else
+                                activa_desactiva(i, False)
+                            End If
+                        Else
+                            activa_desactiva(i, False)
                         End If
                     End If
                 Next
 
-                If suma_derecho > 0 Then
-                    DataAdicionales.Rows(2).Cells("cb").Value = True
-                    DataAdicionales.Rows(2).Cells("un").Value = suma_derecho
-                    DataAdicionales.Rows(2).Cells("caj").Value = 0
-                    DataAdicionales.Rows(2).Cells("ki").Value = 0
-                Else
-                    activa_desactiva(2, False)
-                End If
 
-                If Cb_Postura.CheckState = CheckState.Checked Then
-                    If IsNumeric(TxtFilm.Text) Then
-                        DataAdicionales.Rows(5).Cells("cb").Value = True
-                        DataAdicionales.Rows(5).Cells("un").Value = TxtFilm.Text
-                        DataAdicionales.Rows(5).Cells("caj").Value = 0
-                        DataAdicionales.Rows(5).Cells("ki").Value = 0
-                    Else
-                        activa_desactiva(5, False)
-                    End If
-                Else
-                    activa_desactiva(5, False)
-                End If
+
+
+
+
 
                 '****************************************************** HORARIO HABILITACION *****************************************
                 'Dim d As Integer = Weekday(fnc.DevuelveFechaServidor())
@@ -1440,33 +1675,35 @@ Public Class Frm_Despacho
 
                     If fnc.MovimientoSQL(sql) > 0 Then
                         For i As Integer = 0 To DataAdicionales.Rows.Count - 1
+                            Dim DescServ As String = DataAdicionales.Rows(i).Cells("de").Value.ToString.Trim
+                            If (DescServ <> "EMISION DE GUIAS DE DESPACHO CLIENTE" Or (DescServ = "EMISION DE GUIAS DE DESPACHO CLIENTE" And rbcliente.Checked)) Then
+                                Dim true_false As Boolean = False
 
-                            Dim true_false As Boolean = False
+                                Dim Unidad1 As String = "0"
+                                Dim Unidad2 As String = "0"
+                                Dim Unidad3 As String = "0"
 
-                            Dim Unidad1 As String = "0"
-                            Dim Unidad2 As String = "0"
-                            Dim Unidad3 As String = "0"
+                                If Not IsNothing(DataAdicionales.Rows(i).Cells("un").Value) Then
+                                    Unidad1 = DataAdicionales.Rows(i).Cells("un").Value.ToString().Replace(",", ".")
+                                End If
 
-                            If Not IsNothing(DataAdicionales.Rows(i).Cells("un").Value) Then
-                                Unidad1 = DataAdicionales.Rows(i).Cells("un").Value.ToString().Replace(",", ".")
-                            End If
+                                If Not IsNothing(DataAdicionales.Rows(i).Cells("caj").Value) Then
+                                    Unidad2 = DataAdicionales.Rows(i).Cells("caj").Value.ToString()
+                                End If
 
-                            If Not IsNothing(DataAdicionales.Rows(i).Cells("caj").Value) Then
-                                Unidad2 = DataAdicionales.Rows(i).Cells("caj").Value.ToString()
-                            End If
+                                If Not IsNothing(DataAdicionales.Rows(i).Cells("ki").Value) Then
+                                    Unidad3 = DataAdicionales.Rows(i).Cells("ki").Value.ToString().Replace(",", ".")
+                                End If
+                                If Not IsNothing(DataAdicionales.Rows(i).Cells("cb").Value) Then
+                                    true_false = DataAdicionales.Rows(i).Cells("cb").Value.ToString()
+                                End If
+                                If Unidad1 <> "0" Or Unidad2 <> "0" Or Unidad3 <> "0" Then
+                                    Dim sqlDetalle As String = "INSERT INTO facVasDeta(Dvas_VasCod, dvas_est, Dvas_ServCod, Dvas_Unid, Dvas_Cajas, Dvas_Kilos, Dvas_cobrar)" +
+                                                               "VALUES('" + CODIGO_VAS + "','" + true_false.ToString() + "','" + DataAdicionales.Rows(i).Cells("se").Value.ToString() + "'," +
+                                                               "'" + Unidad1.ToString() + "','" + Unidad2.ToString() + "','" + Unidad3.ToString() + "','0')"
 
-                            If Not IsNothing(DataAdicionales.Rows(i).Cells("ki").Value) Then
-                                Unidad3 = DataAdicionales.Rows(i).Cells("ki").Value.ToString().Replace(",", ".")
-                            End If
-                            If Not IsNothing(DataAdicionales.Rows(i).Cells("cb").Value) Then
-                                true_false = DataAdicionales.Rows(i).Cells("cb").Value.ToString()
-                            End If
-                            If Unidad1 <> "0" Or Unidad2 <> "0" Or Unidad3 <> "0" Then
-                                Dim sqlDetalle As String = "INSERT INTO facVasDeta(Dvas_VasCod, dvas_est, Dvas_ServCod, Dvas_Unid, Dvas_Cajas, Dvas_Kilos, Dvas_cobrar)" +
-                                                           "VALUES('" + CODIGO_VAS + "','" + true_false.ToString() + "','" + DataAdicionales.Rows(i).Cells("se").Value.ToString() + "'," +
-                                                           "'" + Unidad1.ToString() + "','" + Unidad2.ToString() + "','" + Unidad3.ToString() + "','0')"
-
-                                fnc.MovimientoSQL(sqlDetalle)
+                                    fnc.MovimientoSQL(sqlDetalle)
+                                End If
                             End If
                         Next
                     End If
@@ -1505,45 +1742,41 @@ Public Class Frm_Despacho
                 fnc.MovimientoSQL(Eliminar)
 
                 For i As Integer = 0 To DataAdicionales.Rows.Count - 1
+                    Dim DescServ As String = DataAdicionales.Rows(i).Cells("de").Value.ToString.Trim
+                    If (DescServ <> "EMISION DE GUIAS DE DESPACHO CLIENTE" Or (DescServ = "EMISION DE GUIAS DE DESPACHO CLIENTE" And rbcliente.Checked)) Then
+                        Dim true_false As Boolean = False
 
-                    Dim true_false As Boolean = False
+                        Dim Unidad1 As String = "0"
+                        Dim Unidad2 As String = "0"
+                        Dim Unidad3 As String = "0"
 
-                    Dim Unidad1 As String = "0"
-                    Dim Unidad2 As String = "0"
-                    Dim Unidad3 As String = "0"
+                        If Not IsNothing(DataAdicionales.Rows(i).Cells("un").Value) Then
+                            Unidad1 = DataAdicionales.Rows(i).Cells("un").Value.ToString().Replace(",", ".")
+                        End If
 
-                    If Not IsNothing(DataAdicionales.Rows(i).Cells("un").Value) Then
-                        Unidad1 = DataAdicionales.Rows(i).Cells("un").Value.ToString().Replace(",", ".")
+                        If Not IsNothing(DataAdicionales.Rows(i).Cells("caj").Value) Then
+                            Unidad2 = DataAdicionales.Rows(i).Cells("caj").Value.ToString()
+                        End If
+
+                        If Not IsNothing(DataAdicionales.Rows(i).Cells("ki").Value) Then
+                            Unidad3 = DataAdicionales.Rows(i).Cells("ki").Value.ToString().Replace(",", ".")
+                        End If
+
+                        If Not IsNothing(DataAdicionales.Rows(i).Cells("cb").Value) Then
+                            true_false = DataAdicionales.Rows(i).Cells("cb").Value.ToString()
+                        End If
+
+                        If Unidad1 <> "0" Or Unidad2 <> "0" Or Unidad3 <> "0" Then
+                            Dim sqlDetalle As String = "INSERT INTO facVasDeta(Dvas_VasCod, dvas_est, Dvas_ServCod, Dvas_Unid, Dvas_Cajas, Dvas_Kilos, Dvas_cobrar)" +
+                                                       "VALUES('" + CODIGO_VAS + "','" + true_false.ToString() + "','" + DataAdicionales.Rows(i).Cells("se").Value.ToString() + "'," +
+                                                       "'" + Unidad1.ToString() + "','" + Unidad2.ToString() + "','" + Unidad3.ToString() + "','0')"
+
+                            fnc.MovimientoSQL(sqlDetalle)
+                        End If
                     End If
-
-                    If Not IsNothing(DataAdicionales.Rows(i).Cells("caj").Value) Then
-                        Unidad2 = DataAdicionales.Rows(i).Cells("caj").Value.ToString()
-                    End If
-
-                    If Not IsNothing(DataAdicionales.Rows(i).Cells("ki").Value) Then
-                        Unidad3 = DataAdicionales.Rows(i).Cells("ki").Value.ToString().Replace(",", ".")
-                    End If
-
-                    If Not IsNothing(DataAdicionales.Rows(i).Cells("cb").Value) Then
-                        true_false = DataAdicionales.Rows(i).Cells("cb").Value.ToString()
-                    End If
-
-                    If Unidad1 <> "0" Or Unidad2 <> "0" Or Unidad3 <> "0" Then
-                        Dim sqlDetalle As String = "INSERT INTO facVasDeta(Dvas_VasCod, dvas_est, Dvas_ServCod, Dvas_Unid, Dvas_Cajas, Dvas_Kilos, Dvas_cobrar)" +
-                                                   "VALUES('" + CODIGO_VAS + "','" + true_false.ToString() + "','" + DataAdicionales.Rows(i).Cells("se").Value.ToString() + "'," +
-                                                   "'" + Unidad1.ToString() + "','" + Unidad2.ToString() + "','" + Unidad3.ToString() + "','0')"
-
-                        fnc.MovimientoSQL(sqlDetalle)
-                    End If
-
-
                 Next
-
-
             End If
         End If
-
-
     End Sub
 
     Private Sub Btn_AnulaGuia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_AnulaGuia.Click

@@ -1,4 +1,4 @@
-﻿Imports System.Data
+Imports System.Data
 Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
@@ -518,6 +518,42 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
+    Sub corregirCorrelativo()
+        Dim sqlCorrAct As String = "select a.cor_correact from correlat a with(nolock) where a.cor_codi='006'"
+        Dim dtCorrAct As New DataTable
+        dtCorrAct = fnc.ListarTablasSQL(sqlCorrAct)
+
+        If (dtCorrAct.Rows.Count > 0) Then
+            Dim Err As Boolean = False
+
+            Dim CorrForm As String = TxtCodRece.Text.Trim
+            Dim CorrFormFrm As Integer = 0
+
+            Dim CorrAct As String = dtCorrAct.Rows(0).Item(0).ToString.Trim
+            Dim CorrActFrm As Integer = CInt(CorrAct)
+
+            If (Not Integer.TryParse(CorrForm, CorrFormFrm)) Then
+                Err = True
+            Else
+                If ((CorrFormFrm - CorrActFrm) < -5 Or (CorrFormFrm - CorrActFrm) > 5) Then
+                    Err = True
+                End If
+            End If
+
+            If (CorrFormFrm.ToString.Length <> CorrActFrm.ToString.Length) Then
+                Err = True
+            End If
+
+            If (Err) Then
+                Dim sqlCorrLim As String = "delete from Correlat_salto where tmps_correl='006' and tmps_personal='" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                fnc.MovimientoSQL(sqlCorrLim)
+
+                Frm_Principal.buscavalor = ""
+                TxtCodRece.Text = BuscaCorrelativo("006")
+            End If
+        End If
+    End Sub
+
 #End Region
 
 #Region "Validadores de ingreso"
@@ -973,7 +1009,7 @@ Public Class Frm_GuiaRecepcionAgregar
     Private Sub Btn_BuscaContrato_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_BuscaContrato.Click
 
         Dim frm As New Lst_AyudaContratos
-        frm.condicion = "WHERE  cont_rutclie='" + QuitarCaracteres(TxtClirut.Text) + "'"
+        frm.condicion = "WHERE  cont_rutclie='" + QuitarCaracteres(TxtClirut.Text) + "' AND cont_estado='0'"
         frm.ShowDialog(Frm_Principal)
         Me.valorRecibido = Frm_Principal.buscavalor
 
@@ -1204,6 +1240,7 @@ Public Class Frm_GuiaRecepcionAgregar
                     LimpiarCajas(Panel5)
                     Exit Sub
                 End If
+
                 Dim sqlNumero As String = "SELECT MAX(drec_codi) FROM TMPDETARECE WHERE frec_codi='" + TxtCodRece.Text + "'"
                 Dim tablaNumero As DataTable = fnc.ListarTablasSQL(sqlNumero)
 
@@ -1212,6 +1249,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 Else
                     MsgBox("Error al recatar el Correlativo del pallet", MsgBoxStyle.Critical, "Aviso")
                 End If
+
                 If TxtClirut.Text = "766236200++" Then
                     traepesopallet()
                     calcularpesocial()
@@ -1219,10 +1257,28 @@ Public Class Frm_GuiaRecepcionAgregar
                     If Convert.ToInt32(kg.Text) < 0 Then
                         MsgBox("Kilos menor a 0 ", MsgBoxStyle.Critical, "Aviso")
                         Exit Sub
-
                     End If
-
                 End If
+
+                'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 25/10/19
+                Dim EsArr As String = "0"
+
+                If (CheckArriendo.Checked Or chkCambioPallet.Checked) Then
+                    EsArr = "1"
+                End If
+
+                Dim EstCamb As String = "I"
+
+                If (chkCambioPallet.Checked) Then
+                    EstCamb = "A"
+                End If
+
+                Dim sqlCamb As String = "SP_Control_Pallet_TMP_Recepcion_Dañado_Grabar '','" & TxtCodRece.Text.Trim & NumeroPallet.ToString.Trim & "','" & EstCamb & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                Dim dtCamb As New DataTable
+
+                dtCamb = fnc.ListarTablasSQL(sqlCamb)
+                'Fin Modificación Custodia/Arriendo Pallets. HAmestica 25/10/19
+
                 Dim sqlGuardar As String = "INSERT INTO TMPDETARECE(frec_codi, drec_codi, drec_codpro, drec_origen,  drec_codsopo, drec_sopocli, drec_unidades, drec_peso, " +
                     "drec_fecrec, drec_rutcli, drec_contcli, drec_fecprod, drec_camara, drec_banda, drec_colum,  drec_piso,  drec_nivel, " +
                     "drec_tunel, drec_pallet, drec_nrosopo, drec_dtgracia,  drec_codsag, drec_tipo, FechaVencimiento, LoteCliente, drec_codper, drec_hora, drec_arriendo,estpallet) VALUES(" +
@@ -1231,7 +1287,7 @@ Public Class Frm_GuiaRecepcionAgregar
                     "'" + devuelve_fecha(fecharece.Value) + "', '" + QuitarCaracteres(TxtClirut.Text) + "','" + txtcodcontrato.Text + "'," +
                     "'" + devuelve_fecha(felaboracion.Value) + "','71','00','00','00','0', '" + CmboTuneles.SelectedValue.ToString() + "','0'," +
                     "'0','" + TxtTemp.Text + "','" + txtcodsag.Text + "', '0', " +
-                    "'" + devuelve_fecha(fvencimiento.Value) + "','" + loteclie.Text + "','" + Frm_Principal.InfoUsuario.Text + "','" + DevuelveHora() + "','" + EstadoCheckBox(CheckArriendo.CheckState) + "','" + CMBESTPA.Text + "')"
+                    "'" + devuelve_fecha(fvencimiento.Value) + "','" + loteclie.Text + "','" + Frm_Principal.InfoUsuario.Text + "','" + DevuelveHora() + "','" + EsArr + "','" + CMBESTPA.Text + "')"
 
                 If fnc.MovimientoSQL(sqlGuardar) > 0 Then
                     Dim NumPallet As String = TxtCodRece.Text + NumeroPallet.ToString()
@@ -1273,11 +1329,32 @@ Public Class Frm_GuiaRecepcionAgregar
                         End If
 
                     End If
+
+                    'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 25/10/19
+                    Dim EsArr As String = "0"
+
+                    If (CheckArriendo.Checked Or chkCambioPallet.Checked) Then
+                        EsArr = "1"
+                    End If
+
+                    Dim EstCamb As String = "I"
+
+                    If (chkCambioPallet.Checked) Then
+                        EstCamb = "A"
+                    End If
+
+                    Dim sqlCamb As String = "SP_Control_Pallet_TMP_Recepcion_Dañado_Grabar '','" & TxtPallet.Text.Trim & "','" & EstCamb & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                    Dim dtCamb As New DataTable
+
+                    dtCamb = fnc.ListarTablasSQL(sqlCamb)
+                    'Fin Modificación Custodia/Arriendo Pallets. HAmestica 25/10/19
+
+
                     Dim sql As String = "UPDATE TMPDETARECE SET drec_codpro='" + txtprodcod.Text + "', " +
                                       "drec_origen='" + txtorigen.Text + "', drec_codsopo='" + Val(txtsopcodi.Text).ToString() + "', " +
                                       "drec_sopocli='" + txtsopclie.Text + "', drec_unidades='" + txtunid.Text + "', drec_peso='" + kg.Text.Replace(",", ".") + "', " +
                                       "drec_fecprod='" + devuelve_fecha(felaboracion.Value) + "', FechaVencimiento='" + devuelve_fecha(fvencimiento.Value) + "', " +
-                                      "LoteCliente='" + loteclie.Text + "', drec_codsag='" + txtcodsag.Text + "', drec_arriendo='" + EstadoCheckBox(CheckArriendo.CheckState) + "' , estpallet='" + CMBESTPA.Text + "' " +
+                                      "LoteCliente='" + loteclie.Text + "', drec_codsag='" + txtcodsag.Text + "', drec_arriendo='" + EsArr + "' , estpallet='" + CMBESTPA.Text + "' " +
                                       "WHERE frec_codi='" + TxtCodRece.Text + "' AND drec_codi='" + TxtPallet.Text.Remove(0, 7) + "'"
 
                     If fnc.MovimientoSQL(sql) > 0 Then
@@ -1313,6 +1390,28 @@ Public Class Frm_GuiaRecepcionAgregar
                             Exit Sub
                         End If
                     End If
+
+
+                    ''Inicio Modificación Custodia/Arriendo Pallets. HAmestica 25/10/19
+                    'Dim EsArr As String = "0"
+
+                    'If (CheckArriendo.Checked Or chkCambioPallet.Checked) Then
+                    '    EsArr = "1"
+                    'End If
+
+                    'Dim EstCamb As String = "I"
+
+                    'If (chkCambioPallet.Checked) Then
+                    '    EstCamb = "A"
+                    'End If
+
+                    'Dim sqlCamb As String = "SP_Control_Pallet_TMP_Recepcion_Dañado_Grabar '','" & TxtCodRece.Text.Trim & NumeroPallet.ToString.Trim & "','" & EstCamb & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                    'Dim dtCamb As New DataTable
+
+                    'dtCamb = fnc.ListarTablasSQL(sqlCamb)
+                    ''Fin Modificación Custodia/Arriendo Pallets. HAmestica 25/10/19
+
+
 
                     Dim sql As String = "UPDATE DETARECE SET drec_codpro='" + txtprodcod.Text + "', " +
                                      "drec_origen='" + txtorigen.Text + "', drec_codsopo='" + Val(txtsopcodi.Text).ToString() + "', " +
@@ -1887,6 +1986,8 @@ Public Class Frm_GuiaRecepcionAgregar
 
                 TxtCodRece.Text = BuscaCorrelativo("006")
 
+                corregirCorrelativo()
+
                 'If TxtCodRece.Text.Substring(0, 3) = "000" Then
                 '    Dim stttt As String = TxtCodRece.Text.Substring(0, 3)
 
@@ -2242,8 +2343,56 @@ Public Class Frm_GuiaRecepcionAgregar
 
                 If tabla.Rows.Count > 0 Then
                     If tabla.Rows(0)(0).ToString() <> "0" Then
-                        TxtArriendo.Text = tabla.Rows(0)(0).ToString()
-                        CbArriendo.Checked = True
+
+                        'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+                        Dim CodRece As String = TxtCodRece.Text.Trim
+                        Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
+                        Dim CodCont As String = txtcodcontrato.Text.Trim
+
+                        Dim sqlDetArr As String = "select TipPal=right('000'+drec_codsopo,3),Cant_Arriendo=count(frec_codi) from TMPDETARECE with(nolock) where frec_codi='" & CodRece & "' and drec_arriendo='1' group by drec_codsopo"
+                        Dim dtDetArr As New DataTable
+
+                        dtDetArr = fnc.ListarTablasSQL(sqlDetArr)
+
+                        Dim CantArrReal As Integer = 0
+
+                        If (dtDetArr.Rows.Count > 0) Then
+                            For i = 0 To dtDetArr.Rows.Count - 1
+                                Dim Saldo As Integer = 0
+
+                                Dim TipPalFrm As String = dtDetArr.Rows(i).Item(0).ToString.Trim
+                                Dim CantArrTMP As Integer = CInt(dtDetArr.Rows(i).Item(1).ToString.Trim)
+
+                                Dim CantArr As Integer = 0
+
+                                Dim sqlValidCust As String = "select top 1 Saldo from Control_Pallet a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Contrato='" & CodCont & "' and a.Tipo_Pallet='" & TipPalFrm & "' and Estado='1' order by convert(date,a.Fecha) desc,a.ID desc"
+                                Dim dtValidCust As New DataTable
+
+                                dtValidCust = fnc.ListarTablasSQL(sqlValidCust)
+
+                                If (dtValidCust.Rows.Count > 0) Then
+                                    Saldo = CInt(dtValidCust.Rows(0).Item(0).ToString.Trim)
+                                End If
+
+                                CantArr = CantArrTMP - Saldo
+
+                                If (CantArr < 0) Then
+                                    CantArr = 0
+                                End If
+
+                                CantArrReal += CantArr
+                            Next
+                        End If
+
+                        If (CantArrReal > 0) Then
+                            TxtArriendo.Text = CantArrReal.ToString.Trim
+                            CbArriendo.Checked = True
+                        Else
+                            TxtArriendo.Text = "0"
+                            CbArriendo.Checked = False
+                        End If
+                        'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+
                     Else
                         TxtArriendo.Text = "0"
                         CbArriendo.Checked = False
@@ -2268,8 +2417,6 @@ Public Class Frm_GuiaRecepcionAgregar
             Else
                 activa_desactiva(6, False)
             End If
-
-
 
             If DataAdicionales.Rows.Count = 11 Then
                 If Cb_Repa.Checked = True Then
@@ -2313,36 +2460,36 @@ Public Class Frm_GuiaRecepcionAgregar
             End If
 
             '****************************************************** HORARIO HABILITACION *****************************************
-            Dim d As Integer = Weekday(fnc.DevuelveFechaServidor())
+            'Dim d As Integer = Weekday(fnc.DevuelveFechaServidor())
 
-            If d = 1 Then
-                'Dia Domingo
-                '  activa_desactiva(3, True)
-                DataAdicionales.Rows(3).Cells("cb").Value = True
-                DataAdicionales.Rows(3).Cells("un").Value = 1
-                DataAdicionales.Rows(3).Cells("ca").Value = "0"
-                DataAdicionales.Rows(3).Cells("ki").Value = "0"
+            'If d = 1 Then
+            '    'Dia Domingo
+            '    '  activa_desactiva(3, True)
+            '    DataAdicionales.Rows(3).Cells("cb").Value = True
+            '    DataAdicionales.Rows(3).Cells("un").Value = 1
+            '    DataAdicionales.Rows(3).Cells("ca").Value = "0"
+            '    DataAdicionales.Rows(3).Cells("ki").Value = "0"
 
-                activa_desactiva(2, False)
-            ElseIf d = 7 Then
-                'dia Sabado 'Convert.ToDateTime(horalleg.Text) > Convert.ToDateTime(SA_HorIni.Text) AndAlso
-                If Not (Convert.ToDateTime(horalleg.Text) < Convert.ToDateTime(Sab_HorTer.Text)) Then
-                    DataAdicionales.Rows(2).Cells("cb").Value = True
-                    DataAdicionales.Rows(2).Cells("un").Value = 1
-                    DataAdicionales.Rows(2).Cells("ca").Value = "0"
-                    DataAdicionales.Rows(2).Cells("ki").Value = "0"
-                    activa_desactiva(3, False)
-                End If
-            Else
-                'Dia Semana ' Convert.ToDateTime(horainic.Text) > Convert.ToDateTime(LV_horini.Text) AndAlso
-                If Not (Convert.ToDateTime(horainic.Text) < Convert.ToDateTime(LV_ter.Text)) Then
-                    DataAdicionales.Rows(2).Cells("cb").Value = True
-                    DataAdicionales.Rows(2).Cells("un").Value = 1
-                    DataAdicionales.Rows(2).Cells("ca").Value = "0"
-                    DataAdicionales.Rows(2).Cells("ki").Value = "0"
-                    activa_desactiva(3, False)
-                End If
-            End If
+            '    activa_desactiva(2, False)
+            'ElseIf d = 7 Then
+            '    'dia Sabado 'Convert.ToDateTime(horalleg.Text) > Convert.ToDateTime(SA_HorIni.Text) AndAlso
+            '    If Not (Convert.ToDateTime(horalleg.Text) < Convert.ToDateTime(Sab_HorTer.Text)) Then
+            '        DataAdicionales.Rows(2).Cells("cb").Value = True
+            '        DataAdicionales.Rows(2).Cells("un").Value = 1
+            '        DataAdicionales.Rows(2).Cells("ca").Value = "0"
+            '        DataAdicionales.Rows(2).Cells("ki").Value = "0"
+            '        activa_desactiva(3, False)
+            '    End If
+            'Else
+            '    'Dia Semana ' Convert.ToDateTime(horainic.Text) > Convert.ToDateTime(LV_horini.Text) AndAlso
+            '    If Not (Convert.ToDateTime(horainic.Text) < Convert.ToDateTime(LV_ter.Text)) Then
+            '        DataAdicionales.Rows(2).Cells("cb").Value = True
+            '        DataAdicionales.Rows(2).Cells("un").Value = 1
+            '        DataAdicionales.Rows(2).Cells("ca").Value = "0"
+            '        DataAdicionales.Rows(2).Cells("ki").Value = "0"
+            '        activa_desactiva(3, False)
+            '    End If
+            'End If
 
             '*********************************************************************************************************************
         Catch ex As Exception
@@ -2583,7 +2730,7 @@ Public Class Frm_GuiaRecepcionAgregar
             End If
 
             setMercado(CInt(tabla.Rows(0)("mer_id")))
-    
+
 
 
 
@@ -2734,7 +2881,6 @@ Public Class Frm_GuiaRecepcionAgregar
             report.SetParameterValue("codigo", TxtCodRece.Text)
             frm.Contenedor.ReportSource = report
             frm.ShowDialog()
-
         End If
     End Sub
 
@@ -2748,11 +2894,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql2)
                 If tabla2.Rows.Count > 0 Then
                     camttemp = tabla2.Rows(0)(0).ToString()
-
-
-
                 End If
-
 
 
                 Dim Gracia As Integer = Val(TxtTemp.Text) + Val(TxtTempGracia.Text)
@@ -2787,11 +2929,10 @@ Public Class Frm_GuiaRecepcionAgregar
                     mensaje = mensaje + "- Debe Ingresar MINIMO una Fotografía"
                 End If
 
-
-                If mensaje.Length > 0 Then
-                    MsgBox(mensaje, MsgBoxStyle.Critical, "Aviso")
-                    Exit Sub
-                End If
+                'If mensaje.Length > 0 Then
+                '    MsgBox(mensaje, MsgBoxStyle.Critical, "Aviso")
+                '    Exit Sub
+                'End If
                 '**************************************************************************
 
                 Dim F_VALIDA As New Frm_VerificaServiciosrece
@@ -2911,8 +3052,112 @@ Public Class Frm_GuiaRecepcionAgregar
                             estado_traqueo = tabla_traqueo.Rows(0)(0).ToString()
                         End If
 
+                        'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+                        Dim EsArriendo As Integer = 0
 
-                        Dim sqlGuardaDetalle As String = "INSERT INTO detarece (drec_codi, drec_codcaja, drec_codpro, drec_codsopo, drec_sopocli, drec_unidades, drec_peso, " +
+                        If (DetaRece.Rows(i).Cells(15).Value.ToString.Trim = "1") Then
+                            Dim NumPal As String = DetaRece.Rows(i).Cells(2).Value.ToString.Trim
+                            Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
+                            Dim CodCont As String = txtcodcontrato.Text.Trim
+                            Dim TipPal As String = "000" & DetaRece.Rows(i).Cells(5).Value.ToString.Trim
+                            Dim TipPalFrm As String = TipPal.Substring(TipPal.Length - 3, 3)
+                            Dim DocAsoc As String = TxtCodRece.Text.Trim
+                            Dim CantEnt As Integer = 0
+                            Dim CantSal As Integer = 1
+                            Dim Obs As String = "Recepcion " & DocAsoc & ", Pallet " & NumPal & "."
+                            Dim Est As String = "1"
+                            Dim CodUsu As String = Frm_Principal.InfoUsuario.Text.Trim
+
+                            Dim sqlValidCust As String = "select top 1 Saldo from Control_Pallet a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Contrato='" & CodCont & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1' and convert(date,a.Fecha)<='" & fecharece.Value.ToString("yyyyMMdd") & "' order by convert(date,a.Fecha) desc,a.ID desc;"
+                            Dim dtValidCust As New DataTable
+
+                            dtValidCust = fnc.ListarTablasSQL(sqlValidCust)
+
+                            If (dtValidCust.Rows.Count > 0) Then
+                                Dim Saldo As Integer = CInt(dtValidCust.Rows(0).Item(0).ToString.Trim)
+
+                                If (Saldo <= 0) Then
+                                    EsArriendo = 1
+                                End If
+                            Else
+                                EsArriendo = 1
+                            End If
+
+                            If (EsArriendo = 0) Then
+                                Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','" & CantEnt & "','" & CantSal & "','" & Obs & "','" & Est & "','" & CodUsu & "'"
+                                Dim dtMovCust As New DataTable
+
+                                dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
+
+                                If (dtMovCust.Rows.Count > 0) Then
+                                    Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
+
+                                    If (RespMovCust = "-1") Then
+                                        MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                                    End If
+                                Else
+                                    MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                                End If
+                            Else
+                                Dim sqlValidVentDir As String = "select Estado from Control_Pallet_Cliente_Venta_Directa with(nolock) where Rut_Cliente='" & RutCli & "'"
+                                Dim dtValidVentDir As New DataTable
+
+                                dtValidVentDir = fnc.ListarTablasSQL(sqlValidVentDir)
+
+                                Dim EsVenDir As String = "0"
+
+                                If (dtValidVentDir.Rows.Count > 0) Then
+                                    Dim RespDt As String = dtValidVentDir.Rows(0).Item(0).ToString.Trim
+
+                                    If (RespDt <> "-1") Then
+                                        EsVenDir = RespDt
+                                    End If
+                                End If
+
+                                If (EsVenDir = "1") Then
+                                    Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','R','" & DocAsoc & "','Venta Directa','','" & CodUsu & "'"
+                                    Dim dtVent As New DataTable
+
+                                    dtVent = fnc.ListarTablasSQL(sqlVent)
+                                Else
+                                    Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','" & Now.ToString("yyyyMMdd") & "','','','" & CodUsu & "'"
+                                    Dim dtMovArr As New DataTable
+
+                                    dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
+
+                                    If (dtMovArr.Rows.Count > 0) Then
+                                        Dim RespMovArr As String = dtMovArr.Rows(0).Item(0).ToString.Trim
+
+                                        If (RespMovArr = "-1") Then
+                                            MsgBox("Ocurrio un error al registrar movimiento de arriendo de pallet.", MsgBoxStyle.Critical, "Error")
+                                        End If
+                                    Else
+                                        MsgBox("Ocurrio un error al registrar movimiento de arriendo de pallet.", MsgBoxStyle.Critical, "Error")
+                                    End If
+                                End If
+                            End If
+
+                            Dim sqlValidCambPall As String = "select CantCamb=count(ID) from Control_Pallet_TMP_Recepcion_Dañado with(nolock) where Codigo_Soportante='" & NumPal & "'"
+                            Dim dtValidCambPall As New DataTable
+
+                            dtValidCambPall = fnc.ListarTablasSQL(sqlValidCambPall)
+
+                            Dim EsCamb As Integer = 0
+
+                            If (dtValidCambPall.Rows.Count > 0) Then
+                                EsCamb = CInt(dtValidCambPall.Rows(0).Item(0).ToString.Trim)
+                            End If
+
+                            If (EsCamb > 0) Then
+                                Dim sqlCambPall As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','1','0','" & Obs & " Cambio Pallet Dañado.','2','" & CodUsu & "'"
+                                Dim dtCambPall As New DataTable
+
+                                dtCambPall = fnc.ListarTablasSQL(sqlCambPall)
+                            End If
+                        End If
+                        'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+
+                        Dim sqlGuardaDetalle As String = "INSERT INTO detarece(drec_codi, drec_codcaja, drec_codpro, drec_codsopo, drec_sopocli, drec_unidades, drec_peso, " +
                             "drec_fecrec, drec_rutcli, drec_contcli, drec_fecprod, drec_camara, drec_banda, drec_colum, drec_piso, drec_nivel, drec_codvig, " +
                             "drec_codsag, fechaVencimiento, LoteCliente, drec_receptunel, drec_codper, drec_hora, drec_etiqueta, frec_codi1, drec_pallet, drec_almacen, drec_temp, drec_arriendo,Estpallet,cod_bod) " +
                             "VALUES('" + DetaRece.Rows(i).Cells(2).Value.ToString() + "','" + estado_traqueo + "','" + DetaRece.Rows(i).Cells(3).Value.ToString() + "', " +
@@ -2923,7 +3168,7 @@ Public Class Frm_GuiaRecepcionAgregar
                             "'" + devuelve_fecha_Formato2(DetaRece.Rows(i).Cells(10).Value.ToString()) + "','" + DetaRece.Rows(i).Cells(11).Value.ToString().Trim + "','" + CmboTuneles.SelectedValue.ToString() + "', " +
                             "'" + Frm_Principal.InfoUsuario.Text + "','" + horainic.Text + "'," +
                             "'" + DigitoVerificadorEAN128UCC("1780000000" + CerosAnteriorString(DetaRece.Rows(i).Cells(2).Value.ToString(), 7)) + "'," +
-                            "'" + TxtCodRece.Text + "','1','2','" + DetaRece.Rows(i).Cells(14).Value.ToString().Replace(",", ".") + "','" + DetaRece.Rows(i).Cells(15).Value.ToString() + "','" + DetaRece.Rows(i).Cells(16).Value.ToString() + "','" + sucursalglo + "') "
+                            "'" + TxtCodRece.Text + "','1','2','" + DetaRece.Rows(i).Cells(14).Value.ToString().Replace(",", ".") + "','" + EsArriendo.ToString.Trim + "','" + DetaRece.Rows(i).Cells(16).Value.ToString() + "','" + sucursalglo + "') "
 
                         If fnc.MovimientoSQL(sqlGuardaDetalle) > 0 Then
                             cantidadDetalle += 1
@@ -3071,12 +3316,6 @@ Public Class Frm_GuiaRecepcionAgregar
                 Dim tablaEstado As DataTable = fnc.ListarTablasSQL(sqlbloq)
 
                 If tablaEstado.Rows.Count > 0 Then
-                    Dim esttunel As String = "0"
-
-                    If CmboTuneles.Text = "A TUNEL" Then
-                        esttunel = "1"
-                    End If
-
                     If tablaEstado.Rows(0)(0).ToString() = "1" Then
 
                         Dim SQL_BLOQ = "SELECT * FROM Proc_Importaciones WHERE pimp_codrece='" + TxtCodRece.Text + "' "
@@ -3088,15 +3327,26 @@ Public Class Frm_GuiaRecepcionAgregar
                             ESTADO = "5"
                         End If
 
-                        Dim SQL_IMPORTACION = "UPDATE RACKDETA SET racd_estado='" + ESTADO + "',est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
+                        'Dim SQL_IMPORTACION = "UPDATE RACKDETA SET racd_estado='" + ESTADO + "',est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
+                        Dim SQL_IMPORTACION = "UPDATE RACKDETA SET racd_estado='" + ESTADO + "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
                         fnc.MovimientoSQL(SQL_IMPORTACION)
-                    Else
-                        ESTADO = "0"
-                        Dim SQL_IMPORTACION = "UPDATE RACKDETA SET est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
-                        fnc.MovimientoSQL(SQL_IMPORTACION)
+
+                        'Else
+                        '    ESTADO = "0"
+                        '    Dim SQL_IMPORTACION = "UPDATE RACKDETA SET est_tunel='" & esttunel & "'  where racd_codi like '" + TxtCodRece.Text + "__%' "
+                        '    fnc.MovimientoSQL(SQL_IMPORTACION)
                     End If
                 Else
                     ESTADO = "0"
+                End If
+
+                Dim sqlEstTun As String = ""
+                If CmboTuneles.Text <> "A TUNEL" Then
+                    sqlEstTun = "update rackdeta set est_tunel='0' where racd_codi like '" & TxtCodRece.Text.Trim & "%'"
+                    fnc.MovimientoSQL(sqlEstTun)
+                Else
+                    sqlEstTun = "update rackdeta set est_tunel='1' where racd_codi like '" & TxtCodRece.Text.Trim & "%'"
+                    fnc.MovimientoSQL(sqlEstTun)
                 End If
 
 
@@ -3384,7 +3634,44 @@ Public Class Frm_GuiaRecepcionAgregar
                 loteclie.Text = Me.DetaRece.Rows(fila_grilladetalle).Cells("Lote").Value.ToString().Trim()
                 txtcodsag.Text = Me.DetaRece.Rows(fila_grilladetalle).Cells("Codsag").Value.ToString()
                 txtsopclie.Text = Me.DetaRece.Rows(fila_grilladetalle).Cells("SopCliente").Value.ToString()
-                CheckArriendo.Checked = Me.DetaRece.Rows(fila_grilladetalle).Cells("arriendo").Value.ToString()
+
+                'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+                Dim EstArr As String = Me.DetaRece.Rows(fila_grilladetalle).Cells("arriendo").Value.ToString()
+                Dim EstCambPall As String = "0"
+
+                If (EstArr = "1") Then
+                    Dim sqlValidCambPall As String = "select Cont=COUNT(ID) from Control_Pallet_TMP_Recepcion_Dañado with(nolock) where Codigo_Soportante='" & TxtPallet.Text.Trim() & "' and Estado='A'"
+                    Dim dtValidCambPall As New DataTable
+
+                    dtValidCambPall = fnc.ListarTablasSQL(sqlValidCambPall)
+
+                    If (dtValidCambPall.Rows.Count > 0) Then
+                        Dim RespValidCambPall As Integer = CInt(dtValidCambPall.Rows(0).Item(0).ToString.Trim)
+
+                        If (RespValidCambPall > 0) Then
+                            EstCambPall = "1"
+                        End If
+                    End If
+
+                    If (EstCambPall = "1") Then
+                        CheckArriendo.Checked = False
+                        chkCambioPallet.Checked = True
+                    Else
+                        CheckArriendo.Checked = True
+                        chkCambioPallet.Checked = False
+                    End If
+                Else
+                    If (cmbo_descarga.Text.ToString = "MANUAL") Then
+                        CheckArriendo.Checked = True
+                    Else
+                        CheckArriendo.Checked = False
+                    End If
+
+                    chkCambioPallet.Checked = False
+                End If
+                'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+
+
                 CMBESTPA.Text = Me.DetaRece.Rows(fila_grilladetalle).Cells("estpallet").Value.ToString()
 
                 Dim sqlBusca = "SELECT mae_descr, mae_diasv,IsNull(sum_dias, 0) as sum_dias FROM maeprod WHERE mae_codi='" + txtprodcod.Text + "'"
@@ -3518,7 +3805,57 @@ Public Class Frm_GuiaRecepcionAgregar
         produa.DataSource = fnc.ListarTablasSQL("select productoa from producto_a")
         produa.ValueMember = "productoa"
         produa.DisplayMember = "productoa"
+    End Sub
 
+    Sub mostrarChkPalProp()
+        Try
+            Dim tipcar As String = cmbo_descarga.Text.ToString.Trim
+
+            If (tipcar = "MANUAL") Then
+                CheckArriendo.Checked = True
+                chkCambioPallet.Checked = False
+                chkCambioPallet.Enabled = False
+
+                If (DetaRece.Rows.Count > 0) Then
+                    cambiarEstArrGrilla(tipcar)
+                End If
+            End If
+
+            If (tipcar = "MECANICA") Then
+                CheckArriendo.Checked = False
+                chkCambioPallet.Enabled = True
+
+                If (DetaRece.Rows.Count > 0) Then
+                    MsgBox("Debe actualizar cambio de pallets dañados de soportantes ingresados.", MsgBoxStyle.Information, "Aviso")
+                    cambiarEstArrGrilla(tipcar)
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Sub cambiarEstArrGrilla(ByVal TipCar As String)
+        Try
+            Dim EstArr As String = "0"
+            Dim EstCamb As String = "I"
+
+            If (TipCar = "MANUAL") Then
+                EstArr = "1"
+            End If
+
+            Dim sqlUpdPalls As String = "update TMPDETARECE set drec_arriendo='" & EstArr & "' where frec_codi='" & TxtCodRece.Text.Trim & "'"
+            fnc.MovimientoSQL(sqlUpdPalls)
+
+            Dim sqlUpdPallsCamb As String = "update Control_Pallet_TMP_Recepcion_Dañado set Estado='" & EstCamb & "' where Codigo_Soportante like '" & TxtCodRece.Text.Trim & "%'"
+            fnc.MovimientoSQL(sqlUpdPallsCamb)
+
+            For i = 0 To DetaRece.Rows.Count - 1
+                DetaRece.Rows(i).Cells("arriendo").Value = EstArr
+            Next
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub SumaTotalPallets()
@@ -3736,7 +4073,6 @@ Public Class Frm_GuiaRecepcionAgregar
 
     Public Sub limpiarFormulario()
         BtnBuscar.Enabled = True
-        CargarCombobox()
         LimpiarCajas(Gb_Cliente)
         LimpiarCajas(Panel5)
         txtResponsable.Text = fnc.DevuelveUsuario(Frm_Principal.InfoUsuario.Text)
@@ -3744,6 +4080,7 @@ Public Class Frm_GuiaRecepcionAgregar
         For i As Integer = 0 To DetaRece.Rows.Count - 1
             DetaRece.Rows.RemoveAt(0)
         Next
+        CargarCombobox()
         txtrutchofer.Enabled = True
         txtrutchofer.Text = ""
         cbonumtun.Text = ""
@@ -3801,6 +4138,7 @@ Public Class Frm_GuiaRecepcionAgregar
         TxtPromTemp = "0"
 
         setMercado(1)
+        cmbo_descarga.Enabled = True
 
     End Sub
 
@@ -4038,6 +4376,9 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
+    Private Sub TxtCodRece_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCodRece.KeyUp
+
+    End Sub
 
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkdatosguia.CheckedChanged
         If chkdatosguia.Checked = True Then
@@ -4156,7 +4497,9 @@ Public Class Frm_GuiaRecepcionAgregar
     End Sub
 
     Private Sub CheckArriendo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckArriendo.CheckedChanged
-
+        If (CheckArriendo.Checked) Then
+            chkCambioPallet.Checked = False
+        End If
     End Sub
 
     Private Sub cbonumtun_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbonumtun.SelectedIndexChanged
@@ -4181,10 +4524,22 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
+    Private Sub TxtCodRece_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCodRece.TextChanged
 
+    End Sub
+
+    Private Sub chkCambioPallet_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCambioPallet.CheckedChanged
+        If (chkCambioPallet.Checked) Then
+            CheckArriendo.Checked = False
+        End If
+    End Sub
 
     ' VES SEP 2019
     Private Sub cboMercado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboMercado.KeyPress
         e.Handled = True
+    End Sub
+
+    Private Sub cmbo_descarga_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbo_descarga.SelectedIndexChanged
+        mostrarChkPalProp()
     End Sub
 End Class

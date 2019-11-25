@@ -123,6 +123,9 @@ Module ModPublico
         Return Val(str)
     End Function
 
+    ' VES No 2019
+    ' Modificada para incluir soporte opcional para numeros con decimales
+    '
     Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs, ByVal allowDec As Boolean)
         If Char.IsDigit(e.KeyChar) Then
             e.Handled = False
@@ -137,7 +140,6 @@ Module ModPublico
     Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         SoloNumeros(sender, e, False)
     End Sub
-
 
     ' VES Sep 2019
     ' Validador de campos de entrada de temperatura
@@ -194,6 +196,7 @@ Module ModPublico
         Return Confirmar(mensaje, "Atención")
     End Function
 
+
     Public Sub SoloKilos(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Dim KeyAscii As Short = Asc(e.KeyChar)
         If Not ((KeyAscii >= System.Windows.Forms.Keys.D0 And KeyAscii <= System.Windows.Forms.Keys.D9) Or
@@ -244,8 +247,8 @@ Module ModPublico
                             If (Date.TryParse(ElGrid.Rows(Fila).Cells(Col).Value.ToString, fecFrm)) Then
                                 'Si es datetime
                                 If (ElGrid.Rows(Fila).Cells(Col).Value.ToString.Trim.Contains(":")) Then
-                                    exHoja.Cells.Item(Fila + 2, Col + 1) = fecFrm.ToString("yyyy-MM-dd hh:mm:ss")
-                                    exHoja.Cells.Item(Fila + 2, Col + 1).NumberFormat = "dd-MM-yyyy hh:mm:ss"
+                                    exHoja.Cells.Item(Fila + 2, Col + 1) = fecFrm.ToString("yyyy-MM-dd HH:mm:ss")
+                                    exHoja.Cells.Item(Fila + 2, Col + 1).NumberFormat = "dd-MM-yyyy HH:mm:ss"
                                 Else
                                     exHoja.Cells.Item(Fila + 2, Col + 1) = fecFrm.ToString("yyyy-MM-dd")
                                     exHoja.Cells.Item(Fila + 2, Col + 1).NumberFormat = "dd-MM-yyyy"
@@ -581,89 +584,122 @@ Module ModPublico
     '----------------------------------------
 
     Public Function BuscaCorrelativo(ByVal NCorrelat As String, Optional ByVal largo As Integer = 7) As String
+        Dim CorrResp As String = "-1"
 
-        Dim NcorrAct As String = ""
+        Dim CodUsu As String = Frm_Principal.InfoUsuario.Text.Trim
 
-        Dim SqlSalto As String = "SELECT tmps_unica, tmps_codi FROM Correlat_salto WHERE tmps_correl ='" + NCorrelat + "' ORDER BY tmps_codi ASC"
-        Dim tablaSalto As DataTable = fnc.ListarTablasSQL(SqlSalto)
+        Dim sqlCorrTemp As String = "select a.tmps_codi,a.tmps_unica from Correlat_salto a with(nolock) where a.tmps_correl='" & NCorrelat & "' and a.tmps_personal='" & CodUsu & "'"
+        Dim dtCorrTemp As New DataTable
+        dtCorrTemp = fnc.ListarTablasSQL(sqlCorrTemp)
 
-        If tablaSalto.Rows.Count > 0 Then
-            If NCorrelat = "006" Then
-                If fnc.verificaExistencia("Fichrece", "frec_codi", tablaSalto.Rows(0)(1).ToString()) = True Then
+        If (dtCorrTemp.Rows.Count > 0) Then
+            CorrResp = dtCorrTemp.Rows(0).Item(0).ToString.Trim
 
-                    Dim sqlEliminas As String = "DELETE FROM Correlat_salto WHERE tmps_unica='" + tablaSalto.Rows(0)(0).ToString() + "'"
-                    fnc.MovimientoSQL(sqlEliminas)
-
-                    Dim sql As String = "SELECT cor_correact FROM correlat WHERE cor_codi='" + NCorrelat + "'"
-                    Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
-
-                    If tabla.Rows.Count > 0 Then
-                        NcorrAct = tabla.Rows(0)(0).ToString()
-
-                        Dim sqlUpdate As String = "UPDATE correlat SET cor_correact='" + (Convert.ToInt32(tabla.Rows(0)(0).ToString()) + 1).ToString() + "' " +
-                            "WHERE cor_codi='" + NCorrelat.ToString() + "'"
-
-                        fnc.MovimientoSQL(sqlUpdate)
-
-                        'Log_Correlativos 27-05-19
-                        Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & NcorrAct & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                        fnc.MovimientoSQL(sqlNueCorr)
-                        'Fin Log_Correlativos 27-05-19
-                    End If
-                    Return CerosAnteriorString(NcorrAct, largo)
-                    Exit Function
-                End If
-            End If
-
-            Dim sqlEliminaSalto As String = "DELETE FROM Correlat_salto WHERE tmps_unica='" + tablaSalto.Rows(0)(0).ToString() + "'"
-            fnc.MovimientoSQL(sqlEliminaSalto)
-
-            If (tablaSalto.Rows(0)(1).ToString().Trim = "") Then
-                Dim sql As String = "SELECT cor_correact FROM correlat WHERE cor_codi='" + NCorrelat + "'"
-                Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
-
-                If tabla.Rows.Count > 0 Then
-                    NcorrAct = tabla.Rows(0)(0).ToString()
-
-                    Dim sqlUpdate As String = "UPDATE correlat SET cor_correact='" + (Convert.ToInt32(tabla.Rows(0)(0).ToString()) + 1).ToString() + "' " +
-                        "WHERE cor_codi='" + NCorrelat.ToString() + "'"
-
-                    fnc.MovimientoSQL(sqlUpdate)
-
-                    'Log_Correlativos 27-05-19
-                    Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & NcorrAct & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                    fnc.MovimientoSQL(sqlNueCorr)
-                    'Fin Log_Correlativos 27-05-19
-                End If
-            Else
-                'Log_Correlativos 27-05-19
-                Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & tablaSalto.Rows(0)(1).ToString() & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                fnc.MovimientoSQL(sqlNueCorr)
-                'Fin Log_Correlativos 27-05-19
-
-                Return tablaSalto.Rows(0)(1).ToString()
-                Exit Function
-            End If
+            fnc.MovimientoSQL("delete from Correlat_salto where tmps_unica='" & dtCorrTemp.Rows(0).Item(1).ToString.Trim & "'")
         Else
+            Dim sqlCorrAct As String = "select a.cor_correact from correlat a with(nolock) where a.cor_codi='" & NCorrelat & "'"
+            Dim dtCorrAct As New DataTable
 
-            Dim sql As String = "SELECT cor_correact FROM correlat WHERE cor_codi='" + NCorrelat + "'"
-            Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
+            dtCorrAct = fnc.ListarTablasSQL(sqlCorrAct)
 
-            If tabla.Rows.Count > 0 Then
-                NcorrAct = tabla.Rows(0)(0).ToString()
+            If (dtCorrAct.Rows.Count > 0) Then
+                CorrResp = StrDup(largo, "0") & dtCorrAct.Rows(0).Item(0).ToString.Trim
+                CorrResp = CorrResp.Substring(CorrResp.Length - largo, largo)
 
-                Dim sqlUpdate As String = "UPDATE correlat SET cor_correact='" + (Convert.ToInt32(tabla.Rows(0)(0).ToString()) + 1).ToString() + "' " +
-                    "WHERE cor_codi='" + NCorrelat.ToString() + "'"
-
-                fnc.MovimientoSQL(sqlUpdate)
-
-                'Log_Correlativos 27-05-19
-                Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & NcorrAct & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                fnc.MovimientoSQL(sqlNueCorr)
-                'Fin Log_Correlativos 27-05-19
+                fnc.MovimientoSQL("update correlat set cor_correact=(convert(int,cor_correact)+1) where cor_codi='" & NCorrelat & "'")
+                'fnc.MovimientoSQL("insert into Correlat_salto(tmps_codi,tmps_correl,tmps_personal,tmps_fecha,tmps_gestion) values('" & CorrResp & "','" & NCorrelat & "','" & CodUsu & "',CONVERT(varchar,GETDATE(),111),'1')")
             End If
         End If
-        Return CerosAnteriorString(NcorrAct, largo)
+
+        'Log_Correlativos 27-05-19
+        Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & CorrResp & "','" & CodUsu & "'"
+        fnc.MovimientoSQL(sqlNueCorr)
+        'Fin Log_Correlativos 27-05-19
+
+        Return CorrResp
+
+        'Dim NcorrAct As String = ""
+
+        'Dim SqlSalto As String = "SELECT tmps_unica, tmps_codi FROM Correlat_salto WHERE tmps_correl ='" + NCorrelat + "' ORDER BY tmps_codi ASC"
+        'Dim tablaSalto As DataTable = fnc.ListarTablasSQL(SqlSalto)
+
+        'If tablaSalto.Rows.Count > 0 Then
+        '    If NCorrelat = "006" Then
+        '        If fnc.verificaExistencia("Fichrece", "frec_codi", tablaSalto.Rows(0)(1).ToString()) = True Then
+
+        '            Dim sqlEliminas As String = "DELETE FROM Correlat_salto WHERE tmps_unica='" + tablaSalto.Rows(0)(0).ToString() + "'"
+        '            fnc.MovimientoSQL(sqlEliminas)
+
+        '            Dim sql As String = "SELECT cor_correact FROM correlat WHERE cor_codi='" + NCorrelat + "'"
+        '            Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
+
+        '            If tabla.Rows.Count > 0 Then
+        '                NcorrAct = tabla.Rows(0)(0).ToString()
+
+        '                Dim sqlUpdate As String = "UPDATE correlat SET cor_correact='" + (Convert.ToInt32(tabla.Rows(0)(0).ToString()) + 1).ToString() + "' " +
+        '                    "WHERE cor_codi='" + NCorrelat.ToString() + "'"
+
+        '                fnc.MovimientoSQL(sqlUpdate)
+
+        '                'Log_Correlativos 27-05-19
+        '                Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & NcorrAct & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+        '                fnc.MovimientoSQL(sqlNueCorr)
+        '                'Fin Log_Correlativos 27-05-19
+        '            End If
+        '            Return CerosAnteriorString(NcorrAct, largo)
+        '            Exit Function
+        '        End If
+        '    End If
+
+        '    Dim sqlEliminaSalto As String = "DELETE FROM Correlat_salto WHERE tmps_unica='" + tablaSalto.Rows(0)(0).ToString() + "'"
+        '    fnc.MovimientoSQL(sqlEliminaSalto)
+
+        '    If (tablaSalto.Rows(0)(1).ToString().Trim = "") Then
+        '        Dim sql As String = "SELECT cor_correact FROM correlat WHERE cor_codi='" + NCorrelat + "'"
+        '        Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
+
+        '        If tabla.Rows.Count > 0 Then
+        '            NcorrAct = tabla.Rows(0)(0).ToString()
+
+        '            Dim sqlUpdate As String = "UPDATE correlat SET cor_correact='" + (Convert.ToInt32(tabla.Rows(0)(0).ToString()) + 1).ToString() + "' " +
+        '                "WHERE cor_codi='" + NCorrelat.ToString() + "'"
+
+        '            fnc.MovimientoSQL(sqlUpdate)
+
+        '            'Log_Correlativos 27-05-19
+        '            Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & NcorrAct & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+        '            fnc.MovimientoSQL(sqlNueCorr)
+        '            'Fin Log_Correlativos 27-05-19
+        '        End If
+        '    Else
+        '        'Log_Correlativos 27-05-19
+        '        Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & tablaSalto.Rows(0)(1).ToString() & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+        '        fnc.MovimientoSQL(sqlNueCorr)
+        '        'Fin Log_Correlativos 27-05-19
+
+        '        Return tablaSalto.Rows(0)(1).ToString()
+        '        Exit Function
+        '    End If
+        'Else
+
+        '    Dim sql As String = "SELECT cor_correact FROM correlat WHERE cor_codi='" + NCorrelat + "'"
+        '    Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
+
+        '    If tabla.Rows.Count > 0 Then
+        '        NcorrAct = tabla.Rows(0)(0).ToString()
+
+        '        Dim sqlUpdate As String = "UPDATE correlat SET cor_correact='" + (Convert.ToInt32(tabla.Rows(0)(0).ToString()) + 1).ToString() + "' " +
+        '            "WHERE cor_codi='" + NCorrelat.ToString() + "'"
+
+        '        fnc.MovimientoSQL(sqlUpdate)
+
+        '        'Log_Correlativos 27-05-19
+        '        Dim sqlNueCorr As String = "SP_Log_Correlativos_Grabar '" & NCorrelat & "','" & NcorrAct & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+        '        fnc.MovimientoSQL(sqlNueCorr)
+        '        'Fin Log_Correlativos 27-05-19
+        '    End If
+        'End If
+        'Return CerosAnteriorString(NcorrAct, largo)
     End Function
 
     Public Function CancelaCorrelativo(ByVal NCorrelat As String, ByVal CodigoEliminar As String)

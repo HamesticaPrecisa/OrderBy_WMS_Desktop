@@ -26,10 +26,11 @@ Partial Class Lst_AyudaContratos
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtbusca = New System.Windows.Forms.TextBox()
+        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Est = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -43,7 +44,7 @@ Partial Class Lst_AyudaContratos
         Me.GroupBox1.Location = New System.Drawing.Point(15, 11)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(5, 2, 5, 5)
-        Me.GroupBox1.Size = New System.Drawing.Size(648, 260)
+        Me.GroupBox1.Size = New System.Drawing.Size(795, 260)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         '
@@ -53,31 +54,15 @@ Partial Class Lst_AyudaContratos
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.ColumnHeadersHeight = 25
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Nombre})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Nombre, Me.Est})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(5, 15)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(638, 240)
+        Me.DataGridView1.Size = New System.Drawing.Size(785, 240)
         Me.DataGridView1.TabIndex = 1
-        '
-        'Codigo
-        '
-        Me.Codigo.DataPropertyName = "cont_codi"
-        Me.Codigo.HeaderText = "CODIGO"
-        Me.Codigo.Name = "Codigo"
-        Me.Codigo.ReadOnly = True
-        Me.Codigo.Width = 120
-        '
-        'Nombre
-        '
-        Me.Nombre.DataPropertyName = "cont_descr"
-        Me.Nombre.HeaderText = "DESCRIPCIÓN"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
-        Me.Nombre.Width = 400
         '
         'Label1
         '
@@ -97,12 +82,38 @@ Partial Class Lst_AyudaContratos
         Me.txtbusca.Size = New System.Drawing.Size(466, 20)
         Me.txtbusca.TabIndex = 11
         '
+        'Codigo
+        '
+        Me.Codigo.DataPropertyName = "cont_codi"
+        Me.Codigo.Frozen = True
+        Me.Codigo.HeaderText = "CODIGO"
+        Me.Codigo.Name = "Codigo"
+        Me.Codigo.ReadOnly = True
+        Me.Codigo.Width = 120
+        '
+        'Nombre
+        '
+        Me.Nombre.DataPropertyName = "cont_descr"
+        Me.Nombre.Frozen = True
+        Me.Nombre.HeaderText = "DESCRIPCIÓN"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        Me.Nombre.Width = 400
+        '
+        'Est
+        '
+        Me.Est.DataPropertyName = "estado"
+        Me.Est.Frozen = True
+        Me.Est.HeaderText = "ESTADO"
+        Me.Est.Name = "Est"
+        Me.Est.ReadOnly = True
+        '
         'Lst_AyudaContratos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(678, 311)
+        Me.ClientSize = New System.Drawing.Size(825, 311)
         Me.Controls.Add(Me.txtbusca)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
@@ -120,8 +131,9 @@ Partial Class Lst_AyudaContratos
     Friend WithEvents BindingSource1 As System.Windows.Forms.BindingSource
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Codigo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Nombre As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtbusca As System.Windows.Forms.TextBox
+    Friend WithEvents Codigo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Nombre As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Est As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

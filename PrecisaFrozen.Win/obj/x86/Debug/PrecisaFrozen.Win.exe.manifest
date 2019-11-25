@@ -49,6 +49,11 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="CrystalDecisions.Data.AdoDotNetInterop" version="13.0.2000.0" publicKeyToken="692FBEA5521E1304" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="CrystalDecisions.ReportAppServer.ClientDoc" version="13.0.2000.0" publicKeyToken="692FBEA5521E1304" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
@@ -145,7 +150,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Wj3196BnQn+Lg40nHoCqBcBgpXc=</dsig:DigestValue>
+        <dsig:DigestValue>QCmCshMqW5xDbqPOg5Wg7797sog=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -169,7 +174,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WwRXfmSsGPTwxJWVPmoN6DP3/Mg=</dsig:DigestValue>
+        <dsig:DigestValue>nTTmOzvdaAnAgF1HK4REDs2EOLw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -222,14 +227,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="22841856">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="23123968">
       <assemblyIdentity name="PrecisaFrozen.Win" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>qAXTsIHNiLHEg38dl4r1A4GfY7s=</dsig:DigestValue>
+        <dsig:DigestValue>70pQ+6Ml36XI7TNuSnOwiBEzcyA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -275,13 +280,13 @@
       <dsig:DigestValue>nGowGanFj0VUE2vp+xs10I3fPao=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PrecisaFrozen.Win.exe.config" size="2686">
+  <file name="PrecisaFrozen.Win.exe.config" size="2632">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>JOlHnJ0Jry5+m1NuAPwVNvoKe+g=</dsig:DigestValue>
+      <dsig:DigestValue>io/y3aiRcGKBSBcH5WmthvKD83o=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\icono-de-jpg-355881.png" size="935">

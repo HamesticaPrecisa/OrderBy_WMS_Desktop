@@ -1428,6 +1428,7 @@ Partial Class Frm_Despacho
         Me.CbCustodia.TabIndex = 93
         Me.CbCustodia.Text = "CUSTODIA DE PALLETS"
         Me.CbCustodia.UseVisualStyleBackColor = True
+        Me.CbCustodia.Visible = False
         '
         'TxtCustodia
         '
