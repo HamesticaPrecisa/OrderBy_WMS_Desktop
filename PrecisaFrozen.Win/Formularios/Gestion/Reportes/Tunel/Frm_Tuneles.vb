@@ -49,7 +49,7 @@ Public Class Frm_Tuneles
 
         Dim sql As String = "SELECT cam_descr,descr_estado,ott_numero,frec_codi,frec_fecrec," +
                             "       numpallets,kilos,cajas,het,hft,heft," +
-                            "       ott_iniciotunel,ott_finaltunel,cli_nomb,hfta" +
+                            "       ott_iniciotunel,ott_finaltunel,cli_nomb,hfta,frec_horarec" +
                             "  FROM vwEstadoTuneles "
         If LblCliente.Text.Trim().Length > 0 Then
             WhereR = "frec_rutcli = @frec_rutcli"
@@ -75,7 +75,7 @@ Public Class Frm_Tuneles
                 row(1),
                 row(2),
                 row(3),
-                fnc.ctod(row(4).ToString()),
+                fnc.ctod(row(4).ToString() + " " + row(13).ToString()),
                 row(5),
                 row(6),
                 row(7),
@@ -124,7 +124,7 @@ Public Class Frm_Tuneles
                             "       SUM(kilos) AS kilos, SUM(cajas) AS cajas, " +
                             "       MAX(het) AS het, MAX(ott_iniciotunel) AS ott_iniciotunel, " +
                             "       MAX(ott_finaltunel) AS ott_finaltunel, MAX(heft) AS heft, " +
-                            "       MAX(frec_fecrec) AS frec_fecrec, MAX(hft) AS hft, MAX(hfta) AS hfta" +
+                            "       MAX(frec_fecrec) AS frec_fecrec, MAX(hft) AS hft, MAX(hfta) AS hfta, MAX(frec_horarec) AS frec_horarec" +
                             "  FROM vwEstadoTuneles " +
                             " GROUP BY cam_codi " +
                             " ORDER BY cam_descr"

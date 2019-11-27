@@ -23,17 +23,6 @@ Partial Class Frm_Tuneles
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -45,6 +34,17 @@ Partial Class Frm_Tuneles
         Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cboEstatus = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -58,21 +58,6 @@ Partial Class Frm_Tuneles
         Me.Btn_Calcular = New System.Windows.Forms.Button()
         Me.btn_Imprimir = New System.Windows.Forms.Button()
         Me.DgvResultado = New System.Windows.Forms.DataGridView()
-        Me.cam_descr = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descr_estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ott_numot = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.frec_codi = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.drec_fecrec = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.numpallets = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.kilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cajas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.het = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.hft = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.heft = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HFTA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ott_iniciotunel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ott_finaltunel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cli_nomb = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -102,6 +87,21 @@ Partial Class Frm_Tuneles
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.lblLastUpd = New System.Windows.Forms.Label()
+        Me.cam_descr = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.descr_estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ott_numot = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.frec_codi = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.drec_fecrec = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.numpallets = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.kilos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cajas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.het = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.hft = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.heft = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HFTA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ott_iniciotunel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ott_finaltunel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cli_nomb = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DgvResultado, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -258,153 +258,6 @@ Partial Class Frm_Tuneles
         Me.DgvResultado.ReadOnly = True
         Me.DgvResultado.Size = New System.Drawing.Size(1067, 323)
         Me.DgvResultado.TabIndex = 99
-        '
-        'cam_descr
-        '
-        Me.cam_descr.HeaderText = "TUNEL"
-        Me.cam_descr.Name = "cam_descr"
-        Me.cam_descr.ReadOnly = True
-        Me.cam_descr.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'descr_estado
-        '
-        Me.descr_estado.HeaderText = "ESTATUS"
-        Me.descr_estado.Name = "descr_estado"
-        Me.descr_estado.ReadOnly = True
-        Me.descr_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.descr_estado.Width = 200
-        '
-        'ott_numot
-        '
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.ott_numot.DefaultCellStyle = DataGridViewCellStyle1
-        Me.ott_numot.HeaderText = "O/T #"
-        Me.ott_numot.Name = "ott_numot"
-        Me.ott_numot.ReadOnly = True
-        Me.ott_numot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ott_numot.Width = 75
-        '
-        'frec_codi
-        '
-        Me.frec_codi.HeaderText = "GUIA #"
-        Me.frec_codi.Name = "frec_codi"
-        Me.frec_codi.ReadOnly = True
-        Me.frec_codi.Width = 75
-        '
-        'drec_fecrec
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.Format = "dd-MM-yyyy"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.drec_fecrec.DefaultCellStyle = DataGridViewCellStyle2
-        Me.drec_fecrec.HeaderText = "RECIBIDO"
-        Me.drec_fecrec.Name = "drec_fecrec"
-        Me.drec_fecrec.ReadOnly = True
-        Me.drec_fecrec.Width = 70
-        '
-        'numpallets
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N0"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.numpallets.DefaultCellStyle = DataGridViewCellStyle3
-        Me.numpallets.HeaderText = "SOP"
-        Me.numpallets.Name = "numpallets"
-        Me.numpallets.ReadOnly = True
-        Me.numpallets.Width = 55
-        '
-        'kilos
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N1"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.kilos.DefaultCellStyle = DataGridViewCellStyle4
-        Me.kilos.HeaderText = "KILOS"
-        Me.kilos.Name = "kilos"
-        Me.kilos.ReadOnly = True
-        Me.kilos.Width = 65
-        '
-        'cajas
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N0"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.cajas.DefaultCellStyle = DataGridViewCellStyle5
-        Me.cajas.HeaderText = "CAJAS"
-        Me.cajas.Name = "cajas"
-        Me.cajas.ReadOnly = True
-        Me.cajas.Width = 55
-        '
-        'het
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Format = "N0"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.het.DefaultCellStyle = DataGridViewCellStyle6
-        Me.het.HeaderText = "HET"
-        Me.het.Name = "het"
-        Me.het.ReadOnly = True
-        Me.het.Width = 45
-        '
-        'hft
-        '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.Format = "N0"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.hft.DefaultCellStyle = DataGridViewCellStyle7
-        Me.hft.HeaderText = "HFT"
-        Me.hft.Name = "hft"
-        Me.hft.ReadOnly = True
-        Me.hft.Width = 45
-        '
-        'heft
-        '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.Format = "N0"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.heft.DefaultCellStyle = DataGridViewCellStyle8
-        Me.heft.HeaderText = "HEFT"
-        Me.heft.Name = "heft"
-        Me.heft.ReadOnly = True
-        Me.heft.Width = 45
-        '
-        'HFTA
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.Format = "N0"
-        DataGridViewCellStyle9.NullValue = Nothing
-        Me.HFTA.DefaultCellStyle = DataGridViewCellStyle9
-        Me.HFTA.HeaderText = "HFTA"
-        Me.HFTA.Name = "HFTA"
-        Me.HFTA.ReadOnly = True
-        Me.HFTA.Width = 45
-        '
-        'ott_iniciotunel
-        '
-        DataGridViewCellStyle10.Format = "g"
-        DataGridViewCellStyle10.NullValue = Nothing
-        Me.ott_iniciotunel.DefaultCellStyle = DataGridViewCellStyle10
-        Me.ott_iniciotunel.HeaderText = "INICIO"
-        Me.ott_iniciotunel.Name = "ott_iniciotunel"
-        Me.ott_iniciotunel.ReadOnly = True
-        Me.ott_iniciotunel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ott_iniciotunel.Width = 130
-        '
-        'ott_finaltunel
-        '
-        DataGridViewCellStyle11.Format = "g"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.ott_finaltunel.DefaultCellStyle = DataGridViewCellStyle11
-        Me.ott_finaltunel.HeaderText = "TERMINO"
-        Me.ott_finaltunel.Name = "ott_finaltunel"
-        Me.ott_finaltunel.ReadOnly = True
-        '
-        'cli_nomb
-        '
-        Me.cli_nomb.HeaderText = "CLIENTE"
-        Me.cli_nomb.Name = "cli_nomb"
-        Me.cli_nomb.ReadOnly = True
-        Me.cli_nomb.Width = 160
         '
         'ProgressBar1
         '
@@ -708,6 +561,153 @@ Partial Class Frm_Tuneles
         Me.lblLastUpd.TabIndex = 103
         Me.lblLastUpd.Text = "Actualizado al"
         '
+        'cam_descr
+        '
+        Me.cam_descr.HeaderText = "TUNEL"
+        Me.cam_descr.Name = "cam_descr"
+        Me.cam_descr.ReadOnly = True
+        Me.cam_descr.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'descr_estado
+        '
+        Me.descr_estado.HeaderText = "ESTATUS"
+        Me.descr_estado.Name = "descr_estado"
+        Me.descr_estado.ReadOnly = True
+        Me.descr_estado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.descr_estado.Width = 200
+        '
+        'ott_numot
+        '
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.ott_numot.DefaultCellStyle = DataGridViewCellStyle1
+        Me.ott_numot.HeaderText = "O/T #"
+        Me.ott_numot.Name = "ott_numot"
+        Me.ott_numot.ReadOnly = True
+        Me.ott_numot.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ott_numot.Width = 75
+        '
+        'frec_codi
+        '
+        Me.frec_codi.HeaderText = "GUIA #"
+        Me.frec_codi.Name = "frec_codi"
+        Me.frec_codi.ReadOnly = True
+        Me.frec_codi.Width = 75
+        '
+        'drec_fecrec
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.Format = "dd-MM-yyyy"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.drec_fecrec.DefaultCellStyle = DataGridViewCellStyle2
+        Me.drec_fecrec.HeaderText = "RECIBIDO"
+        Me.drec_fecrec.Name = "drec_fecrec"
+        Me.drec_fecrec.ReadOnly = True
+        Me.drec_fecrec.Width = 110
+        '
+        'numpallets
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.numpallets.DefaultCellStyle = DataGridViewCellStyle3
+        Me.numpallets.HeaderText = "SOP"
+        Me.numpallets.Name = "numpallets"
+        Me.numpallets.ReadOnly = True
+        Me.numpallets.Width = 55
+        '
+        'kilos
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N1"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.kilos.DefaultCellStyle = DataGridViewCellStyle4
+        Me.kilos.HeaderText = "KILOS"
+        Me.kilos.Name = "kilos"
+        Me.kilos.ReadOnly = True
+        Me.kilos.Width = 65
+        '
+        'cajas
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N0"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.cajas.DefaultCellStyle = DataGridViewCellStyle5
+        Me.cajas.HeaderText = "CAJAS"
+        Me.cajas.Name = "cajas"
+        Me.cajas.ReadOnly = True
+        Me.cajas.Width = 55
+        '
+        'het
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.Format = "N0"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.het.DefaultCellStyle = DataGridViewCellStyle6
+        Me.het.HeaderText = "HET"
+        Me.het.Name = "het"
+        Me.het.ReadOnly = True
+        Me.het.Width = 45
+        '
+        'hft
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.Format = "N0"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.hft.DefaultCellStyle = DataGridViewCellStyle7
+        Me.hft.HeaderText = "HFT"
+        Me.hft.Name = "hft"
+        Me.hft.ReadOnly = True
+        Me.hft.Width = 45
+        '
+        'heft
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.Format = "N0"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.heft.DefaultCellStyle = DataGridViewCellStyle8
+        Me.heft.HeaderText = "HEFT"
+        Me.heft.Name = "heft"
+        Me.heft.ReadOnly = True
+        Me.heft.Width = 45
+        '
+        'HFTA
+        '
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.Format = "N0"
+        DataGridViewCellStyle9.NullValue = Nothing
+        Me.HFTA.DefaultCellStyle = DataGridViewCellStyle9
+        Me.HFTA.HeaderText = "HFTA"
+        Me.HFTA.Name = "HFTA"
+        Me.HFTA.ReadOnly = True
+        Me.HFTA.Width = 45
+        '
+        'ott_iniciotunel
+        '
+        DataGridViewCellStyle10.Format = "g"
+        DataGridViewCellStyle10.NullValue = Nothing
+        Me.ott_iniciotunel.DefaultCellStyle = DataGridViewCellStyle10
+        Me.ott_iniciotunel.HeaderText = "INICIO"
+        Me.ott_iniciotunel.Name = "ott_iniciotunel"
+        Me.ott_iniciotunel.ReadOnly = True
+        Me.ott_iniciotunel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ott_iniciotunel.Width = 130
+        '
+        'ott_finaltunel
+        '
+        DataGridViewCellStyle11.Format = "g"
+        DataGridViewCellStyle11.NullValue = Nothing
+        Me.ott_finaltunel.DefaultCellStyle = DataGridViewCellStyle11
+        Me.ott_finaltunel.HeaderText = "TERMINO"
+        Me.ott_finaltunel.Name = "ott_finaltunel"
+        Me.ott_finaltunel.ReadOnly = True
+        '
+        'cli_nomb
+        '
+        Me.cli_nomb.HeaderText = "CLIENTE"
+        Me.cli_nomb.Name = "cli_nomb"
+        Me.cli_nomb.ReadOnly = True
+        Me.cli_nomb.Width = 160
+        '
         'Frm_Tuneles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -770,6 +770,10 @@ Partial Class Frm_Tuneles
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents lblLastUpd As System.Windows.Forms.Label
     Friend WithEvents cam_descr As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents descr_estado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ott_numot As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -785,8 +789,4 @@ Partial Class Frm_Tuneles
     Friend WithEvents ott_iniciotunel As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ott_finaltunel As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cli_nomb As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
-    Friend WithEvents lblLastUpd As System.Windows.Forms.Label
 End Class

@@ -4,6 +4,7 @@ Public Class Frm_GuiasPendTunel
 
     Dim fnc As New Funciones
     Dim thread As Thread
+    Dim permRecargoTunel As Boolean = False
 
 #Region "Cliente"
 
@@ -53,10 +54,29 @@ Public Class Frm_GuiasPendTunel
         Frm_Principal.buscavalor = ""
         Btn_Calcular.Enabled = True
         lblLastUpd.Text = ""
+
+        Dim permisos As DataTable = fnc.ListarTablasSQL("SELECT Spriv_Id, Spriv_PrivId " +
+                                                        "  FROM UsuariosFunciones AS uf ,PrivilegiosSubSeccion AS us , Usuarios " +
+                                                        " WHERE uf.Usu_Rut = Usuarios.usu_rut " +
+                                                        "   AND uf.Usu_SprivId = us.Spriv_Id  " +
+                                                        "   AND usu_codigo = @p0" +
+                                                        "   AND us.spriv_id IN ('907')",
+                                                        New SqlParameter() {
+                                                            New SqlParameter("@p0", Frm_Principal.InfoUsuario.Text)
+                                                        })
+        For Each row As DataRow In permisos.Rows
+            If row("spriv_id").ToString() = "907" Then
+                permRecargoTunel = True
+            End If
+        Next
+
+        DgvResultado.Columns(10).ReadOnly = (permRecargoTunel = False)
+
         Procesa()
         Btn_Calcular.Enabled = False
         btn_nuevo.Enabled = True
         Timer1.Enabled = True
+
     End Sub
 
 
@@ -208,6 +228,37 @@ Public Class Frm_GuiasPendTunel
                           New SqlParameter() {
                               New SqlParameter("@value", value),
                               New SqlParameter("@guia", guia)
+                          })
+
+        fnc.MovimientoSQL("INSERT INTO LOG_FICHRECE_DETALLE (" +
+                          "        [Fecha],[Usuario],[frec_unica],[frec_codi],[frec_rutcli],[frec_rutproductor],[frec_contcli]," +
+                          "        [frec_horalleg],[frec_horarec],[frec_horater],[frec_turnrec],[frec_fecproc],[frec_fecrec]," +
+                          "		   [frec_fecter],[frec_guiades],[frec_tipentr],[frec_totsopo],[frec_totunidad],[frec_totpeso]," +
+                          "	       [frec_temppro],[frec_rutcond],[frec_observ],[frec_tipdesc],[frec_codienca],[frec_origen]," +
+                          "	       [frec_codvig],[frec_radio],[frec_tipo],[frec_RecepTunel],[frec_AspectoSanitario],[frec_CondGeneral]," +
+                          "	       [frec_procedencia],[frec_paso],[frec_antecamara],[frec_numSello],[frec_termografo],[frec_tiporecepcion]," +
+                          "	       [frec_observ2],[frec_tipoalmacenamiento],[frec_contenedor],[frec_patente],[frec_almac]," +
+                          "	       [frec_empresa],[frec_olores],[frec_higiene],[frec_estiba],[frec_dañado],[frec_TS],[frec_TM]," +
+                          "	       [frec_TI],[frec_clfol],[frec_Enviada],[frec_tablet],[frec_traq],[frec_emis],[frec_packinglist]," +
+                          "	       [frec_ntunel],[frec_modificado],[cod_bod],[val_guia],[uni_guia],[kilos_guia],[frec_tippro]," +
+                          "	       [frec_orirec],[frec_serv],[mer_id],[frec_rtun]) " +
+                          " SELECT " +
+                          "        GETDATE(),@p0,[frec_unica],[frec_codi],[frec_rutcli],[frec_rutproductor],[frec_contcli]," +
+                          "        [frec_horalleg],[frec_horarec],[frec_horater],[frec_turnrec],[frec_fecproc],[frec_fecrec]," +
+                          "	       [frec_fecter],[frec_guiades],[frec_tipentr],[frec_totsopo],[frec_totunidad],[frec_totpeso]," +
+                          "	       [frec_temppro],[frec_rutcond],[frec_observ],[frec_tipdesc],[frec_codienca],[frec_origen]," +
+                          "	       [frec_codvig],[frec_radio],[frec_tipo],[frec_RecepTunel],[frec_AspectoSanitario],[frec_CondGeneral]," +
+                          "	       [frec_procedencia],[frec_paso],[frec_antecamara],[frec_numSello],[frec_termografo],[frec_tiporecepcion]," +
+                          "	       [frec_observ2],[frec_tipoalmacenamiento],[frec_contenedor],[frec_patente],[frec_almac]," +
+                          "	       [frec_empresa],[frec_olores],[frec_higiene],[frec_estiba],[frec_dañado],[frec_TS],[frec_TM]," +
+                          "	       [frec_TI],[frec_clfol],[frec_Enviada],[frec_tablet],[frec_traq],[frec_emis],[frec_packinglist]," +
+                          "	       [frec_ntunel],[frec_modificado],[cod_bod],[val_guia],[uni_guia],[kilos_guia],[frec_tippro]," +
+                          "	       [frec_orirec],[frec_serv],[mer_id],[frec_rtun] " +
+                          "  FROM fichrece" +
+                          " WHERE frec_codi = @p1",
+                          New SqlParameter() {
+                              New SqlParameter("@p0", Frm_Principal.InfoUsuario.Text),
+                              New SqlParameter("@p1", guia)
                           })
     End Sub
 

@@ -22,8 +22,11 @@ Namespace My
         Private Sub IPL() Handles Me.Startup
 
             ' Asignamos los valores por omision
+            CONFIG.currentSet = "DEF"
             CONFIG.lanIP = "192.168.1.90"
             CONFIG.wlanIP = "186.67.106.109"
+            CONFIG.dbUID = "sa"
+            CONFIG.dbPWD = "precisa"
             CONFIG.mainCatalog = "PRECISA"
             CONFIG.etiqCatalog = "ETIQUETADO"
             CONFIG.lanConnStr = ("Data Source={ip}\PRECISABD; USER=sa; PWD=precisa; Connection Timeout=3; ")
@@ -34,13 +37,16 @@ Namespace My
                 Dim connStrings = ConfigurationManager.ConnectionStrings
                 Dim appSettings = ConfigurationManager.AppSettings
 
+                CONFIG.currentSet = appSettings.Get("app.config.set").ToLower()
                 CONFIG.lanConnStr = connStrings("app.connstrings.lan").ConnectionString
                 CONFIG.wlanConnStr = connStrings("app.connstrings.wlan").ConnectionString
 
-                CONFIG.lanIP = appSettings.Get("app.ip.lan")
-                CONFIG.wlanIP = appSettings.Get("app.ip.wlan")
-                CONFIG.mainCatalog = appSettings.Get("app.catalogs.main")
-                CONFIG.etiqCatalog = appSettings.Get("app.catalogs.etiquetado")
+                CONFIG.lanIP = appSettings.Get("app." + CONFIG.currentSet + ".db.ip.lan")
+                CONFIG.wlanIP = appSettings.Get("app." + CONFIG.currentSet + ".db.ip.wlan")
+                CONFIG.dbUID = appSettings.Get("app." + CONFIG.currentSet + ".db.uid")
+                CONFIG.dbPWD = appSettings.Get("app." + CONFIG.currentSet + ".db.pwd")
+                CONFIG.mainCatalog = appSettings.Get("app." + CONFIG.currentSet + ".db.catalogs.main")
+                CONFIG.etiqCatalog = appSettings.Get("app." + CONFIG.currentSet + ".db.catalogs.etiquetado")
 
 
             Catch ex As NullReferenceException
@@ -54,8 +60,8 @@ Namespace My
                 ' TODO: Hacer una entrada en un log de errores
             End If
 
-            CONFIG.lanConnStr = CONFIG.lanConnStr.Replace("{ip}", CONFIG.lanIP)
-            CONFIG.wlanConnStr = CONFIG.wlanConnStr.Replace("{ip}", CONFIG.wlanIP)
+            CONFIG.lanConnStr = CONFIG.lanConnStr.Replace("{ip}", CONFIG.lanIP).Replace("{uid}", CONFIG.dbUID).Replace("{pwd}", CONFIG.dbPWD)
+            CONFIG.wlanConnStr = CONFIG.wlanConnStr.Replace("{ip}", CONFIG.wlanIP).Replace("{uid}", CONFIG.dbUID).Replace("{pwd}", CONFIG.dbPWD)
             CONFIG.dbLANConnStr = CONFIG.lanConnStr + ";Initial Catalog=" + CONFIG.mainCatalog + ";"
             CONFIG.dbWLANConnStr = CONFIG.wlanConnStr + ";Initial Catalog=" + CONFIG.mainCatalog + ";"
         End Sub ' IPL

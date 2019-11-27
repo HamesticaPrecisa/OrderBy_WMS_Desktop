@@ -227,14 +227,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="23123968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="23129600">
       <assemblyIdentity name="PrecisaFrozen.Win" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>70pQ+6Ml36XI7TNuSnOwiBEzcyA=</dsig:DigestValue>
+        <dsig:DigestValue>OR+daWLp9Gkr/sY8khUlD/RDKwA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -280,13 +280,13 @@
       <dsig:DigestValue>nGowGanFj0VUE2vp+xs10I3fPao=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PrecisaFrozen.Win.exe.config" size="2632">
+  <file name="PrecisaFrozen.Win.exe.config" size="3579">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>io/y3aiRcGKBSBcH5WmthvKD83o=</dsig:DigestValue>
+      <dsig:DigestValue>NNNbLIvx808XRg3SEyeYIf2dep0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\icono-de-jpg-355881.png" size="935">
