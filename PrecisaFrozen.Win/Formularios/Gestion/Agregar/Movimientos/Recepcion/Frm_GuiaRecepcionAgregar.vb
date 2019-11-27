@@ -2349,7 +2349,7 @@ Public Class Frm_GuiaRecepcionAgregar
                         Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
                         Dim CodCont As String = txtcodcontrato.Text.Trim
 
-                        Dim sqlDetArr As String = "select TipPal=right('000'+drec_codsopo,3),Cant_Arriendo=count(frec_codi) from TMPDETARECE with(nolock) where frec_codi='" & CodRece & "' and drec_arriendo='1' group by drec_codsopo"
+                        Dim sqlDetArr As String = "select TipPal=right('000'+drec_codsopo,3),Cant_Arriendo=count(frec_codi) from TMPDETARECE with(nolock) where frec_codi='" & CodRece & "' and drec_arriendo='1' group by drec_codsopo asc"
                         Dim dtDetArr As New DataTable
 
                         dtDetArr = fnc.ListarTablasSQL(sqlDetArr)
@@ -2374,10 +2374,41 @@ Public Class Frm_GuiaRecepcionAgregar
                                     Saldo = CInt(dtValidCust.Rows(0).Item(0).ToString.Trim)
                                 End If
 
-                                CantArr = CantArrTMP - Saldo
+                                Dim sqlPallsIntercambio As String = "select Cont=count(ID) from Control_Pallet_Custodia_Intercambio with(nolock) where Codigo_Recepcion='" & CodRece & "' and Tipo_Pallet='" & TipPalFrm & "'"
+                                Dim dtPallsIntercambio As New DataTable
+
+                                dtPallsIntercambio = fnc.ListarTablasSQL(sqlPallsIntercambio)
+
+                                Dim CantInter As Integer = 0
+
+                                If (dtPallsIntercambio.Rows.Count > 0) Then
+                                    CantInter = CInt(dtPallsIntercambio.Rows(0).Item(0).ToString.Trim)
+                                End If
+
+                                CantArr = CantArrTMP - Saldo - CantInter
 
                                 If (CantArr < 0) Then
                                     CantArr = 0
+                                End If
+
+                                If (CantArr > 0) Then
+                                    Dim sqlSaldPallsCli As String = "select SaldCli=sum(Saldo) from Control_Pallet_Saldos with(nolock) where Rut_Cliente='" & RutCli & "' and Tipo_Pallet='" & TipPalFrm & "' and Estado='1'"
+                                    Dim dtSaldPallsCli As New DataTable
+
+                                    dtSaldPallsCli = fnc.ListarTablasSQL(sqlSaldPallsCli)
+
+                                    Dim SaldCli As Integer = 0
+
+                                    If (dtSaldPallsCli.Rows.Count > 0) Then
+                                        SaldCli = CInt(dtSaldPallsCli.Rows(0).Item(0).ToString.Trim)
+                                End If
+
+                                    If (SaldCli > 0) Then
+                                        Recepcion_Custodia_Intercambio_Pallets.txtCodRece.Text = CodRece
+                                        Recepcion_Custodia_Intercambio_Pallets.txtCont.Text = CodCont
+                                        Recepcion_Custodia_Intercambio_Pallets.txtTipPal.Text = TipPalFrm
+                                        Recepcion_Custodia_Intercambio_Pallets.ShowDialog()
+                                    End If
                                 End If
 
                                 CantArrReal += CantArr
