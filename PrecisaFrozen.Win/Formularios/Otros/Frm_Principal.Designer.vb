@@ -24,7 +24,7 @@ Partial Class Frm_Principal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Principal))
-        Dim ToolStripProfessionalRenderer14 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
+        Dim ToolStripProfessionalRenderer5 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.MinimizaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccesosDirectos = New System.Windows.Forms.ToolStrip()
@@ -338,8 +338,8 @@ Partial Class Frm_Principal
         Me.TabControl1.ForeColor = System.Drawing.Color.Black
         Me.TabControl1.KeyTabEnabled = False
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        ToolStripProfessionalRenderer14.RoundedEdges = True
-        Me.TabControl1.MenuRenderer = ToolStripProfessionalRenderer14
+        ToolStripProfessionalRenderer5.RoundedEdges = True
+        Me.TabControl1.MenuRenderer = ToolStripProfessionalRenderer5
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.Size = New System.Drawing.Size(928, 509)
         Me.TabControl1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality
@@ -1293,7 +1293,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Precisa Tech 21.11.19.10.30 - BD: Precisa_Backup"
+        Me.Text = "Order By WMS - Precisa Tech 02.12.19.14.00 - BD: Precisa_Backup"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)

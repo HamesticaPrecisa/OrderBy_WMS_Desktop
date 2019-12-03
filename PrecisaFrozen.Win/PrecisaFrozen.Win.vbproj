@@ -666,12 +666,6 @@
     <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.Designer.vb">
-      <DependentUpon>Recepcion_Custodia_Intercambio_Pallets.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\ConfigurationManager.vb" />
     <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.Designer.vb">
       <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
@@ -1941,9 +1935,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.resx">
       <DependentUpon>Frm_VerificaServiciosRece.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.resx">
-      <DependentUpon>Recepcion_Custodia_Intercambio_Pallets.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.resx">
       <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
