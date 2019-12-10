@@ -24,7 +24,7 @@ Partial Class Frm_Principal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Principal))
-        Dim ToolStripProfessionalRenderer5 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
+        Dim ToolStripProfessionalRenderer1 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.MinimizaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccesosDirectos = New System.Windows.Forms.ToolStrip()
@@ -151,6 +151,7 @@ Partial Class Frm_Principal
         Me.ConfiguracionesGenelaresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReservaHorasPedidosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActualizacionesDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenOrdenPallets = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -338,8 +339,8 @@ Partial Class Frm_Principal
         Me.TabControl1.ForeColor = System.Drawing.Color.Black
         Me.TabControl1.KeyTabEnabled = False
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        ToolStripProfessionalRenderer5.RoundedEdges = True
-        Me.TabControl1.MenuRenderer = ToolStripProfessionalRenderer5
+        ToolStripProfessionalRenderer1.RoundedEdges = True
+        Me.TabControl1.MenuRenderer = ToolStripProfessionalRenderer1
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.Size = New System.Drawing.Size(928, 509)
         Me.TabControl1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality
@@ -1135,7 +1136,7 @@ Partial Class Frm_Principal
         '
         'M1_Otros
         '
-        Me.M1_Otros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_PerfilesUsuario, Me.SeleccionarImpresoras, Me.ConfiguracionesGeneralesToolStripMenuItem})
+        Me.M1_Otros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_PerfilesUsuario, Me.SeleccionarImpresoras, Me.ConfiguracionesGeneralesToolStripMenuItem, Me.MenOrdenPallets})
         Me.M1_Otros.Name = "M1_Otros"
         Me.M1_Otros.Size = New System.Drawing.Size(48, 20)
         Me.M1_Otros.Text = "Otros"
@@ -1206,6 +1207,13 @@ Partial Class Frm_Principal
         Me.ActualizacionesDelSistemaToolStripMenuItem.Name = "ActualizacionesDelSistemaToolStripMenuItem"
         Me.ActualizacionesDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.ActualizacionesDelSistemaToolStripMenuItem.Text = "Actualizaciones del Sistema"
+        '
+        'MenOrdenPallets
+        '
+        Me.MenOrdenPallets.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenOrdenPallets.Name = "MenOrdenPallets"
+        Me.MenOrdenPallets.Size = New System.Drawing.Size(198, 22)
+        Me.MenOrdenPallets.Text = "Config. Orden Pallets"
         '
         'ManualDeUsuarioToolStripMenuItem
         '
@@ -1293,7 +1301,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Precisa Tech 02.12.19.14.00 - BD: Precisa_Backup"
+        Me.Text = "Order By WMS - Pecisa Tech 09.12.19.11.00 - BD: Precisa"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
@@ -1445,5 +1453,6 @@ Partial Class Frm_Principal
     Friend WithEvents MenListRece As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenConfigBloqHrsRece As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenConfigTipCarRece As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenOrdenPallets As System.Windows.Forms.ToolStripMenuItem
 
 End Class

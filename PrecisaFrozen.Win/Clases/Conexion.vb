@@ -14,21 +14,21 @@ Public Class Conexion
                         con.ConnectionString = ("Data Source=192.168.1.7\PRECISA; initial catalog=precisa2; Trusted_Connection=True; Connection Timeout=100;")
                         CONECTARVARI = "LOCAL"
 
-                        'If CONECTARVARI = "LOCAL" Then
-                        '    con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=150; ")
-                        '    con.Open()
-                        'ElseIf CONECTARVARI = "WLAN" Then
-                        '    con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=150; ")
-                        '    con.Open()
-                        'End If
-
                         If CONECTARVARI = "LOCAL" Then
-                            con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=Precisa_Backup;  USER=sa; PWD=precisa; Connection Timeout=150; ")
+                            con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=150; ")
                             con.Open()
                         ElseIf CONECTARVARI = "WLAN" Then
-                            con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=Precisa_Backup;  USER=sa; PWD=precisa; Connection Timeout=150; ")
+                            con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=150; ")
                             con.Open()
                         End If
+
+                        'If CONECTARVARI = "LOCAL" Then
+                        '    con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=Precisa_Backup;  USER=sa; PWD=precisa; Connection Timeout=150; ")
+                        '    con.Open()
+                        'ElseIf CONECTARVARI = "WLAN" Then
+                        '    con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=Precisa_Backup;  USER=sa; PWD=precisa; Connection Timeout=150; ")
+                        '    con.Open()
+                        'End If
                     End If
                 Catch ex As SqlException
                     validacone = "NC"

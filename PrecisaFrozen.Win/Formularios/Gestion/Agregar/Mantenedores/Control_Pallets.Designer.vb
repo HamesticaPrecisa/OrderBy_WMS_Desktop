@@ -24,6 +24,7 @@ Partial Class Control_Pallets
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Control_Pallets))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cboEst = New System.Windows.Forms.ComboBox()
@@ -40,44 +41,24 @@ Partial Class Control_Pallets
         Me.txtFec = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtsopcodi = New System.Windows.Forms.TextBox()
+        Me.Btn_buscasoportante = New System.Windows.Forms.Button()
         Me.txtsopnombre = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtcodcontrato = New System.Windows.Forms.TextBox()
+        Me.Btn_BuscaContrato = New System.Windows.Forms.Button()
         Me.txtnom_contrato = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TxtClirut = New System.Windows.Forms.TextBox()
+        Me.btn_BuscaCliente = New System.Windows.Forms.Button()
         Me.txtclinom = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.gvMov = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Fotos = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Eliminar = New System.Windows.Forms.DataGridViewImageColumn()
         Me.btnImp = New System.Windows.Forms.Button()
         Me.btnGra = New System.Windows.Forms.Button()
         Me.btnSal = New System.Windows.Forms.Button()
         Me.btnLim = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Btn_buscasoportante = New System.Windows.Forms.Button()
-        Me.Btn_BuscaContrato = New System.Windows.Forms.Button()
-        Me.btn_BuscaCliente = New System.Windows.Forms.Button()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.gvMov = New System.Windows.Forms.DataGridView()
         Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RUT = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIENTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -93,6 +74,25 @@ Partial Class Control_Pallets
         Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Estado_Frm = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OBSERVACION = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fotos = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Eliminar = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -131,16 +131,27 @@ Partial Class Control_Pallets
         Me.GroupBox1.Controls.Add(Me.Label35)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1092, 435)
+        Me.GroupBox1.Size = New System.Drawing.Size(1092, 403)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(883, 41)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(21, 22)
+        Me.Button1.TabIndex = 104
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(7, 57)
+        Me.Label11.Location = New System.Drawing.Point(665, 46)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(66, 13)
@@ -153,7 +164,7 @@ Partial Class Control_Pallets
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(7, 199)
+        Me.Label4.Location = New System.Drawing.Point(17, 167)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(64, 13)
@@ -163,14 +174,14 @@ Partial Class Control_Pallets
         'cboEst
         '
         Me.cboEst.FormattingEnabled = True
-        Me.cboEst.Location = New System.Drawing.Point(135, 196)
+        Me.cboEst.Location = New System.Drawing.Point(145, 164)
         Me.cboEst.Name = "cboEst"
         Me.cboEst.Size = New System.Drawing.Size(147, 21)
         Me.cboEst.TabIndex = 6
         '
         'txtID
         '
-        Me.txtID.Location = New System.Drawing.Point(135, 54)
+        Me.txtID.Location = New System.Drawing.Point(793, 43)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(82, 20)
         Me.txtID.TabIndex = 98
@@ -181,7 +192,7 @@ Partial Class Control_Pallets
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(7, 359)
+        Me.Label9.Location = New System.Drawing.Point(17, 327)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(118, 13)
@@ -190,7 +201,7 @@ Partial Class Control_Pallets
         '
         'txtObs
         '
-        Me.txtObs.Location = New System.Drawing.Point(135, 356)
+        Me.txtObs.Location = New System.Drawing.Point(145, 324)
         Me.txtObs.Multiline = True
         Me.txtObs.Name = "txtObs"
         Me.txtObs.Size = New System.Drawing.Size(499, 68)
@@ -201,7 +212,7 @@ Partial Class Control_Pallets
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(222, 317)
+        Me.Label8.Location = New System.Drawing.Point(232, 285)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(60, 13)
@@ -210,7 +221,7 @@ Partial Class Control_Pallets
         '
         'txtSal
         '
-        Me.txtSal.Location = New System.Drawing.Point(350, 314)
+        Me.txtSal.Location = New System.Drawing.Point(360, 282)
         Me.txtSal.Name = "txtSal"
         Me.txtSal.Size = New System.Drawing.Size(39, 20)
         Me.txtSal.TabIndex = 10
@@ -220,7 +231,7 @@ Partial Class Control_Pallets
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(7, 317)
+        Me.Label7.Location = New System.Drawing.Point(17, 285)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(70, 13)
@@ -229,7 +240,7 @@ Partial Class Control_Pallets
         '
         'txtIng
         '
-        Me.txtIng.Location = New System.Drawing.Point(135, 314)
+        Me.txtIng.Location = New System.Drawing.Point(145, 282)
         Me.txtIng.Name = "txtIng"
         Me.txtIng.Size = New System.Drawing.Size(39, 20)
         Me.txtIng.TabIndex = 9
@@ -239,7 +250,7 @@ Partial Class Control_Pallets
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(7, 278)
+        Me.Label6.Location = New System.Drawing.Point(17, 246)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(116, 13)
@@ -248,7 +259,7 @@ Partial Class Control_Pallets
         '
         'txtDoc
         '
-        Me.txtDoc.Location = New System.Drawing.Point(135, 275)
+        Me.txtDoc.Location = New System.Drawing.Point(145, 243)
         Me.txtDoc.Name = "txtDoc"
         Me.txtDoc.Size = New System.Drawing.Size(186, 20)
         Me.txtDoc.TabIndex = 8
@@ -258,7 +269,7 @@ Partial Class Control_Pallets
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(7, 243)
+        Me.Label5.Location = New System.Drawing.Point(17, 211)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(54, 13)
@@ -268,7 +279,7 @@ Partial Class Control_Pallets
         'txtFec
         '
         Me.txtFec.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.txtFec.Location = New System.Drawing.Point(135, 237)
+        Me.txtFec.Location = New System.Drawing.Point(145, 205)
         Me.txtFec.Name = "txtFec"
         Me.txtFec.Size = New System.Drawing.Size(108, 20)
         Me.txtFec.TabIndex = 7
@@ -278,7 +289,7 @@ Partial Class Control_Pallets
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(7, 157)
+        Me.Label3.Location = New System.Drawing.Point(17, 125)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(94, 13)
@@ -288,16 +299,26 @@ Partial Class Control_Pallets
         'txtsopcodi
         '
         Me.txtsopcodi.Enabled = False
-        Me.txtsopcodi.Location = New System.Drawing.Point(135, 154)
+        Me.txtsopcodi.Location = New System.Drawing.Point(145, 122)
         Me.txtsopcodi.MaxLength = 4
         Me.txtsopcodi.Name = "txtsopcodi"
         Me.txtsopcodi.Size = New System.Drawing.Size(82, 20)
         Me.txtsopcodi.TabIndex = 4
         '
+        'Btn_buscasoportante
+        '
+        Me.Btn_buscasoportante.Image = CType(resources.GetObject("Btn_buscasoportante.Image"), System.Drawing.Image)
+        Me.Btn_buscasoportante.Location = New System.Drawing.Point(235, 120)
+        Me.Btn_buscasoportante.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Btn_buscasoportante.Name = "Btn_buscasoportante"
+        Me.Btn_buscasoportante.Size = New System.Drawing.Size(21, 22)
+        Me.Btn_buscasoportante.TabIndex = 5
+        Me.Btn_buscasoportante.UseVisualStyleBackColor = True
+        '
         'txtsopnombre
         '
         Me.txtsopnombre.Enabled = False
-        Me.txtsopnombre.Location = New System.Drawing.Point(254, 154)
+        Me.txtsopnombre.Location = New System.Drawing.Point(264, 122)
         Me.txtsopnombre.Name = "txtsopnombre"
         Me.txtsopnombre.Size = New System.Drawing.Size(192, 20)
         Me.txtsopnombre.TabIndex = 84
@@ -307,7 +328,7 @@ Partial Class Control_Pallets
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(6, 117)
+        Me.Label1.Location = New System.Drawing.Point(16, 85)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(81, 13)
@@ -316,17 +337,27 @@ Partial Class Control_Pallets
         '
         'txtcodcontrato
         '
-        Me.txtcodcontrato.Location = New System.Drawing.Point(135, 114)
+        Me.txtcodcontrato.Location = New System.Drawing.Point(145, 82)
         Me.txtcodcontrato.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtcodcontrato.MaxLength = 7
         Me.txtcodcontrato.Name = "txtcodcontrato"
         Me.txtcodcontrato.Size = New System.Drawing.Size(82, 20)
         Me.txtcodcontrato.TabIndex = 2
         '
+        'Btn_BuscaContrato
+        '
+        Me.Btn_BuscaContrato.Image = CType(resources.GetObject("Btn_BuscaContrato.Image"), System.Drawing.Image)
+        Me.Btn_BuscaContrato.Location = New System.Drawing.Point(235, 80)
+        Me.Btn_BuscaContrato.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Btn_BuscaContrato.Name = "Btn_BuscaContrato"
+        Me.Btn_BuscaContrato.Size = New System.Drawing.Size(21, 22)
+        Me.Btn_BuscaContrato.TabIndex = 3
+        Me.Btn_BuscaContrato.UseVisualStyleBackColor = True
+        '
         'txtnom_contrato
         '
         Me.txtnom_contrato.Enabled = False
-        Me.txtnom_contrato.Location = New System.Drawing.Point(254, 114)
+        Me.txtnom_contrato.Location = New System.Drawing.Point(264, 82)
         Me.txtnom_contrato.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtnom_contrato.Name = "txtnom_contrato"
         Me.txtnom_contrato.Size = New System.Drawing.Size(380, 20)
@@ -337,7 +368,7 @@ Partial Class Control_Pallets
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(7, 78)
+        Me.Label2.Location = New System.Drawing.Point(17, 46)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 13)
@@ -346,17 +377,27 @@ Partial Class Control_Pallets
         '
         'TxtClirut
         '
-        Me.TxtClirut.Location = New System.Drawing.Point(135, 75)
+        Me.TxtClirut.Location = New System.Drawing.Point(145, 43)
         Me.TxtClirut.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TxtClirut.MaxLength = 8
         Me.TxtClirut.Name = "TxtClirut"
         Me.TxtClirut.Size = New System.Drawing.Size(82, 20)
         Me.TxtClirut.TabIndex = 0
         '
+        'btn_BuscaCliente
+        '
+        Me.btn_BuscaCliente.Image = CType(resources.GetObject("btn_BuscaCliente.Image"), System.Drawing.Image)
+        Me.btn_BuscaCliente.Location = New System.Drawing.Point(235, 41)
+        Me.btn_BuscaCliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.btn_BuscaCliente.Name = "btn_BuscaCliente"
+        Me.btn_BuscaCliente.Size = New System.Drawing.Size(21, 22)
+        Me.btn_BuscaCliente.TabIndex = 1
+        Me.btn_BuscaCliente.UseVisualStyleBackColor = True
+        '
         'txtclinom
         '
         Me.txtclinom.Enabled = False
-        Me.txtclinom.Location = New System.Drawing.Point(254, 75)
+        Me.txtclinom.Location = New System.Drawing.Point(264, 43)
         Me.txtclinom.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtclinom.Name = "txtclinom"
         Me.txtclinom.Size = New System.Drawing.Size(380, 20)
@@ -388,61 +429,6 @@ Partial Class Control_Pallets
         Me.GroupBox4.Size = New System.Drawing.Size(75, 308)
         Me.GroupBox4.TabIndex = 58
         Me.GroupBox4.TabStop = False
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.gvMov)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 453)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1092, 405)
-        Me.GroupBox2.TabIndex = 59
-        Me.GroupBox2.TabStop = False
-        '
-        'gvMov
-        '
-        Me.gvMov.AllowUserToAddRows = False
-        Me.gvMov.AllowUserToDeleteRows = False
-        Me.gvMov.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gvMov.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.RUT, Me.CLIENTE, Me.CONTRATO, Me.FECHA, Me.FECHA_FRM, Me.TIPO_PALLET, Me.TIPO_PALLET_FRM, Me.DOCUMENTO, Me.ENTRADAS, Me.SALIDAS, Me.SALDO, Me.Estado, Me.Estado_Frm, Me.OBSERVACION, Me.Fotos, Me.Eliminar})
-        Me.gvMov.Location = New System.Drawing.Point(6, 19)
-        Me.gvMov.Name = "gvMov"
-        Me.gvMov.ReadOnly = True
-        Me.gvMov.Size = New System.Drawing.Size(1080, 380)
-        Me.gvMov.TabIndex = 0
-        '
-        'DataGridViewImageColumn1
-        '
-        Me.DataGridViewImageColumn1.Frozen = True
-        Me.DataGridViewImageColumn1.HeaderText = "FOTOS"
-        Me.DataGridViewImageColumn1.Image = CType(resources.GetObject("DataGridViewImageColumn1.Image"), System.Drawing.Image)
-        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
-        Me.DataGridViewImageColumn1.ReadOnly = True
-        '
-        'DataGridViewImageColumn2
-        '
-        Me.DataGridViewImageColumn2.Frozen = True
-        Me.DataGridViewImageColumn2.HeaderText = "ELIMINAR"
-        Me.DataGridViewImageColumn2.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.cont_no
-        Me.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2"
-        Me.DataGridViewImageColumn2.ReadOnly = True
-        Me.DataGridViewImageColumn2.Visible = False
-        '
-        'Fotos
-        '
-        Me.Fotos.Frozen = True
-        Me.Fotos.HeaderText = "FOTOS"
-        Me.Fotos.Image = CType(resources.GetObject("Fotos.Image"), System.Drawing.Image)
-        Me.Fotos.Name = "Fotos"
-        Me.Fotos.ReadOnly = True
-        '
-        'Eliminar
-        '
-        Me.Eliminar.Frozen = True
-        Me.Eliminar.HeaderText = "ELIMINAR"
-        Me.Eliminar.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.cont_no
-        Me.Eliminar.Name = "Eliminar"
-        Me.Eliminar.ReadOnly = True
-        Me.Eliminar.Visible = False
         '
         'btnImp
         '
@@ -488,46 +474,188 @@ Partial Class Control_Pallets
         Me.btnLim.TabIndex = 15
         Me.btnLim.UseVisualStyleBackColor = True
         '
-        'Button1
+        'GroupBox2
         '
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(225, 52)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(21, 22)
-        Me.Button1.TabIndex = 104
-        Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
+        Me.GroupBox2.Controls.Add(Me.gvMov)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 421)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(1092, 235)
+        Me.GroupBox2.TabIndex = 59
+        Me.GroupBox2.TabStop = False
         '
-        'Btn_buscasoportante
+        'gvMov
         '
-        Me.Btn_buscasoportante.Image = CType(resources.GetObject("Btn_buscasoportante.Image"), System.Drawing.Image)
-        Me.Btn_buscasoportante.Location = New System.Drawing.Point(225, 152)
-        Me.Btn_buscasoportante.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Btn_buscasoportante.Name = "Btn_buscasoportante"
-        Me.Btn_buscasoportante.Size = New System.Drawing.Size(21, 22)
-        Me.Btn_buscasoportante.TabIndex = 5
-        Me.Btn_buscasoportante.UseVisualStyleBackColor = True
+        Me.gvMov.AllowUserToAddRows = False
+        Me.gvMov.AllowUserToDeleteRows = False
+        Me.gvMov.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.gvMov.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.RUT, Me.CLIENTE, Me.CONTRATO, Me.FECHA, Me.FECHA_FRM, Me.TIPO_PALLET, Me.TIPO_PALLET_FRM, Me.DOCUMENTO, Me.ENTRADAS, Me.SALIDAS, Me.SALDO, Me.Estado, Me.Estado_Frm, Me.OBSERVACION, Me.Fotos, Me.Eliminar})
+        Me.gvMov.Location = New System.Drawing.Point(6, 19)
+        Me.gvMov.Name = "gvMov"
+        Me.gvMov.ReadOnly = True
+        Me.gvMov.Size = New System.Drawing.Size(1080, 210)
+        Me.gvMov.TabIndex = 0
         '
-        'Btn_BuscaContrato
+        'ID
         '
-        Me.Btn_BuscaContrato.Image = CType(resources.GetObject("Btn_BuscaContrato.Image"), System.Drawing.Image)
-        Me.Btn_BuscaContrato.Location = New System.Drawing.Point(225, 112)
-        Me.Btn_BuscaContrato.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Btn_BuscaContrato.Name = "Btn_BuscaContrato"
-        Me.Btn_BuscaContrato.Size = New System.Drawing.Size(21, 22)
-        Me.Btn_BuscaContrato.TabIndex = 3
-        Me.Btn_BuscaContrato.UseVisualStyleBackColor = True
+        Me.ID.DataPropertyName = "ID"
+        Me.ID.Frozen = True
+        Me.ID.HeaderText = "ID"
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Visible = False
         '
-        'btn_BuscaCliente
+        'RUT
         '
-        Me.btn_BuscaCliente.Image = CType(resources.GetObject("btn_BuscaCliente.Image"), System.Drawing.Image)
-        Me.btn_BuscaCliente.Location = New System.Drawing.Point(225, 73)
-        Me.btn_BuscaCliente.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.btn_BuscaCliente.Name = "btn_BuscaCliente"
-        Me.btn_BuscaCliente.Size = New System.Drawing.Size(21, 22)
-        Me.btn_BuscaCliente.TabIndex = 1
-        Me.btn_BuscaCliente.UseVisualStyleBackColor = True
+        Me.RUT.DataPropertyName = "Rut_Cliente"
+        Me.RUT.Frozen = True
+        Me.RUT.HeaderText = "RUT"
+        Me.RUT.Name = "RUT"
+        Me.RUT.ReadOnly = True
+        Me.RUT.Visible = False
+        '
+        'CLIENTE
+        '
+        Me.CLIENTE.DataPropertyName = "Cliente"
+        Me.CLIENTE.Frozen = True
+        Me.CLIENTE.HeaderText = "CLIENTE"
+        Me.CLIENTE.Name = "CLIENTE"
+        Me.CLIENTE.ReadOnly = True
+        Me.CLIENTE.Visible = False
+        '
+        'CONTRATO
+        '
+        Me.CONTRATO.DataPropertyName = "Contrato"
+        Me.CONTRATO.Frozen = True
+        Me.CONTRATO.HeaderText = "CONTRATO"
+        Me.CONTRATO.Name = "CONTRATO"
+        Me.CONTRATO.ReadOnly = True
+        Me.CONTRATO.Visible = False
+        '
+        'FECHA
+        '
+        Me.FECHA.DataPropertyName = "Fecha"
+        Me.FECHA.Frozen = True
+        Me.FECHA.HeaderText = "FECHA"
+        Me.FECHA.Name = "FECHA"
+        Me.FECHA.ReadOnly = True
+        Me.FECHA.Visible = False
+        '
+        'FECHA_FRM
+        '
+        Me.FECHA_FRM.DataPropertyName = "Fecha_Frm"
+        Me.FECHA_FRM.Frozen = True
+        Me.FECHA_FRM.HeaderText = "FECHA"
+        Me.FECHA_FRM.Name = "FECHA_FRM"
+        Me.FECHA_FRM.ReadOnly = True
+        '
+        'TIPO_PALLET
+        '
+        Me.TIPO_PALLET.DataPropertyName = "Tipo_Pallet"
+        Me.TIPO_PALLET.Frozen = True
+        Me.TIPO_PALLET.HeaderText = "TIPO_PALLET"
+        Me.TIPO_PALLET.Name = "TIPO_PALLET"
+        Me.TIPO_PALLET.ReadOnly = True
+        Me.TIPO_PALLET.Visible = False
+        '
+        'TIPO_PALLET_FRM
+        '
+        Me.TIPO_PALLET_FRM.DataPropertyName = "Tipo_Pallet_Frm"
+        Me.TIPO_PALLET_FRM.Frozen = True
+        Me.TIPO_PALLET_FRM.HeaderText = "PALLET"
+        Me.TIPO_PALLET_FRM.Name = "TIPO_PALLET_FRM"
+        Me.TIPO_PALLET_FRM.ReadOnly = True
+        Me.TIPO_PALLET_FRM.Visible = False
+        '
+        'DOCUMENTO
+        '
+        Me.DOCUMENTO.DataPropertyName = "Documento"
+        Me.DOCUMENTO.Frozen = True
+        Me.DOCUMENTO.HeaderText = "DOCUMENTO"
+        Me.DOCUMENTO.Name = "DOCUMENTO"
+        Me.DOCUMENTO.ReadOnly = True
+        '
+        'ENTRADAS
+        '
+        Me.ENTRADAS.DataPropertyName = "Entradas"
+        Me.ENTRADAS.Frozen = True
+        Me.ENTRADAS.HeaderText = "ENTRADAS"
+        Me.ENTRADAS.Name = "ENTRADAS"
+        Me.ENTRADAS.ReadOnly = True
+        '
+        'SALIDAS
+        '
+        Me.SALIDAS.DataPropertyName = "Salidas"
+        Me.SALIDAS.Frozen = True
+        Me.SALIDAS.HeaderText = "SALIDAS"
+        Me.SALIDAS.Name = "SALIDAS"
+        Me.SALIDAS.ReadOnly = True
+        '
+        'SALDO
+        '
+        Me.SALDO.DataPropertyName = "Saldo"
+        Me.SALDO.Frozen = True
+        Me.SALDO.HeaderText = "SALDO"
+        Me.SALDO.Name = "SALDO"
+        Me.SALDO.ReadOnly = True
+        '
+        'Estado
+        '
+        Me.Estado.DataPropertyName = "Estado"
+        Me.Estado.Frozen = True
+        Me.Estado.HeaderText = "ESTADO"
+        Me.Estado.Name = "Estado"
+        Me.Estado.ReadOnly = True
+        Me.Estado.Visible = False
+        '
+        'Estado_Frm
+        '
+        Me.Estado_Frm.DataPropertyName = "Estado_Frm"
+        Me.Estado_Frm.Frozen = True
+        Me.Estado_Frm.HeaderText = "ESTADO"
+        Me.Estado_Frm.Name = "Estado_Frm"
+        Me.Estado_Frm.ReadOnly = True
+        '
+        'OBSERVACION
+        '
+        Me.OBSERVACION.DataPropertyName = "Observacion"
+        Me.OBSERVACION.Frozen = True
+        Me.OBSERVACION.HeaderText = "OBSERVACION"
+        Me.OBSERVACION.Name = "OBSERVACION"
+        Me.OBSERVACION.ReadOnly = True
+        '
+        'Fotos
+        '
+        Me.Fotos.Frozen = True
+        Me.Fotos.HeaderText = "FOTOS"
+        Me.Fotos.Image = CType(resources.GetObject("Fotos.Image"), System.Drawing.Image)
+        Me.Fotos.Name = "Fotos"
+        Me.Fotos.ReadOnly = True
+        '
+        'Eliminar
+        '
+        Me.Eliminar.Frozen = True
+        Me.Eliminar.HeaderText = "ELIMINAR"
+        Me.Eliminar.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.cont_no
+        Me.Eliminar.Name = "Eliminar"
+        Me.Eliminar.ReadOnly = True
+        Me.Eliminar.Visible = False
+        '
+        'DataGridViewImageColumn1
+        '
+        Me.DataGridViewImageColumn1.Frozen = True
+        Me.DataGridViewImageColumn1.HeaderText = "FOTOS"
+        Me.DataGridViewImageColumn1.Image = CType(resources.GetObject("DataGridViewImageColumn1.Image"), System.Drawing.Image)
+        Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
+        Me.DataGridViewImageColumn1.ReadOnly = True
+        '
+        'DataGridViewImageColumn2
+        '
+        Me.DataGridViewImageColumn2.Frozen = True
+        Me.DataGridViewImageColumn2.HeaderText = "ELIMINAR"
+        Me.DataGridViewImageColumn2.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.cont_no
+        Me.DataGridViewImageColumn2.Name = "DataGridViewImageColumn2"
+        Me.DataGridViewImageColumn2.ReadOnly = True
+        Me.DataGridViewImageColumn2.Visible = False
         '
         'DataGridViewTextBoxColumn1
         '
@@ -660,139 +788,11 @@ Partial Class Control_Pallets
         Me.DataGridViewTextBoxColumn15.ReadOnly = True
         Me.DataGridViewTextBoxColumn15.Visible = False
         '
-        'ID
-        '
-        Me.ID.DataPropertyName = "ID"
-        Me.ID.Frozen = True
-        Me.ID.HeaderText = "ID"
-        Me.ID.Name = "ID"
-        Me.ID.ReadOnly = True
-        Me.ID.Visible = False
-        '
-        'RUT
-        '
-        Me.RUT.DataPropertyName = "Rut_Cliente"
-        Me.RUT.Frozen = True
-        Me.RUT.HeaderText = "RUT"
-        Me.RUT.Name = "RUT"
-        Me.RUT.ReadOnly = True
-        Me.RUT.Visible = False
-        '
-        'CLIENTE
-        '
-        Me.CLIENTE.DataPropertyName = "Cliente"
-        Me.CLIENTE.Frozen = True
-        Me.CLIENTE.HeaderText = "CLIENTE"
-        Me.CLIENTE.Name = "CLIENTE"
-        Me.CLIENTE.ReadOnly = True
-        Me.CLIENTE.Visible = False
-        '
-        'CONTRATO
-        '
-        Me.CONTRATO.DataPropertyName = "Contrato"
-        Me.CONTRATO.Frozen = True
-        Me.CONTRATO.HeaderText = "CONTRATO"
-        Me.CONTRATO.Name = "CONTRATO"
-        Me.CONTRATO.ReadOnly = True
-        Me.CONTRATO.Visible = False
-        '
-        'FECHA
-        '
-        Me.FECHA.DataPropertyName = "Fecha"
-        Me.FECHA.Frozen = True
-        Me.FECHA.HeaderText = "FECHA"
-        Me.FECHA.Name = "FECHA"
-        Me.FECHA.ReadOnly = True
-        Me.FECHA.Visible = False
-        '
-        'FECHA_FRM
-        '
-        Me.FECHA_FRM.DataPropertyName = "Fecha_Frm"
-        Me.FECHA_FRM.Frozen = True
-        Me.FECHA_FRM.HeaderText = "FECHA"
-        Me.FECHA_FRM.Name = "FECHA_FRM"
-        Me.FECHA_FRM.ReadOnly = True
-        '
-        'TIPO_PALLET
-        '
-        Me.TIPO_PALLET.DataPropertyName = "Tipo_Pallet"
-        Me.TIPO_PALLET.Frozen = True
-        Me.TIPO_PALLET.HeaderText = "TIPO_PALLET"
-        Me.TIPO_PALLET.Name = "TIPO_PALLET"
-        Me.TIPO_PALLET.ReadOnly = True
-        Me.TIPO_PALLET.Visible = False
-        '
-        'TIPO_PALLET_FRM
-        '
-        Me.TIPO_PALLET_FRM.DataPropertyName = "Tipo_Pallet_Frm"
-        Me.TIPO_PALLET_FRM.Frozen = True
-        Me.TIPO_PALLET_FRM.HeaderText = "PALLET"
-        Me.TIPO_PALLET_FRM.Name = "TIPO_PALLET_FRM"
-        Me.TIPO_PALLET_FRM.ReadOnly = True
-        Me.TIPO_PALLET_FRM.Visible = False
-        '
-        'DOCUMENTO
-        '
-        Me.DOCUMENTO.DataPropertyName = "Documento"
-        Me.DOCUMENTO.Frozen = True
-        Me.DOCUMENTO.HeaderText = "DOCUMENTO"
-        Me.DOCUMENTO.Name = "DOCUMENTO"
-        Me.DOCUMENTO.ReadOnly = True
-        '
-        'ENTRADAS
-        '
-        Me.ENTRADAS.DataPropertyName = "Entradas"
-        Me.ENTRADAS.Frozen = True
-        Me.ENTRADAS.HeaderText = "ENTRADAS"
-        Me.ENTRADAS.Name = "ENTRADAS"
-        Me.ENTRADAS.ReadOnly = True
-        '
-        'SALIDAS
-        '
-        Me.SALIDAS.DataPropertyName = "Salidas"
-        Me.SALIDAS.Frozen = True
-        Me.SALIDAS.HeaderText = "SALIDAS"
-        Me.SALIDAS.Name = "SALIDAS"
-        Me.SALIDAS.ReadOnly = True
-        '
-        'SALDO
-        '
-        Me.SALDO.DataPropertyName = "Saldo"
-        Me.SALDO.Frozen = True
-        Me.SALDO.HeaderText = "SALDO"
-        Me.SALDO.Name = "SALDO"
-        Me.SALDO.ReadOnly = True
-        '
-        'Estado
-        '
-        Me.Estado.DataPropertyName = "Estado"
-        Me.Estado.Frozen = True
-        Me.Estado.HeaderText = "ESTADO"
-        Me.Estado.Name = "Estado"
-        Me.Estado.ReadOnly = True
-        Me.Estado.Visible = False
-        '
-        'Estado_Frm
-        '
-        Me.Estado_Frm.DataPropertyName = "Estado_Frm"
-        Me.Estado_Frm.Frozen = True
-        Me.Estado_Frm.HeaderText = "ESTADO"
-        Me.Estado_Frm.Name = "Estado_Frm"
-        Me.Estado_Frm.ReadOnly = True
-        '
-        'OBSERVACION
-        '
-        Me.OBSERVACION.DataPropertyName = "Observacion"
-        Me.OBSERVACION.Frozen = True
-        Me.OBSERVACION.HeaderText = "OBSERVACION"
-        Me.OBSERVACION.Name = "OBSERVACION"
-        Me.OBSERVACION.ReadOnly = True
-        '
         'Control_Pallets
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1197, 867)
+        Me.ClientSize = New System.Drawing.Size(1197, 675)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)

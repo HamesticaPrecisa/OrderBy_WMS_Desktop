@@ -1034,6 +1034,12 @@
     <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.Designer.vb">
+      <DependentUpon>Frm_Orden_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.Designer.vb">
       <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
     </Compile>
@@ -2123,6 +2129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Conf\FRM_ACT_WMS.resx">
       <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.resx">
+      <DependentUpon>Frm_Orden_Pallets.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.resx">
       <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>

@@ -849,6 +849,8 @@ Public Class Frm_Principal
 
         menNumDia.Visible = True
         menNumDia.Enabled = True
+
+        MenOrdenPallets.Enabled = True
     End Sub
 
     Private Sub Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Salir.Click
@@ -1928,6 +1930,25 @@ Public Class Frm_Principal
             f_ReceProgList = True
         Else
             TabControl1.TabPages(Recepcion_Programacion_Listado).Select()
+        End If
+    End Sub
+
+    'Private Sub M2_Orden_Pallets_Click(sender As System.Object, e As System.EventArgs) Handles M2_Orden_Pallets.Click
+    '    If (f_OrdPal = False) Then
+
+    '    Else
+    '        TabControl1.TabPages(Recepcion_Programacion_Listado).Select()
+    '    End If
+    'End Sub
+
+    Private Sub MenOrdenPallets_Click(sender As System.Object, e As System.EventArgs) Handles MenOrdenPallets.Click
+        If (f_OrdPal = False) Then
+            Dim f As Form
+            f = Frm_Orden_Pallets
+            TabControl1.TabPages.Add(f)
+            f_OrdPal = True
+        Else
+            TabControl1.TabPages(Frm_Orden_Pallets).Select()
         End If
     End Sub
 End Class

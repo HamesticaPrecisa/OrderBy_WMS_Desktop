@@ -112,5 +112,7 @@
     Public f_ConfigBloqCargas As Boolean = False
     Public f_ReceProgList As Boolean = False
 
+    Public f_OrdPal As Boolean = False
+
     Public documentoimp As String = ""
 End Module

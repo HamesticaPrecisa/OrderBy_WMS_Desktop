@@ -1758,7 +1758,7 @@ Public Class Frm_GuiaRecepcionAgregar
         e.Graphics.DrawImage(img_logo.Image, 80, 10, 220, 70)
         '--------------------------------------------------------------
         e.Graphics.DrawString(tipo_alamacen, Titulo2, Brushes.Black, 300, 10)
-        'e.Graphics.DrawString("       PRECISA FROZEN     ", Titulo, Brushes.Black, 10, 50)
+        'e.Graphics.DrawString("PRECISA FROZEN", Titulo, Brushes.Black, 10, 50)
 
         e.Graphics.DrawString("www.precisafrozen.cl - FONO: +56 72 2 585680", prFont, Brushes.Black, 55, 80)
         e.Graphics.DrawString("Longitudinal sur KM 95.5 Requinoa VI Región, Chile.", prFont, Brushes.Black, 47, 95)
@@ -2872,10 +2872,10 @@ Public Class Frm_GuiaRecepcionAgregar
                     mensaje = mensaje + "- Debe Ingresar MINIMO una Fotografía"
                 End If
 
-                'If mensaje.Length > 0 Then
-                '    MsgBox(mensaje, MsgBoxStyle.Critical, "Aviso")
-                '    Exit Sub
-                'End If
+                If mensaje.Length > 0 Then
+                    MsgBox(mensaje, MsgBoxStyle.Critical, "Aviso")
+                    Exit Sub
+                End If
                 '**************************************************************************
 
                 Dim F_VALIDA As New Frm_VerificaServiciosrece
