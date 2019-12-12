@@ -1301,7 +1301,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Pecisa Tech 09.12.19.11.00 - BD: Precisa"
+        Me.Text = "Order By WMS - Pecisa Tech 12.12.19.13.00 - BD: Precisa"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
