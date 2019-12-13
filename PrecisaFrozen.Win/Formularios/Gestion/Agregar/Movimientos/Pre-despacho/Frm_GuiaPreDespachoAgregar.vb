@@ -36,7 +36,6 @@ Public Class Frm_GuiaPreDespachoAgregar
             validacioningreso = False
         End If
 
-
         If TxtSello.Text = "" Then
             mensaje = mensaje + "Ingresar sello" + vbCrLf
             validacioningreso = False
@@ -226,31 +225,30 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                 Dim cincuenta As String = ""
                 If Cb1.Checked = True Then
-                    cincuenta = "True"
+                    cincuenta = "1"
                 Else
-                    cincuenta = "False"
+                    cincuenta = "0"
                 End If
 
+                Dim sqlCincuenta As String = "SP_Cincuenta_Grabar '" & lblcodigo.Text.Trim & "','','" & txtrut.Text.Trim & verificador.Text.Trim & "','" & CmboCarga.SelectedValue.ToString.Trim & "','" & cincuenta & "','" & fnc.DevuelveFechaServidor().ToString.Trim & "'"
+                fnc.MovimientoSQL(sqlCincuenta)
 
-                If fnc.verificaExistencia("cincuenta", "folio", lblcodigo.Text) = False Then
+                'If fnc.verificaExistencia("cincuenta", "folio", lblcodigo.Text) = False Then
 
-                    Dim GuardaCincuenta As String = "INSERT INTO cincuenta(folio, despacho, cliente, carga, cincuenta, fecha)VALUES" & _
-                                                                   "('" + lblcodigo.Text + "','','" + txtrut.Text + "" + verificador.Text + "', " & _
-                                                                   "'" + CmboCarga.SelectedValue.ToString() + "','" + cincuenta + "','" + fnc.DevuelveFechaServidor().ToString() + "')"
+                '    Dim GuardaCincuenta As String = "INSERT INTO cincuenta(folio, despacho, cliente, carga, cincuenta, fecha)VALUES" & _
+                '                                                   "('" + lblcodigo.Text + "','','" + txtrut.Text + "" + verificador.Text + "', " & _
+                '                                                   "'" + CmboCarga.SelectedValue.ToString() + "','" + cincuenta + "','" + fnc.DevuelveFechaServidor().ToString() + "')"
 
-                    fnc.MovimientoSQL(GuardaCincuenta)
-                Else
+                '    fnc.MovimientoSQL(GuardaCincuenta)
+                'Else
 
-                    Dim ActualizaCincuenta As String = "UPDATE cincuenta SET  cliente='" + txtrut.Text + "" + verificador.Text + "', " & _
-                                                    "carga='" + CmboCarga.SelectedValue.ToString() + "', " & _
-                                                    "cincuenta='" + cincuenta + "' WHERE folio='" + lblcodigo.Text + "'"
+                '    Dim ActualizaCincuenta As String = "UPDATE cincuenta SET  cliente='" + txtrut.Text + "" + verificador.Text + "', " & _
+                '                                    "carga='" + CmboCarga.SelectedValue.ToString() + "', " & _
+                '                                    "cincuenta='" + cincuenta + "' WHERE folio='" + lblcodigo.Text + "'"
 
-                    fnc.MovimientoSQL(ActualizaCincuenta)
+                '    fnc.MovimientoSQL(ActualizaCincuenta)
 
-                End If
-
-
-
+                'End If
 
                 MsgBox("Grabación exitosa", MsgBoxStyle.Information, "Aviso")
                 txtpallet.Enabled = False
@@ -1976,7 +1974,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                 End If
 
                 'Dim sql_Actualiza As String = "UPDATE pedidos_ficha SET Ped_EstPred='1' WHERE orden='" + Frm_Principal.buscavalor.ToString() + "'"
-                Dim sql_Actualiza As String = "SP_Pedidos_Estados_Actualizar '" & Frm_Principal.buscavalor.ToString.Trim & "','P','1'"
+                Dim sql_Actualiza As String = "SP_Pedidos_Estados_Actualizar '" & _mm(0).ToString.Trim & "','P','1'"
                 fnc.MovimientoSQL(sql_Actualiza)
 
                 'select ordenconjunta from Pedidos_ficha

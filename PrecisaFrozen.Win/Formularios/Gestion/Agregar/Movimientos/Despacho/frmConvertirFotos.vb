@@ -34,7 +34,8 @@ Public Class frmConvertirFotos
         cmd.Parameters.AddWithValue("@foto", foto)
         cmd.Parameters.AddWithValue("@guia", guia)
         cmd.Parameters.Add("@num", System.Data.SqlDbType.Int).Value = num
-        con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        'con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        con.ConnectionString = CONFIG.dbLANConnStr   ' VES Sep 2019
         con.Open()
 
         Try

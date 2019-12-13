@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_GuiasPendTunel" targetNamespace="http://tempuri.org/Ds_GuiasPendTunel.xsd" xmlns:mstns="http://tempuri.org/Ds_GuiasPendTunel.xsd" xmlns="http://tempuri.org/Ds_GuiasPendTunel.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_GuiasPendTunel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_GuiasPendTunel" msprop:Generator_UserDSName="Ds_GuiasPendTunel">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Dt_GuiasPendTunel" msprop:Generator_TableClassName="Dt_GuiasPendTunelDataTable" msprop:Generator_TableVarName="tableDt_GuiasPendTunel" msprop:Generator_RowChangedName="Dt_GuiasPendTunelRowChanged" msprop:Generator_TablePropName="Dt_GuiasPendTunel" msprop:Generator_RowDeletingName="Dt_GuiasPendTunelRowDeleting" msprop:Generator_RowChangingName="Dt_GuiasPendTunelRowChanging" msprop:Generator_RowEvHandlerName="Dt_GuiasPendTunelRowChangeEventHandler" msprop:Generator_RowDeletedName="Dt_GuiasPendTunelRowDeleted" msprop:Generator_RowClassName="Dt_GuiasPendTunelRow" msprop:Generator_UserTableName="Dt_GuiasPendTunel" msprop:Generator_RowEvArgName="Dt_GuiasPendTunelRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="frec_codi" msprop:Generator_ColumnVarNameInTable="columnfrec_codi" msprop:Generator_ColumnPropNameInRow="frec_codi" msprop:Generator_ColumnPropNameInTable="frec_codiColumn" msprop:Generator_UserColumnName="frec_codi" type="xs:string" minOccurs="0" />
+              <xs:element name="cli_nomb" msprop:Generator_ColumnVarNameInTable="columncli_nomb" msprop:Generator_ColumnPropNameInRow="cli_nomb" msprop:Generator_ColumnPropNameInTable="cli_nombColumn" msprop:Generator_UserColumnName="cli_nomb" type="xs:string" minOccurs="0" />
+              <xs:element name="mer_nombre" msprop:Generator_ColumnVarNameInTable="columnmer_nombre" msprop:Generator_ColumnPropNameInRow="mer_nombre" msprop:Generator_ColumnPropNameInTable="mer_nombreColumn" msprop:Generator_UserColumnName="mer_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="hpt" msprop:Generator_ColumnVarNameInTable="columnhpt" msprop:Generator_ColumnPropNameInRow="hpt" msprop:Generator_ColumnPropNameInTable="hptColumn" msprop:Generator_UserColumnName="hpt" type="xs:string" minOccurs="0" />
+              <xs:element name="kilos" msprop:Generator_ColumnVarNameInTable="columnkilos" msprop:Generator_ColumnPropNameInRow="kilos" msprop:Generator_ColumnPropNameInTable="kilosColumn" msprop:Generator_UserColumnName="kilos" type="xs:string" minOccurs="0" />
+              <xs:element name="cajas" msprop:Generator_ColumnVarNameInTable="columncajas" msprop:Generator_ColumnPropNameInRow="cajas" msprop:Generator_ColumnPropNameInTable="cajasColumn" msprop:Generator_UserColumnName="cajas" type="xs:string" minOccurs="0" />
+              <xs:element name="drec_fecrec" msprop:Generator_ColumnVarNameInTable="columndrec_fecrec" msprop:Generator_ColumnPropNameInRow="drec_fecrec" msprop:Generator_ColumnPropNameInTable="drec_fecrecColumn" msprop:Generator_UserColumnName="drec_fecrec" type="xs:string" minOccurs="0" />
+              <xs:element name="het" msprop:Generator_ColumnVarNameInTable="columnhet" msprop:Generator_ColumnPropNameInRow="het" msprop:Generator_ColumnPropNameInTable="hetColumn" msprop:Generator_UserColumnName="het" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

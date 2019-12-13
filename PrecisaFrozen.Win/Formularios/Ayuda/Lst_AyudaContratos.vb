@@ -18,7 +18,8 @@
     End Sub
 
     Private Sub Lst_AyudaContratos_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        DataGridView1.DataSource = fnc.ListarTablasSQL("SELECT cont_codi, cont_descr FROM contrato " + condicion + " AND cont_estado='0'")
+        'DataGridView1.DataSource = fnc.ListarTablasSQL("SELECT cont_codi, cont_descr FROM contrato " + condicion + " AND cont_estado='0'")
+        DataGridView1.DataSource = fnc.ListarTablasSQL("SELECT cont_codi,cont_descr,estado=case when cont_estado='0' then 'ACTIVO' else 'INACTIVO' end FROM contrato " + condicion + " and cont_estado='0' order by cont_estado,cont_descr asc")
     End Sub
 
     Private Sub DataGridView1_CellDoubleClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick

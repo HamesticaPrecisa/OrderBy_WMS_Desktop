@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Clases\appConfig.vb" />
     <Compile Include="Clases\Ayuda_Codigo.vb" />
     <Compile Include="Clases\BarCode.vb" />
     <Compile Include="Clases\Conexion.vb" />
@@ -154,6 +155,7 @@
     <Compile Include="Clases\Funciones.vb" />
     <Compile Include="Clases\ImpresionCOM1.vb" />
     <Compile Include="Clases\ModPublico.vb" />
+    <Compile Include="Clases\sqlCmdResult.vb" />
     <Compile Include="Clases\VarPublic.vb" />
     <Compile Include="Configuracion\Frm_ConfImpresoras.Designer.vb">
       <DependentUpon>Frm_ConfImpresoras.vb</DependentUpon>
@@ -172,6 +174,24 @@
     <Compile Include="Controles\MouseInfo.vb" />
     <Compile Include="Controles\ProgressbarWithPercentage.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dataset\Ds_ContenidoTuneles.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_ContenidoTuneles.vb">
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_EstadoTuneles.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_EstadoTuneles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\Ds_GuiasPendTunel.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
     </Compile>
     <Compile Include="Dataset\Ds_Productos.Designer.vb">
       <DependentUpon>Ds_Productos.xsd</DependentUpon>
@@ -252,6 +272,12 @@
       <DependentUpon>GeneraInforme.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Control_Pallets_Fotos.Designer.vb">
+      <DependentUpon>Control_Pallets_Fotos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Control_Pallets_Fotos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.Designer.vb">
@@ -405,10 +431,34 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\ColoredComboboxItem.vb" />
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.Designer.vb">
+      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.Designer.vb">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.Designer.vb">
+      <DependentUpon>Frm_AddMercados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.Designer.vb">
+      <DependentUpon>Control_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.Designer.vb">
+      <DependentUpon>Control_Pallets_Arriendo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.Designer.vb">
@@ -481,6 +531,18 @@
       <DependentUpon>Frm_MuestraPallet.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion.Designer.vb">
+      <DependentUpon>Limite_Pedidos_Exportacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion_Buscar.Designer.vb">
+      <DependentUpon>Limite_Pedidos_Exportacion_Buscar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion_Buscar.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Module1.vb" />
@@ -636,6 +698,12 @@
     <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.Designer.vb">
+      <DependentUpon>Recepcion_Custodia_Intercambio_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\ConfigurationManager.vb" />
     <Compile Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.Designer.vb">
       <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
@@ -707,12 +775,6 @@
       <DependentUpon>Frm_AyudaMonedas.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Ayuda\Frm_AyudaMonedas.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.Designer.vb">
-      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.Designer.vb">
@@ -1004,6 +1066,48 @@
     <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.Designer.vb">
+      <DependentUpon>Frm_Orden_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Bloqueos_Clientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Cargas.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Cargas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Cargas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Horarios.Designer.vb">
+      <DependentUpon>Recepciones_Programacion_Horarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Horarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\lst_Mercados.Designer.vb">
+      <DependentUpon>lst_Mercados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Listados\lst_Mercados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.Designer.vb">
+      <DependentUpon>Recepcion_Programacion_Listado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Listados\Lst_Informes.Designer.vb">
       <DependentUpon>Lst_Informes.vb</DependentUpon>
     </Compile>
@@ -1051,6 +1155,12 @@
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.vb">
+      <DependentUpon>Rpt_ResumidoFecha.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ServiciosRec.vb">
       <DependentUpon>Rpt_ServiciosRec.rpt</DependentUpon>
@@ -1182,6 +1292,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Rpt_EnvioCorreosInterno.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_ContenidoTuneles.Designer.vb">
+      <DependentUpon>Frm_ContenidoTuneles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_ContenidoTuneles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.Designer.vb">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Rpt_ContenidoTuneles.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_ContenidoTuneles.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Rpt_EstadoTuneles.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_EstadoTuneles.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.vb">
@@ -1394,12 +1528,6 @@
       <DependentUpon>Rpt_AcumuladoContrato.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rpt_ResumidoFecha.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualCliente.vb">
       <DependentUpon>Rpt_PedidosMensualCliente.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1466,6 +1594,18 @@
     <Compile Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.Designer.vb">
+      <DependentUpon>Frm_Tuneles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Reportes\Tunel\Rpt_GuiasPendTunel.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rpt_GuiasPendTunel.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Formularios\Otros\ayudaNEW.Designer.vb">
       <DependentUpon>ayudaNEW.vb</DependentUpon>
     </Compile>
@@ -1476,6 +1616,12 @@
       <DependentUpon>ConfSuperADM.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Otros\ConfSuperADM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ConfProcesoTunel.Designer.vb">
+      <DependentUpon>frm_ConfProcesoTunel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ConfProcesoTunel.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Otros\Frm_InicioSesion.Designer.vb">
@@ -1489,6 +1635,18 @@
     </Compile>
     <Compile Include="Formularios\Otros\Frm_Principal.Designer.vb">
       <DependentUpon>Frm_Principal.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaFCT.Designer.vb">
+      <DependentUpon>frm_ReglaFCT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaFCT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaRCT.Designer.vb">
+      <DependentUpon>frm_ReglaRCT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Otros\frm_ReglaRCT.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Otros\Presentacion.Designer.vb">
@@ -1654,6 +1812,9 @@
     <EmbeddedResource Include="Formularios\Facturacion\Agregar\Facturacion\GeneraInforme.resx">
       <DependentUpon>GeneraInforme.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Control_Pallets_Fotos.resx">
+      <DependentUpon>Control_Pallets_Fotos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\.Utilidades\Frm_Actualizaciones.resx">
       <DependentUpon>Frm_Actualizaciones.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -1743,8 +1904,20 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_EmisionVasAdmin.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.resx">
+      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.resx">
+      <DependentUpon>Control_Pallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.resx">
+      <DependentUpon>Control_Pallets_Arriendo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.resx">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.resx">
+      <DependentUpon>Frm_AddMercados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddPicking.resx">
       <DependentUpon>Frm_AddPicking.vb</DependentUpon>
@@ -1781,6 +1954,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_MuestraPallet.resx">
       <DependentUpon>Frm_MuestraPallet.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion.resx">
+      <DependentUpon>Limite_Pedidos_Exportacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Limite_Pedidos_Exportacion_Buscar.resx">
+      <DependentUpon>Limite_Pedidos_Exportacion_Buscar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Despacho\CreaInforme.resx">
       <DependentUpon>CreaInforme.vb</DependentUpon>
@@ -1861,6 +2040,9 @@
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Frm_VerificaServiciosRece.resx">
       <DependentUpon>Frm_VerificaServiciosRece.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Movimientos\Recepcion\Recepcion_Custodia_Intercambio_Pallets.resx">
+      <DependentUpon>Recepcion_Custodia_Intercambio_Pallets.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Perfiles_Usuario\Frm_Usuarios_Registrar_TAG.resx">
       <DependentUpon>Frm_Usuarios_Registrar_TAG.vb</DependentUpon>
     </EmbeddedResource>
@@ -1898,9 +2080,6 @@
     <EmbeddedResource Include="Formularios\Ayuda\Frm_AyudaMonedas.resx">
       <DependentUpon>Frm_AyudaMonedas.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.resx">
-      <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddChoferes.resx">
       <DependentUpon>Frm_AddChoferes.vb</DependentUpon>
@@ -2049,8 +2228,32 @@
     <EmbeddedResource Include="Formularios\Gestion\Conf\FRM_ACT_WMS.resx">
       <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.resx">
+      <DependentUpon>Frm_Orden_Pallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Camaras.resx">
+      <DependentUpon>Lst_Camaras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.resx">
+      <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.resx">
+      <DependentUpon>Recepciones_Programacion_Bloqueos_Clientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Cargas.resx">
+      <DependentUpon>Recepciones_Programacion_Cargas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Horarios.resx">
+      <DependentUpon>Recepciones_Programacion_Horarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.resx">
+      <DependentUpon>Recepcion_Programacion_Listado.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Informes.resx">
       <DependentUpon>Lst_Informes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Listados\lst_Mercados.resx">
+      <DependentUpon>lst_Mercados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Otros\Frm_imagenesInformes.resx">
       <DependentUpon>Frm_imagenesInformes.vb</DependentUpon>
@@ -2072,6 +2275,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Frm_AndenesAbrir.resx">
       <DependentUpon>Frm_AndenesAbrir.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_ResumidoFecha.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ServiciosRec.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2144,6 +2351,20 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_EnvioCorreosInterno.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_EnvioCorreosInterno1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_ContenidoTuneles.resx">
+      <DependentUpon>Frm_ContenidoTuneles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_GuiasPendTunel.resx">
+      <DependentUpon>Frm_GuiasPendTunel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Rpt_ContenidoTuneles.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_ContenidoTuneles.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Rpt_EstadoTuneles.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_EstadoTuneles.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PalletTunel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2228,9 +2449,6 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\Frm_Trazabilidad.resx">
       <DependentUpon>Frm_Trazabilidad.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Camaras.resx">
-      <DependentUpon>Lst_Camaras.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Choferes.resx">
       <DependentUpon>Lst_Choferes.vb</DependentUpon>
     </EmbeddedResource>
@@ -2264,10 +2482,6 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_AcumuladoContrato.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Rpt_AcumuladoContrato.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Gestion\Reportes\Informes_Stock\Rpt_ResumidoFecha.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Rpt_ResumidoFecha.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Otros\Rpt_PedidosMensualCliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2310,17 +2524,33 @@
     <EmbeddedResource Include="Formularios\Gestion\Reportes\Trazabilidad\TrazabilidadCaja.resx">
       <DependentUpon>TrazabilidadCaja.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Frm_Tuneles.resx">
+      <DependentUpon>Frm_Tuneles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Reportes\Tunel\Rpt_GuiasPendTunel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Rpt_GuiasPendTunel.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\ayudaNEW.resx">
       <DependentUpon>ayudaNEW.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\ConfSuperADM.resx">
       <DependentUpon>ConfSuperADM.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\frm_ConfProcesoTunel.resx">
+      <DependentUpon>frm_ConfProcesoTunel.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Frm_InicioSesion.resx">
       <DependentUpon>Frm_InicioSesion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Frm_Principal.resx">
       <DependentUpon>Frm_Principal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\frm_ReglaFCT.resx">
+      <DependentUpon>frm_ReglaFCT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Otros\frm_ReglaRCT.resx">
+      <DependentUpon>frm_ReglaRCT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Otros\Presentacion.resx">
       <DependentUpon>Presentacion.vb</DependentUpon>
@@ -2402,8 +2632,44 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
+    <None Include="Dataset\Ds_ContenidoTuneles.xsc">
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_ContenidoTuneles.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_ContenidoTuneles.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_ContenidoTuneles.xss">
+      <DependentUpon>Ds_ContenidoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_EstadoTuneles.xsc">
+      <DependentUpon>Ds_EstadoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_EstadoTuneles.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_EstadoTuneles.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_EstadoTuneles.xss">
+      <DependentUpon>Ds_EstadoTuneles.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_GuiasPendTunel.xsc">
+      <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\Ds_GuiasPendTunel.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_GuiasPendTunel.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\Ds_GuiasPendTunel.xss">
+      <DependentUpon>Ds_GuiasPendTunel.xsd</DependentUpon>
+    </None>
     <None Include="Dataset\Ds_Productos.xsc">
       <DependentUpon>Ds_Productos.xsd</DependentUpon>
     </None>
@@ -2503,12 +2769,15 @@
     <None Include="Dataset\Imag.xss">
       <DependentUpon>Imag.xsd</DependentUpon>
     </None>
+    <None Include="Formularios\Gestion\Reportes\Otros\CrystalReport1.mht" />
+    <None Include="Formularios\Gestion\Reportes\Otros\Rpt_GuiasPendTunel_old.rpt" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application1.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="My Project\DataSources\Ds_EstadoTuneles.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -2590,7 +2859,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

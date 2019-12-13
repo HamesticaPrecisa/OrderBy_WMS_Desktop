@@ -69,7 +69,7 @@
         End If
 
         Me.DgvDespachos.DataSource = fnc.ListarTablasSQL("SELECT fdes_codi, cli_nomb, fdes_fecha, fdes_totsopo, fdes_totunidad, " +
-                                                           "fdes_totpeso FROM fichdespa, clientes WHERE cli_rut=fdes_rutcli " + where + " ORDER BY fdes_codi DESC")
+                                                           "fdes_totpeso,fdes_codvig,vig_frm=case when fdes_codvig=0 then 'ACTIVO' else 'NULO' end FROM fichdespa, clientes WHERE cli_rut=fdes_rutcli " + where + " ORDER BY fdes_codi DESC")
 
         verificanulas()
     End Sub

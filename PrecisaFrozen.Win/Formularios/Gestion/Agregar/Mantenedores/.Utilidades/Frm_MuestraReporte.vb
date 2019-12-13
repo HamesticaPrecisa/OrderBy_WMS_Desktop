@@ -62,6 +62,7 @@ Public Class Frm_MuestraReporte
 
             cryRpt.Export()
             MsgBox("Archivo exportado en el escritorio de su ordenador", MsgBoxStyle.Information, "Aviso")
+
             Dim OldName, NewName As String
             NewName = documentoimp
             OldName = Environment.GetFolderPath(SpecialFolder.DesktopDirectory) + "\" + Me.Contenedor.ReportSource.ToString() + ".xls"

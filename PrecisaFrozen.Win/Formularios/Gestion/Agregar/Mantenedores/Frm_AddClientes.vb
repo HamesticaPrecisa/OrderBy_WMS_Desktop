@@ -147,6 +147,8 @@ Public Class Frm_AddClientes
         Next
 
         chkTag.Checked = False
+
+        chkVentaDirectaPallet.Checked = False
     End Sub
     Private Sub LOGBLOQUEO()
         Dim rut As String = QuitarCaracteres(txtrut.Text)
@@ -389,7 +391,8 @@ Public Class Frm_AddClientes
 
         cmd.Parameters.AddWithValue("@codigo", codigo)
         cmd.Parameters.Add("@foto", System.Data.SqlDbType.Image).Value = foto
-        con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        'con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
+        con.ConnectionString = CONFIG.dbLANConnStr   ' VES Sep 2019
         con.Open()
         Try
             cmd.ExecuteNonQuery()
@@ -427,6 +430,17 @@ Public Class Frm_AddClientes
                 "'" + boqcajas.Text + "', '" + CategoriasHabilitadas() + "', '" + RetornaCorreos(DgvContactos, ",") + "'," + Convert.ToInt32(hrs_homogenizacion.Text).ToString() + ",'" + txtmaxcajas.Text.Trim() + "','" + fechasug + "','" + txthorasemana.Text.Trim() + "','" + txthorasabado.Text.Trim() + "')"
 
             If fnc.MovimientoSQL(sqlGuardar) > 0 Then
+                Dim EstVenDir As String = "0"
+
+                If (chkVentaDirectaPallet.Checked) Then
+                    EstVenDir = "1"
+                End If
+
+                Dim sqlVentPall As String = "SP_Control_Pallet_Cliente_Venta_Directa_Grabar '','" & rut & "','" & EstVenDir & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                Dim dtVentPall As New DataTable
+
+                dtVentPall = fnc.ListarTablasSQL(sqlVentPall)
+
                 MsgBox("Información Guardada correctamente", MsgBoxStyle.Information, "Aviso")
                 Dim sql As String = "INSERT INTO webusuclie(webclie_horabloqueo, webclie_permisos, webclie_nivel, webclie_rut, webclie_pass, webclie_usu) " +
                     "VALUES ('48','0','0','" + rut.ToString() + "','" + Txtpass.Text + "','" + Txtusu.Text + "')"
@@ -479,6 +493,17 @@ Public Class Frm_AddClientes
 
 
             If fnc.MovimientoSQL(sqlActualizar) > 0 Then
+                Dim EstVenDir As String = "0"
+
+                If (chkVentaDirectaPallet.Checked) Then
+                    EstVenDir = "1"
+                End If
+
+                Dim sqlVentPall As String = "SP_Control_Pallet_Cliente_Venta_Directa_Grabar '','" & rut & "','" & EstVenDir & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                Dim dtVentPall As New DataTable
+
+                dtVentPall = fnc.ListarTablasSQL(sqlVentPall)
+
                 MsgBox("Información Actualizada correctamente", MsgBoxStyle.Information, "Aviso")
                 If fnc.ListarTablasSQL("SELECT * FROM webusuclie WHERE webclie_rut='" + rut + "'").Rows.Count = 0 Then
                     Dim sql As String = "INSERT INTO webusuclie(webclie_horabloqueo, webclie_permisos, webclie_nivel, webclie_rut, webclie_pass, webclie_usu) " +
@@ -634,6 +659,8 @@ Public Class Frm_AddClientes
             End If
 
             buscarCliUsaTag()
+
+            buscarVentaDirectaPallet()
         Else
             If RutDigito(txtrut.Text.ToUpper()) = True Then
                 If RealizarAccion("004", "008") = False Then
@@ -671,6 +698,37 @@ Public Class Frm_AddClientes
             End If
         Catch ex As Exception
             MessageBox.Show("Ocurrio un error al cargar los datos del TAG RFID del cliente.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Sub buscarVentaDirectaPallet()
+        Try
+            Dim Rut As String = txtrut.Text.Trim.Replace("-", "")
+
+            If (Rut <> "") Then
+                Dim sql As String = "select Estado from Control_Pallet_Cliente_Venta_Directa with(nolock) where Rut_Cliente='" & Rut & "'"
+                Dim dt As New DataTable
+
+                dt = fnc.ListarTablasSQL(sql)
+
+                Dim Resp As String = "0"
+
+                If (dt.Rows.Count > 0) Then
+                    Dim RespDt As String = dt.Rows(0).Item(0).ToString.Trim
+
+                    If (RespDt <> "-1") Then
+                        Resp = RespDt
+                    End If
+                End If
+
+                If (Resp = "1") Then
+                    chkVentaDirectaPallet.Checked = True
+                Else
+                    chkVentaDirectaPallet.Checked = False
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Ocurrio un error al buscar configuración venta directa arriendo pallets.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
