@@ -25,7 +25,7 @@ Public Class Frm_PedidosDetalle
         txtcodorden.Text = CODIGO_CHICO
         txtnsolicitud.Text = CODIGO_PEDIDO
 
-        Dim _sql As String = "SELECT  destino, fecha, observacion, cli_nomb, hora FROM Pedidos_ficha INNER JOIN clientes ON cli_rut=cliente WHERE Orden='" + CODIGO_CHICO + "'"
+        Dim _sql As String = "SELECT  destino, fecha, observacion, cli_nomb FROM Pedidos_ficha INNER JOIN clientes ON cli_rut=cliente WHERE Orden='" + CODIGO_CHICO + "'"
         Dim dt As DataTable = fnc.ListarTablasSQL(_sql)
 
         If dt.Rows.Count > 0 Then
@@ -33,7 +33,6 @@ Public Class Frm_PedidosDetalle
             dtfecha.Value = Convert.ToDateTime(dt.Rows(0)(1).ToString())
             txtobs.Text = dt.Rows(0)(2).ToString()
             txtcliente.Text = dt.Rows(0)(3).ToString()
-            txtHra.Text = dt.Rows(0)(4).ToString()
         End If
 
     End Sub
@@ -248,19 +247,10 @@ Public Class Frm_PedidosDetalle
             Return
         End If
 
-        Dim Hora As String = txtHra.Text.Trim
-        Dim HoraFrm As DateTime
-        If (Not DateTime.TryParse(Hora, HoraFrm)) Then
-            MsgBox("La hora ingresada no es válida.", MsgBoxStyle.Critical, "Aviso")
-            txtHra.Text = ""
-            txtHra.Focus()
-            Exit Sub
-        End If
-
         Dim sqlLogUpd As String = "insert into Pedidos_Ficha_Log_Modificaciones select * from Pedidos_Ficha where Orden='" & txtcodorden.Text.Trim & "'"
         fnc.MovimientoSQL(sqlLogUpd)
 
-        Dim _update As String = "UPDATE pedidos_ficha SET destino='" + txtdestino.Text + "', fecha='" + devuelve_fecha_Formato2(dtfecha.Value) + "', observacion='" + txtobs.Text + "', hora='" & Hora & "' WHERE orden='" + txtcodorden.Text + "'  "
+        Dim _update As String = "UPDATE pedidos_ficha SET destino='" + txtdestino.Text + "', fecha='" + devuelve_fecha_Formato2(dtfecha.Value) + "', observacion='" + txtobs.Text + "' WHERE orden='" + txtcodorden.Text + "'  "
 
         If fnc.MovimientoSQL(_update) > 0 Then
             MsgBox("Información actualizada correctamente", MsgBoxStyle.Information, "Aviso")

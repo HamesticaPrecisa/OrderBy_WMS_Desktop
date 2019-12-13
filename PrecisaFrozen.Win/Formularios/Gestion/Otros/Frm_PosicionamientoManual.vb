@@ -249,7 +249,7 @@ Public Class Frm_PosicionamientoManual
                         _cmd.Parameters.AddWithValue("@columna", tco.Text)
                         _cmd.Parameters.AddWithValue("@piso", tpi.Text)
                         _cmd.Parameters.AddWithValue("@nivel", tni.Text)
-                        _cmd.Parameters.AddWithValue("@tipo", "RM")
+                        _cmd.Parameters.AddWithValue("@tipo", "RR")
                         _cmd.Parameters.AddWithValue("@encargado", CerosAnteriorString(Frm_Principal.InfoUsuario.Text, 3))
 
                         Dim resp As Integer = 0
@@ -314,13 +314,13 @@ Public Class Frm_PosicionamientoManual
             MsgBox("Debe ingresar un piso valido.", MsgBoxStyle.Information, "Piso erroneo!")
             tpi.Focus()
             Exit Sub
-            'Else
-            '    If (pisoa.Length = 1) Then
-            '        pisoa = "0" & pisoa
-            '    End If
+        Else
+            If (pisoa.Length = 1) Then
+                pisoa = "0" & pisoa
+            End If
         End If
 
-        Dim Sql_tip As String = "SELECT * FROM camaraMantenedor WHERE camara='" + tca.Text.Trim() + "' and banda='" + tba.Text.Trim() + "' and columna ='" + tco.Text.Trim() + "' and convert(int,piso)='" + pisoa + "'"
+        Dim Sql_tip As String = "SELECT * FROM camaraMantenedor WHERE camara='" + tca.Text.Trim() + "' and banda='" + tba.Text.Trim() + "' and columna ='" + tco.Text.Trim() + "' and piso='" + pisoa + "'"
 
         Dim tablatip As DataTable = fnc.ListarTablasSQL(Sql_tip)
 
@@ -788,24 +788,5 @@ Public Class Frm_PosicionamientoManual
             tco.Text = str3
 
         End If
-    End Sub
-
-    Private Sub tpi_TextChanged(sender As Object, e As System.EventArgs) Handles tpi.TextChanged
-        Try
-            Dim Piso As String = tpi.Text.Trim
-            Dim PisoFrm As Integer = 0
-            If (Piso <> "") Then
-                If (Not Integer.TryParse(Piso, PisoFrm)) Then
-                    MsgBox("Debe ingresar un piso numerico.", MsgBoxStyle.Critical, "Error")
-
-                    tpi.Text = ""
-                    tpi.Focus()
-                Else
-                    tpi.Text = PisoFrm
-                End If
-            End If
-        Catch ex As Exception
-
-        End Try
     End Sub
 End Class

@@ -35,18 +35,12 @@ Partial Class Frm_AddEnvioEmail
         Me.rdidesactivado = New System.Windows.Forms.RadioButton()
         Me.rdiactivado = New System.Windows.Forms.RadioButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.rbtFrecManual = New System.Windows.Forms.RadioButton()
-        Me.rbtFrecRepetir = New System.Windows.Forms.RadioButton()
-        Me.txtHoraH = New System.Windows.Forms.MaskedTextBox()
-        Me.chktodos = New System.Windows.Forms.CheckBox()
-        Me.lblHoraH = New System.Windows.Forms.Label()
-        Me.chkdomingo = New System.Windows.Forms.CheckBox()
         Me.txthora = New System.Windows.Forms.MaskedTextBox()
+        Me.lblhora = New System.Windows.Forms.Label()
+        Me.chktodos = New System.Windows.Forms.CheckBox()
+        Me.chkdomingo = New System.Windows.Forms.CheckBox()
         Me.chksabado = New System.Windows.Forms.CheckBox()
-        Me.lblHoraD = New System.Windows.Forms.Label()
         Me.chkviernes = New System.Windows.Forms.CheckBox()
-        Me.cboInterv = New System.Windows.Forms.ComboBox()
-        Me.txtFrec = New System.Windows.Forms.TextBox()
         Me.chkjueves = New System.Windows.Forms.CheckBox()
         Me.chkmiercoles = New System.Windows.Forms.CheckBox()
         Me.chkmartes = New System.Windows.Forms.CheckBox()
@@ -73,7 +67,6 @@ Partial Class Frm_AddEnvioEmail
         Me.DataGridViewImageColumn1 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Btn_BuscaCliente = New System.Windows.Forms.Button()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox3.SuspendLayout()
         Me.grptiempo.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -105,7 +98,7 @@ Partial Class Frm_AddEnvioEmail
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Location = New System.Drawing.Point(14, 44)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(740, 665)
+        Me.GroupBox3.Size = New System.Drawing.Size(725, 665)
         Me.GroupBox3.TabIndex = 38
         Me.GroupBox3.TabStop = False
         '
@@ -116,9 +109,9 @@ Partial Class Frm_AddEnvioEmail
         Me.grptiempo.Enabled = False
         Me.grptiempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grptiempo.ForeColor = System.Drawing.Color.White
-        Me.grptiempo.Location = New System.Drawing.Point(338, 237)
+        Me.grptiempo.Location = New System.Drawing.Point(259, 238)
         Me.grptiempo.Name = "grptiempo"
-        Me.grptiempo.Size = New System.Drawing.Size(187, 50)
+        Me.grptiempo.Size = New System.Drawing.Size(123, 50)
         Me.grptiempo.TabIndex = 67
         Me.grptiempo.TabStop = False
         Me.grptiempo.Text = "Tiempo"
@@ -199,7 +192,7 @@ Partial Class Frm_AddEnvioEmail
         Me.Label1.Location = New System.Drawing.Point(14, 118)
         Me.Label1.Name = "Label1"
         Me.Label1.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
-        Me.Label1.Size = New System.Drawing.Size(511, 22)
+        Me.Label1.Size = New System.Drawing.Size(467, 22)
         Me.Label1.TabIndex = 67
         Me.Label1.Text = "Seleccione Plan"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -210,49 +203,45 @@ Partial Class Frm_AddEnvioEmail
         Me.GroupBox5.Controls.Add(Me.rdiactivado)
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.ForeColor = System.Drawing.Color.White
-        Me.GroupBox5.Location = New System.Drawing.Point(339, 144)
+        Me.GroupBox5.Location = New System.Drawing.Point(259, 143)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(187, 87)
+        Me.GroupBox5.Size = New System.Drawing.Size(222, 79)
         Me.GroupBox5.TabIndex = 66
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Estado"
         '
         'rdidesactivado
         '
+        Me.rdidesactivado.AutoSize = True
         Me.rdidesactivado.Enabled = False
         Me.rdidesactivado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdidesactivado.Location = New System.Drawing.Point(18, 49)
+        Me.rdidesactivado.Location = New System.Drawing.Point(15, 46)
         Me.rdidesactivado.Name = "rdidesactivado"
-        Me.rdidesactivado.Size = New System.Drawing.Size(113, 21)
+        Me.rdidesactivado.Size = New System.Drawing.Size(85, 17)
         Me.rdidesactivado.TabIndex = 1
         Me.rdidesactivado.Text = "Desactivado"
         Me.rdidesactivado.UseVisualStyleBackColor = True
         '
         'rdiactivado
         '
+        Me.rdiactivado.AutoSize = True
         Me.rdiactivado.Enabled = False
         Me.rdiactivado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdiactivado.Location = New System.Drawing.Point(18, 27)
+        Me.rdiactivado.Location = New System.Drawing.Point(15, 23)
         Me.rdiactivado.Name = "rdiactivado"
-        Me.rdiactivado.Size = New System.Drawing.Size(126, 16)
+        Me.rdiactivado.Size = New System.Drawing.Size(67, 17)
         Me.rdiactivado.TabIndex = 0
         Me.rdiactivado.Text = "Activado"
         Me.rdiactivado.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.rbtFrecManual)
-        Me.GroupBox1.Controls.Add(Me.rbtFrecRepetir)
-        Me.GroupBox1.Controls.Add(Me.txtHoraH)
-        Me.GroupBox1.Controls.Add(Me.chktodos)
-        Me.GroupBox1.Controls.Add(Me.lblHoraH)
-        Me.GroupBox1.Controls.Add(Me.chkdomingo)
         Me.GroupBox1.Controls.Add(Me.txthora)
+        Me.GroupBox1.Controls.Add(Me.lblhora)
+        Me.GroupBox1.Controls.Add(Me.chktodos)
+        Me.GroupBox1.Controls.Add(Me.chkdomingo)
         Me.GroupBox1.Controls.Add(Me.chksabado)
-        Me.GroupBox1.Controls.Add(Me.lblHoraD)
         Me.GroupBox1.Controls.Add(Me.chkviernes)
-        Me.GroupBox1.Controls.Add(Me.cboInterv)
-        Me.GroupBox1.Controls.Add(Me.txtFrec)
         Me.GroupBox1.Controls.Add(Me.chkjueves)
         Me.GroupBox1.Controls.Add(Me.chkmiercoles)
         Me.GroupBox1.Controls.Add(Me.chkmartes)
@@ -261,153 +250,85 @@ Partial Class Frm_AddEnvioEmail
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(14, 143)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(307, 215)
+        Me.GroupBox1.Size = New System.Drawing.Size(239, 212)
         Me.GroupBox1.TabIndex = 64
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Frecuencia"
+        Me.GroupBox1.Text = "Días"
         '
-        'rbtFrecManual
+        'txthora
         '
-        Me.rbtFrecManual.AutoSize = True
-        Me.rbtFrecManual.Enabled = False
-        Me.rbtFrecManual.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbtFrecManual.Location = New System.Drawing.Point(11, 23)
-        Me.rbtFrecManual.Name = "rbtFrecManual"
-        Me.rbtFrecManual.Size = New System.Drawing.Size(60, 17)
-        Me.rbtFrecManual.TabIndex = 0
-        Me.rbtFrecManual.Text = "Manual"
-        Me.rbtFrecManual.UseVisualStyleBackColor = True
+        Me.txthora.Enabled = False
+        Me.txthora.Location = New System.Drawing.Point(190, 27)
+        Me.txthora.Mask = "99:99"
+        Me.txthora.Name = "txthora"
+        Me.txthora.Size = New System.Drawing.Size(40, 20)
+        Me.txthora.TabIndex = 9
         '
-        'rbtFrecRepetir
+        'lblhora
         '
-        Me.rbtFrecRepetir.AutoSize = True
-        Me.rbtFrecRepetir.Enabled = False
-        Me.rbtFrecRepetir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rbtFrecRepetir.Location = New System.Drawing.Point(11, 51)
-        Me.rbtFrecRepetir.Name = "rbtFrecRepetir"
-        Me.rbtFrecRepetir.Size = New System.Drawing.Size(91, 17)
-        Me.rbtFrecRepetir.TabIndex = 1
-        Me.rbtFrecRepetir.Text = "Ejecutar cada"
-        Me.rbtFrecRepetir.UseVisualStyleBackColor = True
-        '
-        'txtHoraH
-        '
-        Me.txtHoraH.Enabled = False
-        Me.txtHoraH.Location = New System.Drawing.Point(207, 78)
-        Me.txtHoraH.Mask = "99:99"
-        Me.txtHoraH.Name = "txtHoraH"
-        Me.txtHoraH.Size = New System.Drawing.Size(47, 20)
-        Me.txtHoraH.TabIndex = 5
+        Me.lblhora.AutoSize = True
+        Me.lblhora.Location = New System.Drawing.Point(145, 27)
+        Me.lblhora.Name = "lblhora"
+        Me.lblhora.Size = New System.Drawing.Size(38, 13)
+        Me.lblhora.TabIndex = 8
+        Me.lblhora.Text = "Hora:"
         '
         'chktodos
         '
         Me.chktodos.AutoSize = True
         Me.chktodos.Enabled = False
-        Me.chktodos.Location = New System.Drawing.Point(121, 113)
+        Me.chktodos.Location = New System.Drawing.Point(20, 26)
         Me.chktodos.Name = "chktodos"
         Me.chktodos.Size = New System.Drawing.Size(112, 17)
-        Me.chktodos.TabIndex = 6
+        Me.chktodos.TabIndex = 7
         Me.chktodos.Text = "Todos los Días"
         Me.chktodos.UseVisualStyleBackColor = True
-        '
-        'lblHoraH
-        '
-        Me.lblHoraH.AutoSize = True
-        Me.lblHoraH.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHoraH.Location = New System.Drawing.Point(173, 79)
-        Me.lblHoraH.Name = "lblHoraH"
-        Me.lblHoraH.Size = New System.Drawing.Size(28, 13)
-        Me.lblHoraH.TabIndex = 76
-        Me.lblHoraH.Text = "y las"
         '
         'chkdomingo
         '
         Me.chkdomingo.AutoSize = True
         Me.chkdomingo.Enabled = False
         Me.chkdomingo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkdomingo.Location = New System.Drawing.Point(206, 171)
+        Me.chkdomingo.Location = New System.Drawing.Point(20, 187)
         Me.chkdomingo.Name = "chkdomingo"
         Me.chkdomingo.Size = New System.Drawing.Size(68, 17)
-        Me.chkdomingo.TabIndex = 13
+        Me.chkdomingo.TabIndex = 6
         Me.chkdomingo.Text = "Domingo"
         Me.chkdomingo.UseVisualStyleBackColor = True
-        '
-        'txthora
-        '
-        Me.txthora.Enabled = False
-        Me.txthora.Location = New System.Drawing.Point(122, 77)
-        Me.txthora.Mask = "99:99"
-        Me.txthora.Name = "txthora"
-        Me.txthora.Size = New System.Drawing.Size(47, 20)
-        Me.txthora.TabIndex = 4
         '
         'chksabado
         '
         Me.chksabado.AutoSize = True
         Me.chksabado.Enabled = False
         Me.chksabado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chksabado.Location = New System.Drawing.Point(206, 153)
+        Me.chksabado.Location = New System.Drawing.Point(20, 164)
         Me.chksabado.Name = "chksabado"
         Me.chksabado.Size = New System.Drawing.Size(63, 17)
-        Me.chksabado.TabIndex = 12
+        Me.chksabado.TabIndex = 5
         Me.chksabado.Text = "Sábado"
         Me.chksabado.UseVisualStyleBackColor = True
-        '
-        'lblHoraD
-        '
-        Me.lblHoraD.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHoraD.Location = New System.Drawing.Point(39, 79)
-        Me.lblHoraD.Name = "lblHoraD"
-        Me.lblHoraD.Size = New System.Drawing.Size(65, 14)
-        Me.lblHoraD.TabIndex = 75
-        Me.lblHoraD.Text = "entre las"
-        Me.lblHoraD.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'chkviernes
         '
         Me.chkviernes.AutoSize = True
         Me.chkviernes.Enabled = False
         Me.chkviernes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkviernes.Location = New System.Drawing.Point(206, 135)
+        Me.chkviernes.Location = New System.Drawing.Point(20, 141)
         Me.chkviernes.Name = "chkviernes"
         Me.chkviernes.Size = New System.Drawing.Size(61, 17)
-        Me.chkviernes.TabIndex = 11
+        Me.chkviernes.TabIndex = 4
         Me.chkviernes.Text = "Viernes"
         Me.chkviernes.UseVisualStyleBackColor = True
-        '
-        'cboInterv
-        '
-        Me.cboInterv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInterv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cboInterv.FormattingEnabled = True
-        Me.cboInterv.Items.AddRange(New Object() {"dias", "horas", "minutos"})
-        Me.cboInterv.Location = New System.Drawing.Point(174, 50)
-        Me.cboInterv.Name = "cboInterv"
-        Me.cboInterv.Size = New System.Drawing.Size(86, 23)
-        Me.cboInterv.TabIndex = 3
-        '
-        'txtFrec
-        '
-        Me.txtFrec.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtFrec.Enabled = False
-        Me.txtFrec.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFrec.Location = New System.Drawing.Point(122, 51)
-        Me.txtFrec.MaxLength = 3
-        Me.txtFrec.Name = "txtFrec"
-        Me.txtFrec.Size = New System.Drawing.Size(46, 21)
-        Me.txtFrec.TabIndex = 2
-        Me.txtFrec.Text = "0"
-        Me.txtFrec.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'chkjueves
         '
         Me.chkjueves.AutoSize = True
         Me.chkjueves.Enabled = False
         Me.chkjueves.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkjueves.Location = New System.Drawing.Point(121, 190)
+        Me.chkjueves.Location = New System.Drawing.Point(20, 118)
         Me.chkjueves.Name = "chkjueves"
         Me.chkjueves.Size = New System.Drawing.Size(60, 17)
-        Me.chkjueves.TabIndex = 10
+        Me.chkjueves.TabIndex = 3
         Me.chkjueves.Text = "Jueves"
         Me.chkjueves.UseVisualStyleBackColor = True
         '
@@ -416,10 +337,10 @@ Partial Class Frm_AddEnvioEmail
         Me.chkmiercoles.AutoSize = True
         Me.chkmiercoles.Enabled = False
         Me.chkmiercoles.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkmiercoles.Location = New System.Drawing.Point(121, 172)
+        Me.chkmiercoles.Location = New System.Drawing.Point(20, 95)
         Me.chkmiercoles.Name = "chkmiercoles"
         Me.chkmiercoles.Size = New System.Drawing.Size(71, 17)
-        Me.chkmiercoles.TabIndex = 9
+        Me.chkmiercoles.TabIndex = 2
         Me.chkmiercoles.Text = "Miércoles"
         Me.chkmiercoles.UseVisualStyleBackColor = True
         '
@@ -428,10 +349,10 @@ Partial Class Frm_AddEnvioEmail
         Me.chkmartes.AutoSize = True
         Me.chkmartes.Enabled = False
         Me.chkmartes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkmartes.Location = New System.Drawing.Point(121, 154)
+        Me.chkmartes.Location = New System.Drawing.Point(20, 72)
         Me.chkmartes.Name = "chkmartes"
         Me.chkmartes.Size = New System.Drawing.Size(58, 17)
-        Me.chkmartes.TabIndex = 8
+        Me.chkmartes.TabIndex = 1
         Me.chkmartes.Text = "Martes"
         Me.chkmartes.UseVisualStyleBackColor = True
         '
@@ -440,10 +361,10 @@ Partial Class Frm_AddEnvioEmail
         Me.chklunes.AutoSize = True
         Me.chklunes.Enabled = False
         Me.chklunes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chklunes.Location = New System.Drawing.Point(120, 136)
+        Me.chklunes.Location = New System.Drawing.Point(20, 49)
         Me.chklunes.Name = "chklunes"
         Me.chklunes.Size = New System.Drawing.Size(55, 17)
-        Me.chklunes.TabIndex = 7
+        Me.chklunes.TabIndex = 0
         Me.chklunes.Text = "Lunes"
         Me.chklunes.UseVisualStyleBackColor = True
         '
@@ -508,6 +429,7 @@ Partial Class Frm_AddEnvioEmail
         '
         'DataGridViewImageColumn9
         '
+        Me.DataGridViewImageColumn9.HeaderText = ""
         Me.DataGridViewImageColumn9.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
         Me.DataGridViewImageColumn9.Name = "DataGridViewImageColumn9"
         Me.DataGridViewImageColumn9.ReadOnly = True
@@ -678,6 +600,7 @@ Partial Class Frm_AddEnvioEmail
         '
         'DataGridViewImageColumn1
         '
+        Me.DataGridViewImageColumn1.HeaderText = ""
         Me.DataGridViewImageColumn1.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
         Me.DataGridViewImageColumn1.Name = "DataGridViewImageColumn1"
         Me.DataGridViewImageColumn1.ReadOnly = True
@@ -702,17 +625,6 @@ Partial Class Frm_AddEnvioEmail
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 340
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(54, 54)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(47, 13)
-        Me.Label6.TabIndex = 75
-        Me.Label6.Text = "entre las"
-        Me.Label6.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
         'Frm_AddEnvioEmail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -732,6 +644,7 @@ Partial Class Frm_AddEnvioEmail
         Me.grptiempo.ResumeLayout(False)
         Me.grptiempo.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -767,6 +680,7 @@ Partial Class Frm_AddEnvioEmail
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txthora As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents lblhora As System.Windows.Forms.Label
     Friend WithEvents chktodos As System.Windows.Forms.CheckBox
     Friend WithEvents chkdomingo As System.Windows.Forms.CheckBox
     Friend WithEvents chksabado As System.Windows.Forms.CheckBox
@@ -785,12 +699,4 @@ Partial Class Frm_AddEnvioEmail
     Friend WithEvents grptiempo As System.Windows.Forms.GroupBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtminutos As System.Windows.Forms.TextBox
-    Friend WithEvents txtHoraH As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents lblHoraH As System.Windows.Forms.Label
-    Friend WithEvents lblHoraD As System.Windows.Forms.Label
-    Friend WithEvents cboInterv As System.Windows.Forms.ComboBox
-    Friend WithEvents txtFrec As System.Windows.Forms.TextBox
-    Friend WithEvents rbtFrecManual As System.Windows.Forms.RadioButton
-    Friend WithEvents rbtFrecRepetir As System.Windows.Forms.RadioButton
-    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

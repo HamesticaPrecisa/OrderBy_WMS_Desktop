@@ -194,7 +194,9 @@ Public Class CreaInforme
 
 
                 If dato = "Codigo producto" Then
-                    Dim sql2 As String = "SELECT drec_codpro from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' order by drec_codpro asc"
+
+
+                    Dim sql2 As String = "SELECT drec_codpro from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' "
 
                     Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql2)
 
@@ -509,7 +511,9 @@ Public Class CreaInforme
 
 
                 If dato = "Nombre producto" Then
-                    Dim sql2 As String = "SELECT mae_descr=SUBSTRING(mae_descr,1,30) from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' order by drec_codpro asc"
+
+
+                    Dim sql2 As String = "SELECT mae_descr=SUBSTRING(mae_descr,1,30) from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' "
 
                     Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql2)
 
@@ -809,9 +813,10 @@ Public Class CreaInforme
                         lblnompro12.Location = New Point(x, y + 165)
                     End If
                 End If
-
                 If dato = "Unidades" Then
-                    Dim sql2 As String = "SELECT unidades from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' order by drec_codpro asc"
+
+
+                    Dim sql2 As String = "SELECT unidades from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' "
 
                     Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql2)
 
@@ -1108,9 +1113,10 @@ Public Class CreaInforme
                     End If
                 End If
 
-
                 If dato = "Kilos" Then
-                    Dim sql2 As String = "SELECT kilos=cast(kilos as decimal(10,1)) from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' order by drec_codpro asc"
+
+
+                    Dim sql2 As String = "SELECT kilos=cast(kilos as decimal(10,1)) from rpt_despacho_informe where ddes_rutcli= '" + TxtClirut.Text + "' and despacho = '" + txtfolio.Text.Trim() + "' "
 
                     Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql2)
 

@@ -41,9 +41,6 @@ Partial Class Frm_PedidosDetalle
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DgvDetalle = New System.Windows.Forms.DataGridView()
-        Me.point = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.CAMBIAR = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.ELIM = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtkilos = New System.Windows.Forms.TextBox()
         Me.txtcajas = New System.Windows.Forms.TextBox()
@@ -79,8 +76,6 @@ Partial Class Frm_PedidosDetalle
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.txtHra = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -92,6 +87,7 @@ Partial Class Frm_PedidosDetalle
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.point = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Folio_precisa = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Folio_Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -103,6 +99,8 @@ Partial Class Frm_PedidosDetalle
         Me.Piso = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nivel = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.leido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CAMBIAR = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.ELIM = New System.Windows.Forms.DataGridViewImageColumn()
         CType(Me.DgvDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -124,36 +122,8 @@ Partial Class Frm_PedidosDetalle
         Me.DgvDetalle.ReadOnly = True
         Me.DgvDetalle.RowHeadersWidth = 20
         Me.DgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DgvDetalle.Size = New System.Drawing.Size(922, 350)
+        Me.DgvDetalle.Size = New System.Drawing.Size(919, 350)
         Me.DgvDetalle.TabIndex = 0
-        '
-        'point
-        '
-        Me.point.HeaderText = ""
-        Me.point.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.point_red
-        Me.point.Name = "point"
-        Me.point.ReadOnly = True
-        Me.point.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.point.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.point.Width = 25
-        '
-        'CAMBIAR
-        '
-        Me.CAMBIAR.HeaderText = "CAM"
-        Me.CAMBIAR.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.actualizar
-        Me.CAMBIAR.Name = "CAMBIAR"
-        Me.CAMBIAR.ReadOnly = True
-        Me.CAMBIAR.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CAMBIAR.Width = 40
-        '
-        'ELIM
-        '
-        Me.ELIM.HeaderText = "ELIM"
-        Me.ELIM.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
-        Me.ELIM.Name = "ELIM"
-        Me.ELIM.ReadOnly = True
-        Me.ELIM.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ELIM.Width = 40
         '
         'Label1
         '
@@ -241,7 +211,7 @@ Partial Class Frm_PedidosDetalle
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(10, 515)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(922, 34)
+        Me.Panel1.Size = New System.Drawing.Size(919, 34)
         Me.Panel1.TabIndex = 13
         '
         'BtnAgregar
@@ -261,8 +231,6 @@ Partial Class Frm_PedidosDetalle
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.txtHra)
-        Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.txtcliente)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.BtnGuardar)
@@ -279,7 +247,7 @@ Partial Class Frm_PedidosDetalle
         Me.GroupBox1.Controls.Add(Me.Label5)
         Me.GroupBox1.Location = New System.Drawing.Point(9, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(745, 135)
+        Me.GroupBox1.Size = New System.Drawing.Size(746, 135)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         '
@@ -310,7 +278,7 @@ Partial Class Frm_PedidosDetalle
         Me.BtnGuardar.FlatAppearance.BorderSize = 0
         Me.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnGuardar.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.icono_guardar2
-        Me.BtnGuardar.Location = New System.Drawing.Point(612, 67)
+        Me.BtnGuardar.Location = New System.Drawing.Point(619, 69)
         Me.BtnGuardar.Name = "BtnGuardar"
         Me.BtnGuardar.Size = New System.Drawing.Size(63, 63)
         Me.BtnGuardar.TabIndex = 32
@@ -321,7 +289,7 @@ Partial Class Frm_PedidosDetalle
         Me.btn_salir.FlatAppearance.BorderSize = 0
         Me.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_salir.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.icono_salida
-        Me.btn_salir.Location = New System.Drawing.Point(671, 67)
+        Me.btn_salir.Location = New System.Drawing.Point(678, 69)
         Me.btn_salir.Name = "btn_salir"
         Me.btn_salir.Size = New System.Drawing.Size(63, 63)
         Me.btn_salir.TabIndex = 33
@@ -474,7 +442,7 @@ Partial Class Frm_PedidosDetalle
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.point_green
-        Me.PictureBox1.Location = New System.Drawing.Point(770, 72)
+        Me.PictureBox1.Location = New System.Drawing.Point(761, 72)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -484,7 +452,7 @@ Partial Class Frm_PedidosDetalle
         'PictureBox2
         '
         Me.PictureBox2.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.point_yellow
-        Me.PictureBox2.Location = New System.Drawing.Point(770, 96)
+        Me.PictureBox2.Location = New System.Drawing.Point(761, 96)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -494,7 +462,7 @@ Partial Class Frm_PedidosDetalle
         'PictureBox3
         '
         Me.PictureBox3.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.point_red
-        Me.PictureBox3.Location = New System.Drawing.Point(770, 119)
+        Me.PictureBox3.Location = New System.Drawing.Point(761, 119)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(20, 20)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -506,7 +474,7 @@ Partial Class Frm_PedidosDetalle
         Me.Label11.AutoSize = True
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(797, 74)
+        Me.Label11.Location = New System.Drawing.Point(788, 74)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(120, 15)
         Me.Label11.TabIndex = 18
@@ -517,7 +485,7 @@ Partial Class Frm_PedidosDetalle
         Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(796, 98)
+        Me.Label12.Location = New System.Drawing.Point(787, 98)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(126, 15)
         Me.Label12.TabIndex = 19
@@ -528,32 +496,11 @@ Partial Class Frm_PedidosDetalle
         Me.Label13.AutoSize = True
         Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(796, 121)
+        Me.Label13.Location = New System.Drawing.Point(787, 121)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(81, 15)
         Me.Label13.TabIndex = 20
         Me.Label13.Text = "Sin selección"
-        '
-        'txtHra
-        '
-        Me.txtHra.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHra.Location = New System.Drawing.Point(671, 43)
-        Me.txtHra.Name = "txtHra"
-        Me.txtHra.Size = New System.Drawing.Size(56, 22)
-        Me.txtHra.TabIndex = 37
-        '
-        'Label14
-        '
-        Me.Label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label14.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(611, 43)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.Label14.Size = New System.Drawing.Size(54, 22)
-        Me.Label14.TabIndex = 36
-        Me.Label14.Text = "Hora"
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'DataGridViewTextBoxColumn1
         '
@@ -685,6 +632,16 @@ Partial Class Frm_PedidosDetalle
         Me.DataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn11.Width = 2
         '
+        'point
+        '
+        Me.point.HeaderText = ""
+        Me.point.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.point_red
+        Me.point.Name = "point"
+        Me.point.ReadOnly = True
+        Me.point.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.point.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.point.Width = 25
+        '
         'Folio_precisa
         '
         Me.Folio_precisa.DataPropertyName = "pallet"
@@ -814,13 +771,31 @@ Partial Class Frm_PedidosDetalle
         Me.leido.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.leido.Width = 2
         '
+        'CAMBIAR
+        '
+        Me.CAMBIAR.HeaderText = "CAM"
+        Me.CAMBIAR.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.actualizar
+        Me.CAMBIAR.Name = "CAMBIAR"
+        Me.CAMBIAR.ReadOnly = True
+        Me.CAMBIAR.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.CAMBIAR.Width = 40
+        '
+        'ELIM
+        '
+        Me.ELIM.HeaderText = "ELIM"
+        Me.ELIM.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
+        Me.ELIM.Name = "ELIM"
+        Me.ELIM.ReadOnly = True
+        Me.ELIM.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ELIM.Width = 40
+        '
         'Frm_PedidosDetalle
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(942, 559)
+        Me.ClientSize = New System.Drawing.Size(939, 559)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label11)
@@ -911,6 +886,4 @@ Partial Class Frm_PedidosDetalle
     Friend WithEvents leido As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CAMBIAR As System.Windows.Forms.DataGridViewImageColumn
     Friend WithEvents ELIM As System.Windows.Forms.DataGridViewImageColumn
-    Friend WithEvents txtHra As System.Windows.Forms.TextBox
-    Friend WithEvents Label14 As System.Windows.Forms.Label
 End Class
