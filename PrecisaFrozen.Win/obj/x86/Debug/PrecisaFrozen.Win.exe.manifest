@@ -150,7 +150,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>C1Tnp9yNP3yDIzhAST9MaCLx91Y=</dsig:DigestValue>
+        <dsig:DigestValue>NoGrXc/jNx+6wKMjzOnR4he4+As=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -174,7 +174,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WAvMxdKLayf0rXKB4WiyLU7tCkw=</dsig:DigestValue>
+        <dsig:DigestValue>Feib+3ucPAbGdB/YF8mzfTh3Ncc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,19 +210,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>louROCBjNcyBAgegwgoNzvKILv4=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualBasic.PowerPacks.Vs.resources.dll" size="47000">
-      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs.resources" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>gPhZZDCmM0hSwlmvA8Zvt1auOz0=</dsig:DigestValue>
+        <dsig:DigestValue>ht9gayw7qviBWoZTNeGrJx3jUcI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -239,14 +227,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="22856704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="23133696">
       <assemblyIdentity name="PrecisaFrozen.Win" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>STos3e4F/ueRc4EWSar2mjG141U=</dsig:DigestValue>
+        <dsig:DigestValue>Y5TduCgD8Rr5LBQSjrY0yjT0/6g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -258,7 +246,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>JPB8qFfxcBIyYYsruWie6tPsG8M=</dsig:DigestValue>
+        <dsig:DigestValue>KNXqPPQvMFDHoHscdyVWZZypGYA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -283,22 +271,22 @@
       <dsig:DigestValue>smC8WbIv/nMxQR8GF7yeUF3j6xk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Formularios\Otros\SCRIPT1.txt" size="1660712">
+  <file name="Formularios\Otros\SCRIPT1.txt" size="1612430">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>j7VM5bCnXYixMMIrre8lCijj0K4=</dsig:DigestValue>
+      <dsig:DigestValue>nGowGanFj0VUE2vp+xs10I3fPao=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PrecisaFrozen.Win.exe.config" size="1960">
+  <file name="PrecisaFrozen.Win.exe.config" size="3579">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>JsRirYon++DcJ3m4OZ6M9k5KVHQ=</dsig:DigestValue>
+      <dsig:DigestValue>NNNbLIvx808XRg3SEyeYIf2dep0=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\icono-de-jpg-355881.png" size="935">

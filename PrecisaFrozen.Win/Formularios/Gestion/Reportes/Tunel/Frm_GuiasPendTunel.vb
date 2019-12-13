@@ -265,6 +265,8 @@ Public Class Frm_GuiasPendTunel
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
         LimpiarForm()
         Procesa()
+        Btn_Calcular.Enabled = False
+        btn_nuevo.Enabled = True
         Timer1.Enabled = True
     End Sub
 

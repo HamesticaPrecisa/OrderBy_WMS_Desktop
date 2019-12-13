@@ -2349,7 +2349,7 @@ Public Class Frm_GuiaRecepcionAgregar
                         Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
                         Dim CodCont As String = txtcodcontrato.Text.Trim
 
-                        Dim sqlDetArr As String = "select TipPal=right('000'+drec_codsopo,3),Cant_Arriendo=count(frec_codi) from TMPDETARECE with(nolock) where frec_codi='" & CodRece & "' and drec_arriendo='1' group by drec_codsopo asc"
+                        Dim sqlDetArr As String = "select TipPal=right('000'+drec_codsopo,3),Cant_Arriendo=count(frec_codi) from TMPDETARECE with(nolock) where frec_codi='" & CodRece & "' and drec_arriendo='1' group by drec_codsopo"
                         Dim dtDetArr As New DataTable
 
                         dtDetArr = fnc.ListarTablasSQL(sqlDetArr)
@@ -2401,7 +2401,7 @@ Public Class Frm_GuiaRecepcionAgregar
 
                                     If (dtSaldPallsCli.Rows.Count > 0) Then
                                         SaldCli = CInt(dtSaldPallsCli.Rows(0).Item(0).ToString.Trim)
-                                End If
+                                    End If
 
                                     If (SaldCli > 0) Then
                                         Recepcion_Custodia_Intercambio_Pallets.txtCodRece.Text = CodRece

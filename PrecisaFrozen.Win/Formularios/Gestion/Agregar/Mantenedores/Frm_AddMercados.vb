@@ -39,14 +39,14 @@ Public Class Frm_AddMercados
                                                      New SqlParameter() {New SqlParameter("@nombre", SqlDbType.VarChar) With {.Value = txtNombre.Text}})
 
             If check Is Nothing Then
-                Dim sql = "INSERT INTO mercados (mer_nombre, mer_temp, mer_horas, met_trt, mer_status, mer_crifec) " +
+                Dim sql = "INSERT INTO mercados (mer_nombre, mer_temp, mer_horas, mer_trt, mer_status, mer_crifec) " +
                           "     VALUES (@nombre, @temp, @horas, @trt, 'ACTIVO', @crifec)"
                 Dim params() = New SqlParameter() {
                     New SqlParameter("@nombre", SqlDbType.VarChar) With {.Value = txtNombre.Text},
                     New SqlParameter("@temp", SqlDbType.Decimal) With {.Value = Decimal.Parse(txttemp.Text)},
                     New SqlParameter("@horas", SqlDbType.Int) With {.Value = Int32.Parse(txtHoras.Text)},
                     New SqlParameter("@trt", SqlDbType.Int) With {.Value = Int32.Parse(txtTRT.Text)},
-                    New SqlParameter("@crifec", SqlDbType.NVarChar) With {.Value = cboCriFec.SelectedValue}
+                    New SqlParameter("@crifec", SqlDbType.NVarChar) With {.Value = cboCriFec.Text}
                 }
 
                 If fnc.runSQLCmd(sql, params).result Then

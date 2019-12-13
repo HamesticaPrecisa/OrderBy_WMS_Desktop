@@ -493,6 +493,12 @@ Public Class Frm_Principal
 
     Private Sub Frm_Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '  CONECTARVARI = "LOCAL"  
+        '
+        '       VES NOV 2019
+        '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
+        '       EL NOMBRE DE LA BD ACTIVA
+        '
+        Me.Text = "Order By WMS - Precisa Tech 28.11.19.09.45 - BD: " + CONFIG.mainCatalog
         InfoUsuario.Text = "001"
         If Not My.Computer.Name = " PROGRAMACION-PC" Then
             Presentacion.ShowDialog()
