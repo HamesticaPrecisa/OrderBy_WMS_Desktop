@@ -27,6 +27,19 @@ Partial Class Control_Pallets_Arriendo
         Me.DataGridViewImageColumn2 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.gvMov = New System.Windows.Forms.DataGridView()
+        Me.Rut_Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codigo_Contrato = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contrato = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codigo_Soportante = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Recepcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Codigo_Tipo_Soportante = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Soportante = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Inicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Inicio_Frm = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Termino = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Termino_Frm = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Despacho = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btnImp = New System.Windows.Forms.Button()
         Me.btnSal = New System.Windows.Forms.Button()
@@ -50,19 +63,6 @@ Partial Class Control_Pallets_Arriendo
         Me.btn_BuscaCliente = New System.Windows.Forms.Button()
         Me.txtclinom = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
-        Me.Rut_Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codigo_Contrato = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Contrato = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codigo_Soportante = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Recepcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Codigo_Tipo_Soportante = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Soportante = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Inicio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Inicio_Frm = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Termino = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Termino_Frm = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Despacho = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2.SuspendLayout()
         CType(Me.gvMov, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
@@ -89,7 +89,7 @@ Partial Class Control_Pallets_Arriendo
         Me.GroupBox2.Controls.Add(Me.gvMov)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 326)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1092, 562)
+        Me.GroupBox2.Size = New System.Drawing.Size(1092, 331)
         Me.GroupBox2.TabIndex = 62
         Me.GroupBox2.TabStop = False
         '
@@ -102,8 +102,117 @@ Partial Class Control_Pallets_Arriendo
         Me.gvMov.Location = New System.Drawing.Point(6, 19)
         Me.gvMov.Name = "gvMov"
         Me.gvMov.ReadOnly = True
-        Me.gvMov.Size = New System.Drawing.Size(1080, 537)
+        Me.gvMov.Size = New System.Drawing.Size(1080, 306)
         Me.gvMov.TabIndex = 0
+        '
+        'Rut_Cliente
+        '
+        Me.Rut_Cliente.DataPropertyName = "Rut_Cliente"
+        Me.Rut_Cliente.Frozen = True
+        Me.Rut_Cliente.HeaderText = "RUT"
+        Me.Rut_Cliente.Name = "Rut_Cliente"
+        Me.Rut_Cliente.ReadOnly = True
+        Me.Rut_Cliente.Visible = False
+        '
+        'Cliente
+        '
+        Me.Cliente.DataPropertyName = "Cliente"
+        Me.Cliente.Frozen = True
+        Me.Cliente.HeaderText = "CLIENTE"
+        Me.Cliente.Name = "Cliente"
+        Me.Cliente.ReadOnly = True
+        '
+        'Codigo_Contrato
+        '
+        Me.Codigo_Contrato.DataPropertyName = "Codigo_Contrato"
+        Me.Codigo_Contrato.Frozen = True
+        Me.Codigo_Contrato.HeaderText = "CODIGO CONTRATO"
+        Me.Codigo_Contrato.Name = "Codigo_Contrato"
+        Me.Codigo_Contrato.ReadOnly = True
+        Me.Codigo_Contrato.Visible = False
+        '
+        'Contrato
+        '
+        Me.Contrato.DataPropertyName = "Contrato"
+        Me.Contrato.Frozen = True
+        Me.Contrato.HeaderText = "CONTRATO"
+        Me.Contrato.Name = "Contrato"
+        Me.Contrato.ReadOnly = True
+        '
+        'Codigo_Soportante
+        '
+        Me.Codigo_Soportante.DataPropertyName = "Codigo_Soportante"
+        Me.Codigo_Soportante.Frozen = True
+        Me.Codigo_Soportante.HeaderText = "CODIGO SOPORTANTE"
+        Me.Codigo_Soportante.Name = "Codigo_Soportante"
+        Me.Codigo_Soportante.ReadOnly = True
+        '
+        'Recepcion
+        '
+        Me.Recepcion.DataPropertyName = "Recepcion"
+        Me.Recepcion.Frozen = True
+        Me.Recepcion.HeaderText = "RECEPCIÓN"
+        Me.Recepcion.Name = "Recepcion"
+        Me.Recepcion.ReadOnly = True
+        '
+        'Codigo_Tipo_Soportante
+        '
+        Me.Codigo_Tipo_Soportante.DataPropertyName = "Codigo_Tipo_Soportante"
+        Me.Codigo_Tipo_Soportante.Frozen = True
+        Me.Codigo_Tipo_Soportante.HeaderText = "CODIGO_TIPO_SOPORTANTE"
+        Me.Codigo_Tipo_Soportante.Name = "Codigo_Tipo_Soportante"
+        Me.Codigo_Tipo_Soportante.ReadOnly = True
+        Me.Codigo_Tipo_Soportante.Visible = False
+        '
+        'Soportante
+        '
+        Me.Soportante.DataPropertyName = "Soportante"
+        Me.Soportante.Frozen = True
+        Me.Soportante.HeaderText = "SOPORTANTE"
+        Me.Soportante.Name = "Soportante"
+        Me.Soportante.ReadOnly = True
+        '
+        'Fecha_Inicio
+        '
+        Me.Fecha_Inicio.DataPropertyName = "Fecha_Inicio"
+        Me.Fecha_Inicio.Frozen = True
+        Me.Fecha_Inicio.HeaderText = "FECHA INICIO"
+        Me.Fecha_Inicio.Name = "Fecha_Inicio"
+        Me.Fecha_Inicio.ReadOnly = True
+        Me.Fecha_Inicio.Visible = False
+        '
+        'Fecha_Inicio_Frm
+        '
+        Me.Fecha_Inicio_Frm.DataPropertyName = "Fecha_Inicio_Frm"
+        Me.Fecha_Inicio_Frm.Frozen = True
+        Me.Fecha_Inicio_Frm.HeaderText = "FECHA INICIO"
+        Me.Fecha_Inicio_Frm.Name = "Fecha_Inicio_Frm"
+        Me.Fecha_Inicio_Frm.ReadOnly = True
+        '
+        'Fecha_Termino
+        '
+        Me.Fecha_Termino.DataPropertyName = "Fecha_Termino"
+        Me.Fecha_Termino.Frozen = True
+        Me.Fecha_Termino.HeaderText = "FECHA TERMINO"
+        Me.Fecha_Termino.Name = "Fecha_Termino"
+        Me.Fecha_Termino.ReadOnly = True
+        Me.Fecha_Termino.Visible = False
+        '
+        'Fecha_Termino_Frm
+        '
+        Me.Fecha_Termino_Frm.DataPropertyName = "Fecha_Termino_Frm"
+        Me.Fecha_Termino_Frm.Frozen = True
+        Me.Fecha_Termino_Frm.HeaderText = "FECHA TERMINO"
+        Me.Fecha_Termino_Frm.Name = "Fecha_Termino_Frm"
+        Me.Fecha_Termino_Frm.ReadOnly = True
+        '
+        'Despacho
+        '
+        Me.Despacho.DataPropertyName = "DESPACHO"
+        Me.Despacho.Frozen = True
+        Me.Despacho.HeaderText = "DESPACHO"
+        Me.Despacho.Name = "Despacho"
+        Me.Despacho.ReadOnly = True
         '
         'GroupBox4
         '
@@ -360,120 +469,11 @@ Partial Class Control_Pallets_Arriendo
         Me.Label35.TabIndex = 70
         Me.Label35.Text = "ARRIENDO DE PALLETS"
         '
-        'Rut_Cliente
-        '
-        Me.Rut_Cliente.DataPropertyName = "Rut_Cliente"
-        Me.Rut_Cliente.Frozen = True
-        Me.Rut_Cliente.HeaderText = "RUT"
-        Me.Rut_Cliente.Name = "Rut_Cliente"
-        Me.Rut_Cliente.ReadOnly = True
-        Me.Rut_Cliente.Visible = False
-        '
-        'Cliente
-        '
-        Me.Cliente.DataPropertyName = "Cliente"
-        Me.Cliente.Frozen = True
-        Me.Cliente.HeaderText = "CLIENTE"
-        Me.Cliente.Name = "Cliente"
-        Me.Cliente.ReadOnly = True
-        '
-        'Codigo_Contrato
-        '
-        Me.Codigo_Contrato.DataPropertyName = "Codigo_Contrato"
-        Me.Codigo_Contrato.Frozen = True
-        Me.Codigo_Contrato.HeaderText = "CODIGO CONTRATO"
-        Me.Codigo_Contrato.Name = "Codigo_Contrato"
-        Me.Codigo_Contrato.ReadOnly = True
-        Me.Codigo_Contrato.Visible = False
-        '
-        'Contrato
-        '
-        Me.Contrato.DataPropertyName = "Contrato"
-        Me.Contrato.Frozen = True
-        Me.Contrato.HeaderText = "CONTRATO"
-        Me.Contrato.Name = "Contrato"
-        Me.Contrato.ReadOnly = True
-        '
-        'Codigo_Soportante
-        '
-        Me.Codigo_Soportante.DataPropertyName = "Codigo_Soportante"
-        Me.Codigo_Soportante.Frozen = True
-        Me.Codigo_Soportante.HeaderText = "CODIGO SOPORTANTE"
-        Me.Codigo_Soportante.Name = "Codigo_Soportante"
-        Me.Codigo_Soportante.ReadOnly = True
-        '
-        'Recepcion
-        '
-        Me.Recepcion.DataPropertyName = "Recepcion"
-        Me.Recepcion.Frozen = True
-        Me.Recepcion.HeaderText = "RECEPCIÓN"
-        Me.Recepcion.Name = "Recepcion"
-        Me.Recepcion.ReadOnly = True
-        '
-        'Codigo_Tipo_Soportante
-        '
-        Me.Codigo_Tipo_Soportante.DataPropertyName = "Codigo_Tipo_Soportante"
-        Me.Codigo_Tipo_Soportante.Frozen = True
-        Me.Codigo_Tipo_Soportante.HeaderText = "CODIGO_TIPO_SOPORTANTE"
-        Me.Codigo_Tipo_Soportante.Name = "Codigo_Tipo_Soportante"
-        Me.Codigo_Tipo_Soportante.ReadOnly = True
-        Me.Codigo_Tipo_Soportante.Visible = False
-        '
-        'Soportante
-        '
-        Me.Soportante.DataPropertyName = "Soportante"
-        Me.Soportante.Frozen = True
-        Me.Soportante.HeaderText = "SOPORTANTE"
-        Me.Soportante.Name = "Soportante"
-        Me.Soportante.ReadOnly = True
-        '
-        'Fecha_Inicio
-        '
-        Me.Fecha_Inicio.DataPropertyName = "Fecha_Inicio"
-        Me.Fecha_Inicio.Frozen = True
-        Me.Fecha_Inicio.HeaderText = "FECHA INICIO"
-        Me.Fecha_Inicio.Name = "Fecha_Inicio"
-        Me.Fecha_Inicio.ReadOnly = True
-        Me.Fecha_Inicio.Visible = False
-        '
-        'Fecha_Inicio_Frm
-        '
-        Me.Fecha_Inicio_Frm.DataPropertyName = "Fecha_Inicio_Frm"
-        Me.Fecha_Inicio_Frm.Frozen = True
-        Me.Fecha_Inicio_Frm.HeaderText = "FECHA INICIO"
-        Me.Fecha_Inicio_Frm.Name = "Fecha_Inicio_Frm"
-        Me.Fecha_Inicio_Frm.ReadOnly = True
-        '
-        'Fecha_Termino
-        '
-        Me.Fecha_Termino.DataPropertyName = "Fecha_Termino"
-        Me.Fecha_Termino.Frozen = True
-        Me.Fecha_Termino.HeaderText = "FECHA TERMINO"
-        Me.Fecha_Termino.Name = "Fecha_Termino"
-        Me.Fecha_Termino.ReadOnly = True
-        Me.Fecha_Termino.Visible = False
-        '
-        'Fecha_Termino_Frm
-        '
-        Me.Fecha_Termino_Frm.DataPropertyName = "Fecha_Termino_Frm"
-        Me.Fecha_Termino_Frm.Frozen = True
-        Me.Fecha_Termino_Frm.HeaderText = "FECHA TERMINO"
-        Me.Fecha_Termino_Frm.Name = "Fecha_Termino_Frm"
-        Me.Fecha_Termino_Frm.ReadOnly = True
-        '
-        'Despacho
-        '
-        Me.Despacho.DataPropertyName = "DESPACHO"
-        Me.Despacho.Frozen = True
-        Me.Despacho.HeaderText = "DESPACHO"
-        Me.Despacho.Name = "Despacho"
-        Me.Despacho.ReadOnly = True
-        '
         'Control_Pallets_Arriendo
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1201, 900)
+        Me.ClientSize = New System.Drawing.Size(1201, 671)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)

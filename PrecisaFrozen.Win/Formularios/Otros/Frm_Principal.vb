@@ -24,6 +24,63 @@ Public Class Frm_Principal
     Private Const HKEY_LOCAL_MACHINE = &H80000002
 
 
+    Private Sub Frm_Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        '  CONECTARVARI = "LOCAL"  
+        '
+        '       VES NOV 2019
+        '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
+        '       EL NOMBRE DE LA BD ACTIVA
+        '
+        Me.Text = "Order By WMS - Precisa Tech 13.12.19.16.52 - BD: " + CONFIG.mainCatalog
+        InfoUsuario.Text = "001"
+        If Not My.Computer.Name = " PROGRAMACION-PC" Then
+            Presentacion.ShowDialog()
+
+            Frm_InicioSesion.ShowDialog()
+
+        Else
+            veri_conn.Start()
+            Timer1.Start()
+            verificaPrivilegios()
+            VerifConectados.Start()
+            PictureBox1.Image = Nothing
+            cargaimg()
+
+        End If
+        'Odbc()
+        nuevoodbc()
+        If File.Exists("C:\Imagenlogo.jpg") Then
+            My.Computer.FileSystem.DeleteFile("C:\Imagenlogo.jpg")
+        End If
+        If File.Exists("C:\Windows\Imagenlogo.jpg") Then
+
+            My.Computer.FileSystem.DeleteFile("C:\Windows\Imagenlogo.jpg")
+        End If
+
+        Dim strr As String = "1"
+
+        'Buscar Puerto COM Lector RFID
+        Dim pathCOM = Directory.GetCurrentDirectory.Trim & "\RFIDCOMPORT.txt"
+        'MessageBox.Show(pathCOM)
+
+        If (File.Exists(pathCOM)) Then
+            Using reader As New StreamReader(pathCOM)
+                PuertoRFID = reader.ReadLine().Trim
+            End Using
+            'Else
+            '    MessageBox.Show("No existe archivo!")
+        End If
+        'Fin buscar Puerto COM Lector RFID
+
+
+        'veri_conn.Start()
+        'Timer1.Start()
+        'verificaPrivilegios()
+        'VerifConectados.Start()
+        'PictureBox1.Image = Nothing
+        'cargaimg()
+        'lblsucursal.Text = sucursalglo
+    End Sub
 
     Public Sub ChangeTextBoxText(ByVal text As String) Implements IForm.ChangeTextBoxText
         buscavalor = text
@@ -339,7 +396,7 @@ Public Class Frm_Principal
 
     End Sub
 
-
+   
     Private Sub cargaimg()
         If CONECTARVARI = "" Then
 
@@ -362,7 +419,7 @@ Public Class Frm_Principal
 
             End If
         End If
-
+      
 
     End Sub
     Public Function ByteArrayToImage(ByVal byteArrayIn As Byte()) As Image
@@ -491,63 +548,7 @@ Public Class Frm_Principal
 
 
 
-    Private Sub Frm_Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        '  CONECTARVARI = "LOCAL"  
-        '
-        '       VES NOV 2019
-        '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
-        '       EL NOMBRE DE LA BD ACTIVA
-        '
-        Me.Text = "Order By WMS - Precisa Tech 28.11.19.09.45 - BD: " + CONFIG.mainCatalog
-        InfoUsuario.Text = "001"
-        If Not My.Computer.Name = " PROGRAMACION-PC" Then
-            Presentacion.ShowDialog()
-
-            Frm_InicioSesion.ShowDialog()
-
-        Else
-            veri_conn.Start()
-            Timer1.Start()
-            verificaPrivilegios()
-            VerifConectados.Start()
-            PictureBox1.Image = Nothing
-            cargaimg()
-
-        End If
-        'Odbc()
-        nuevoodbc()
-        If File.Exists("C:\Imagenlogo.jpg") Then
-            My.Computer.FileSystem.DeleteFile("C:\Imagenlogo.jpg")
-        End If
-        If File.Exists("C:\Windows\Imagenlogo.jpg") Then
-
-            My.Computer.FileSystem.DeleteFile("C:\Windows\Imagenlogo.jpg")
-        End If
-
-        Dim strr As String = "1"
-
-        'Buscar Puerto COM Lector RFID
-        Dim pathCOM = Directory.GetCurrentDirectory.Trim & "\RFIDCOMPORT.txt"
-        'MessageBox.Show(pathCOM)
-
-        If (File.Exists(pathCOM)) Then
-            Using reader As New StreamReader(pathCOM)
-                PuertoRFID = reader.ReadLine().Trim
-            End Using
-            'Else
-            '    MessageBox.Show("No existe archivo!")
-        End If
-        'Fin buscar Puerto COM Lector RFID
-
-
-        'veri_conn.Start()
-        'Timer1.Start()
-        'verificaPrivilegios()
-        'VerifConectados.Start()
-        'PictureBox1.Image = Nothing
-        'cargaimg()
-        'lblsucursal.Text = sucursalglo
-    End Sub
+  
 
     Private Function GetReference(ByVal nombreControl As String) As Control
 
@@ -829,7 +830,7 @@ Public Class Frm_Principal
             End If
 
             If tabla.Rows(i)(0).ToString() = "114" Then
-
+             
                 TiempoTramosPedidosToolStripMenuItem.Enabled = True
             End If
 
@@ -872,6 +873,8 @@ Public Class Frm_Principal
 
         menNumDia.Visible = True
         menNumDia.Enabled = True
+
+        MenOrdenPallets.Enabled = True
     End Sub
 
     Private Sub Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Salir.Click
@@ -2006,6 +2009,23 @@ Public Class Frm_Principal
             f_contenidoTuneles = True
         Else
             TabControl1.TabPages(Frm_ContenidoTuneles).Select()
+        End If
+    End Sub
+    
+    'Private Sub M2_Orden_Pallets_Click(sender As System.Object, e As System.EventArgs) Handles M2_Orden_Pallets.Click
+    '    If (f_OrdPal = False) Then
+    '    Else
+    '        TabControl1.TabPages(Recepcion_Programacion_Listado).Select()
+    '    End If
+    'End Sub
+    Private Sub MenOrdenPallets_Click(sender As System.Object, e As System.EventArgs) Handles MenOrdenPallets.Click
+        If (f_OrdPal = False) Then
+            Dim f As Form
+            f = Frm_Orden_Pallets
+            TabControl1.TabPages.Add(f)
+            f_OrdPal = True
+        Else
+            TabControl1.TabPages(Frm_Orden_Pallets).Select()
         End If
     End Sub
 End Class

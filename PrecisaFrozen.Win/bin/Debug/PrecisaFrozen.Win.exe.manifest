@@ -150,7 +150,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>NoGrXc/jNx+6wKMjzOnR4he4+As=</dsig:DigestValue>
+        <dsig:DigestValue>YQrmdWHe2D3HpdnEhKAHRaMXMUk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -174,7 +174,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Feib+3ucPAbGdB/YF8mzfTh3Ncc=</dsig:DigestValue>
+        <dsig:DigestValue>oCqH7TlgYFmF2a3kmWkRBBW2OaY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -227,14 +227,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="23133696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PrecisaFrozen.Win.exe" size="23153152">
       <assemblyIdentity name="PrecisaFrozen.Win" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Y5TduCgD8Rr5LBQSjrY0yjT0/6g=</dsig:DigestValue>
+        <dsig:DigestValue>cQ971wUOHVFmRyQ/utAcijFRqkw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -286,7 +286,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>NNNbLIvx808XRg3SEyeYIf2dep0=</dsig:DigestValue>
+      <dsig:DigestValue>9N9vPOrabVYhuEea6A9cW94FZvk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\icono-de-jpg-355881.png" size="935">

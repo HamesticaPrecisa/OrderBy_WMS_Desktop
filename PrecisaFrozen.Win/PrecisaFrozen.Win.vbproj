@@ -449,7 +449,7 @@
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddMercados.vb">
       <SubType>Form</SubType>
     </Compile>
-<Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.Designer.vb">
+    <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.Designer.vb">
       <DependentUpon>Control_Pallets.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.vb">
@@ -1066,6 +1066,12 @@
     <Compile Include="Formularios\Gestion\Conf\FRM_ACT_WMS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.Designer.vb">
+      <DependentUpon>Frm_Orden_Pallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.Designer.vb">
       <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
     </Compile>
@@ -1096,7 +1102,7 @@
     <Compile Include="Formularios\Gestion\Listados\lst_Mercados.vb">
       <SubType>Form</SubType>
     </Compile>
- <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.Designer.vb">
+    <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.Designer.vb">
       <DependentUpon>Recepcion_Programacion_Listado.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Gestion\Conf\Recepcion_Programacion_Listado.vb">
@@ -1901,12 +1907,12 @@
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddCamaras.resx">
       <DependentUpon>Frm_AddCamaras.vb</DependentUpon>
     </EmbeddedResource>
-<EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.resx">
+    <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets.resx">
       <DependentUpon>Control_Pallets.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Control_Pallets_Arriendo.resx">
       <DependentUpon>Control_Pallets_Arriendo.vb</DependentUpon>
-    </EmbeddedResource>    
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Agregar\Mantenedores\Frm_AddFormatoEtiqueta.resx">
       <DependentUpon>Frm_AddFormatoEtiqueta.vb</DependentUpon>
     </EmbeddedResource>
@@ -2222,10 +2228,13 @@
     <EmbeddedResource Include="Formularios\Gestion\Conf\FRM_ACT_WMS.resx">
       <DependentUpon>FRM_ACT_WMS.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Frm_Orden_Pallets.resx">
+      <DependentUpon>Frm_Orden_Pallets.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Listados\Lst_Camaras.resx">
       <DependentUpon>Lst_Camaras.vb</DependentUpon>
     </EmbeddedResource>
-<EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.resx">
+    <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos.resx">
       <DependentUpon>Recepciones_Programacion_Bloqueos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Gestion\Conf\Recepciones_Programacion_Bloqueos_Clientes.resx">
@@ -3086,22 +3095,22 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="stdole">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

@@ -37,8 +37,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Txtobs = New System.Windows.Forms.TextBox()
         Me.pbadvertencia = New System.Windows.Forms.PictureBox()
         Me.Gb_Cliente = New System.Windows.Forms.GroupBox()
+        Me.Label65 = New System.Windows.Forms.Label()
         Me.cboMercado = New System.Windows.Forms.ComboBox()
-        Me.Label64 = New System.Windows.Forms.Label()
         Me.lblkilguia = New System.Windows.Forms.Label()
         Me.lblenvguia = New System.Windows.Forms.Label()
         Me.txtkilguia = New System.Windows.Forms.TextBox()
@@ -73,6 +73,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.txtrutchofer = New System.Windows.Forms.MaskedTextBox()
         Me.txtnom_contrato = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label64 = New System.Windows.Forms.Label()
         Me.OpcionImprimir = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.IMPRIMIRETIQUETAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -166,6 +167,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.btn_nuevo = New System.Windows.Forms.Button()
         Me.Tab_Detalle = New System.Windows.Forms.TabControl()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.DetaRece = New System.Windows.Forms.DataGridView()
         Me.Edit = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Cod_Pallet = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -341,8 +343,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'Gb_Cliente
         '
+        Me.Gb_Cliente.Controls.Add(Me.Label65)
         Me.Gb_Cliente.Controls.Add(Me.cboMercado)
-        Me.Gb_Cliente.Controls.Add(Me.Label64)
         Me.Gb_Cliente.Controls.Add(Me.lblkilguia)
         Me.Gb_Cliente.Controls.Add(Me.lblenvguia)
         Me.Gb_Cliente.Controls.Add(Me.txtkilguia)
@@ -385,6 +387,17 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Gb_Cliente.TabIndex = 56
         Me.Gb_Cliente.TabStop = False
         '
+        'Label65
+        '
+        Me.Label65.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label65.Location = New System.Drawing.Point(16, 157)
+        Me.Label65.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(78, 21)
+        Me.Label65.TabIndex = 67
+        Me.Label65.Text = "MERCADO"
+        Me.Label65.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'cboMercado
         '
         Me.cboMercado.BackColor = System.Drawing.Color.White
@@ -392,27 +405,16 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.cboMercado.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboMercado.FormattingEnabled = True
         Me.cboMercado.Items.AddRange(New Object() {"CONVENCIONAL", "ORGANICO"})
-        Me.cboMercado.Location = New System.Drawing.Point(104, 159)
+        Me.cboMercado.Location = New System.Drawing.Point(104, 157)
         Me.cboMercado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.cboMercado.Name = "cboMercado"
         Me.cboMercado.Size = New System.Drawing.Size(164, 21)
         Me.cboMercado.TabIndex = 62
         '
-        'Label64
-        '
-        Me.Label64.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label64.Location = New System.Drawing.Point(16, 159)
-        Me.Label64.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(78, 21)
-        Me.Label64.TabIndex = 67
-        Me.Label64.Text = "MERCADO"
-        Me.Label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
         'lblkilguia
         '
         Me.lblkilguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblkilguia.Location = New System.Drawing.Point(175, 210)
+        Me.lblkilguia.Location = New System.Drawing.Point(16, 209)
         Me.lblkilguia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblkilguia.Name = "lblkilguia"
         Me.lblkilguia.Size = New System.Drawing.Size(78, 21)
@@ -424,7 +426,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'lblenvguia
         '
         Me.lblenvguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblenvguia.Location = New System.Drawing.Point(16, 209)
+        Me.lblenvguia.Location = New System.Drawing.Point(16, 182)
         Me.lblenvguia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblenvguia.Name = "lblenvguia"
         Me.lblenvguia.Size = New System.Drawing.Size(78, 21)
@@ -435,34 +437,34 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'txtkilguia
         '
-        Me.txtkilguia.Location = New System.Drawing.Point(263, 210)
+        Me.txtkilguia.Location = New System.Drawing.Point(104, 209)
         Me.txtkilguia.Name = "txtkilguia"
         Me.txtkilguia.Size = New System.Drawing.Size(64, 21)
-        Me.txtkilguia.TabIndex = 65
+        Me.txtkilguia.TabIndex = 64
         Me.txtkilguia.Visible = False
         '
         'txtenvguia
         '
-        Me.txtenvguia.Location = New System.Drawing.Point(104, 209)
+        Me.txtenvguia.Location = New System.Drawing.Point(104, 182)
         Me.txtenvguia.Name = "txtenvguia"
         Me.txtenvguia.Size = New System.Drawing.Size(64, 21)
-        Me.txtenvguia.TabIndex = 64
+        Me.txtenvguia.TabIndex = 63
         Me.txtenvguia.Visible = False
         '
         'chkdatosguia
         '
         Me.chkdatosguia.AutoSize = True
-        Me.chkdatosguia.Location = New System.Drawing.Point(104, 188)
+        Me.chkdatosguia.Location = New System.Drawing.Point(104, 159)
         Me.chkdatosguia.Name = "chkdatosguia"
         Me.chkdatosguia.Size = New System.Drawing.Size(100, 17)
-        Me.chkdatosguia.TabIndex = 63
+        Me.chkdatosguia.TabIndex = 62
         Me.chkdatosguia.Text = "DATOS GUIA"
         Me.chkdatosguia.UseVisualStyleBackColor = True
         '
         'CHKEMB
         '
         Me.CHKEMB.AutoSize = True
-        Me.CHKEMB.Location = New System.Drawing.Point(543, 135)
+        Me.CHKEMB.Location = New System.Drawing.Point(547, 138)
         Me.CHKEMB.Name = "CHKEMB"
         Me.CHKEMB.Size = New System.Drawing.Size(90, 17)
         Me.CHKEMB.TabIndex = 61
@@ -473,7 +475,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label23.AutoSize = True
         Me.Label23.ForeColor = System.Drawing.Color.Gold
-        Me.Label23.Location = New System.Drawing.Point(353, 162)
+        Me.Label23.Location = New System.Drawing.Point(302, 159)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(248, 13)
         Me.Label23.TabIndex = 59
@@ -504,7 +506,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'TxtContenedor
         '
         Me.TxtContenedor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtContenedor.Location = New System.Drawing.Point(432, 133)
+        Me.TxtContenedor.Location = New System.Drawing.Point(437, 132)
         Me.TxtContenedor.MaxLength = 20
         Me.TxtContenedor.Name = "TxtContenedor"
         Me.TxtContenedor.Size = New System.Drawing.Size(104, 21)
@@ -524,7 +526,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Label49
         '
         Me.Label49.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label49.Location = New System.Drawing.Point(337, 133)
+        Me.Label49.Location = New System.Drawing.Point(337, 132)
         Me.Label49.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(93, 21)
@@ -572,7 +574,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'txtsello
         '
         Me.txtsello.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsello.Location = New System.Drawing.Point(262, 133)
+        Me.txtsello.Location = New System.Drawing.Point(264, 132)
         Me.txtsello.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtsello.MaxLength = 10
         Me.txtsello.Name = "txtsello"
@@ -593,7 +595,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Label20
         '
         Me.Label20.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(192, 133)
+        Me.Label20.Location = New System.Drawing.Point(194, 134)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(68, 21)
@@ -634,7 +636,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'txtguia
         '
         Me.txtguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtguia.Location = New System.Drawing.Point(104, 133)
+        Me.txtguia.Location = New System.Drawing.Point(104, 132)
         Me.txtguia.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.txtguia.MaxLength = 12
         Me.txtguia.Name = "txtguia"
@@ -663,7 +665,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Label15
         '
         Me.Label15.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(16, 133)
+        Me.Label15.Location = New System.Drawing.Point(16, 132)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(78, 21)
@@ -750,6 +752,18 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label25.Size = New System.Drawing.Size(94, 13)
         Me.Label25.TabIndex = 54
         Me.Label25.Text = "OBSERVACION"
+        '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(10, 426)
+        Me.Label64.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(36, 13)
+        Me.Label64.TabIndex = 74
+        Me.Label64.Text = "Unid."
+        Me.Label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'OpcionImprimir
         '
@@ -1182,7 +1196,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label61.AutoSize = True
         Me.Label61.ForeColor = System.Drawing.Color.White
-        Me.Label61.Location = New System.Drawing.Point(7, 112)
+        Me.Label61.Location = New System.Drawing.Point(12, 108)
         Me.Label61.Name = "Label61"
         Me.Label61.Size = New System.Drawing.Size(78, 13)
         Me.Label61.TabIndex = 86
@@ -1192,7 +1206,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label59.AutoSize = True
         Me.Label59.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label59.Location = New System.Drawing.Point(7, 82)
+        Me.Label59.Location = New System.Drawing.Point(17, 82)
         Me.Label59.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label59.Name = "Label59"
         Me.Label59.Size = New System.Drawing.Size(73, 13)
@@ -1216,7 +1230,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label57.AutoSize = True
         Me.Label57.ForeColor = System.Drawing.Color.White
-        Me.Label57.Location = New System.Drawing.Point(266, 109)
+        Me.Label57.Location = New System.Drawing.Point(275, 109)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(21, 13)
         Me.Label57.TabIndex = 83
@@ -1242,7 +1256,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label56.AutoSize = True
         Me.Label56.ForeColor = System.Drawing.Color.White
-        Me.Label56.Location = New System.Drawing.Point(207, 139)
+        Me.Label56.Location = New System.Drawing.Point(205, 138)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(91, 13)
         Me.Label56.TabIndex = 81
@@ -1306,7 +1320,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label48.AutoSize = True
         Me.Label48.ForeColor = System.Drawing.Color.White
-        Me.Label48.Location = New System.Drawing.Point(251, 84)
+        Me.Label48.Location = New System.Drawing.Point(253, 84)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(43, 13)
         Me.Label48.TabIndex = 75
@@ -1360,7 +1374,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label42.AutoSize = True
         Me.Label42.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label42.ForeColor = System.Drawing.Color.White
-        Me.Label42.Location = New System.Drawing.Point(246, 57)
+        Me.Label42.Location = New System.Drawing.Point(249, 57)
         Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(47, 13)
@@ -1518,7 +1532,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(222, 33)
+        Me.Label18.Location = New System.Drawing.Point(223, 33)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(73, 13)
@@ -1612,7 +1626,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(7, 57)
+        Me.Label6.Location = New System.Drawing.Point(14, 57)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(76, 13)
@@ -1788,7 +1802,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Tab_Detalle.Enabled = False
         Me.Tab_Detalle.ImageList = Me.ImageList1
         Me.Tab_Detalle.ItemSize = New System.Drawing.Size(147, 25)
-        Me.Tab_Detalle.Location = New System.Drawing.Point(11, 260)
+        Me.Tab_Detalle.Location = New System.Drawing.Point(12, 260)
         Me.Tab_Detalle.Name = "Tab_Detalle"
         Me.Tab_Detalle.SelectedIndex = 0
         Me.Tab_Detalle.Size = New System.Drawing.Size(675, 483)
@@ -1797,6 +1811,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         'TabPage2
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.TabPage2.Controls.Add(Me.Label64)
+        Me.TabPage2.Controls.Add(Me.TextBox3)
         Me.TabPage2.Controls.Add(Me.DetaRece)
         Me.TabPage2.Controls.Add(Me.Label38)
         Me.TabPage2.Controls.Add(Me.TextBox2)
@@ -1813,6 +1829,13 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.TabPage2.Size = New System.Drawing.Size(667, 450)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Detalle Recepcion        "
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(49, 423)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(59, 18)
+        Me.TextBox3.TabIndex = 73
         '
         'DetaRece
         '
@@ -2161,7 +2184,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.txtsopclie.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtsopclie.Location = New System.Drawing.Point(104, 55)
-        Me.txtsopclie.MaxLength = 14
+        Me.txtsopclie.MaxLength = 24
         Me.txtsopclie.Name = "txtsopclie"
         Me.txtsopclie.Size = New System.Drawing.Size(278, 21)
         Me.txtsopclie.TabIndex = 27
@@ -3120,4 +3143,6 @@ Partial Class Frm_GuiaRecepcionAgregar
     Friend WithEvents Label64 As System.Windows.Forms.Label
     Friend WithEvents chkCambioPallet As System.Windows.Forms.CheckBox
     Friend WithEvents cboMercado As System.Windows.Forms.ComboBox
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents Label65 As System.Windows.Forms.Label
 End Class

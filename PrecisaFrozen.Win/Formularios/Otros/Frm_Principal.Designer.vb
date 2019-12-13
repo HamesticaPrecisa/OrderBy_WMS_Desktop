@@ -43,6 +43,7 @@ Partial Class Frm_Principal
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New MdiTabControl.TabControl()
+        Me.CachedRpt_AcumuladoContrato1 = New PrecisaFrozen.Win.CachedRpt_AcumuladoContrato()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.M1_Inicio = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Salir = New System.Windows.Forms.ToolStripMenuItem()
@@ -155,6 +156,7 @@ Partial Class Frm_Principal
         Me.ReservaHorasPedidosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ActualizacionesDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProcesoDeTúnelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenOrdenPallets = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -164,7 +166,6 @@ Partial Class Frm_Principal
         Me.LBLSU = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblsucursal = New System.Windows.Forms.ToolStripStatusLabel()
         Me.LBLSUCU = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.CachedRpt_AcumuladoContrato1 = New PrecisaFrozen.Win.CachedRpt_AcumuladoContrato()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.AccesosDirectos.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -430,7 +431,7 @@ Partial Class Frm_Principal
         Me.M3_Recepcion.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Recepcion.Enabled = False
         Me.M3_Recepcion.Name = "M3_Recepcion"
-        Me.M3_Recepcion.Size = New System.Drawing.Size(147, 22)
+        Me.M3_Recepcion.Size = New System.Drawing.Size(152, 22)
         Me.M3_Recepcion.Text = "Recepcion "
         '
         'M3_Predespacho
@@ -439,7 +440,7 @@ Partial Class Frm_Principal
         Me.M3_Predespacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Predespacho.Enabled = False
         Me.M3_Predespacho.Name = "M3_Predespacho"
-        Me.M3_Predespacho.Size = New System.Drawing.Size(147, 22)
+        Me.M3_Predespacho.Size = New System.Drawing.Size(152, 22)
         Me.M3_Predespacho.Text = "Pre-despacho"
         '
         'M3_Despacho
@@ -448,7 +449,7 @@ Partial Class Frm_Principal
         Me.M3_Despacho.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M3_Despacho.Enabled = False
         Me.M3_Despacho.Name = "M3_Despacho"
-        Me.M3_Despacho.Size = New System.Drawing.Size(147, 22)
+        Me.M3_Despacho.Size = New System.Drawing.Size(152, 22)
         Me.M3_Despacho.Text = "Despacho"
         '
         'M2_Soportantes
@@ -619,7 +620,7 @@ Partial Class Frm_Principal
         '
         'M1_Mantenedores
         '
-        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem, Me.M2_Mercados, Me.menLimPedExp})
+        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem, Me.menLimPedExp, Me.M2_Mercados})
         Me.M1_Mantenedores.Name = "M1_Mantenedores"
         Me.M1_Mantenedores.Size = New System.Drawing.Size(95, 20)
         Me.M1_Mantenedores.Text = "Mantenedores"
@@ -1167,7 +1168,7 @@ Partial Class Frm_Principal
         '
         'M1_Otros
         '
-        Me.M1_Otros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_PerfilesUsuario, Me.SeleccionarImpresoras, Me.ConfiguracionesGeneralesToolStripMenuItem})
+        Me.M1_Otros.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_PerfilesUsuario, Me.SeleccionarImpresoras, Me.ConfiguracionesGeneralesToolStripMenuItem, Me.MenOrdenPallets})
         Me.M1_Otros.Name = "M1_Otros"
         Me.M1_Otros.Size = New System.Drawing.Size(48, 20)
         Me.M1_Otros.Text = "Otros"
@@ -1245,6 +1246,13 @@ Partial Class Frm_Principal
         Me.ProcesoDeTúnelToolStripMenuItem.Name = "ProcesoDeTúnelToolStripMenuItem"
         Me.ProcesoDeTúnelToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
         Me.ProcesoDeTúnelToolStripMenuItem.Text = "Proceso de túnel"
+        '
+        'MenOrdenPallets
+        '
+        Me.MenOrdenPallets.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
+        Me.MenOrdenPallets.Name = "MenOrdenPallets"
+        Me.MenOrdenPallets.Size = New System.Drawing.Size(198, 22)
+        Me.MenOrdenPallets.Text = "Config. Orden Pallets"
         '
         'ManualDeUsuarioToolStripMenuItem
         '
@@ -1332,7 +1340,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Precisa Tech 21.11.19.10.30 - BD: Precisa_Backup"
+        Me.Text = "Order By WMS - Pecisa Tech 12.12.19.13.00 - BD: Precisa"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
@@ -1489,5 +1497,6 @@ Partial Class Frm_Principal
     Friend WithEvents GuiasPorEntrarATunelToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EstadoDeTunelesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ContenidoDeTunelesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenOrdenPallets As System.Windows.Forms.ToolStripMenuItem
 
 End Class

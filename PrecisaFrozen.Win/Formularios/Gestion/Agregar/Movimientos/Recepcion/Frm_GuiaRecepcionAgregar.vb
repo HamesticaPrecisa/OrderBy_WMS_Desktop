@@ -1805,7 +1805,7 @@ Public Class Frm_GuiaRecepcionAgregar
         e.Graphics.DrawImage(img_logo.Image, 80, 10, 220, 70)
         '--------------------------------------------------------------
         e.Graphics.DrawString(tipo_alamacen, Titulo2, Brushes.Black, 300, 10)
-        'e.Graphics.DrawString("       PRECISA FROZEN     ", Titulo, Brushes.Black, 10, 50)
+        'e.Graphics.DrawString("PRECISA FROZEN", Titulo, Brushes.Black, 10, 50)
 
         e.Graphics.DrawString("www.precisafrozen.cl - FONO: +56 72 2 585680", prFont, Brushes.Black, 55, 80)
         e.Graphics.DrawString("Longitudinal sur KM 95.5 Requinoa VI Región, Chile.", prFont, Brushes.Black, 47, 95)
@@ -2365,7 +2365,8 @@ Public Class Frm_GuiaRecepcionAgregar
 
                                 Dim CantArr As Integer = 0
 
-                                Dim sqlValidCust As String = "select top 1 Saldo from Control_Pallet a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Contrato='" & CodCont & "' and a.Tipo_Pallet='" & TipPalFrm & "' and Estado='1' order by convert(date,a.Fecha) desc,a.ID desc"
+                                'Dim sqlValidCust As String = "select top 1 Saldo from Control_Pallet a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Contrato='" & CodCont & "' and a.Tipo_Pallet='" & TipPalFrm & "' and Estado='1' order by convert(date,a.Fecha) desc,a.ID desc"
+                                Dim sqlValidCust As String = "select Saldo=sum(a.Saldo) from Control_Pallet_Saldos a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1'"
                                 Dim dtValidCust As New DataTable
 
                                 dtValidCust = fnc.ListarTablasSQL(sqlValidCust)
@@ -2374,41 +2375,10 @@ Public Class Frm_GuiaRecepcionAgregar
                                     Saldo = CInt(dtValidCust.Rows(0).Item(0).ToString.Trim)
                                 End If
 
-                                Dim sqlPallsIntercambio As String = "select Cont=count(ID) from Control_Pallet_Custodia_Intercambio with(nolock) where Codigo_Recepcion='" & CodRece & "' and Tipo_Pallet='" & TipPalFrm & "'"
-                                Dim dtPallsIntercambio As New DataTable
-
-                                dtPallsIntercambio = fnc.ListarTablasSQL(sqlPallsIntercambio)
-
-                                Dim CantInter As Integer = 0
-
-                                If (dtPallsIntercambio.Rows.Count > 0) Then
-                                    CantInter = CInt(dtPallsIntercambio.Rows(0).Item(0).ToString.Trim)
-                                End If
-
-                                CantArr = CantArrTMP - Saldo - CantInter
+                                CantArr = CantArrTMP - Saldo
 
                                 If (CantArr < 0) Then
                                     CantArr = 0
-                                End If
-
-                                If (CantArr > 0) Then
-                                    Dim sqlSaldPallsCli As String = "select SaldCli=sum(Saldo) from Control_Pallet_Saldos with(nolock) where Rut_Cliente='" & RutCli & "' and Tipo_Pallet='" & TipPalFrm & "' and Estado='1'"
-                                    Dim dtSaldPallsCli As New DataTable
-
-                                    dtSaldPallsCli = fnc.ListarTablasSQL(sqlSaldPallsCli)
-
-                                    Dim SaldCli As Integer = 0
-
-                                    If (dtSaldPallsCli.Rows.Count > 0) Then
-                                        SaldCli = CInt(dtSaldPallsCli.Rows(0).Item(0).ToString.Trim)
-                                    End If
-
-                                    If (SaldCli > 0) Then
-                                        Recepcion_Custodia_Intercambio_Pallets.txtCodRece.Text = CodRece
-                                        Recepcion_Custodia_Intercambio_Pallets.txtCont.Text = CodCont
-                                        Recepcion_Custodia_Intercambio_Pallets.txtTipPal.Text = TipPalFrm
-                                        Recepcion_Custodia_Intercambio_Pallets.ShowDialog()
-                                    End If
                                 End If
 
                                 CantArrReal += CantArr
@@ -2960,10 +2930,10 @@ Public Class Frm_GuiaRecepcionAgregar
                     mensaje = mensaje + "- Debe Ingresar MINIMO una Fotografía"
                 End If
 
-                'If mensaje.Length > 0 Then
-                '    MsgBox(mensaje, MsgBoxStyle.Critical, "Aviso")
-                '    Exit Sub
-                'End If
+                If mensaje.Length > 0 Then
+                    MsgBox(mensaje, MsgBoxStyle.Critical, "Aviso")
+                    Exit Sub
+                End If
                 '**************************************************************************
 
                 Dim F_VALIDA As New Frm_VerificaServiciosrece
@@ -3099,15 +3069,30 @@ Public Class Frm_GuiaRecepcionAgregar
                             Dim Est As String = "1"
                             Dim CodUsu As String = Frm_Principal.InfoUsuario.Text.Trim
 
-                            Dim sqlValidCust As String = "select top 1 Saldo from Control_Pallet a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Contrato='" & CodCont & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1' and convert(date,a.Fecha)<='" & fecharece.Value.ToString("yyyyMMdd") & "' order by convert(date,a.Fecha) desc,a.ID desc;"
+                            'Dim sqlValidCust As String = "select top 1 Saldo from Control_Pallet a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Contrato='" & CodCont & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1' and convert(date,a.Fecha)<='" & fecharece.Value.ToString("yyyyMMdd") & "' order by convert(date,a.Fecha) desc,a.ID desc"
+                            Dim sqlValidCust As String = "select a.Saldo,a.Contrato from Control_Pallet_Saldos a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1'"
                             Dim dtValidCust As New DataTable
 
                             dtValidCust = fnc.ListarTablasSQL(sqlValidCust)
 
-                            If (dtValidCust.Rows.Count > 0) Then
-                                Dim Saldo As Integer = CInt(dtValidCust.Rows(0).Item(0).ToString.Trim)
+                            Dim ContratoPallet As String = ""
 
-                                If (Saldo <= 0) Then
+                            If (dtValidCust.Rows.Count > 0) Then
+                                Dim SinSaldo As Boolean = False
+
+                                For j = 0 To dtValidCust.Rows.Count - 1
+                                    Dim Saldo As Integer = CInt(dtValidCust.Rows(j).Item(0).ToString.Trim)
+                                    ContratoPallet = dtValidCust.Rows(j).Item(1).ToString.Trim
+
+                                    If (Saldo > 0) Then
+                                        SinSaldo = False
+                                        Exit For
+                                    Else
+                                        SinSaldo = True
+                                    End If
+                                Next
+
+                                If (SinSaldo) Then
                                     EsArriendo = 1
                                 End If
                             Else
@@ -3115,7 +3100,7 @@ Public Class Frm_GuiaRecepcionAgregar
                             End If
 
                             If (EsArriendo = 0) Then
-                                Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','" & CantEnt & "','" & CantSal & "','" & Obs & "','" & Est & "','" & CodUsu & "'"
+                                Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & ContratoPallet & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','" & CantEnt & "','" & CantSal & "','" & Obs & "','" & Est & "','" & CodUsu & "'"
                                 Dim dtMovCust As New DataTable
 
                                 dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
@@ -3168,7 +3153,7 @@ Public Class Frm_GuiaRecepcionAgregar
                                 End If
                             End If
 
-                            Dim sqlValidCambPall As String = "select CantCamb=count(ID) from Control_Pallet_TMP_Recepcion_Dañado with(nolock) where Codigo_Soportante='" & NumPal & "'"
+                            Dim sqlValidCambPall As String = "select CantCamb=count(ID) from Control_Pallet_TMP_Recepcion_Dañado with(nolock) where Codigo_Soportante='" & NumPal & "' and Estado='A'"
                             Dim dtValidCambPall As New DataTable
 
                             dtValidCambPall = fnc.ListarTablasSQL(sqlValidCambPall)
@@ -4362,11 +4347,11 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
-    Private Sub loteclie_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub loteclie_TextChanged(sender As System.Object, e As System.EventArgs)
 
     End Sub
 
-    Private Sub btnAdjuntarFotos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdjuntarFotos.Click
+    Private Sub btnAdjuntarFotos_Click(sender As System.Object, e As System.EventArgs) Handles btnAdjuntarFotos.Click
         Dim frm As New Frm_AdjuntaFotoRecepcion
         frm.Show()
         frm.txtGuiaRecepcion.Text = TxtCodRece.Text
@@ -4395,23 +4380,23 @@ Public Class Frm_GuiaRecepcionAgregar
         'End If
     End Sub
 
-    Private Sub txtprodnom_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtprodnom.TextChanged
+    Private Sub txtprodnom_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtprodnom.TextChanged
 
     End Sub
 
-    Private Sub Label19_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label19.Click
+    Private Sub Label19_Click(sender As System.Object, e As System.EventArgs) Handles Label19.Click
 
     End Sub
 
-    Private Sub txtprodcod_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtprodcod.TextChanged
+    Private Sub txtprodcod_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtprodcod.TextChanged
 
     End Sub
 
-    Private Sub TxtCodRece_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCodRece.KeyUp
+    Private Sub TxtCodRece_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles TxtCodRece.KeyUp
 
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkdatosguia.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkdatosguia.CheckedChanged
         If chkdatosguia.Checked = True Then
 
             lblenvguia.Visible = True
@@ -4428,11 +4413,11 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub txtkilguia_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtkilguia.TextChanged
+    Private Sub txtkilguia_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtkilguia.TextChanged
 
     End Sub
 
-    Private Sub txtkilguia_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtkilguia.KeyPress
+    Private Sub txtkilguia_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtkilguia.KeyPress
         If e.KeyChar = ChrW(13) Then
             ' loteclie.Focus()
         Else
@@ -4460,7 +4445,7 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub txtenvguia_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtenvguia.KeyPress
+    Private Sub txtenvguia_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtenvguia.KeyPress
         '
         SoloNumeros(sender, e)
     End Sub
@@ -4508,7 +4493,7 @@ Public Class Frm_GuiaRecepcionAgregar
         'Next
 
     End Sub
-    Private Sub chkpretrack_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkpretrack.CheckedChanged
+    Private Sub chkpretrack_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkpretrack.CheckedChanged
         If chkpretrack.Checked = True Then
             txttrackprev.Text = ""
             txttrackprev.Enabled = True
@@ -4523,25 +4508,25 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub txttrackprev_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txttrackprev.KeyPress
+    Private Sub txttrackprev_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txttrackprev.KeyPress
         SoloNumeros(sender, e)
     End Sub
 
-    Private Sub CheckArriendo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckArriendo.CheckedChanged
+    Private Sub CheckArriendo_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles CheckArriendo.CheckedChanged
         If (CheckArriendo.Checked) Then
             chkCambioPallet.Checked = False
         End If
     End Sub
 
-    Private Sub cbonumtun_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbonumtun.SelectedIndexChanged
+    Private Sub cbonumtun_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbonumtun.SelectedIndexChanged
 
     End Sub
 
-    Private Sub OpcionImprimir_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpcionImprimir.Opening
+    Private Sub OpcionImprimir_Opening(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles OpcionImprimir.Opening
 
     End Sub
 
-    Private Sub btnExcel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcel.Click
+    Private Sub btnExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnExcel.Click
         Dim sql As String = "Select * from vg_cajas_recepcion_peso where RECEPCION='" + TxtCodRece.Text.Trim() + "' order by PESO DESC"
         DgvResultado.DataSource = fnc.ListarTablasSQL(sql)
         If DgvResultado.Rows.Count = 0 Then
@@ -4555,11 +4540,11 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
-    Private Sub TxtCodRece_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCodRece.TextChanged
+    Private Sub TxtCodRece_TextChanged(sender As System.Object, e As System.EventArgs) Handles TxtCodRece.TextChanged
 
     End Sub
 
-    Private Sub chkCambioPallet_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCambioPallet.CheckedChanged
+    Private Sub chkCambioPallet_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkCambioPallet.CheckedChanged
         If (chkCambioPallet.Checked) Then
             CheckArriendo.Checked = False
         End If
@@ -4573,4 +4558,5 @@ Public Class Frm_GuiaRecepcionAgregar
     Private Sub cmbo_descarga_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbo_descarga.SelectedIndexChanged
         mostrarChkPalProp()
     End Sub
+
 End Class
