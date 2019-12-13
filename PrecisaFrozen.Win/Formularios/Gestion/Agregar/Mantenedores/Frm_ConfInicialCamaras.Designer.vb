@@ -105,9 +105,9 @@ Partial Class Frm_ConfInicialCamaras
         Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label1.Location = New System.Drawing.Point(12, 67)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 13)
+        Me.Label1.Size = New System.Drawing.Size(83, 13)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Descripción"
+        Me.Label1.Text = "Nombre Camara"
         '
         'Label2
         '
@@ -115,9 +115,9 @@ Partial Class Frm_ConfInicialCamaras
         Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label2.Location = New System.Drawing.Point(12, 37)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(18, 13)
+        Me.Label2.Size = New System.Drawing.Size(79, 13)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "ID"
+        Me.Label2.Text = "Codigo Camara"
         '
         'Label3
         '

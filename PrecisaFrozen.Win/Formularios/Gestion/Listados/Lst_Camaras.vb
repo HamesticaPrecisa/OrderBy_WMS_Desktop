@@ -1,21 +1,13 @@
 ﻿Public Class Lst_Camaras
     Dim fnc As New Funciones
     Dim fila = -1
-    Dim mainSQL As String
-
     Private Sub Lst_Camaras_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         f_lstCamaras = False
     End Sub
 
-    Private Sub Lst_Camaras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ' VES Sep 2019
-        ' Se modifico el query para incuir la descripcion del tipo de camara
-        mainSQL = "SELECT a.cam_codi, a.cam_descr, a.cam_numcol, a.cam_numpiso, " +
-                  "       a.cam_numnive, a.cam_temper, a.cam_humed, a.cam_baninic, " +
-                  "       a.cam_banfin, ISNULL(b.nombre,'(desconocido)') AS cam_destipo " +
-                  "  FROM camaras a " +
-                  "  LEFT JOIN vwTiposCamara b ON b.id = a.cam_tipo "
-        BindingSource1.DataSource = fnc.ListarTablasSQL(mainSQL + " ORDER BY a.cam_codi ASC") ' VES Sep 2019
+    Private Sub Lst_Camaras_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        BindingSource1.DataSource = fnc.ListarTablasSQL("SELECT cam_codi, cam_descr, cam_numcol, cam_numpiso, " +
+                                                        "cam_numnive, cam_temper, cam_humed, cam_baninic, cam_banfin FROM camaras ORDER BY cam_codi ASC")
         BindingNavigator1.BindingSource = BindingSource1
         DataGridView1.DataSource = BindingSource1
     End Sub
@@ -26,13 +18,15 @@
 
  
     Private Sub Rb_descrip_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles Rb_descrip.CheckedChanged
-        BindingSource1.DataSource = fnc.ListarTablasSQL(mainSQL + " ORDER BY a.cam_descr ASC") ' VES Sep 2019
+        BindingSource1.DataSource = fnc.ListarTablasSQL("SELECT cam_codi, cam_descr, cam_numcol, cam_numpiso, " +
+                                                "cam_numnive, cam_temper, cam_humed, cam_baninic, cam_banfin FROM camaras ORDER BY cam_descr ASC")
         BindingNavigator1.BindingSource = BindingSource1
         DataGridView1.DataSource = BindingSource1
     End Sub
 
     Private Sub Rb_temp_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles Rb_temp.CheckedChanged
-        BindingSource1.DataSource = fnc.ListarTablasSQL(mainSQL + " ORDER BY cam_temper") ' VES Sep 2019
+        BindingSource1.DataSource = fnc.ListarTablasSQL("SELECT cam_codi, cam_descr, cam_numcol, cam_numpiso, " +
+                                                "cam_numnive, cam_temper, cam_humed, cam_baninic, cam_banfin FROM camaras ORDER BY cam_temper")
         BindingNavigator1.BindingSource = BindingSource1
         DataGridView1.DataSource = BindingSource1
     End Sub
@@ -73,9 +67,8 @@
 
             Dim frm As New Frm_AddCamaras
 
-
             Dim sql = "SELECT cam_descr, cam_numcol, cam_numpiso, cam_numnive, cam_temper, cam_humed, cam_capm3, " +
-                 "cam_baninic, cam_banfin, cam_capa, cam_tipo FROM camaras WHERE cam_codi='" + Me.DataGridView1.Rows(e.RowIndex).Cells(0).Value.ToString() + "'" ' VES SEp 2019. Se incluyo cam_tipo
+                 "cam_baninic, cam_banfin, cam_capa FROM camaras WHERE cam_codi='" + Me.DataGridView1.Rows(e.RowIndex).Cells(0).Value.ToString() + "'"
 
             Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -92,7 +85,6 @@
                 frm.txtbdaini.Text = tabla.Rows(0)(7).ToString()
                 frm.txtbdafin.Text = tabla.Rows(0)(8).ToString()
                 frm.capacidad.Text = tabla.Rows(0)(9).ToString()
-                frm.cboTipo.SelectedValue = Int32.Parse(tabla.Rows(0)(10).ToString())
                 frm.txtdescr.Enabled = True
             End If
             frm.ShowDialog()
@@ -106,9 +98,10 @@
 
 
     Private Sub txtbusca_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles txtbusca.KeyUp
-        BindingSource1.DataSource = fnc.ListarTablasSQL(mainSQL +
-                                                        " WHERE (a.cam_codi LIKE '%" + txtbusca.Text + "%' " +
-                                                        "    OR a.cam_descr LIKE '%" + txtbusca.Text + "%')")
+        BindingSource1.DataSource = fnc.ListarTablasSQL("SELECT cam_codi, cam_descr, cam_numcol, cam_numpiso, " +
+                                             "cam_numnive, cam_temper, cam_humed, cam_baninic, cam_banfin FROM " +
+                                             "camaras WHERE (cam_codi LIKE '%" + txtbusca.Text + "%' OR cam_descr " +
+                                             "LIKE '%" + txtbusca.Text + "%')")
 
 
         BindingNavigator1.BindingSource = BindingSource1

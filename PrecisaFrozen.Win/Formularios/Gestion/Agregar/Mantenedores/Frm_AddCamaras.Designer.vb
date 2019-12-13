@@ -46,8 +46,6 @@ Partial Class Frm_AddCamaras
         Me.btn_salir = New System.Windows.Forms.Button()
         Me.btn_nuevo = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.cboTipo = New System.Windows.Forms.ComboBox()
-        Me.Label12 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.capacidad = New System.Windows.Forms.TextBox()
         Me.txtdescr = New System.Windows.Forms.TextBox()
@@ -80,7 +78,7 @@ Partial Class Frm_AddCamaras
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.White
-        Me.Label7.Location = New System.Drawing.Point(186, 264)
+        Me.Label7.Location = New System.Drawing.Point(186, 237)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(85, 13)
         Me.Label7.TabIndex = 13
@@ -88,7 +86,7 @@ Partial Class Frm_AddCamaras
         '
         'txtbdafin
         '
-        Me.txtbdafin.Location = New System.Drawing.Point(298, 262)
+        Me.txtbdafin.Location = New System.Drawing.Point(298, 235)
         Me.txtbdafin.MaxLength = 2
         Me.txtbdafin.Name = "txtbdafin"
         Me.txtbdafin.Size = New System.Drawing.Size(81, 21)
@@ -99,7 +97,7 @@ Partial Class Frm_AddCamaras
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.White
-        Me.Label6.Location = New System.Drawing.Point(186, 239)
+        Me.Label6.Location = New System.Drawing.Point(186, 212)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(98, 13)
         Me.Label6.TabIndex = 11
@@ -107,7 +105,7 @@ Partial Class Frm_AddCamaras
         '
         'txtbdaini
         '
-        Me.txtbdaini.Location = New System.Drawing.Point(298, 236)
+        Me.txtbdaini.Location = New System.Drawing.Point(298, 209)
         Me.txtbdaini.MaxLength = 2
         Me.txtbdaini.Name = "txtbdaini"
         Me.txtbdaini.Size = New System.Drawing.Size(81, 21)
@@ -118,7 +116,7 @@ Partial Class Frm_AddCamaras
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.White
-        Me.Label5.Location = New System.Drawing.Point(16, 265)
+        Me.Label5.Location = New System.Drawing.Point(16, 238)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(65, 13)
         Me.Label5.TabIndex = 9
@@ -126,7 +124,7 @@ Partial Class Frm_AddCamaras
         '
         'txthum
         '
-        Me.txthum.Location = New System.Drawing.Point(100, 262)
+        Me.txthum.Location = New System.Drawing.Point(100, 235)
         Me.txthum.MaxLength = 5
         Me.txthum.Name = "txthum"
         Me.txthum.Size = New System.Drawing.Size(80, 21)
@@ -137,7 +135,7 @@ Partial Class Frm_AddCamaras
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(39, 291)
+        Me.Label3.Location = New System.Drawing.Point(39, 264)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(42, 13)
         Me.Label3.TabIndex = 5
@@ -145,7 +143,7 @@ Partial Class Frm_AddCamaras
         '
         'mts3
         '
-        Me.mts3.Location = New System.Drawing.Point(100, 288)
+        Me.mts3.Location = New System.Drawing.Point(100, 261)
         Me.mts3.MaxLength = 5
         Me.mts3.Name = "mts3"
         Me.mts3.Size = New System.Drawing.Size(80, 21)
@@ -156,7 +154,7 @@ Partial Class Frm_AddCamaras
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(7, 239)
+        Me.Label2.Location = New System.Drawing.Point(7, 212)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(74, 13)
         Me.Label2.TabIndex = 3
@@ -164,7 +162,7 @@ Partial Class Frm_AddCamaras
         '
         'txttemp
         '
-        Me.txttemp.Location = New System.Drawing.Point(100, 236)
+        Me.txttemp.Location = New System.Drawing.Point(100, 209)
         Me.txttemp.MaxLength = 4
         Me.txttemp.Name = "txttemp"
         Me.txttemp.Size = New System.Drawing.Size(80, 21)
@@ -175,7 +173,7 @@ Partial Class Frm_AddCamaras
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.White
-        Me.Label10.Location = New System.Drawing.Point(40, 190)
+        Me.Label10.Location = New System.Drawing.Point(40, 163)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(56, 13)
         Me.Label10.TabIndex = 19
@@ -183,7 +181,7 @@ Partial Class Frm_AddCamaras
         '
         'txtniv
         '
-        Me.txtniv.Location = New System.Drawing.Point(100, 190)
+        Me.txtniv.Location = New System.Drawing.Point(100, 163)
         Me.txtniv.MaxLength = 2
         Me.txtniv.Name = "txtniv"
         Me.txtniv.Size = New System.Drawing.Size(60, 21)
@@ -194,7 +192,7 @@ Partial Class Frm_AddCamaras
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.White
-        Me.Label9.Location = New System.Drawing.Point(52, 166)
+        Me.Label9.Location = New System.Drawing.Point(52, 139)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(44, 13)
         Me.Label9.TabIndex = 17
@@ -202,7 +200,7 @@ Partial Class Frm_AddCamaras
         '
         'txtpis
         '
-        Me.txtpis.Location = New System.Drawing.Point(100, 163)
+        Me.txtpis.Location = New System.Drawing.Point(100, 136)
         Me.txtpis.MaxLength = 2
         Me.txtpis.Name = "txtpis"
         Me.txtpis.Size = New System.Drawing.Size(60, 21)
@@ -213,7 +211,7 @@ Partial Class Frm_AddCamaras
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.White
-        Me.Label8.Location = New System.Drawing.Point(24, 139)
+        Me.Label8.Location = New System.Drawing.Point(24, 112)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(72, 13)
         Me.Label8.TabIndex = 15
@@ -221,7 +219,7 @@ Partial Class Frm_AddCamaras
         '
         'txtcol
         '
-        Me.txtcol.Location = New System.Drawing.Point(100, 136)
+        Me.txtcol.Location = New System.Drawing.Point(100, 109)
         Me.txtcol.MaxLength = 2
         Me.txtcol.Name = "txtcol"
         Me.txtcol.Size = New System.Drawing.Size(60, 21)
@@ -287,8 +285,6 @@ Partial Class Frm_AddCamaras
         'GroupBox3
         '
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox3.Controls.Add(Me.cboTipo)
-        Me.GroupBox3.Controls.Add(Me.Label12)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.capacidad)
         Me.GroupBox3.Controls.Add(Me.Label7)
@@ -313,35 +309,16 @@ Partial Class Frm_AddCamaras
         Me.GroupBox3.Controls.Add(Me.txtpis)
         Me.GroupBox3.Location = New System.Drawing.Point(11, 12)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(390, 350)
+        Me.GroupBox3.Size = New System.Drawing.Size(390, 297)
         Me.GroupBox3.TabIndex = 33
         Me.GroupBox3.TabStop = False
-        '
-        'cboTipo
-        '
-        Me.cboTipo.FormattingEnabled = True
-        Me.cboTipo.Location = New System.Drawing.Point(100, 109)
-        Me.cboTipo.Name = "cboTipo"
-        Me.cboTipo.Size = New System.Drawing.Size(224, 21)
-        Me.cboTipo.TabIndex = 23
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(64, 112)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(35, 13)
-        Me.Label12.TabIndex = 22
-        Me.Label12.Text = "TIPO"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(186, 291)
+        Me.Label4.Location = New System.Drawing.Point(186, 264)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(96, 13)
         Me.Label4.TabIndex = 20
@@ -349,7 +326,7 @@ Partial Class Frm_AddCamaras
         '
         'capacidad
         '
-        Me.capacidad.Location = New System.Drawing.Point(298, 288)
+        Me.capacidad.Location = New System.Drawing.Point(298, 261)
         Me.capacidad.MaxLength = 5
         Me.capacidad.Name = "capacidad"
         Me.capacidad.Size = New System.Drawing.Size(80, 21)
@@ -370,7 +347,7 @@ Partial Class Frm_AddCamaras
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(8, 49)
+        Me.Label11.Location = New System.Drawing.Point(8, 50)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(91, 13)
         Me.Label11.TabIndex = 3
@@ -381,7 +358,7 @@ Partial Class Frm_AddCamaras
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(526, 374)
+        Me.ClientSize = New System.Drawing.Size(526, 326)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -422,6 +399,4 @@ Partial Class Frm_AddCamaras
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents capacidad As System.Windows.Forms.TextBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents cboTipo As System.Windows.Forms.ComboBox
 End Class

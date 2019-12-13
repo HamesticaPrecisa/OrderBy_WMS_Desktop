@@ -10,8 +10,6 @@
     Public bdglobal As String = ""
     Public primerusuario As String = ""
 
-    ' VES SEP 2019
-    Public CONFIG As appConfig = New appConfig()
-    Public lastSqlError As String = ""
+
 
 End Module

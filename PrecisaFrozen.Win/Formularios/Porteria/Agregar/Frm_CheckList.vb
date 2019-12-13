@@ -9,7 +9,6 @@ Public Class Frm_CheckList
             If RealizarAccion("017", "046", True) = False Then
                 Exit Sub
             End If
-
             If MsgBox("Desea Modificar Checklist?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
                 GroupBox1.Enabled = True
                 btn_BuscaCliente.Enabled = True

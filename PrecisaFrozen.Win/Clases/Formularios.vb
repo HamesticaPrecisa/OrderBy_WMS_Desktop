@@ -1,5 +1,4 @@
-Module Formularios
-
+﻿Module Formularios
 
     'listado de formularios
     Public f_addclientes As Boolean = False
@@ -19,8 +18,6 @@ Module Formularios
     Public clientesbusc As String = ""
     Public F_PlanRece As Boolean = False
 
-    Public f_addmercados As Boolean = False ' VES Sep 2019
-
     'listado de datas
     Public f_lstClientes As Boolean = False
     Public f_lstSoportantes As Boolean = False
@@ -32,16 +29,11 @@ Module Formularios
     Public f_LstOrigen As Boolean = False
     Public f_detallado As Boolean = False
 
-    Public f_lstMercados As Boolean = False   ' VES Sep 2019
-
-
     ' perfiles de usuario
 
     Public pf_categorias As Boolean = False
     Public pf_SubCategorias As Boolean = False
     Public pf_usuarios As Boolean = False
-
-
 
 
     ' Facturacion
@@ -50,12 +42,10 @@ Module Formularios
     Public f_addvas As Boolean = False
     Public f_cotizaciones As Boolean = False
 
-
     ' Transportes
     Public f_registrocamion As Boolean = False
     Public f_listadocamion As Boolean = False
     Public f_IngresoSalida As Boolean = False
-
 
     'Informes
     Public f_acumulado As Boolean = False
@@ -101,13 +91,9 @@ Module Formularios
     Public f_actWms As Boolean = False
     'PROCESOS
     Public f_procdesbloq As Boolean = False
-    Public f_guiasPendTunel As Boolean = False ' VES Nov 2019
-    Public f_estadoTuneles As Boolean = False ' VES Nov 2019
-    Public f_contenidoTuneles As Boolean = False ' VES Nov 2019
     Public f_etiquetado As Boolean = False
     Public f_contenedores As Boolean = False
     Public f_pedidos As Boolean = False
-
     Public f_rcp As Boolean = False
     Public f_bloqDesbloq As Boolean = False
     Public f_manual As Boolean = False
@@ -115,24 +101,6 @@ Module Formularios
     Public f_pedidos_xls As Boolean = False
     Public f_conf_pedidos_xls As Boolean = False
     Public f_locs_pedidos As Boolean = False
-
-    Public f_LimPedExp As Boolean = False
-
-    Public f_CtrPallet As Boolean = False
-
-
-    Public f_CtrPalletArr As Boolean = False
-
-    Public f_ConfigHrsRece As Boolean = False
-    Public f_ConfigBloqHrsRece As Boolean = False
-
-    Public f_ConfigBloqCargas As Boolean = False
-
-    Public f_ReceProgList As Boolean = False
-    Public f_confTunel As Boolean = False ' VES Oct 2019
-    Public f_OrdPal As Boolean = False
-
-    Public f_OrdPal As Boolean = False
 
     Public documentoimp As String = ""
 End Module

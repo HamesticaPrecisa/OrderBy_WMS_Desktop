@@ -62,7 +62,7 @@ Partial Class Frm_Pedidos_Xls
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.dgvPrevXls)
-        Me.GroupBox1.Location = New System.Drawing.Point(15, 205)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 206)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(930, 352)
         Me.GroupBox1.TabIndex = 12
@@ -100,7 +100,7 @@ Partial Class Frm_Pedidos_Xls
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Label22)
-        Me.GroupBox3.Location = New System.Drawing.Point(15, 13)
+        Me.GroupBox3.Location = New System.Drawing.Point(14, 14)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(930, 34)
         Me.GroupBox3.TabIndex = 75
@@ -129,7 +129,7 @@ Partial Class Frm_Pedidos_Xls
         Me.GroupBox6.Controls.Add(Me.txtrut)
         Me.GroupBox6.Controls.Add(Me.Label7)
         Me.GroupBox6.Controls.Add(Me.btnFldBrwXls)
-        Me.GroupBox6.Location = New System.Drawing.Point(15, 53)
+        Me.GroupBox6.Location = New System.Drawing.Point(14, 54)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(930, 106)
         Me.GroupBox6.TabIndex = 77
@@ -207,7 +207,7 @@ Partial Class Frm_Pedidos_Xls
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 165)
+        Me.GroupBox2.Location = New System.Drawing.Point(14, 166)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(930, 34)
         Me.GroupBox2.TabIndex = 76
@@ -234,7 +234,7 @@ Partial Class Frm_Pedidos_Xls
         Me.GroupBox4.Controls.Add(Me.btnLim)
         Me.GroupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox4.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(951, 53)
+        Me.GroupBox4.Location = New System.Drawing.Point(952, 54)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(101, 242)
         Me.GroupBox4.TabIndex = 78
@@ -281,7 +281,7 @@ Partial Class Frm_Pedidos_Xls
         Me.GroupBox5.Controls.Add(Me.Label4)
         Me.GroupBox5.Controls.Add(Me.txtTotLoc)
         Me.GroupBox5.Controls.Add(Me.Label2)
-        Me.GroupBox5.Location = New System.Drawing.Point(15, 563)
+        Me.GroupBox5.Location = New System.Drawing.Point(14, 564)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(930, 50)
         Me.GroupBox5.TabIndex = 77

@@ -32,31 +32,18 @@
         Return valor
     End Function
 
-
-    ' VES Sep 2019
-    Public Sub New()
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-        preloadValues()
-    End Sub
-
-
     Private Sub Frm_AddCamaras_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         f_addcamaras = False
         btn_nuevo_Click(sender, e)
     End Sub
 
-    Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
+    Private Sub btn_guardar_Click(sender As System.Object, e As System.EventArgs) Handles btn_guardar.Click
         If valida() = 0 Then
 
-            ' VES Sep 2019: Se incluyo la columna CAM_TIPO
             If fnc.verificaExistencia("camaras", "cam_codi", txtcodigo.Text) = False Then
-                Dim sql = "INSERT INTO camaras(cam_codi, cam_descr, cam_numcol, cam_numpiso, cam_numnive, cam_temper, cam_humed, cam_capm3, cam_baninic, cam_banfin, cam_capa, cam_tipo)" +
+                Dim sql = "INSERT INTO camaras(cam_codi, cam_descr, cam_numcol, cam_numpiso, cam_numnive, cam_temper, cam_humed, cam_capm3, cam_baninic, cam_banfin, cam_capa)" +
                     "VALUES('" + txtcodigo.Text + "','" + txtdescr.Text + "','" + txtcol.Text + "','" + txtpis.Text + "','" + txtniv.Text + "','" + txttemp.Text + "'," +
-                    "'" + txthum.Text + "','" + mts3.Text + "','" + txtbdaini.Text + "','" + txtbdafin.Text + "','" + capacidad.Text + "'," + cboTipo.SelectedValue.ToString() + ")"
+                    "'" + txthum.Text + "','" + mts3.Text + "','" + txtbdaini.Text + "','" + txtbdafin.Text + "','" + capacidad.Text + "')"
 
                 If fnc.MovimientoSQL(sql) > 0 Then
                     MsgBox("Camara almacenada correctamente", MsgBoxStyle.Information, "Aviso")
@@ -71,9 +58,8 @@
                 End If
                 Dim sql = "UPDATE camaras SET cam_descr='" + txtdescr.Text + "', cam_numcol='" + txtcol.Text + "', " +
                     "cam_numpiso='" + txtpis.Text + "', cam_numnive='" + txtniv.Text + "', cam_temper='" + txttemp.Text + "', cam_humed='" + txthum.Text + "', " +
-                    "cam_capm3='" + mts3.Text + "', cam_baninic='" + txtbdaini.Text + "', cam_banfin='" + txtbdafin.Text + "', cam_capa='" + capacidad.Text + "', " +
-                    "cam_tipo=" + cboTipo.SelectedValue.ToString() +
-                    " WHERE cam_codi='" + txtcodigo.Text + "'"
+                    "cam_capm3='" + mts3.Text + "', cam_baninic='" + txtbdaini.Text + "', cam_banfin='" + txtbdafin.Text + "', cam_capa='" + capacidad.Text + "' " +
+                    "WHERE cam_codi='" + txtcodigo.Text + "'"
 
                 If fnc.MovimientoSQL(sql) > 0 Then
                     MsgBox("Camara actualizada correctamente", MsgBoxStyle.Information, "Aviso")
@@ -89,21 +75,20 @@
         End If
     End Sub
 
-    Private Sub btn_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_nuevo.Click
+    Private Sub btn_nuevo_Click(sender As System.Object, e As System.EventArgs) Handles btn_nuevo.Click
 
         LimpiarCajas(GroupBox3)
         txtcodigo.Enabled = True
 
         txtdescr.Enabled = False
-        cboTipo.Text = "SELECCIONAR" ' VES Sep 2019
         txtcodigo.Focus()
     End Sub
 
-    Private Sub btn_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_salir.Click
+    Private Sub btn_salir_Click(sender As System.Object, e As System.EventArgs) Handles btn_salir.Click
         Close()
     End Sub
 
-    Private Sub btn_eliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_eliminar.Click
+    Private Sub btn_eliminar_Click(sender As System.Object, e As System.EventArgs) Handles btn_eliminar.Click
 
         If RealizarAccion("006", "016") = False Then
             Exit Sub
@@ -120,7 +105,7 @@
         End If
     End Sub
 
-    Private Sub txtcodigo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtcodigo.KeyPress
+    Private Sub txtcodigo_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtcodigo.KeyPress
         SoloNumeros(sender, e)
         If e.KeyChar = ChrW(13) Then
             If txtcodigo.Text = "" Then
@@ -150,7 +135,7 @@
                 capacidad.Text = tabla.Rows(0)(9).ToString()
                 txtdescr.Enabled = True
             Else
-
+                
                 If RealizarAccion("006", "014") = False Then
                     Exit Sub
                 End If
@@ -164,38 +149,16 @@
         End If
     End Sub
 
-    Private Sub Frm_AddCamaras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Frm_AddCamaras_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         txtcodigo.Focus()
     End Sub
-
-    Private Sub txtcol_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtpis.KeyPress, txtniv.KeyPress, txtcol.KeyPress, txtbdaini.KeyPress, txtbdafin.KeyPress
+ 
+    Private Sub txtcol_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtpis.KeyPress, txtniv.KeyPress, txtcol.KeyPress, txtbdaini.KeyPress, txtbdafin.KeyPress
         SoloNumeros(sender, e)
     End Sub
 
 
     Private Sub s(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles capacidad.KeyPress
         SoloNumeros(sender, e)
-    End Sub
-
-    Private Sub Label12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label12.Click
-
-    End Sub
-
-    ' VES Sep 2019
-    ' Cargamos algunos valores necesarios
-    '
-    Private Sub preloadValues()
-        cboTipo.DataSource = fnc.ListarTablasSQL8("SELECT id,nombre FROM vwTiposCamara ORDER BY id")
-        If validacone = "NC" Then
-            MsgBox("No existe una conexion habilitada ", MsgBoxStyle.Critical, "Aviso")
-        Else
-            cboTipo.ValueMember = "id"
-            cboTipo.DisplayMember = "nombre"
-            cboTipo.Text = "SELECCIONAR"
-        End If
-    End Sub
-
-    Private Sub cboTipo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboTipo.KeyPress
-        e.Handled = True
     End Sub
 End Class

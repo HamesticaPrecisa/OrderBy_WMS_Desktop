@@ -360,12 +360,6 @@ Public Class Frm_AddProductos
 
                 If fnc.MovimientoSQL(sql) > 0 Then
                     Insert(txtcodfamilia.Text + CerosAnteriorString(txtcorrelativo.Text, 4), ImageToByteArray(PictureBox1.Image))
-
-                    'Inicio Actualizar Fechas Productos Almacenados. 04/10/19 HAmestica.
-                    Dim sqlActProd As String = "SP_Maeprod_Actualizar_Vencimientos_Productos '" & (txtcodfamilia.Text + CerosAnteriorString(txtcorrelativo.Text, 4)) & "'"
-                    fnc.MovimientoSQL(sqlActProd)
-                    'Fin Actualizar Fechas Productos Almacenados. 04/10/19 HAmestica.
-
                     MsgBox("Producto modificado correctamente", MsgBoxStyle.Information, "Aviso")
                     GrabaLOG(1)
                 Else
@@ -379,8 +373,9 @@ Public Class Frm_AddProductos
                         MsgBox("ingrese peso caja/vacia", MsgBoxStyle.Critical, "Aviso")
                         Exit Sub
                     End If
-                End If
 
+
+                End If
                 Dim sql = "INSERT INTO maeprod(mae_codi, mae_descr, mae_tipenv, mae_clirut, mae_feccre, mae_estado, mae_codcli, mae_diasv,mae_pcaja,alt_pro,anch_pro,prof_pro,peso_pro,talla_pro,color_pro,pro_var,sum_dias) " +
                           "VALUES('" + (txtcodfamilia.Text + CerosAnteriorString(txtcorrelativo.Text, 4)) + "', " +
                           "'" + txtproddescr.Text + "','" + txtcodenvase.Text + "','" + QuitarCaracteres(clirut.Text) + "', " +
@@ -388,12 +383,6 @@ Public Class Frm_AddProductos
 
                 If fnc.MovimientoSQL(sql) > 0 Then
                     Insert(txtcodfamilia.Text + CerosAnteriorString(txtcorrelativo.Text, 4), ImageToByteArray(PictureBox1.Image))
-
-                    'Inicio Actualizar Fechas Productos Almacenados. 04/10/19 HAmestica.
-                    Dim sqlActProd As String = "SP_Maeprod_Actualizar_Vencimientos_Productos '" & (txtcodfamilia.Text + CerosAnteriorString(txtcorrelativo.Text, 4)) & "'"
-                    fnc.MovimientoSQL(sqlActProd)
-                    'Fin Actualizar Fechas Productos Almacenados. 04/10/19 HAmestica.
-
                     MsgBox("Producto agregado correctamente", MsgBoxStyle.Information, "Aviso")
 
                     GrabaLOG(2)
@@ -599,8 +588,7 @@ Public Class Frm_AddProductos
 
         cmd.Parameters.AddWithValue("@codigo", codigo)
         cmd.Parameters.Add("@foto", System.Data.SqlDbType.Image).Value = foto
-        'con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
-        con.ConnectionString = CONFIG.dbLANConnStr   ' VES Sep 2019
+        con.ConnectionString = ("Data Source=" + ip.Trim() + "\PRECISABD; initial catalog=PRECISA;  USER=sa; PWD=precisa; Connection Timeout=0;")
         con.Open()
         Try
             cmd.ExecuteNonQuery()
