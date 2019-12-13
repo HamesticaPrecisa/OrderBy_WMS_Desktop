@@ -123,8 +123,13 @@ Module ModPublico
         Return Val(str)
     End Function
 
-    Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+    ' VES No 2019
+    ' Modificada para incluir soporte opcional para numeros con decimales
+    '
+    Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs, ByVal allowDec As Boolean)
         If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        ElseIf allowDec = True And e.KeyChar = "." Then
             e.Handled = False
         ElseIf Char.IsControl(e.KeyChar) Then
             e.Handled = False
@@ -132,6 +137,65 @@ Module ModPublico
             e.Handled = True
         End If
     End Sub
+    Public Sub SoloNumeros(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        SoloNumeros(sender, e, False)
+    End Sub
+
+    ' VES Sep 2019
+    ' Validador de campos de entrada de temperatura
+    '
+    Public Sub soloTemperatura(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        Dim x As TextBox = sender
+        If Not IsNumeric(e) Then
+            If e.KeyChar = "." Or e.KeyChar = ChrW(8) Or e.KeyChar = "-" Then
+
+                For i As Integer = 0 To x.Text.Length - 1
+                    If x.Text.Chars(i) = e.KeyChar Then
+                        If Not (x.SelectionStart = 0 AndAlso x.SelectionLength = x.Text.Length) Then
+                            SoloNumeros(sender, e)
+                        End If
+                    ElseIf x.Text.Chars(i) = e.KeyChar Then
+                        SoloNumeros(sender, e)
+                    ElseIf x.Text.Chars(i) = e.KeyChar Then
+                        SoloNumeros(sender, e)
+                    End If
+                Next
+            Else
+                SoloNumeros(sender, e)
+            End If
+        End If
+    End Sub
+
+
+    ' VES OCt 2019
+    ' Determina si un valor  esta vacio
+    '
+    Public Function IsEmpty(ByVal value As String) As Boolean
+        Return If(value.Trim().Length = 0, True, False)
+    End Function
+    Public Function IsEmpty(ByVal control As TextBox) As Boolean
+        Return IsEmpty(control.Text)
+    End Function
+    Public Function IsEmpty(ByVal value As Integer) As Boolean
+        Return If(value = 0, True, False)
+    End Function
+    Public Function IsEmpty(ByVal value As Decimal) As Boolean
+        Return If(value = 0.0, True, False)
+    End Function
+
+
+    ' VES Oct 2019
+    ' Dialogo de confirmacion
+    '
+    Public Function Confirmar(ByVal mensaje As String, ByVal titulo As String) As Boolean
+        Dim result As Boolean = False
+        If MessageBox.Show(mensaje, titulo, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = DialogResult.Yes Then result = True
+        Return result
+    End Function
+    Public Function Confirmar(ByVal mensaje) As Boolean
+        Return Confirmar(mensaje, "Atención")
+    End Function
+
 
     Public Sub SoloKilos(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Dim KeyAscii As Short = Asc(e.KeyChar)

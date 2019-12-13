@@ -1,4 +1,4 @@
-﻿Imports System.Data
+Imports System.Data
 Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
@@ -38,6 +38,53 @@ Public Class Frm_GuiaRecepcionAgregar
     Dim fvenciF3 = ""
     Dim numero_palletF3 = ""
     Dim tipo_alamacenF3 = ""
+
+#Region "VES Sep 2019"
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        loadMercados()
+        setMercado(1)
+    End Sub
+
+    ' VES Sep 2019
+    ' Cargamos la lista de mercados. Si no se indica el valor de id o se pone cero, se cargan solo
+    ' los mercados activos. Si se indica el valor de id, se cargan los mercados activos MAS el mercado 
+    ' asociado al id indicado, aunque el mismo haya sido eliminado.
+    '
+    Public Sub loadMercados(ByVal id As Integer)
+        Dim merDs = fnc.ListarTablasSQL("SELECT mer_id,mer_nombre FROM mercados WHERE mer_status='ACTIVO' or mer_id = @id ORDER BY mer_nombre",
+                                                    New SqlParameter() {New SqlParameter("@id", SqlDbType.Int) With {.Value = id}})
+        If validacone = "NC" Then
+            MsgBox("No existe una conexion habilitada ", MsgBoxStyle.Critical, "Aviso")
+        Else
+            merDs.PrimaryKey = New DataColumn() {merDs.Columns("mer_id")}
+            cboMercado.DataSource = merDs
+            cboMercado.ValueMember = "mer_id"
+            cboMercado.DisplayMember = "mer_nombre"
+            cboMercado.Text = "SELECCIONAR"
+        End If
+    End Sub
+    Public Sub loadMercados()
+        loadMercados(0)
+    End Sub
+
+    Public Sub setMercado(ByVal merId As Integer)
+        Dim merDS As DataTable = cboMercado.DataSource
+        If merId > 0 Then
+            cboMercado.SelectedValue = merId
+            cboMercado.Text = merDS.Rows.Find(merId)("mer_nombre").ToString()
+        Else
+            cboMercado.SelectedIndex = -1
+            cboMercado.Text = "SELECCIONAR"
+        End If
+    End Sub
+
+#End Region
 
 
 #Region "Eventos Formulario"
@@ -93,7 +140,7 @@ Public Class Frm_GuiaRecepcionAgregar
 
 
 
-      
+
     End Sub
 
     Private Sub cargaimg2()
@@ -176,7 +223,7 @@ Public Class Frm_GuiaRecepcionAgregar
             Dim fecha As DateTime = fnc.DevuelveFechaServidor()
 
             Dim validador As Integer = 0
-         
+
             If devuelve_fecha(fecharece.Value) <> devuelve_fecha(fnc.DevuelveFechaServidor) Then
                 'Full
                 If RealizarAccion("001", "003", False) = True Then
@@ -201,7 +248,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 Exit Sub
             End If
 
-             
+
             Dim sqltmp As String = "select * from tmpdetapred where dpre_folio LIKE '%" + TxtCodRece.Text.Trim() + "%'"
 
             Dim tabla2 As DataTable = fnc.ListarTablasSQL(sqltmp)
@@ -427,9 +474,9 @@ Public Class Frm_GuiaRecepcionAgregar
 
 
 
-         
 
-              
+
+
 
             End If
         ElseIf (e.KeyCode = Keys.F5 And TxtCodRece.Text.Trim <> "") Then
@@ -715,7 +762,7 @@ Public Class Frm_GuiaRecepcionAgregar
 
         Dim mensaje As String = "Debe ingresar lo siguiente antes de agregar el pallet " & vbCrLf
 
-    
+
 
 
         If txtprodcod.Text = "" Then
@@ -875,13 +922,13 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
 
         'If (TxtContenedor.Text = "" Or ValidadorContenedor(TxtContenedor.Text.Trim) = False) AndAlso Cmbotiporece.Enabled = False Then
-        If (Cmbotiporece.Enabled And Cmbotiporece.SelectedValue = "2") Then
+        If (Cmbotiporece.Enabled And Cmbotiporece.SelectedValue.ToString() = "2") Then
             If (TxtContenedor.Text = "" Or ValidadorContenedor(TxtContenedor.Text.Trim) = False) Then
                 mensaje = mensaje & vbCrLf & "- Debe ingresar un numero de contenedor valido"
                 valor += 1
             End If
         End If
-        
+
         'If CMBESTPA.SelectedIndex <> 0 Then
         '    mensaje = mensaje & vbCrLf & "- Debe ingresar estado de calidad"
         '    valor += 1
@@ -1019,7 +1066,7 @@ Public Class Frm_GuiaRecepcionAgregar
             End If
 
 
-       
+
 
         End If
 
@@ -2037,6 +2084,9 @@ Public Class Frm_GuiaRecepcionAgregar
                     TimeAdicionales.Start()
                 End If
 
+                setMercado(1)  ' VES Sep 2019
+
+
                 btn_BuscaCliente.Enabled = True
                 Btn_BuscaContrato.Enabled = True
                 Btn_BuscaChofer.Enabled = True
@@ -2553,7 +2603,8 @@ Public Class Frm_GuiaRecepcionAgregar
                 "cho_empresa, frec_observ, frec_tipdesc, frec_origen, frec_receptunel, frec_numsello, frec_tiporecepcion, " +
                 "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
                 "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
-                "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv " +
+                "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
+                "ISNULL(mer_id,1) AS mer_id " +
                 "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
                 "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
                 "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "'"
@@ -2564,7 +2615,8 @@ Public Class Frm_GuiaRecepcionAgregar
     "cho_empresa, frec_observ, frec_tipdesc, frec_origen, frec_receptunel, frec_numsello, frec_tiporecepcion, " +
     "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
     "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
-    "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv " +
+    "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
+    "ISNULL(mer_id,1) AS mer_id " +
     "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
     "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
     "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "' and fichrece.cod_bod ='" + sucursalglo + "'"
@@ -2677,6 +2729,11 @@ Public Class Frm_GuiaRecepcionAgregar
             Else
                 produa.Text = servicio
             End If
+
+            setMercado(CInt(tabla.Rows(0)("mer_id")))
+
+
+
 
             TxtCodRece.Enabled = False
             BuscaDetalleRecepcionCompleta()
@@ -2840,6 +2897,7 @@ Public Class Frm_GuiaRecepcionAgregar
                     camttemp = tabla2.Rows(0)(0).ToString()
                 End If
 
+
                 Dim Gracia As Integer = Val(TxtTemp.Text) + Val(TxtTempGracia.Text)
                 Dim sqltemp As String = "SELECT frec_codi+drec_codi AS sopo, isnull(drec_temp,'0.00') FROM TMPDETARECE WHERE frec_codi='" + TxtCodRece.Text + "' " +
                     "AND drec_temp>'" + Gracia.ToString() + "' AND drec_temp<>0 ORDER BY drec_codi "
@@ -2909,6 +2967,13 @@ Public Class Frm_GuiaRecepcionAgregar
                     Exit Sub
                 End If
 
+                ' VES Sep 2019
+                If cboMercado.Text = "SELECCIONAR" Then
+                    MsgBox("Debe indicar el mercado asociado a la guia", MsgBoxStyle.Critical, "Aviso")
+                    cboMercado.Focus()
+                    Exit Sub
+                End If
+
                 'Guarda Encabezado
                 TimeAdicionales.Stop()
 
@@ -2955,17 +3020,21 @@ Public Class Frm_GuiaRecepcionAgregar
                     SERV = produa.Text
                 End If
 
+                ' VES SEP 2019: Se incluyo la columna MER_ID
                 Dim sqlGuarda As String = "INSERT INTO fichrece(frec_codi, frec_rutcli, frec_contcli, frec_horalleg, frec_horarec, frec_horater, frec_turnrec, frec_fecrec, frec_guiades, frec_totsopo, " +
                                     "frec_totunidad, frec_totpeso, frec_temppro, frec_rutcond, frec_observ, frec_tipdesc, frec_codienca, frec_origen, frec_codvig, frec_receptunel, " +
-                                    "frec_numsello, frec_tiporecepcion, frec_tipoalmacenamiento, frec_olores, frec_higiene, frec_estiba, frec_dañado, frec_antecamara, frec_clfol, frec_contenedor,frec_ntunel,cod_bod,val_guia,uni_guia,kilos_guia,frec_tippro,frec_serv )VALUES" +
-                                    "('" + TxtCodRece.Text + "','" + QuitarCaracteres(TxtClirut.Text, "-") + "','" + txtcodcontrato.Text + "','" + horalleg.Text + "','" + horainic.Text + "'," +
+                                    "frec_numsello, frec_tiporecepcion, frec_tipoalmacenamiento, frec_olores, frec_higiene, frec_estiba, frec_dañado, frec_antecamara, frec_clfol, frec_contenedor," +
+                                    "frec_ntunel,cod_bod,val_guia,uni_guia,kilos_guia,frec_tippro,frec_serv,mer_id ) VALUES (" +
+                                    "'" + TxtCodRece.Text + "','" + QuitarCaracteres(TxtClirut.Text, "-") + "','" + txtcodcontrato.Text + "','" + horalleg.Text + "','" + horainic.Text + "'," +
                                     "'" + horaterm.Text + "','" + turno + "','" + devuelve_fecha(fecharece.Value) + "','" + txtguia.Text + "'," +
                                     "'" + txtsoportantes.Text + "','" + txtcajas.Text + "','" + txtkilos.Text.Replace(",", ".") + "','" + TxtPromTemp.Replace(",", ".") + "'," +
                                     "'" + QuitarCaracteres(txtrutchofer.Text, "-") + "','" + Txtobs.Text + "','" + cmbo_descarga.SelectedValue.ToString() + "','" + Frm_Principal.InfoUsuario.Text + "'," +
                                     "'" + txtorigen.Text + "','0','" + CmboTuneles.SelectedValue.ToString() + "'," +
                                     "'" + txtsello.Text + "','" + Cmbotiporece.SelectedValue.ToString() + "','" + Cmbo_Almacenamiento.Text.ToString() + "','" + EstadoCheckBox(Cb_OloresExtraños.CheckState) + "'," +
                                     "'" + (Convert.ToInt16(Rb_higieneB.Checked)).ToString() + "','" + (Convert.ToInt16(Rb_EstibaB.Checked)).ToString() + "','" + EstadoCheckBox(cbdañado.CheckState).ToString() + "', " +
-                                    "'" + cmbAnden.SelectedValue.ToString() + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + cbonumtun.Text + "','" + sucursalglo + "','" + datosguia.Trim() + "','" + txtenvguia.Text.Trim() + "','" + txtkilguia.Text.Trim() + "','" + cboProductotip.Text.Trim() + "','" + SERV + "')"
+                                    "'" + cmbAnden.SelectedValue.ToString() + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + cbonumtun.Text + "','" + sucursalglo + "','" + datosguia.Trim() + "','" +
+                                    txtenvguia.Text.Trim() + "','" + txtkilguia.Text.Trim() + "','" + cboProductotip.Text.Trim() + "','" + SERV + "'," +
+                                    cboMercado.SelectedValue.ToString() + ")"
 
 
                 If fnc.MovimientoSQL(sqlGuarda) > 0 Then
@@ -3195,7 +3264,7 @@ Public Class Frm_GuiaRecepcionAgregar
                     End If
 
                 Else
-                    MsgBox("Ocurrio un error al ingresar la recepcion", MsgBoxStyle.Critical, "Aviso")
+                    MsgBox("Ocurrio un error al ingresar la recepcion: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
                 End If
                 BuscaRecepcionCompleta()
             Else
@@ -3240,6 +3309,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 'Dim sqlLogDetFichrece = "insert into LOG_FICHRECE_DETALLE select  GETDATE(),'" & Frm_Principal.InfoUsuario.Text & "',* from fichrece where frec_codi='" + TxtCodRece.Text + "'"
                 'fnc.MovimientoSQL(sqlLogDetFichrece)
 
+                ' VES SEP 2019:  Se incluye la columna MER_ID
                 Dim SQL_ModificaRecepcion = "UPDATE fichrece SET frec_rutcli='" + QuitarCaracteres(TxtClirut.Text, "-") + "', frec_contcli='" + txtcodcontrato.Text + "', " +
                     "frec_fecrec='" + devuelve_fecha(fecharece.Value) + "', frec_guiades='" + txtguia.Text + "', frec_totsopo='" + txtsoportantes.Text + "', " +
                     "frec_totunidad='" + txtcajas.Text + "', frec_totpeso='" + txtkilos.Text.Replace(",", ".") + "', frec_temppro='" + TxtPromTemp.Replace(",", ".") + "', " +
@@ -3247,7 +3317,11 @@ Public Class Frm_GuiaRecepcionAgregar
                     "frec_origen='" + txtorigen.Text + "', frec_receptunel='" + CmboTuneles.SelectedValue.ToString() + "', " +
                     "frec_numsello='" + txtsello.Text + "', frec_tiporecepcion='" + Cmbotiporece.SelectedValue.ToString() + "', frec_tipoalmacenamiento='" + Cmbo_Almacenamiento.Text.ToString() + "', " +
                     "frec_olores='" + EstadoCheckBox(Cb_OloresExtraños.CheckState) + "', frec_higiene='" + (Convert.ToInt16(Rb_higieneB.Checked)).ToString() + "', frec_estiba='" + (Convert.ToInt16(Rb_EstibaB.Checked)).ToString() + "', " +
-                    "frec_dañado='" + EstadoCheckBox(cbdañado.CheckState) + "', frec_antecamara='" + cmbAnden.SelectedValue.ToString() + "', frec_contenedor='" + TxtContenedor.Text + "',frec_ntunel='" + cbonumtun.Text + "',frec_enviada='0',frec_modificado='" + modificar + "',frec_tippro='" + cboProductotip.Text.Trim() + "',val_guia='" + datosguia.Trim() + "',uni_guia='" + txtenvguia.Text.Trim() + "',kilos_guia='" + txtkilguia.Text + "',frec_serv='" & ServActualizado & "' WHERE frec_codi='" + TxtCodRece.Text + "'"
+                    "frec_dañado='" + EstadoCheckBox(cbdañado.CheckState) + "', frec_antecamara='" + cmbAnden.SelectedValue.ToString() + "', frec_contenedor='" + TxtContenedor.Text +
+                    "',frec_ntunel='" + cbonumtun.Text + "',frec_enviada='0',frec_modificado='" + modificar + "',frec_tippro='" + cboProductotip.Text.Trim() +
+                    "',val_guia='" + datosguia.Trim() + "',uni_guia='" + txtenvguia.Text.Trim() + "',kilos_guia='" + txtkilguia.Text +
+                    "',frec_serv='" + ServActualizado + "', mer_id=" + cboMercado.SelectedValue.ToString() +
+                    " WHERE frec_codi='" + TxtCodRece.Text + "'"
                 lbladv.Visible = False
                 pbadvertencia.Visible = False
                 'BLOQUEA IMPORTACION
@@ -3319,7 +3393,7 @@ Public Class Frm_GuiaRecepcionAgregar
 
                     guardaVasAutomatico()
                 Else
-                    MsgBox("Error al modificar guia", MsgBoxStyle.Critical, "Aviso")
+                    MsgBox("Error al modificar guia: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
                 End If
             End If
         End If
@@ -4079,7 +4153,9 @@ Public Class Frm_GuiaRecepcionAgregar
         TxtNpallets = "0"
         TxtPromTemp = "0"
 
+        setMercado(1)
         cmbo_descarga.Enabled = True
+
     End Sub
 
     Sub guardaVasAutomatico()
@@ -4281,7 +4357,7 @@ Public Class Frm_GuiaRecepcionAgregar
         frm.txtGuiaRecepcion.Text = TxtCodRece.Text
     End Sub
 
-    Private Sub CmboTuneles_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles CmboTuneles.SelectedIndexChanged
+    Private Sub CmboTuneles_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmboTuneles.SelectedIndexChanged
         If CmboTuneles.SelectedIndex = 1 Then
 
             cbonumtun.Enabled = True
@@ -4290,6 +4366,10 @@ Public Class Frm_GuiaRecepcionAgregar
             cbonumtun.Enabled = False
             cbonumtun.SelectedIndex = 0
             cbonumtun.Text = ""
+        End If
+        If CmboTuneles.SelectedValue.ToString() = "2" Then
+            cboMercado.SelectedIndex = -1
+            cboMercado.Text = "SELECCIONAR"
         End If
         'If CmboTuneles.SelectedIndex = 0 Then
 
@@ -4470,7 +4550,13 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub cmbo_descarga_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles cmbo_descarga.SelectedIndexChanged
+    ' VES SEP 2019
+    Private Sub cboMercado_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboMercado.KeyPress
+        e.Handled = True
+    End Sub
+
+    Private Sub cmbo_descarga_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmbo_descarga.SelectedIndexChanged
         mostrarChkPalProp()
     End Sub
+
 End Class

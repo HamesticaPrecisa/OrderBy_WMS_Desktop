@@ -25,15 +25,6 @@ Partial Class Lst_Camaras
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Columnas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Pisos = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Niveles = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Temp = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Humedad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Bda_inicial = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Bda_final = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -62,6 +53,16 @@ Partial Class Lst_Camaras
         Me.Rb_temp = New System.Windows.Forms.RadioButton()
         Me.Rb_descrip = New System.Windows.Forms.RadioButton()
         Me.Rb_codigo = New System.Windows.Forms.RadioButton()
+        Me.Codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Columnas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Pisos = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Niveles = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Temp = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Humedad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Bda_inicial = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Bda_final = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -88,7 +89,7 @@ Partial Class Lst_Camaras
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.DataGridView1.ColumnHeadersHeight = 25
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Descripcion, Me.Columnas, Me.Pisos, Me.Niveles, Me.Temp, Me.Humedad, Me.Bda_inicial, Me.Bda_final})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Codigo, Me.Descripcion, Me.tipo, Me.Columnas, Me.Pisos, Me.Niveles, Me.Temp, Me.Humedad, Me.Bda_inicial, Me.Bda_final})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(20, 83)
         Me.DataGridView1.MultiSelect = False
@@ -97,79 +98,6 @@ Partial Class Lst_Camaras
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1067, 448)
         Me.DataGridView1.TabIndex = 1
-        '
-        'Codigo
-        '
-        Me.Codigo.DataPropertyName = "cam_codi"
-        Me.Codigo.HeaderText = "Codigo"
-        Me.Codigo.Name = "Codigo"
-        Me.Codigo.ReadOnly = True
-        Me.Codigo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Descripcion
-        '
-        Me.Descripcion.DataPropertyName = "cam_descr"
-        Me.Descripcion.HeaderText = "Descripcion"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        Me.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Descripcion.Width = 200
-        '
-        'Columnas
-        '
-        Me.Columnas.DataPropertyName = "cam_numcol"
-        Me.Columnas.HeaderText = "Columnas"
-        Me.Columnas.Name = "Columnas"
-        Me.Columnas.ReadOnly = True
-        Me.Columnas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Pisos
-        '
-        Me.Pisos.DataPropertyName = "cam_numpiso"
-        Me.Pisos.HeaderText = "Pisos"
-        Me.Pisos.Name = "Pisos"
-        Me.Pisos.ReadOnly = True
-        Me.Pisos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Niveles
-        '
-        Me.Niveles.DataPropertyName = "cam_numnive"
-        Me.Niveles.HeaderText = "Niveles"
-        Me.Niveles.Name = "Niveles"
-        Me.Niveles.ReadOnly = True
-        Me.Niveles.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Temp
-        '
-        Me.Temp.DataPropertyName = "cam_temper"
-        Me.Temp.HeaderText = "º Temp."
-        Me.Temp.Name = "Temp"
-        Me.Temp.ReadOnly = True
-        Me.Temp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Humedad
-        '
-        Me.Humedad.DataPropertyName = "cam_humed"
-        Me.Humedad.HeaderText = "Humedad"
-        Me.Humedad.Name = "Humedad"
-        Me.Humedad.ReadOnly = True
-        Me.Humedad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Bda_inicial
-        '
-        Me.Bda_inicial.DataPropertyName = "cam_baninic"
-        Me.Bda_inicial.HeaderText = "Bda. Inicial"
-        Me.Bda_inicial.Name = "Bda_inicial"
-        Me.Bda_inicial.ReadOnly = True
-        Me.Bda_inicial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Bda_final
-        '
-        Me.Bda_final.DataPropertyName = "cam_banfin"
-        Me.Bda_final.HeaderText = "Bda. Final"
-        Me.Bda_final.Name = "Bda_final"
-        Me.Bda_final.ReadOnly = True
-        Me.Bda_final.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'BindingNavigator1
         '
@@ -355,7 +283,7 @@ Partial Class Lst_Camaras
         Me.Rb_temp.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Rb_temp.Location = New System.Drawing.Point(250, 19)
         Me.Rb_temp.Name = "Rb_temp"
-        Me.Rb_temp.Size = New System.Drawing.Size(106, 18)
+        Me.Rb_temp.Size = New System.Drawing.Size(105, 18)
         Me.Rb_temp.TabIndex = 2
         Me.Rb_temp.Text = "Temperatura"
         Me.Rb_temp.UseVisualStyleBackColor = True
@@ -383,6 +311,88 @@ Partial Class Lst_Camaras
         Me.Rb_codigo.TabStop = True
         Me.Rb_codigo.Text = "Codigo"
         Me.Rb_codigo.UseVisualStyleBackColor = True
+        '
+        'Codigo
+        '
+        Me.Codigo.DataPropertyName = "cam_codi"
+        Me.Codigo.HeaderText = "Codigo"
+        Me.Codigo.Name = "Codigo"
+        Me.Codigo.ReadOnly = True
+        Me.Codigo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Descripcion
+        '
+        Me.Descripcion.DataPropertyName = "cam_descr"
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Descripcion.Width = 200
+        '
+        'tipo
+        '
+        Me.tipo.DataPropertyName = "cam_destipo"
+        Me.tipo.HeaderText = "Tipo"
+        Me.tipo.Name = "tipo"
+        Me.tipo.ReadOnly = True
+        Me.tipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.tipo.Width = 80
+        '
+        'Columnas
+        '
+        Me.Columnas.DataPropertyName = "cam_numcol"
+        Me.Columnas.HeaderText = "Columnas"
+        Me.Columnas.Name = "Columnas"
+        Me.Columnas.ReadOnly = True
+        Me.Columnas.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Pisos
+        '
+        Me.Pisos.DataPropertyName = "cam_numpiso"
+        Me.Pisos.HeaderText = "Pisos"
+        Me.Pisos.Name = "Pisos"
+        Me.Pisos.ReadOnly = True
+        Me.Pisos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Niveles
+        '
+        Me.Niveles.DataPropertyName = "cam_numnive"
+        Me.Niveles.HeaderText = "Niveles"
+        Me.Niveles.Name = "Niveles"
+        Me.Niveles.ReadOnly = True
+        Me.Niveles.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Temp
+        '
+        Me.Temp.DataPropertyName = "cam_temper"
+        Me.Temp.HeaderText = "º Temp."
+        Me.Temp.Name = "Temp"
+        Me.Temp.ReadOnly = True
+        Me.Temp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Humedad
+        '
+        Me.Humedad.DataPropertyName = "cam_humed"
+        Me.Humedad.HeaderText = "Humedad"
+        Me.Humedad.Name = "Humedad"
+        Me.Humedad.ReadOnly = True
+        Me.Humedad.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Bda_inicial
+        '
+        Me.Bda_inicial.DataPropertyName = "cam_baninic"
+        Me.Bda_inicial.HeaderText = "Bda. Inicial"
+        Me.Bda_inicial.Name = "Bda_inicial"
+        Me.Bda_inicial.ReadOnly = True
+        Me.Bda_inicial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Bda_final
+        '
+        Me.Bda_final.DataPropertyName = "cam_banfin"
+        Me.Bda_final.HeaderText = "Bda. Final"
+        Me.Bda_final.Name = "Bda_final"
+        Me.Bda_final.ReadOnly = True
+        Me.Bda_final.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'Lst_Camaras
         '
@@ -431,8 +441,15 @@ Partial Class Lst_Camaras
     Friend WithEvents Rb_descrip As System.Windows.Forms.RadioButton
     Friend WithEvents Rb_codigo As System.Windows.Forms.RadioButton
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents ToolStripLabel5 As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripLabel3 As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents txtbusca As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
     Friend WithEvents Codigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents tipo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Columnas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Pisos As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Niveles As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -440,10 +457,4 @@ Partial Class Lst_Camaras
     Friend WithEvents Humedad As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Bda_inicial As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Bda_final As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ToolStripLabel5 As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripSeparator8 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ToolStripLabel3 As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents txtbusca As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
 End Class

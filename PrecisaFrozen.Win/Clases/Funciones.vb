@@ -43,6 +43,41 @@ Public Class Funciones
     End Function
 
 
+    ' VES Sep 2019
+    ' Se incluye una sobrecarga que permita el uso de parametros en la sentencia SQL, para poder evitar el SqlInjection
+    Public Function ListarTablasSQL(ByVal Consulta_sql As String, ByVal parameters() As SqlParameter)
+        If CONECTARVARI = "" Then
+
+        Else
+            Dim tabla As DataTable = New DataTable
+            Try
+                con.conectar()
+                If validacone = "NC" Then
+                    Return tabla
+                    Exit Function
+                End If
+                Dim Listado As SqlDataAdapter = New SqlDataAdapter(Consulta_sql, con.con)
+
+                Listado.SelectCommand.CommandTimeout = 0
+                For Each param As SqlParameter In parameters
+                    Listado.SelectCommand.Parameters.Add(param)
+                Next
+                Listado.Fill(tabla)
+
+
+                con.cerrar()
+            Catch ex As Exception
+                MsgBox(ex.Message())
+            End Try
+            'retornar tabla con datos
+            Return tabla
+
+        End If
+
+
+    End Function
+
+
     Public Function ListarTablasSQLetiqueta(ByVal Consulta_sql As String) As DataTable
 
         If CONECTARVARI = "" Then
@@ -169,6 +204,7 @@ Public Class Funciones
 
         Catch ex As Exception
             retorno = 0
+            lastSqlError = ex.Message ' VES Sep 2019
             'MsgBox(ex.Message())
         End Try
 
@@ -178,6 +214,113 @@ Public Class Funciones
 
         Return retorno
     End Function
+
+    ' VES Sep 2019
+    ' Se incluye una sobrecarga que permita el uso de parametros en la sentencia SQL, para poder evitar el SqlInjection
+    Public Function MovimientoSQL(ByVal Consulta_sql As String, ByVal parameters() As SqlParameter)
+        Dim retorno As Integer = 0
+
+        Try
+            con.conectar()
+            'Console.WriteLine(Consulta_sql)
+            Dim _cmd As SqlCommand = New SqlCommand(Consulta_sql, con.con)
+            For Each param As SqlParameter In parameters
+                _cmd.Parameters.Add(param)
+            Next
+            _cmd.ExecuteNonQuery()
+            _cmd.CommandTimeout = 0
+            retorno = 1
+            con.cerrar()
+
+        Catch ex As Exception
+            retorno = 0
+            lastSqlError = ex.Message
+            'MsgBox(ex.Message())
+        End Try
+
+        ' retornar 
+        '1 si se ejecuta correctamente
+        '0 si no se ejecuta
+
+        Return retorno
+    End Function
+
+    ' VES Sep 2019
+    ' Permite ejecutar un comando SQL con parametros
+    '
+    Public Function runSQLCmd(ByVal sqlCmd As SqlCommand) As sqlCmdResult
+        Dim resp As sqlCmdResult = New sqlCmdResult()
+        Try
+            con.conectar()
+            If validacone = "NC" Then
+                resp.errorMsg = "No hay una conexion valida"
+                Return resp
+                Exit Function
+            End If
+            sqlCmd.Connection = con.con
+            If sqlCmd.CommandText.ToUpper().Substring(0, 7) = "SELECT " Then
+                Dim Listado As SqlDataAdapter = New SqlDataAdapter(sqlCmd)
+                Listado.SelectCommand.CommandTimeout = 0
+                resp.data = New DataTable()
+                Listado.Fill(resp.data)
+            Else
+                sqlCmd.CommandTimeout = 0
+                sqlCmd.ExecuteNonQuery()
+            End If
+            resp.result = True
+
+        Catch ex As Exception
+            resp.errorMsg = ex.Message
+
+        Finally
+            con.cerrar()
+        End Try
+
+        Return resp
+    End Function
+    Public Function runSQLCmd(ByVal sqlCmdText As String, ByVal parameters() As SqlParameter) As sqlCmdResult
+        Dim resp As sqlCmdResult = New sqlCmdResult()
+        Try
+            Dim sqlCmd As SqlCommand = New SqlCommand(sqlCmdText)
+            For Each param As SqlParameter In parameters
+                sqlCmd.Parameters.Add(param)
+            Next
+            resp = runSQLCmd(sqlCmd)
+
+        Catch ex As Exception
+            resp.errorMsg = ex.Message
+        End Try
+        Return resp
+    End Function
+    Public Function runSqlCmd(ByVal sqlCmdText As String, ByVal paramName As String, ByVal paramValue As Object) As sqlCmdResult
+        Return runSqlCmd(sqlCmdText, New SqlParameter() {New SqlParameter(paramName, paramValue)})
+    End Function
+    Public Function runSqlCmd(ByVal sqlCmdText As String, ByVal paramValue As Object) As sqlCmdResult
+        Return runSqlCmd(sqlCmdText, "@p0", paramValue)
+    End Function
+
+
+    ' VES Sep 2019
+    ' Ejecuta una consulta y devuelve el primer registro encontrado o NULL si no encuentra nada
+    '
+    Public Function sqlExecuteRow(ByVal sqlSelect As String, ByVal parameters() As SqlParameter)
+        Dim Resp As sqlCmdResult = runSQLCmd(sqlSelect, parameters)
+        Dim result As DataRow = Nothing
+        If Resp.result And Resp.data IsNot Nothing Then
+            If Resp.data.Rows.Count > 0 Then
+                result = Resp.data.Rows(0)
+            End If
+        End If
+        Return result
+    End Function
+    Public Function sqlExecuteRow(ByVal sqlSelect As String, ByVal paramName As String, ByVal paramValue As Object)
+        Return sqlExecuteRow(sqlSelect, New SqlParameter() {New SqlParameter(paramName, paramValue)})
+    End Function
+    Public Function sqlExecuteRow(ByVal sqlSelect As String, ByVal paramValue As Object)
+        Return sqlExecuteRow(sqlSelect, New SqlParameter() {New SqlParameter("@p0", paramValue)})
+    End Function
+
+
 
     Public Function UltimoRegistro(ByVal Consulta_sql)
         Dim _tabla As DataTable = New DataTable
@@ -692,4 +835,25 @@ Public Class Funciones
 
         Return Resp
     End Function
+
+
+    '
+    '   VES 2019
+    '   CONVIERTE UN STRING EN UN VALOR DATETIME. SI LA 
+    '   CONVERSION NO ES POSIBLE, DEVUELVE EL VALOR 
+    '   ORIGINAL
+    '
+    Function ctod(ByVal sdate As String) As Object
+        Dim rdate As Object
+        Try
+            rdate = DateTime.Parse(sdate.Trim())
+        Catch ex As Exception
+            rdate = sdate
+        End Try
+        Return rdate
+    End Function
+
+
+
+
 End Class
