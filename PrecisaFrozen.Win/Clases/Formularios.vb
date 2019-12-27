@@ -132,7 +132,6 @@ Module Formularios
     Public f_confTunel As Boolean = False ' VES Oct 2019
     Public f_OrdPal As Boolean = False
 
-    Public f_OrdPal As Boolean = False
 
     Public documentoimp As String = ""
 End Module
