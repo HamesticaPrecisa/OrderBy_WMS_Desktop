@@ -621,10 +621,33 @@ Public Class Frm_GuiaPreDespachoAgregar
                     Exit Sub
                 End If
                 lblcodigo.Text = BuscaCorrelativo("007")
-                Dim sqlActualiza As String = "UPDATE correlat SET Cor_correact='" + (Convert.ToInt32(lblcodigo.Text) + 1).ToString() + "' " & _
-                "WHERE cor_codi='007'"
 
-                fnc.MovimientoSQL(sqlActualiza)
+                Dim sqltemporal As String = "select top(1) tmps_codi, tmps_correl from Correlat_salto where tmps_correl='7' order by tmps_codi desc"
+                Dim foliotemporal As New DataTable
+                foliotemporal = fnc.ListarTablasSQL(sqltemporal)
+
+                If foliotemporal.Rows.Count > 0 Then
+                    Dim sqlcorrelat As String = "select a.cor_correact from correlat a with(nolock) where a.cor_codi='007'"
+                    Dim correlat As New DataTable
+                    correlat = fnc.ListarTablasSQL(sqlcorrelat)
+
+                    Dim foliot As Integer = foliotemporal.Rows(0).Item(0)
+                    Dim folioc As Integer = correlat.Rows(0).Item(0)
+
+                    If foliot >= folioc Then
+                        Dim sqlActualiza As String = "UPDATE correlat SET Cor_correact='" + (Convert.ToInt32(lblcodigo.Text) + 1).ToString() + "' " & _
+                        "WHERE cor_codi='007'"
+                        fnc.MovimientoSQL(sqlActualiza)
+                    End If
+                Else
+                    Dim sqlActualiza As String = "UPDATE correlat SET Cor_correact='" + (Convert.ToInt32(lblcodigo.Text) + 1).ToString() + "' " & _
+                        "WHERE cor_codi='007'"
+                    fnc.MovimientoSQL(sqlActualiza)
+                End If
+
+                
+
+
                 BtnBuscar.Enabled = False
                 lblcodigo.Enabled = False
                 GroupBox1.Enabled = True
@@ -758,19 +781,19 @@ Public Class Frm_GuiaPreDespachoAgregar
             End If
 
 
-            If IsNumeric(Temp1.Text) AndAlso IsNumeric(Temp2.Text) AndAlso IsNumeric(Temp3.Text) Then
-                Try
-                    Dim Prom As Double = (
-                                       ((Convert.ToDouble(Temp1.Text.Replace(".", ","))) + (Convert.ToDouble(Temp2.Text.Replace(".", ","))) + (Convert.ToDouble(Temp3.Text.Replace(".", ",")))) / 3)
+            'If IsNumeric(Temp1.Text) AndAlso IsNumeric(Temp2.Text) AndAlso IsNumeric(Temp3.Text) Then
+            '    Try
+            '        Dim Prom As Double = (
+            '                           ((Convert.ToDouble(Temp1.Text.Replace(".", ","))) + (Convert.ToDouble(Temp2.Text.Replace(".", ","))) + (Convert.ToDouble(Temp3.Text.Replace(".", ",")))) / 3)
 
 
-                    tempprom.Text = Math.Round(Prom, 1)
-                Catch ex As Exception
+            '        tempprom.Text = Math.Round(Prom, 1)
+            '    Catch ex As Exception
 
-                End Try
+            '    End Try
 
 
-            End If
+            'End If
 
         Catch ex As Exception
 
@@ -778,6 +801,37 @@ Public Class Frm_GuiaPreDespachoAgregar
 
 
 
+    End Sub
+
+    Sub calcTempProm()
+        Try
+            Dim tem1 As String = Temp1.Text.Trim
+            Dim tem1Frm As Double = 0
+            If (Not Double.TryParse(tem1, tem1Frm)) Then
+                tem1Frm = 0
+            End If
+
+            Dim tem2 As String = Temp2.Text.Trim
+            Dim tem2Frm As Double = 0
+            If (Not Double.TryParse(tem2, tem2Frm)) Then
+                tem2Frm = 0
+            End If
+
+            Dim tem3 As String = Temp3.Text.Trim
+            Dim tem3Frm As Double = 0
+            If (Not Double.TryParse(tem3, tem3Frm)) Then
+                tem3Frm = 0
+            End If
+
+            Dim temProm As Double = 0
+
+            temProm = Math.Round(((tem1Frm + tem2Frm + tem3Frm) / 3), 1)
+
+            tempprom.Text = temProm
+            txtpallet.Enabled = True
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Sub CargaGrilla()
@@ -1336,7 +1390,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                             Dim tabla_consulta As DataTable = fnc.ListarTablasSQL(sql)
 
                             Dim cantidad_disponible As Integer = Convert.ToInt32(tabla_consulta.Rows(0)(1).ToString()) - (Convert.ToInt32(tabla_consulta.Rows(1)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(2)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(3)(1).ToString()))
-
+                            'cantidad_disponible = cantidad_disponible * -1
                             If cantidad_disponible <= 0 Then
 
                                 MsgBox("El soportante no tiene cajas disponibles." + Environment.NewLine +
@@ -2124,10 +2178,6 @@ Public Class Frm_GuiaPreDespachoAgregar
 
     End Sub
 
-    Private Sub Temp3_TextChanged(sender As System.Object, e As System.EventArgs) Handles Temp3.TextChanged
-
-    End Sub
-
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         If TxtNped.Text = "0" Then
             TxtNped.Text = "1"
@@ -2221,4 +2271,16 @@ Public Class Frm_GuiaPreDespachoAgregar
 
     '    Return Resp
     'End Function
+
+    Private Sub Temp1_TextChanged(sender As Object, e As System.EventArgs) Handles Temp1.TextChanged
+        calcTempProm()
+    End Sub
+
+    Private Sub Temp2_TextChanged(sender As Object, e As System.EventArgs) Handles Temp2.TextChanged
+        calcTempProm()
+    End Sub
+
+    Private Sub Temp3_TextChanged(sender As System.Object, e As System.EventArgs) Handles Temp3.TextChanged
+        calcTempProm()
+    End Sub
 End Class
