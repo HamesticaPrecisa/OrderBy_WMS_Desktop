@@ -31,7 +31,7 @@ Public Class Frm_Principal
         '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
         '       EL NOMBRE DE LA BD ACTIVA
         '
-        Me.Text = "Order By WMS - Precisa Tech 27.12.19.07.05 - BD: " + CONFIG.mainCatalog
+        Me.Text = "Order By WMS - Precisa Tech 06.01.20.12.35 - BD: " + CONFIG.mainCatalog
         InfoUsuario.Text = "001"
         If Not My.Computer.Name = " PROGRAMACION-PC" Then
             Presentacion.ShowDialog()
@@ -455,7 +455,8 @@ Public Class Frm_Principal
         ' Los pares de cadenas acabarán en valor Null
         attributes.Append("DSN=" & sDsnName & New Char)
 
-        attributes.Append("Server=" + ip.Trim() + "\PRECISABD" & New Char)
+        'attributes.Append("Server=" + ip.Trim() + "\PRECISABD" & New Char)
+        attributes.Append("Server=" + ip.Trim() + New Char)
 
         attributes.Append("Description=" & sDescription & New Char)
 
