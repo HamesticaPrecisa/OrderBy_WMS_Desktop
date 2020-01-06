@@ -52,7 +52,14 @@ Public Class Frm_CheckList
                 If RealizarAccion("017", "043", True) = False Then
                     Exit Sub
                 End If
-                Txtfolio.Text = BuscaCorrelativo("100")
+
+
+                Dim buscarcorrelativo As String = "SELECT top(1) Cl_fol from zCheckList order by Cl_fol desc"
+                Dim folio As New DataTable
+                folio = fnc.ListarTablasSQL(buscarcorrelativo)
+                Dim correlativo2 As Integer = folio.Rows(0).Item(0)
+                correlativo2 = correlativo2 + 1
+                Txtfolio.Text = CerosAnteriorString(correlativo2, 7)
                 Txtfolio.Enabled = False
 
                 TemSal.Visible = False
