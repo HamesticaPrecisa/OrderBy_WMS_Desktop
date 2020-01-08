@@ -120,19 +120,6 @@
             If RealizarAccion("017", "044", True) = False Then
                 Exit Sub
             End If
-            If MsgBox("Seguro de Despachar el camion", MsgBoxStyle.Question + vbYesNo, "Aviso") = vbYes Then
-                GroupBox2.Visible = True
-                lblfolio.Text = Me.DgvAndenes.Rows(e.RowIndex).Cells(1).Value.ToString()
-            End If
-        End If
-    End Sub
-
-    Private Sub DgvRegistrados_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRegistrados.CellClick
-        GroupBox1.Visible = False
-        If e.RowIndex > -1 AndAlso e.ColumnIndex = 0 Then
-            If RealizarAccion("017", "044", True) = False Then
-                Exit Sub
-            End If
 
             Dim validar As String = "select * from chk_images where id_chk='" + Me.DgvAndenes.Rows(e.RowIndex).Cells(1).Value.ToString() + "'"
             Dim tabla1 As DataTable = fnc.ListarTablasSQL(validar)
@@ -168,6 +155,22 @@
                 MsgBox("Faltan Imagenes, Asegurece que se encuentren las 6 fotos necesarias.", MsgBoxStyle.Information, "Aviso")
                 Exit Sub
             End If
+
+            If MsgBox("Seguro de Despachar el camion", MsgBoxStyle.Question + vbYesNo, "Aviso") = vbYes Then
+                GroupBox2.Visible = True
+                lblfolio.Text = Me.DgvAndenes.Rows(e.RowIndex).Cells(1).Value.ToString()
+            End If
+        End If
+    End Sub
+
+    Private Sub DgvRegistrados_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvRegistrados.CellClick
+        GroupBox1.Visible = False
+        If e.RowIndex > -1 AndAlso e.ColumnIndex = 0 Then
+            If RealizarAccion("017", "044", True) = False Then
+                Exit Sub
+            End If
+
+            
 
             'Dim sql As String = "UPDATE zCheckList SET cl_Estpor='1', cl_ WHERE cl_fol='" + Me.DgvRegistrados.Rows(e.RowIndex).Cells(0).Value.ToString() + "'"
             If MsgBox("Seguro de ingresar el camion", MsgBoxStyle.Question + vbYesNo, "Aviso") = vbYes Then
