@@ -328,7 +328,7 @@ Public Class Frm_GuiaPreDespachoAgregar
             e.Cancel = True
         ElseIf op = "SI" Then
             f_addPredespacho = False
-            CancelaCorrelativo("007", lblcodigo.Text)
+            'CancelaCorrelativo("007", lblcodigo.Text)
             Timer2.Stop()
         Else
             f_addPredespacho = False
@@ -621,6 +621,17 @@ Public Class Frm_GuiaPreDespachoAgregar
                     Exit Sub
                 End If
                 lblcodigo.Text = BuscaCorrelativo("007")
+
+                Dim validarfolio As String = "select * from fichpred where fpre_codi='" + lblcodigo.Text + "'"
+                Dim tablavalidarfolio As New DataTable
+                tablavalidarfolio = fnc.ListarTablasSQL(validarfolio)
+
+                If tablavalidarfolio.Rows.Count > 0 Then
+                    MsgBox("El Numero de folio ya existe, por favor contactar a informatica.", MsgBoxStyle.Critical, "Aviso")
+                    lblcodigo.Text = ""
+                    Exit Sub
+                End If
+
 
                 Dim sqltemporal As String = "select top(1) tmps_codi, tmps_correl from Correlat_salto where tmps_correl='7' order by tmps_codi desc"
                 Dim foliotemporal As New DataTable
@@ -966,10 +977,10 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                     End If
 
-                    CancelaCorrelativo("007", lblcodigo.Text)
+                    'CancelaCorrelativo("007", lblcodigo.Text)
                     limpiarformulario()
                 Else
-                    CancelaCorrelativo("007", lblcodigo.Text)
+                    'CancelaCorrelativo("007", lblcodigo.Text)
                     limpiarformulario()
                 End If
             End If
@@ -2282,5 +2293,9 @@ Public Class Frm_GuiaPreDespachoAgregar
 
     Private Sub Temp3_TextChanged(sender As System.Object, e As System.EventArgs) Handles Temp3.TextChanged
         calcTempProm()
+    End Sub
+
+    Private Sub lblcodigo_TextChanged(sender As System.Object, e As System.EventArgs) Handles lblcodigo.TextChanged
+
     End Sub
 End Class

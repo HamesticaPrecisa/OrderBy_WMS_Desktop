@@ -96,8 +96,8 @@ Partial Class Frm_Principal
         Me.FamiliasNoMezclablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PosicionesParaPickingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SugerenciasAlmacenamientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.M2_Mercados = New System.Windows.Forms.ToolStripMenuItem()
         Me.menLimPedExp = New System.Windows.Forms.ToolStripMenuItem()
+        Me.M2_Mercados = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Procesos = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_DesbloquearSoportantes = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Etiquetado = New System.Windows.Forms.ToolStripMenuItem()
@@ -790,19 +790,19 @@ Partial Class Frm_Principal
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
         Me.SugerenciasAlmacenamientoToolStripMenuItem.Text = "Sugerencias Almacenamiento"
         '
-        'M2_Mercados
-        '
-        Me.M2_Mercados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
-        Me.M2_Mercados.Name = "M2_Mercados"
-        Me.M2_Mercados.Size = New System.Drawing.Size(217, 22)
-        Me.M2_Mercados.Text = "Mercados"
-        '
         'menLimPedExp
         '
         Me.menLimPedExp.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.menLimPedExp.Name = "menLimPedExp"
         Me.menLimPedExp.Size = New System.Drawing.Size(217, 22)
         Me.menLimPedExp.Text = "Límite Pedidos Exportación"
+        '
+        'M2_Mercados
+        '
+        Me.M2_Mercados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
+        Me.M2_Mercados.Name = "M2_Mercados"
+        Me.M2_Mercados.Size = New System.Drawing.Size(217, 22)
+        Me.M2_Mercados.Text = "Mercados"
         '
         'M1_Procesos
         '
@@ -1340,7 +1340,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Pecisa Tech 12.12.19.13.00 - BD: Precisa"
+        Me.Text = "Order By WMS - Pecisa Tech 14.01.20.10.30 - BD: Precisa"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
