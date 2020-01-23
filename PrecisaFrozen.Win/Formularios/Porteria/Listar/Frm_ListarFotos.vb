@@ -14,7 +14,8 @@ Public Class Frm_ListarFotos
                                       "       Convert(varchar(max), Convert(Varbinary(MAX),cl_imgpat)) , " +
                                       "       Convert(varchar(max), Convert(Varbinary(MAX),cl_imgtemS)), " +
                                       "       Convert(varchar(max), Convert(Varbinary(MAX),cl_imgselS)), " +
-                                      "       Convert(varchar(max), Convert(Varbinary(MAX),cl_imgpatS))  " +
+                                      "       Convert(varchar(max), Convert(Varbinary(MAX),cl_imgpatS)),  " +
+                                      "       Convert(varchar(max), Convert(Varbinary(MAX),cl_imgrutS))  " +
                                       "  FROM chk_images " +
                                       " WHERE id_chk = '" + Convert.ToInt32(codigo).ToString() + "'"
 
@@ -63,6 +64,13 @@ Public Class Frm_ListarFotos
                 Else
                     PictureBox7.Image = My.Resources.blanco
                 End If
+
+                'ImagenRut
+                If tablaimagen.Rows(0)(6).ToString() <> "" Then
+                    PictureBox8.Image = Base64ToImage(tablaimagen.Rows(0)(6))
+                Else
+                    PictureBox8.Image = My.Resources.blanco
+                End If
             Else
                 PictureBox1.Image = Nothing
                 PictureBox2.Image = Nothing
@@ -70,6 +78,7 @@ Public Class Frm_ListarFotos
                 PictureBox5.Image = Nothing
                 PictureBox6.Image = Nothing
                 PictureBox7.Image = Nothing
+                PictureBox8.Image = Nothing
             End If
         End If
 
@@ -136,6 +145,14 @@ Public Class Frm_ListarFotos
     Private Sub GuardaImagen1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GuardaImagen1.Click
         Guarda_Imagen(PictureBox1)
     End Sub
+    Private Sub PictureBox8_MouseHover(sender As System.Object, e As System.EventArgs) Handles PictureBox8.MouseHover
+        PictureBox4.SizeMode = PictureBoxSizeMode.StretchImage
+        PictureBox4.Image = PictureBox8.Image
+    End Sub
+    Private Sub PictureBox8_MouseLeave(sender As Object, e As System.EventArgs) Handles PictureBox8.MouseLeave
+        PictureBox4.Image = My.Resources.Resources._1391547217_File___Image_256x256_32
+        PictureBox4.SizeMode = PictureBoxSizeMode.CenterImage
+    End Sub
     Private Sub GuardaImagen2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GuardaImagen2.Click
         Guarda_Imagen(PictureBox2)
     End Sub
@@ -150,6 +167,9 @@ Public Class Frm_ListarFotos
     End Sub
     Private Sub GuardaImagen6_Click(sender As System.Object, e As System.EventArgs) Handles GuardaImagen6.Click
         Guarda_Imagen(PictureBox7)
+    End Sub
+    Private Sub GuardaImagen7_Click(sender As System.Object, e As System.EventArgs) Handles GuardaImagen7.Click
+        Guarda_Imagen(PictureBox8)
     End Sub
     Sub Guarda_Imagen(ByVal pbx As PictureBox)
         Try
@@ -211,4 +231,5 @@ Public Class Frm_ListarFotos
         End Try
     End Sub
 
+    
 End Class

@@ -567,13 +567,15 @@ Public Class Frm_CheckList
             Dim PictureBox4 As New PictureBox
             Dim PictureBox5 As New PictureBox
             Dim PictureBox6 As New PictureBox
+            Dim PictureBox7 As New PictureBox
 
             Dim SqlImagen As String = "SELECT  Convert(varchar(max),Convert(Varbinary(MAX),cl_imgtem)) , " +
                                       "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgsel)) , " +
                                       "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgpat)) , " +
                                       "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgtemS)), " +
                                       "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgselS)), " +
-                                      "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgpatS))  " +
+                                      "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgpatS)),  " +
+                                      "        Convert(varchar(max),Convert(Varbinary(MAX),cl_imgrutS))  " +
                                       "   FROM chk_images " +
                                       "  WHERE id_chk = '" + Convert.ToInt32(Txtfolio.Text).ToString() + "'"
 
@@ -623,6 +625,13 @@ Public Class Frm_CheckList
                     PictureBox6.Image = My.Resources.blanco
                 End If
 
+                'ImagenRUT
+                If tablaimagen.Rows(0)(6).ToString() <> "" Then
+                    PictureBox7.Image = Base64ToImage(tablaimagen.Rows(0)(6).ToString())
+                Else
+                    PictureBox7.Image = My.Resources.blanco
+                End If
+
             Else
                 PictureBox1.Image = My.Resources.blanco
                 PictureBox2.Image = My.Resources.blanco
@@ -630,11 +639,12 @@ Public Class Frm_CheckList
                 PictureBox4.Image = My.Resources.blanco
                 PictureBox5.Image = My.Resources.blanco
                 PictureBox6.Image = My.Resources.blanco
+                PictureBox7.Image = My.Resources.blanco
             End If
 
             Dim Ds As New Ds_Imagenes
 
-            Ds.Imagenes.AddImagenesRow(ImageToByte(PictureBox1.Image), ImageToByte(PictureBox2.Image), ImageToByte(PictureBox3.Image), ImageToByte(PictureBox4.Image), ImageToByte(PictureBox5.Image), ImageToByte(PictureBox6.Image))
+            Ds.Imagenes.AddImagenesRow(ImageToByte(PictureBox1.Image), ImageToByte(PictureBox2.Image), ImageToByte(PictureBox3.Image), ImageToByte(PictureBox4.Image), ImageToByte(PictureBox5.Image), ImageToByte(PictureBox6.Image), ImageToByte(PictureBox7.Image))
             report.Subreports(0).SetDataSource(Ds)
 
             report.SetDatabaseLogon(Usuario_ODBC, Pass_ODBC)

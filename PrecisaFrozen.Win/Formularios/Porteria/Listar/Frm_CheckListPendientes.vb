@@ -128,7 +128,7 @@
                 Exit Sub
             End If
 
-            Dim sql As String = "select cl_imgtem, cl_imgsel, cl_imgpat, cl_imgtemS, cl_imgselS, cl_imgpatS from chk_images where id_chk='" + Me.DgvAndenes.Rows(e.RowIndex).Cells(1).Value.ToString() + "'"
+            Dim sql As String = "select cl_imgtem, cl_imgsel, cl_imgpat, cl_imgtemS, cl_imgselS, cl_imgpatS, cl_imgrutS from chk_images where id_chk='" + Me.DgvAndenes.Rows(e.RowIndex).Cells(1).Value.ToString() + "'"
             Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
 
             If tabla.Rows(0)(0).ToString() = "" Then
@@ -155,6 +155,10 @@
                 MsgBox("Faltan Imagenes, Asegurece que se encuentren las 6 fotos necesarias.", MsgBoxStyle.Information, "Aviso")
                 Exit Sub
             End If
+            If tabla.Rows(0)(6).ToString() = "" Then
+                MsgBox("Al parecer no se encuentra foto de Carnet/RUT, Asegurece que se encuentren las fotos necesarias.", MsgBoxStyle.Information, "Aviso")
+                Exit Sub
+            End If
 
             If MsgBox("Seguro de Despachar el camion", MsgBoxStyle.Question + vbYesNo, "Aviso") = vbYes Then
                 GroupBox2.Visible = True
@@ -170,8 +174,7 @@
                 Exit Sub
             End If
 
-            
-
+          
             'Dim sql As String = "UPDATE zCheckList SET cl_Estpor='1', cl_ WHERE cl_fol='" + Me.DgvRegistrados.Rows(e.RowIndex).Cells(0).Value.ToString() + "'"
             If MsgBox("Seguro de ingresar el camion", MsgBoxStyle.Question + vbYesNo, "Aviso") = vbYes Then
                 lblfolio.Text = Me.DgvRegistrados.Rows(e.RowIndex).Cells(1).Value.ToString()
@@ -281,4 +284,8 @@
 
         Return True
     End Function
+
+    Private Sub DgvAndenes_CellContentClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DgvAndenes.CellContentClick
+
+    End Sub
 End Class

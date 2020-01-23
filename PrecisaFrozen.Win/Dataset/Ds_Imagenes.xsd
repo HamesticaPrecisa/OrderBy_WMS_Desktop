@@ -21,6 +21,7 @@
               <xs:element name="Imagen4" msprop:Generator_ColumnVarNameInTable="columnImagen4" msprop:Generator_ColumnPropNameInRow="Imagen4" msprop:Generator_ColumnPropNameInTable="Imagen4Column" msprop:Generator_UserColumnName="Imagen4" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="Imagen5" msprop:Generator_ColumnVarNameInTable="columnImagen5" msprop:Generator_ColumnPropNameInRow="Imagen5" msprop:Generator_ColumnPropNameInTable="Imagen5Column" msprop:Generator_UserColumnName="Imagen5" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="Imagen6" msprop:Generator_ColumnVarNameInTable="columnImagen6" msprop:Generator_ColumnPropNameInRow="Imagen6" msprop:Generator_ColumnPropNameInTable="Imagen6Column" msprop:Generator_UserColumnName="Imagen6" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Imagen7" msprop:Generator_ColumnVarNameInTable="columnImagen7" msprop:Generator_ColumnPropNameInRow="Imagen7" msprop:Generator_ColumnPropNameInTable="Imagen7Column" msprop:Generator_UserColumnName="Imagen7" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
