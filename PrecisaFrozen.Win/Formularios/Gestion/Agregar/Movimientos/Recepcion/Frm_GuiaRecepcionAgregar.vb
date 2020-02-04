@@ -2604,7 +2604,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
                 "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
                 "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
-                "ISNULL(mer_id,1) AS mer_id " +
+                "ISNULL(mer_id,1) AS mer_id, ISNULL(frec_numsopcustodia,0) AS frec_numsopcustodia, frec_codsopcustodia " +
                 "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
                 "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
                 "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "'"
@@ -2616,7 +2616,7 @@ Public Class Frm_GuiaRecepcionAgregar
     "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
     "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
     "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
-    "ISNULL(mer_id,1) AS mer_id " +
+    "ISNULL(mer_id,1) AS mer_id, ISNULL(frec_numsopcustodia,0) AS frec_numsopcustodia, frec_codsopcustodia " +
     "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
     "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
     "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "' and fichrece.cod_bod ='" + sucursalglo + "'"
@@ -2733,6 +2733,17 @@ Public Class Frm_GuiaRecepcionAgregar
             setMercado(CInt(tabla.Rows(0)("mer_id")))
 
 
+            ' VES ENE 2020 
+            txtSopCustodia.Text = tabla.Rows(0)("frec_numsopcustodia")
+            txtSopCusCodi.Text = tabla.Rows(0)("frec_codsopcustodia")
+            txtsopcusnombre.Text = ""
+            Dim sql As String = "SELECT  tsop_descr FROM tiposopo WHERE tsop_codi='" + txtSopCusCodi.Text + "'"
+            Dim tabla2 As DataTable = fnc.ListarTablasSQL(sql)
+            If tabla2.Rows.Count > 0 Then
+                txtsopcusnombre.Text = tabla2.Rows(0)(0)
+            End If
+            txtSopCustodia.Enabled = False
+            Btn_buscasopcus.Enabled = False
 
 
             TxtCodRece.Enabled = False
@@ -3020,11 +3031,23 @@ Public Class Frm_GuiaRecepcionAgregar
                     SERV = produa.Text
                 End If
 
+                ' VES ENE 2020
+                Dim NumSopCustodia As Integer
+                NumSopCustodia = CInt(txtSopCustodia.Text)
+                If NumSopCustodia > 0 And txtSopCusCodi.Text = "" Then
+                    MessageBox.Show("Debe indicar el tipo de soportante para custodia", "Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                    Exit Sub
+                End If
+
+
+
                 ' VES SEP 2019: Se incluyo la columna MER_ID
+                ' VES ENE 2020: Se incluyeron las columnas FREC_NUMSOPCUSTODIA y FREC_CODSOPCUSTODIA
+                '
                 Dim sqlGuarda As String = "INSERT INTO fichrece(frec_codi, frec_rutcli, frec_contcli, frec_horalleg, frec_horarec, frec_horater, frec_turnrec, frec_fecrec, frec_guiades, frec_totsopo, " +
                                     "frec_totunidad, frec_totpeso, frec_temppro, frec_rutcond, frec_observ, frec_tipdesc, frec_codienca, frec_origen, frec_codvig, frec_receptunel, " +
                                     "frec_numsello, frec_tiporecepcion, frec_tipoalmacenamiento, frec_olores, frec_higiene, frec_estiba, frec_dañado, frec_antecamara, frec_clfol, frec_contenedor," +
-                                    "frec_ntunel,cod_bod,val_guia,uni_guia,kilos_guia,frec_tippro,frec_serv,mer_id ) VALUES (" +
+                                    "frec_ntunel,cod_bod,val_guia,uni_guia,kilos_guia,frec_tippro,frec_serv,mer_id,frec_numsopcustodia,frec_codsopcustodia) VALUES (" +
                                     "'" + TxtCodRece.Text + "','" + QuitarCaracteres(TxtClirut.Text, "-") + "','" + txtcodcontrato.Text + "','" + horalleg.Text + "','" + horainic.Text + "'," +
                                     "'" + horaterm.Text + "','" + turno + "','" + devuelve_fecha(fecharece.Value) + "','" + txtguia.Text + "'," +
                                     "'" + txtsoportantes.Text + "','" + txtcajas.Text + "','" + txtkilos.Text.Replace(",", ".") + "','" + TxtPromTemp.Replace(",", ".") + "'," +
@@ -3034,7 +3057,7 @@ Public Class Frm_GuiaRecepcionAgregar
                                     "'" + (Convert.ToInt16(Rb_higieneB.Checked)).ToString() + "','" + (Convert.ToInt16(Rb_EstibaB.Checked)).ToString() + "','" + EstadoCheckBox(cbdañado.CheckState).ToString() + "', " +
                                     "'" + cmbAnden.SelectedValue.ToString() + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + cbonumtun.Text + "','" + sucursalglo + "','" + datosguia.Trim() + "','" +
                                     txtenvguia.Text.Trim() + "','" + txtkilguia.Text.Trim() + "','" + cboProductotip.Text.Trim() + "','" + SERV + "'," +
-                                    cboMercado.SelectedValue.ToString() + ")"
+                                    cboMercado.SelectedValue.ToString() + "," + CStr(NumSopCustodia) + ",'" + txtSopCusCodi.Text + "')"
 
 
                 If fnc.MovimientoSQL(sqlGuarda) > 0 Then
@@ -3262,6 +3285,27 @@ Public Class Frm_GuiaRecepcionAgregar
                                                  "SELECT id_pallets, cl_imgtem, cl_imgsel, cl_imgpat, cl_fecha FROM chk_imagestmp WHERE LEFT(id_pallets,7)='" + TxtCodRece.Text + "'"
                         fnc.MovimientoSQL(imagenes)
                     End If
+
+
+                    ' VES ENE 2020
+                    ' Si se indicaron pallets en custodia, se ingresan en el control
+                    If NumSopCustodia > 0 Then
+                        Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
+                        Dim CodCont As String = txtcodcontrato.Text
+                        Dim Fec As String = devuelve_fecha(fecharece.Value)
+                        Dim TipSop As String = txtSopCusCodi.Text
+                        Dim DocAso As String = TxtCodRece.Text
+                        Dim CanIngFrm As String = CStr(NumSopCustodia)
+                        Dim CanSalFrm As String = "0"
+                        Dim Obs As String = "Soportantes adicionales en recepcion #" + DocAso
+                        Dim Est As String = "1"
+
+                        Dim sql As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Fec & "','" & TipSop & "','" & DocAso & "','" & CanIngFrm & "','" & CanSalFrm & "','" & Obs & "','" & Est & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                        If fnc.MovimientoSQL(sql) = 0 Then
+                            MsgBox("Ocurrio un error al actualizar el control de soportantes en custodia: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
+                        End If
+                    End If
+
 
                 Else
                     MsgBox("Ocurrio un error al ingresar la recepcion: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
@@ -4156,6 +4200,14 @@ Public Class Frm_GuiaRecepcionAgregar
         setMercado(1)
         cmbo_descarga.Enabled = True
 
+        ' VES ENE 2020
+        txtSopCustodia.Text = ""
+        txtSopCusCodi.Text = ""
+        txtsopcusnombre.Text = ""
+        txtSopCustodia.Enabled = True
+        Btn_buscasopcus.Enabled = True
+
+
     End Sub
 
     Sub guardaVasAutomatico()
@@ -4347,11 +4399,11 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
-    Private Sub loteclie_TextChanged(sender As System.Object, e As System.EventArgs)
+    Private Sub loteclie_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
-    Private Sub btnAdjuntarFotos_Click(sender As System.Object, e As System.EventArgs) Handles btnAdjuntarFotos.Click
+    Private Sub btnAdjuntarFotos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdjuntarFotos.Click
         Dim frm As New Frm_AdjuntaFotoRecepcion
         frm.Show()
         frm.txtGuiaRecepcion.Text = TxtCodRece.Text
@@ -4380,23 +4432,23 @@ Public Class Frm_GuiaRecepcionAgregar
         'End If
     End Sub
 
-    Private Sub txtprodnom_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtprodnom.TextChanged
+    Private Sub txtprodnom_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtprodnom.TextChanged
 
     End Sub
 
-    Private Sub Label19_Click(sender As System.Object, e As System.EventArgs) Handles Label19.Click
+    Private Sub Label19_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label19.Click
 
     End Sub
 
-    Private Sub txtprodcod_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtprodcod.TextChanged
+    Private Sub txtprodcod_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtprodcod.TextChanged
 
     End Sub
 
-    Private Sub TxtCodRece_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles TxtCodRece.KeyUp
+    Private Sub TxtCodRece_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCodRece.KeyUp
 
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkdatosguia.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkdatosguia.CheckedChanged
         If chkdatosguia.Checked = True Then
 
             lblenvguia.Visible = True
@@ -4413,11 +4465,11 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub txtkilguia_TextChanged(sender As System.Object, e As System.EventArgs) Handles txtkilguia.TextChanged
+    Private Sub txtkilguia_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtkilguia.TextChanged
 
     End Sub
 
-    Private Sub txtkilguia_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtkilguia.KeyPress
+    Private Sub txtkilguia_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtkilguia.KeyPress
         If e.KeyChar = ChrW(13) Then
             ' loteclie.Focus()
         Else
@@ -4445,7 +4497,7 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub txtenvguia_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtenvguia.KeyPress
+    Private Sub txtenvguia_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtenvguia.KeyPress
         '
         SoloNumeros(sender, e)
     End Sub
@@ -4493,7 +4545,7 @@ Public Class Frm_GuiaRecepcionAgregar
         'Next
 
     End Sub
-    Private Sub chkpretrack_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkpretrack.CheckedChanged
+    Private Sub chkpretrack_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkpretrack.CheckedChanged
         If chkpretrack.Checked = True Then
             txttrackprev.Text = ""
             txttrackprev.Enabled = True
@@ -4508,25 +4560,25 @@ Public Class Frm_GuiaRecepcionAgregar
         End If
     End Sub
 
-    Private Sub txttrackprev_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txttrackprev.KeyPress
+    Private Sub txttrackprev_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txttrackprev.KeyPress
         SoloNumeros(sender, e)
     End Sub
 
-    Private Sub CheckArriendo_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles CheckArriendo.CheckedChanged
+    Private Sub CheckArriendo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckArriendo.CheckedChanged
         If (CheckArriendo.Checked) Then
             chkCambioPallet.Checked = False
         End If
     End Sub
 
-    Private Sub cbonumtun_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cbonumtun.SelectedIndexChanged
+    Private Sub cbonumtun_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cbonumtun.SelectedIndexChanged
 
     End Sub
 
-    Private Sub OpcionImprimir_Opening(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles OpcionImprimir.Opening
+    Private Sub OpcionImprimir_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpcionImprimir.Opening
 
     End Sub
 
-    Private Sub btnExcel_Click(sender As System.Object, e As System.EventArgs) Handles btnExcel.Click
+    Private Sub btnExcel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExcel.Click
         Dim sql As String = "Select * from vg_cajas_recepcion_peso where RECEPCION='" + TxtCodRece.Text.Trim() + "' order by PESO DESC"
         DgvResultado.DataSource = fnc.ListarTablasSQL(sql)
         If DgvResultado.Rows.Count = 0 Then
@@ -4540,11 +4592,11 @@ Public Class Frm_GuiaRecepcionAgregar
 
     End Sub
 
-    Private Sub TxtCodRece_TextChanged(sender As System.Object, e As System.EventArgs) Handles TxtCodRece.TextChanged
+    Private Sub TxtCodRece_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TxtCodRece.TextChanged
 
     End Sub
 
-    Private Sub chkCambioPallet_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles chkCambioPallet.CheckedChanged
+    Private Sub chkCambioPallet_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCambioPallet.CheckedChanged
         If (chkCambioPallet.Checked) Then
             CheckArriendo.Checked = False
         End If
@@ -4559,4 +4611,20 @@ Public Class Frm_GuiaRecepcionAgregar
         mostrarChkPalProp()
     End Sub
 
+    Private Sub txtSopCustodia_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSopCustodia.KeyPress
+        SoloNumeros(sender, e)
+    End Sub
+
+    Private Sub Btn_buscasopcus_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_buscasopcus.Click
+        Dim frm As New Lst_AyudaSoportantes
+        frm.ShowDialog(Frm_Principal)
+        txtSopCusCodi.Text = Frm_Principal.buscavalor
+        Dim sql As String = "SELECT  tsop_descr FROM tiposopo WHERE tsop_codi='" + txtSopCusCodi.Text + "'"
+
+        Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
+        If tabla.Rows.Count > 0 Then
+            txtsopcusnombre.Text = tabla.Rows(0)(0)
+        End If
+        Frm_Principal.buscavalor = ""
+    End Sub
 End Class

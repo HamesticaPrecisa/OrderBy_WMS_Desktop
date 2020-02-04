@@ -1,4 +1,5 @@
 ﻿Imports CrystalDecisions.Shared
+Imports System.Data.SqlClient
 Imports System.IO
 
 Public Class Frm_Despacho
@@ -169,6 +170,11 @@ Public Class Frm_Despacho
             txttotsopo.Text = tabla.Rows(0)(11).ToString()
             txttotcajas.Text = tabla.Rows(0)(12).ToString()
             txttotkilos.Text = tabla.Rows(0)(13).ToString()
+
+            ' VES ENE 2020
+            txtSopAdic.Enabled = True
+            Btn_buscasopadic.Enabled = True
+
             Panel1.Enabled = True
             GroupBox1.Enabled = True
             Me.BtnGuia.Enabled = False
@@ -406,6 +412,16 @@ Public Class Frm_Despacho
             End If
 
 
+            ' VES ENE 2020
+            Dim numSopAdic As String = txtSopAdic.Text
+            Dim CodSopAdic As String = txtSopAdicCodi.Text
+            If CInt(numSopAdic) > 0 And CodSopAdic = "" Then
+                MessageBox.Show("Debe indicar el tipo de soportante adicional", "Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Hand)
+                Exit Sub
+            End If
+
+
+
             If validacionIngreso() Then
                 'Validacion codigo despacho vacio HAmestica 14/08/18
                 Dim CodDesp = txtCodDesp.Text.Trim
@@ -429,13 +445,14 @@ Public Class Frm_Despacho
 
                 Dim sql = "INSERT INTO fichdespa(fdes_codi, fdes_rutcli, fdes_horalleg, fdes_hora, fdes_fecha, fdes_codpred, fdes_totsopo, " +
                     "fdes_totunidad, fdes_totpeso, fdes_rutcond, fdes_patente, fdes_transporte, fdes_carro, fdes_sello, fdes_horometro, " +
-                    "fdes_observ, fdes_tipcarga, fdes_codienca, fdes_codvig, fdes_origen, fdes_guiacliente, fdes_tempdespacho, fdes_destino, fdes_clfol, fdes_contenedor,cod_bod)" +
+                    "fdes_observ, fdes_tipcarga, fdes_codienca, fdes_codvig, fdes_origen, fdes_guiacliente, fdes_tempdespacho, fdes_destino, " +
+                    "fdes_clfol, fdes_contenedor,cod_bod,fdes_numsopadic,fdes_codsopadic)" +
                     "VALUES('" + txtCodDesp.Text + "','" + txtrutcli.Text + "','" + lleg.ToString("HH:mm") + "','" + DevuelveHora() + "','" + devuelve_fecha(dt_fecha.Value) + "'," +
                     "'" + txtcodigo.Text + "','" + txttotsopo.Text + "','" + txttotcajas.Text + "','" + txttotkilos.Text.Replace(",", ".") + "'," +
                     "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "'," +
                     "'" + TxtRampla.Text + "','" + TxtSello.Text + "','" + TxtHorometro.Text + "','" + TxtObs.Text + "', '" + CbCarga.SelectedValue.ToString() + "'," +
                     "'" + Frm_Principal.InfoUsuario.Text + "','0','" + txtorigen.Text + "','" + txtGuiaCli.Text + "','" + temp.ToString() + "'," +
-                    "'" + TxtDestino.Text + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + sucursalglo.Trim() + "')"
+                    "'" + TxtDestino.Text + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + sucursalglo.Trim() + "'," + numSopAdic + ",'" + CodSopAdic + "')"
 
                 If fnc.MovimientoSQL(sql) > 0 Then
                     'Actualización Cierre camiones carga y descarga. 07-06-19
@@ -764,6 +781,77 @@ Public Class Frm_Despacho
 
                     'vas Automatico
                     GuardaVasAutomatico()
+
+
+                    '
+                    ' VES ENE 2020
+                    ' SI SE INDICARON PALLETS ADICIONALES EN EL DESPACHO, SE INTENTA SACARLOS DE LOS 
+                    ' PALLETS EN CUSTODIA QUE TENGA EL CLIENTE. SI QUEDA ALGUN REMANENTE, SE LE VENDEN
+                    '
+                    If CInt(numSopAdic) > 0 Then
+                        Dim RutCli As String = QuitarCaracteres(txtrutcli.Text.Trim(), "-")
+                        Dim CodCont As String = DetaDespa.Rows(0).Cells(7).Value.ToString.Trim()
+                        Dim Fec As String = Now.ToString("yyyyMMdd").Trim()
+                        Dim TipSop As String = txtSopAdicCodi.Text
+                        Dim DocAso As String = txtCodDesp.Text
+                        Dim CanIngFrm As String = "0"
+                        Dim CanSalFrm As String = "0"
+                        Dim Obs As String = "Soportantes adicionales en despacho #" + DocAso
+                        Dim Est As String = "1"
+
+                        '
+                        ' INTENTAMOS DESCONTAR LOS PALLETS ADICIONALES DE
+                        ' LOS PALLETS EN CUSTODIA DEL CLIENTE 
+                        '
+                        Dim saldo As Integer = CInt(numSopAdic)
+                        Dim sqlAdic As String = "SELECT contrato, saldo FROM vwSaldosPalletCustodia WHERE rut_cliente = @rut"
+                        Dim custodia As DataTable = fnc.ListarTablasSQL(sqlAdic, New SqlParameter() {New SqlParameter("@rut", SqlDbType.NVarChar) With {.Value = RutCli}})
+                        Dim errorMsg As String = ""
+                        For Each row As DataRow In custodia.Rows
+                            Dim saldoContrato As Integer = CInt(row("saldo"))
+                            Dim cant As Integer = saldo
+                            If cant > saldoContrato Then
+                                cant = saldoContrato
+                            End If
+                            CodCont = row("contrato").ToString()
+                            CanSalFrm = cant.ToString()
+
+                            sqlAdic = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Fec & "','" & TipSop & "','" & DocAso & "','" & CanIngFrm & "','" & CanSalFrm & "','" & Obs & "','" & Est & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                            If fnc.MovimientoSQL(sqlAdic) = 1 Then
+                                saldo = saldo - cant
+                            Else
+                                errorMsg = lastSqlError
+                            End If
+
+                            If errorMsg <> "" Or saldo <= 0 Then
+                                Exit For
+                            End If
+                        Next
+
+                        '
+                        ' SI QUEDO ALGUNA CANTIDAD REMANENTE QUE NO SE PUDO CUBRIR CON 
+                        ' PALLETS EN CUSTODIA, SE REGISTRA COMO UNA VENTA DE PALLETS
+                        '
+                        If errorMsg = "" And saldo > 0 Then
+                            Dim i As Integer
+                            Dim NumPal As String
+                            For i = 1 To saldo
+                                NumPal = DocAso + i.ToString().PadLeft(2, "0")
+                                sqlAdic = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAso & "','','','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                                If fnc.MovimientoSQL(sqlAdic) = 0 Then
+                                    errorMsg = lastSqlError
+                                    Exit For
+                                End If
+                            Next
+                        End If
+
+                        If errorMsg <> "" Then
+                            MsgBox("Ocurrio un error al actualizar el control de soportantes adicionales: " + errorMsg, MsgBoxStyle.Critical, "Aviso")
+                        End If
+
+                    End If
+
+
                     BtnImprimir.Enabled = True
 
                 End If
@@ -981,7 +1069,8 @@ Public Class Frm_Despacho
 
         Dim sql = "SELECT fdes_codi, fdes_rutcli, cli_nomb, fdes_fecha, fdes_codpred, fdes_totsopo, fdes_totunidad, fdes_totpeso, " +
                   "fdes_rutcond, fdes_patente, fdes_transporte, fdes_carro, fdes_sello, fdes_horometro, fdes_observ, fdes_tipcarga, " +
-                  "fdes_origen, fdes_guiacliente, fdes_destino, cincuenta, fdes_contenedor, fdes_hora, fdes_clfol, fpre_horades, isnull(fdes_horalleg,fpre_horades), fdes_codienca,fdes_codvig " +
+                  "fdes_origen, fdes_guiacliente, fdes_destino, cincuenta, fdes_contenedor, fdes_hora, fdes_clfol, fpre_horades, " +
+                  "isnull(fdes_horalleg,fpre_horades), fdes_codienca,fdes_codvig,fdes_numsopadoc,fdes_codsopadic " +
                   "FROM fichdespa, clientes, cincuenta, fichpred " +
                   "WHERE despacho=fdes_codi AND folio=fdes_codpred AND cli_rut=fdes_rutcli AND fpre_codi=fdes_codpred AND " +
                   "fdes_codi='" + CodDesp + "'"
@@ -1108,6 +1197,15 @@ Public Class Frm_Despacho
             Else
                 Lbl_EstadoGuia.Text = "ACTIVO"
                 Lbl_EstadoGuia.ForeColor = Color.Blue
+            End If
+
+            ' VES ENE 202
+            txtSopAdic.Text = tabla.Rows(0).Item("fdes_numsopadic").ToString().Trim()
+            txtSopAdicCodi.Text = tabla.Rows(0).Item("fdes_codsopadic").ToString().Trim()
+            Dim sqlAdic As String = "SELECT  tsop_descr FROM tiposopo WHERE tsop_codi='" + txtSopAdicCodi.Text + "'"
+            Dim tablaAdic As DataTable = fnc.ListarTablasSQL(sql)
+            If tablaAdic.Rows.Count > 0 Then
+                txtsopadicnombre.Text = tablaAdic.Rows(0)(0)
             End If
         Else
             'MsgBox("El codigo de despacho ingresado no existe", MsgBoxStyle.Critical, "Aviso")
@@ -1323,6 +1421,14 @@ Public Class Frm_Despacho
 
         Lbl_EstadoGuia.Text = "ACTIVO"
         Lbl_EstadoGuia.ForeColor = Color.Gold
+
+        ' VES ENE 2020
+        txtSopAdic.Text = ""
+        txtSopAdicCodi.Text = ""
+        txtsopadicnombre.Text = ""
+        txtSopAdic.Enabled = True
+        Btn_buscasopadic.Enabled = True
+
     End Sub
 
     Private Sub BtnImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnImprimir.Click
@@ -1945,14 +2051,14 @@ Public Class Frm_Despacho
         End If
     End Sub
 
-    Private Sub btnAdjuntarFotos_Click(sender As System.Object, e As System.EventArgs) Handles btnAdjuntarFotos.Click
+    Private Sub btnAdjuntarFotos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdjuntarFotos.Click
         Dim frm As New Frm_AdjuntaFotoDespacho
         frm.Show()
         'frm.txtGuiaDespacho.Text = lblcodigo.Text
         frm.txtGuiaDespacho.Text = txtCodDesp.Text
     End Sub
 
-    Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
 
         'If lblcodigo.Text = "0000000" Then
         If txtCodDesp.Text = "" Or txtCodDesp.Text = "0000000" Then
@@ -1984,11 +2090,11 @@ Public Class Frm_Despacho
         'End If
     End Sub
 
-    Private Sub txtcodigo_KeyUp(sender As System.Object, e As System.Windows.Forms.KeyEventArgs) Handles txtcodigo.KeyUp
+    Private Sub txtcodigo_KeyUp(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtcodigo.KeyUp
 
     End Sub
 
-    Private Sub DateTimeFormatInfo(p1 As Object)
+    Private Sub DateTimeFormatInfo(ByVal p1 As Object)
         Throw New NotImplementedException
     End Sub
 
@@ -1996,7 +2102,7 @@ Public Class Frm_Despacho
         Throw New NotImplementedException
     End Function
 
-    Private Sub GroupBox4_Enter(sender As System.Object, e As System.EventArgs) Handles GroupBox4.Enter
+    Private Sub GroupBox4_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox4.Enter
 
     End Sub
 
@@ -2007,7 +2113,7 @@ Public Class Frm_Despacho
     '    End If
     'End Sub
 
-    Private Sub txtCodDesp_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtCodDesp.KeyPress
+    Private Sub txtCodDesp_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCodDesp.KeyPress
         If e.KeyChar = ChrW(13) Then
             'txtCodDesp.Focus()
             Dim CodDesp = txtCodDesp.Text.Trim
@@ -2023,4 +2129,22 @@ Public Class Frm_Despacho
     '        Busca_Despacho(CodDesp)
     '    End If
     'End Sub
+
+
+    Private Sub txtSopAdic_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSopAdic.KeyPress
+        SoloNumeros(sender, e)
+    End Sub
+
+    Private Sub Btn_buscasopadic_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_buscasopadic.Click
+        Dim frm As New Lst_AyudaSoportantes
+        frm.ShowDialog(Frm_Principal)
+        txtSopAdicCodi.Text = Frm_Principal.buscavalor
+        Dim sql As String = "SELECT tsop_descr FROM tiposopo WHERE tsop_codi='" + txtSopAdicCodi.Text + "'"
+
+        Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
+        If tabla.Rows.Count > 0 Then
+            txtsopadicnombre.Text = tabla.Rows(0)(0)
+        End If
+        Frm_Principal.buscavalor = ""
+    End Sub
 End Class

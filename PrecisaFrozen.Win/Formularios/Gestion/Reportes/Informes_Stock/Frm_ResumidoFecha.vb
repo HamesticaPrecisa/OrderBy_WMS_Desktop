@@ -113,6 +113,7 @@ Public Class Frm_ResumidoFecha
 
         End If
 
+
         Dim s As String = "SELECT drec_codpro, mae_descr, tenv_descr  FROM detarece, maeprod, tipoenv " +
                                                      "WHERE drec_codpro=mae_codi AND mae_tipenv=tenv_codi AND drec_rutcli='" + LblCliente.Text + "' " +
                                                      "" + WhereR + " and detarece.cod_bod ='" + sucursalglo + "'  GROUP BY drec_codpro, mae_descr, tenv_descr"
@@ -134,8 +135,8 @@ Public Class Frm_ResumidoFecha
             Dim Tabla_Recepcionado As DataTable = fnc.ListarTablasSQL(SQl_RECEPCIONADO)
             Dim Tabla_Despachado As DataTable = fnc.ListarTablasSQL(SQL_DESPACHADO)
 
-            If Val(Tabla_Recepcionado.Rows(0)(0).ToString()) - Val(Tabla_Despachado.Rows(0)(0).ToString()) <> 0 AndAlso Val(Tabla_Recepcionado.Rows(0)(1).ToString()) - Val(Tabla_Despachado.Rows(0)(1).ToString()) <> 0 _
-                AndAlso Val(Tabla_Recepcionado.Rows(0)(2).ToString()) - Val(Tabla_Despachado.Rows(0)(2).ToString()) <> 0 Then
+            If Val(Tabla_Recepcionado.Rows(0)(0).ToString()) - Val(Tabla_Despachado.Rows(0)(0).ToString()) <> 0 Or Val(Tabla_Recepcionado.Rows(0)(1).ToString()) - Val(Tabla_Despachado.Rows(0)(1).ToString()) <> 0 _
+               Or Val(Tabla_Recepcionado.Rows(0)(2).ToString()) - Val(Tabla_Despachado.Rows(0)(2).ToString()) <> 0 Then
 
                 DgvResultado.Rows.Add(tabla.Rows(i)(0).ToString(), tabla.Rows(i)(1).ToString(), tabla.Rows(i)(2).ToString(),
                                   Val(Tabla_Recepcionado.Rows(0)(0).ToString()) - Val(Tabla_Despachado.Rows(0)(0).ToString()),
