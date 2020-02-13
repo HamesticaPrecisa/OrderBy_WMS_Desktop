@@ -413,7 +413,7 @@ Public Class Frm_Despacho
 
 
             ' VES ENE 2020
-            Dim numSopAdic As String = txtSopAdic.Text
+            Dim numSopAdic As String = "0" + txtSopAdic.Text
             Dim CodSopAdic As String = txtSopAdicCodi.Text
             If CInt(numSopAdic) > 0 And CodSopAdic = "" Then
                 MessageBox.Show("Debe indicar el tipo de soportante adicional", "Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Hand)

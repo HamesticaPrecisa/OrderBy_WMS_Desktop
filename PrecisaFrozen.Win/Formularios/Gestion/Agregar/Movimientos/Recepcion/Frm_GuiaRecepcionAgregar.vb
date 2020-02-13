@@ -316,6 +316,12 @@ Public Class Frm_GuiaRecepcionAgregar
                 End If
 
                 modificacion = True
+
+
+                ' VES FEB 2020
+                txtSopCustodia.Enabled = True
+                txtSopCusCodi.Enabled = True
+                Btn_buscasopcus.Enabled = True
             End If
 
         ElseIf e.KeyCode = Keys.F3 AndAlso TxtCodRece.Enabled = False Then
@@ -2092,6 +2098,12 @@ Public Class Frm_GuiaRecepcionAgregar
                 Btn_BuscaChofer.Enabled = True
                 BtnBuscar.Enabled = False
 
+                ' VES FEB 2020
+                txtSopCustodia.Enabled = True
+                txtSopCusCodi.Enabled = True
+                Btn_buscasopcus.Enabled = True
+
+
                 If horainic.Text.Trim = ":" Then
                     horainic.Text = DevuelveHora()
                 End If
@@ -2604,7 +2616,7 @@ Public Class Frm_GuiaRecepcionAgregar
                 "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
                 "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
                 "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
-                "ISNULL(mer_id,1) AS mer_id, ISNULL(frec_numsopcustodia,0) AS frec_numsopcustodia, frec_codsopcustodia " +
+                "ISNULL(mer_id,1) AS mer_id, frec_numsopcustodia, frec_codsopcustodia " +
                 "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
                 "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
                 "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "'"
@@ -2616,7 +2628,7 @@ Public Class Frm_GuiaRecepcionAgregar
     "frec_tipoalmacenamiento, frec_TS, frec_TM, frec_TI , cont_descr, frec_codvig , frec_antecamara, frec_dañado, " +
     "cont_tempcon, cont_tempgra, frec_olores, frec_higiene, frec_estiba, frec_dañado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
     "frec_clfol, frec_contenedor , isnull(frec_horalleg ,frec_horarec) AS frec_horalleg, cont_bloqimp,frec_codienca ,frec_ntunel,frec_serv," +
-    "ISNULL(mer_id,1) AS mer_id, ISNULL(frec_numsopcustodia,0) AS frec_numsopcustodia, frec_codsopcustodia " +
+    "ISNULL(mer_id,1) AS mer_id, frec_numsopcustodia, frec_codsopcustodia " +
     "FROM fichrece, clientes, contrato , choferes, contratosHorarios " +
     "WHERE cont_codi=frec_contcli AND cli_rut=frec_rutcli and cho_rut= frec_rutcond AND cont_codi=hor_contcod " +
     "AND frec_codi='" + CerosAnteriorString(TxtCodRece.Text, 7) + "' and fichrece.cod_bod ='" + sucursalglo + "'"
@@ -3063,6 +3075,27 @@ Public Class Frm_GuiaRecepcionAgregar
                 If fnc.MovimientoSQL(sqlGuarda) > 0 Then
                     MsgBox("Guia ingresada correctamente", MsgBoxStyle.Information, "Aviso")
 
+
+
+                    ' VES ENE 2020
+                    ' Si se indicaron pallets en custodia, se ingresan en el control
+                    If NumSopCustodia > 0 Then
+                        Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
+                        Dim CodCont As String = txtcodcontrato.Text
+                        Dim Fec As String = devuelve_fecha(fecharece.Value)
+                        Dim TipSop As String = txtSopCusCodi.Text
+                        Dim DocAso As String = TxtCodRece.Text
+                        Dim CanIngFrm As String = CStr(NumSopCustodia)
+                        Dim CanSalFrm As String = "0"
+                        Dim Obs As String = "Soportantes adicionales en recepcion #" + DocAso
+                        Dim Est As String = "1"
+
+                        Dim sql As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Fec & "','" & TipSop & "','" & DocAso & "','" & CanIngFrm & "','" & CanSalFrm & "','" & Obs & "','" & Est & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                        If fnc.MovimientoSQL(sql) = 0 Then
+                            MsgBox("Ocurrio un error al actualizar el control de soportantes en custodia: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
+                        End If
+                    End If
+
                     Dim cantidadDetalle As Integer = 0
 
                     'Guarda Detalle
@@ -3285,27 +3318,6 @@ Public Class Frm_GuiaRecepcionAgregar
                                                  "SELECT id_pallets, cl_imgtem, cl_imgsel, cl_imgpat, cl_fecha FROM chk_imagestmp WHERE LEFT(id_pallets,7)='" + TxtCodRece.Text + "'"
                         fnc.MovimientoSQL(imagenes)
                     End If
-
-
-                    ' VES ENE 2020
-                    ' Si se indicaron pallets en custodia, se ingresan en el control
-                    If NumSopCustodia > 0 Then
-                        Dim RutCli As String = QuitarCaracteres(TxtClirut.Text, "-")
-                        Dim CodCont As String = txtcodcontrato.Text
-                        Dim Fec As String = devuelve_fecha(fecharece.Value)
-                        Dim TipSop As String = txtSopCusCodi.Text
-                        Dim DocAso As String = TxtCodRece.Text
-                        Dim CanIngFrm As String = CStr(NumSopCustodia)
-                        Dim CanSalFrm As String = "0"
-                        Dim Obs As String = "Soportantes adicionales en recepcion #" + DocAso
-                        Dim Est As String = "1"
-
-                        Dim sql As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Fec & "','" & TipSop & "','" & DocAso & "','" & CanIngFrm & "','" & CanSalFrm & "','" & Obs & "','" & Est & "','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                        If fnc.MovimientoSQL(sql) = 0 Then
-                            MsgBox("Ocurrio un error al actualizar el control de soportantes en custodia: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
-                        End If
-                    End If
-
 
                 Else
                     MsgBox("Ocurrio un error al ingresar la recepcion: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
@@ -4626,5 +4638,9 @@ Public Class Frm_GuiaRecepcionAgregar
             txtsopcusnombre.Text = tabla.Rows(0)(0)
         End If
         Frm_Principal.buscavalor = ""
+    End Sub
+
+    Private Sub txtSopCustodia_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSopCustodia.TextChanged
+
     End Sub
 End Class

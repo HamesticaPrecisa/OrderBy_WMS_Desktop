@@ -25,14 +25,14 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.components = New System.ComponentModel.Container()
         Dim TabPage1 As System.Windows.Forms.TabPage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_GuiaRecepcionAgregar))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lbladv = New System.Windows.Forms.Label()
         Me.Txtobs = New System.Windows.Forms.TextBox()
         Me.pbadvertencia = New System.Windows.Forms.PictureBox()
@@ -175,6 +175,21 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.DetaRece = New System.Windows.Forms.DataGridView()
         Me.Edit = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.Cod_Pallet = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cod_Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre_Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodSopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NomSopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cant_Pallets = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Peso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Elaboracion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Vencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Lote = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodSag = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SopCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Temperatura = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.arriendo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmbest = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label37 = New System.Windows.Forms.Label()
@@ -221,6 +236,11 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.CbArriendo = New System.Windows.Forms.CheckBox()
         Me.DataAdicionales = New System.Windows.Forms.DataGridView()
         Me.cb = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.se = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.de = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.un = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ca = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ki = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label47 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Sab_HorTer = New System.Windows.Forms.Label()
@@ -254,26 +274,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cod_Pallet = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cod_Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre_Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodSopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NomSopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cant_Pallets = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Peso = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Elaboracion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Vencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Lote = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodSag = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SopCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Temperatura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.arriendo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmbest = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.se = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.de = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.un = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ca = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ki = New System.Windows.Forms.DataGridViewTextBoxColumn()
         TabPage1 = New System.Windows.Forms.TabPage()
         TabPage1.SuspendLayout()
         CType(Me.pbadvertencia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1924,6 +1924,160 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.Edit.Width = 25
         '
+        'Cod_Pallet
+        '
+        Me.Cod_Pallet.DataPropertyName = "Pallet"
+        Me.Cod_Pallet.HeaderText = "N PRECISA"
+        Me.Cod_Pallet.Name = "Cod_Pallet"
+        Me.Cod_Pallet.ReadOnly = True
+        Me.Cod_Pallet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Cod_Pallet.Width = 75
+        '
+        'Cod_Producto
+        '
+        Me.Cod_Producto.DataPropertyName = "drec_codpro"
+        Me.Cod_Producto.HeaderText = "Cod. Producto"
+        Me.Cod_Producto.MinimumWidth = 2
+        Me.Cod_Producto.Name = "Cod_Producto"
+        Me.Cod_Producto.ReadOnly = True
+        Me.Cod_Producto.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Cod_Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Cod_Producto.Width = 2
+        '
+        'Nombre_Producto
+        '
+        Me.Nombre_Producto.DataPropertyName = "mae_descr"
+        Me.Nombre_Producto.HeaderText = "PRODUCTO"
+        Me.Nombre_Producto.Name = "Nombre_Producto"
+        Me.Nombre_Producto.ReadOnly = True
+        Me.Nombre_Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Nombre_Producto.Width = 200
+        '
+        'CodSopo
+        '
+        Me.CodSopo.DataPropertyName = "drec_codsopo"
+        Me.CodSopo.HeaderText = "CodSopo"
+        Me.CodSopo.MinimumWidth = 2
+        Me.CodSopo.Name = "CodSopo"
+        Me.CodSopo.ReadOnly = True
+        Me.CodSopo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.CodSopo.Width = 2
+        '
+        'NomSopo
+        '
+        Me.NomSopo.DataPropertyName = "tsop_descr"
+        Me.NomSopo.HeaderText = "Soportante"
+        Me.NomSopo.MinimumWidth = 2
+        Me.NomSopo.Name = "NomSopo"
+        Me.NomSopo.ReadOnly = True
+        Me.NomSopo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.NomSopo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.NomSopo.Width = 2
+        '
+        'Cant_Pallets
+        '
+        Me.Cant_Pallets.DataPropertyName = "drec_unidades"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cant_Pallets.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Cant_Pallets.HeaderText = "ENV."
+        Me.Cant_Pallets.Name = "Cant_Pallets"
+        Me.Cant_Pallets.ReadOnly = True
+        Me.Cant_Pallets.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Cant_Pallets.Width = 40
+        '
+        'Peso
+        '
+        Me.Peso.DataPropertyName = "drec_peso"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Peso.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Peso.HeaderText = "KILOS"
+        Me.Peso.Name = "Peso"
+        Me.Peso.ReadOnly = True
+        Me.Peso.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Peso.Width = 55
+        '
+        'Elaboracion
+        '
+        Me.Elaboracion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.Elaboracion.DataPropertyName = "drec_fecprod"
+        DataGridViewCellStyle3.Format = "d"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.Elaboracion.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Elaboracion.HeaderText = "ELABORACION"
+        Me.Elaboracion.Name = "Elaboracion"
+        Me.Elaboracion.ReadOnly = True
+        Me.Elaboracion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Elaboracion.Width = 93
+        '
+        'Vencimiento
+        '
+        Me.Vencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.Vencimiento.DataPropertyName = "Fechavencimiento"
+        DataGridViewCellStyle4.Format = "d"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Vencimiento.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Vencimiento.HeaderText = "VENCIMIENTO"
+        Me.Vencimiento.Name = "Vencimiento"
+        Me.Vencimiento.ReadOnly = True
+        Me.Vencimiento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Vencimiento.Width = 92
+        '
+        'Lote
+        '
+        Me.Lote.DataPropertyName = "lotecliente"
+        Me.Lote.HeaderText = "LOTE"
+        Me.Lote.Name = "Lote"
+        Me.Lote.ReadOnly = True
+        Me.Lote.Width = 60
+        '
+        'CodSag
+        '
+        Me.CodSag.DataPropertyName = "drec_codsag"
+        Me.CodSag.HeaderText = "SAG"
+        Me.CodSag.Name = "CodSag"
+        Me.CodSag.ReadOnly = True
+        Me.CodSag.Width = 60
+        '
+        'SopCliente
+        '
+        Me.SopCliente.DataPropertyName = "drec_sopocli"
+        Me.SopCliente.HeaderText = "N CLIENTE"
+        Me.SopCliente.Name = "SopCliente"
+        Me.SopCliente.ReadOnly = True
+        '
+        'Temperatura
+        '
+        Me.Temperatura.DataPropertyName = "drec_temp"
+        Me.Temperatura.HeaderText = "TEMP"
+        Me.Temperatura.Name = "Temperatura"
+        Me.Temperatura.ReadOnly = True
+        Me.Temperatura.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Temperatura.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
+        Me.Temperatura.Width = 40
+        '
+        'arriendo
+        '
+        Me.arriendo.DataPropertyName = "drec_arriendo"
+        Me.arriendo.HeaderText = "arriendo"
+        Me.arriendo.MinimumWidth = 2
+        Me.arriendo.Name = "arriendo"
+        Me.arriendo.ReadOnly = True
+        Me.arriendo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.arriendo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.arriendo.Width = 2
+        '
+        'cmbest
+        '
+        Me.cmbest.HeaderText = "cmbest"
+        Me.cmbest.MinimumWidth = 2
+        Me.cmbest.Name = "cmbest"
+        Me.cmbest.ReadOnly = True
+        Me.cmbest.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.cmbest.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.cmbest.Width = 2
+        '
         'Label38
         '
         Me.Label38.AutoSize = True
@@ -2402,6 +2556,47 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.cb.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.cb.Width = 30
         '
+        'se
+        '
+        Me.se.DataPropertyName = "serv_cod"
+        Me.se.HeaderText = "Servicio"
+        Me.se.MinimumWidth = 2
+        Me.se.Name = "se"
+        Me.se.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.se.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.se.Width = 2
+        '
+        'de
+        '
+        Me.de.DataPropertyName = "serv_nom"
+        Me.de.HeaderText = "DESCRIPCION"
+        Me.de.Name = "de"
+        Me.de.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.de.Width = 280
+        '
+        'un
+        '
+        Me.un.DataPropertyName = "DVAS_UNID"
+        Me.un.HeaderText = "UNID"
+        Me.un.Name = "un"
+        Me.un.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.un.Width = 70
+        '
+        'ca
+        '
+        Me.ca.DataPropertyName = "Dvas_Cajas"
+        Me.ca.HeaderText = "CAJAS"
+        Me.ca.Name = "ca"
+        Me.ca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ca.Width = 80
+        '
+        'ki
+        '
+        Me.ki.DataPropertyName = "Dvas_Kilos"
+        Me.ki.HeaderText = "PESO"
+        Me.ki.Name = "ki"
+        Me.ki.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
         'Label47
         '
         Me.Label47.AutoSize = True
@@ -2616,7 +2811,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
         Me.DataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn8.Width = 89
         '
         'DataGridViewTextBoxColumn9
         '
@@ -2629,7 +2823,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
         Me.DataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DataGridViewTextBoxColumn9.Width = 87
         '
         'DataGridViewTextBoxColumn10
         '
@@ -2727,201 +2920,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.DataGridViewTextBoxColumn20.HeaderText = "KILOS"
         Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
         Me.DataGridViewTextBoxColumn20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Cod_Pallet
-        '
-        Me.Cod_Pallet.DataPropertyName = "Pallet"
-        Me.Cod_Pallet.HeaderText = "N PRECISA"
-        Me.Cod_Pallet.Name = "Cod_Pallet"
-        Me.Cod_Pallet.ReadOnly = True
-        Me.Cod_Pallet.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Cod_Pallet.Width = 75
-        '
-        'Cod_Producto
-        '
-        Me.Cod_Producto.DataPropertyName = "drec_codpro"
-        Me.Cod_Producto.HeaderText = "Cod. Producto"
-        Me.Cod_Producto.MinimumWidth = 2
-        Me.Cod_Producto.Name = "Cod_Producto"
-        Me.Cod_Producto.ReadOnly = True
-        Me.Cod_Producto.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Cod_Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Cod_Producto.Width = 2
-        '
-        'Nombre_Producto
-        '
-        Me.Nombre_Producto.DataPropertyName = "mae_descr"
-        Me.Nombre_Producto.HeaderText = "PRODUCTO"
-        Me.Nombre_Producto.Name = "Nombre_Producto"
-        Me.Nombre_Producto.ReadOnly = True
-        Me.Nombre_Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Nombre_Producto.Width = 200
-        '
-        'CodSopo
-        '
-        Me.CodSopo.DataPropertyName = "drec_codsopo"
-        Me.CodSopo.HeaderText = "CodSopo"
-        Me.CodSopo.MinimumWidth = 2
-        Me.CodSopo.Name = "CodSopo"
-        Me.CodSopo.ReadOnly = True
-        Me.CodSopo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.CodSopo.Width = 2
-        '
-        'NomSopo
-        '
-        Me.NomSopo.DataPropertyName = "tsop_descr"
-        Me.NomSopo.HeaderText = "Soportante"
-        Me.NomSopo.MinimumWidth = 2
-        Me.NomSopo.Name = "NomSopo"
-        Me.NomSopo.ReadOnly = True
-        Me.NomSopo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.NomSopo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.NomSopo.Width = 2
-        '
-        'Cant_Pallets
-        '
-        Me.Cant_Pallets.DataPropertyName = "drec_unidades"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cant_Pallets.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Cant_Pallets.HeaderText = "ENV."
-        Me.Cant_Pallets.Name = "Cant_Pallets"
-        Me.Cant_Pallets.ReadOnly = True
-        Me.Cant_Pallets.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Cant_Pallets.Width = 40
-        '
-        'Peso
-        '
-        Me.Peso.DataPropertyName = "drec_peso"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle2.Format = "N2"
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.Peso.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Peso.HeaderText = "KILOS"
-        Me.Peso.Name = "Peso"
-        Me.Peso.ReadOnly = True
-        Me.Peso.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Peso.Width = 55
-        '
-        'Elaboracion
-        '
-        Me.Elaboracion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.Elaboracion.DataPropertyName = "drec_fecprod"
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.Elaboracion.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Elaboracion.HeaderText = "ELABORACION"
-        Me.Elaboracion.Name = "Elaboracion"
-        Me.Elaboracion.ReadOnly = True
-        Me.Elaboracion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Elaboracion.Width = 93
-        '
-        'Vencimiento
-        '
-        Me.Vencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.Vencimiento.DataPropertyName = "Fechavencimiento"
-        DataGridViewCellStyle4.Format = "d"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Vencimiento.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Vencimiento.HeaderText = "VENCIMIENTO"
-        Me.Vencimiento.Name = "Vencimiento"
-        Me.Vencimiento.ReadOnly = True
-        Me.Vencimiento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Vencimiento.Width = 92
-        '
-        'Lote
-        '
-        Me.Lote.DataPropertyName = "lotecliente"
-        Me.Lote.HeaderText = "LOTE"
-        Me.Lote.Name = "Lote"
-        Me.Lote.ReadOnly = True
-        Me.Lote.Width = 60
-        '
-        'CodSag
-        '
-        Me.CodSag.DataPropertyName = "drec_codsag"
-        Me.CodSag.HeaderText = "SAG"
-        Me.CodSag.Name = "CodSag"
-        Me.CodSag.ReadOnly = True
-        Me.CodSag.Width = 60
-        '
-        'SopCliente
-        '
-        Me.SopCliente.DataPropertyName = "drec_sopocli"
-        Me.SopCliente.HeaderText = "N CLIENTE"
-        Me.SopCliente.Name = "SopCliente"
-        Me.SopCliente.ReadOnly = True
-        '
-        'Temperatura
-        '
-        Me.Temperatura.DataPropertyName = "drec_temp"
-        Me.Temperatura.HeaderText = "TEMP"
-        Me.Temperatura.Name = "Temperatura"
-        Me.Temperatura.ReadOnly = True
-        Me.Temperatura.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Temperatura.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
-        Me.Temperatura.Width = 40
-        '
-        'arriendo
-        '
-        Me.arriendo.DataPropertyName = "drec_arriendo"
-        Me.arriendo.HeaderText = "arriendo"
-        Me.arriendo.MinimumWidth = 2
-        Me.arriendo.Name = "arriendo"
-        Me.arriendo.ReadOnly = True
-        Me.arriendo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.arriendo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.arriendo.Width = 2
-        '
-        'cmbest
-        '
-        Me.cmbest.HeaderText = "cmbest"
-        Me.cmbest.MinimumWidth = 2
-        Me.cmbest.Name = "cmbest"
-        Me.cmbest.ReadOnly = True
-        Me.cmbest.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.cmbest.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.cmbest.Width = 2
-        '
-        'se
-        '
-        Me.se.DataPropertyName = "serv_cod"
-        Me.se.HeaderText = "Servicio"
-        Me.se.MinimumWidth = 2
-        Me.se.Name = "se"
-        Me.se.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.se.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.se.Width = 2
-        '
-        'de
-        '
-        Me.de.DataPropertyName = "serv_nom"
-        Me.de.HeaderText = "DESCRIPCION"
-        Me.de.Name = "de"
-        Me.de.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.de.Width = 280
-        '
-        'un
-        '
-        Me.un.DataPropertyName = "DVAS_UNID"
-        Me.un.HeaderText = "UNID"
-        Me.un.Name = "un"
-        Me.un.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.un.Width = 70
-        '
-        'ca
-        '
-        Me.ca.DataPropertyName = "Dvas_Cajas"
-        Me.ca.HeaderText = "CAJAS"
-        Me.ca.Name = "ca"
-        Me.ca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ca.Width = 80
-        '
-        'ki
-        '
-        Me.ki.DataPropertyName = "Dvas_Kilos"
-        Me.ki.HeaderText = "PESO"
-        Me.ki.Name = "ki"
-        Me.ki.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'Frm_GuiaRecepcionAgregar
         '
