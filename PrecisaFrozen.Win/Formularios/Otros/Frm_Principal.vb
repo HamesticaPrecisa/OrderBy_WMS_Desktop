@@ -871,7 +871,7 @@ Public Class Frm_Principal
         Next
 
         menLimPedExp.Enabled = True
-
+        menLimPedExpFecha.Enabled = True
         menNumDia.Visible = True
         menNumDia.Enabled = True
 
@@ -2027,6 +2027,16 @@ Public Class Frm_Principal
             f_OrdPal = True
         Else
             TabControl1.TabPages(Frm_Orden_Pallets).Select()
+        End If
+    End Sub
+
+    Private Sub menLimPedExpFecha_Click(sender As System.Object, e As System.EventArgs) Handles menLimPedExpFecha.Click
+        If Not TabControl1.TabPages(LimiteFechaExportacionPedidos) Is Nothing Then
+            TabControl1.TabPages(LimiteFechaExportacionPedidos).Show()
+        ElseIf LimiteFechaExportacionPedidos.Visible = True Then
+            TabControl1.TabPages(LimiteFechaExportacionPedidos).Select()
+        Else
+            TabControl1.TabPages.Add(LimiteFechaExportacionPedidos)
         End If
     End Sub
 End Class

@@ -1159,46 +1159,40 @@ Public Class Frm_GuiaPreDespachoAgregar
                     End If
 
 
+                    'Dim sqlped As String = "SELECT   CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='1' "
+                    ''Dim sqlped As String = "SELECT * FROM detapedcajas where pc_numpal = '" + txtpallet.Text + "'"
+                    'Dim tabla As DataTable = fnc.ListarTablasSQL(sqlped)
 
 
-                    Dim sqlped As String = "SELECT   CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='1' "
-                    'Dim sqlped As String = "SELECT * FROM detapedcajas where pc_numpal = '" + txtpallet.Text + "'"
-                    Dim tabla As DataTable = fnc.ListarTablasSQL(sqlped)
+                    'If tabla.Rows.Count > 0 Then
+                    '    '"SELECT    CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + txtpallet.Text + "'  "
+                    '    Dim sqlped2 As String = "SELECT   CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='0' "
+                    '    Dim tabla3 As DataTable = fnc.ListarTablasSQL(sqlped2)
+                    '    If tabla3.Rows.Count > 0 Then
+                    '        ejec = "2"
+                    '    Else
+                    '        ejec = "1"
+
+                    '    End If
 
 
-                    If tabla.Rows.Count > 0 Then
-                        '"SELECT    CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + txtpallet.Text + "'  "
-                        Dim sqlped2 As String = "SELECT   CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='0' "
-                        Dim tabla3 As DataTable = fnc.ListarTablasSQL(sqlped2)
-                        If tabla3.Rows.Count > 0 Then
-                            ejec = "2"
-                        Else
-                            ejec = "1"
+                    '    If (ejec = "2") Then
 
-                        End If
+                    '    Else
 
 
-                        If (ejec = "2") Then
+                    '        Dim Sqlpedido As String = "select dpc_codped from detapedcaja where dpc_numpal= '" + pallet10 + "'"
+                    '        Dim tabla2 As DataTable = fnc.ListarTablasSQL(Sqlpedido)
 
-                        Else
+                    '        Dim pedidostr As String = tabla2.Rows(0)(0).ToString()
+                    '        MsgBox("Este Pallet Esta Contenido en el pedido " + pedidostr + ", Imposible PRE-Despachar", MsgBoxStyle.Critical, "Aviso")
 
-
-                            Dim Sqlpedido As String = "select dpc_codped from detapedcaja where dpc_numpal= '" + pallet10 + "'"
-                            Dim tabla2 As DataTable = fnc.ListarTablasSQL(Sqlpedido)
-
-                            Dim pedidostr As String = tabla2.Rows(0)(0).ToString()
-                            MsgBox("Este Pallet Esta Contenido en el pedido " + pedidostr + ", Imposible PRE-Despachar", MsgBoxStyle.Critical, "Aviso")
-
-                            Exit Sub
+                    '        Exit Sub
 
 
+                    '    End If
 
-
-                        End If
-
-
-
-                    End If
+                    'End If
 
                 End If
 

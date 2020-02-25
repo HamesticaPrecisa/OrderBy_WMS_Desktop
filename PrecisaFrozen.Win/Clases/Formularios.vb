@@ -31,7 +31,8 @@ Module Formularios
     Public f_LstMedidas As Boolean = False
     Public f_LstOrigen As Boolean = False
     Public f_detallado As Boolean = False
-
+    Public Lst_Pedidos_Fecha As Boolean = False
+    Public Lst_Pedidos_Clientes As Boolean = False
     Public f_lstMercados As Boolean = False   ' VES Sep 2019
 
 
@@ -117,7 +118,7 @@ Module Formularios
     Public f_locs_pedidos As Boolean = False
 
     Public f_LimPedExp As Boolean = False
-
+    Public f_LimPedExpFecha As Boolean = False
     Public f_CtrPallet As Boolean = False
 
 
