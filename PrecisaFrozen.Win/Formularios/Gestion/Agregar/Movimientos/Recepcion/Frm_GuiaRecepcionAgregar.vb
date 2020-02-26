@@ -1650,6 +1650,11 @@ Public Class Frm_GuiaRecepcionAgregar
         Dim Titulo2 As New Font("Arial", 34, FontStyle.Bold)
         ' dibuja rectangulo
         '    e.Graphics.DrawRectangle(Pens.Black, New Rectangle(3, 8, 375, 385))
+        Dim x As Single = 115.0F
+        Dim y As Single = 135.0F
+        Dim width As Single = 250.0F
+        Dim height As Single = 25.0F
+        Dim drawRect As New RectangleF(x, y, width, height)
         cargaimg()
         ' imprimir logo -----------------------------------------------
         Dim img_logo As New PictureBox
@@ -1666,8 +1671,9 @@ Public Class Frm_GuiaRecepcionAgregar
         e.Graphics.DrawString("CLIENTE", prFont, Brushes.Black, 10, 120)
         e.Graphics.DrawString(": " + cli, prFont, Brushes.Black, 105, 120)
 
-        e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 140)
-        e.Graphics.DrawString(": " + producto, prFont, Brushes.Black, 105, 140)
+        e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 135)
+        e.Graphics.DrawString(": ", prFont, Brushes.Black, 105, 135)
+        e.Graphics.DrawString(producto, prFont, Brushes.Black, drawRect)
 
         e.Graphics.DrawString("FOLIO CLIENTE", prFont, Brushes.Black, 10, 160)
         e.Graphics.DrawString(": " + folio_cliente + " UND: " + stock + " / " + unidades + "   KG: " + kilos, prFont, Brushes.Black, 105, 160)
@@ -1751,6 +1757,11 @@ Public Class Frm_GuiaRecepcionAgregar
         Dim Titulo2 As New Font("Arial", 34, FontStyle.Bold)
         ' dibuja rectangulo
         '    e.Graphics.DrawRectangle(Pens.Black, New Rectangle(3, 8, 375, 385))
+        Dim x As Single = 115.0F
+        Dim y As Single = 135.0F
+        Dim width As Single = 250.0F
+        Dim height As Single = 25.0F
+        Dim drawRect As New RectangleF(x, y, width, height)
         cargaimg()
         ' imprimir logo -----------------------------------------------
         Dim img_logo As New PictureBox
@@ -1768,7 +1779,8 @@ Public Class Frm_GuiaRecepcionAgregar
         e.Graphics.DrawString(": " + cli, prFont, Brushes.Black, 105, 120)
 
         e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 135)
-        e.Graphics.DrawString(": " + producto, prFont, Brushes.Black, 105, 135)
+        e.Graphics.DrawString(": ", prFont, Brushes.Black, 105, 135)
+        e.Graphics.DrawString(producto, prFont, Brushes.Black, drawRect)
 
         e.Graphics.DrawString("FOLIO CLIENTE", prFont, Brushes.Black, 10, 160)
         e.Graphics.DrawString(": " + folio_cliente + " UND: " + stock + " / " + unidades + "   KG: " + kilos, prFont, Brushes.Black, 105, 160)
