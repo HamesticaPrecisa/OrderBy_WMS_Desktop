@@ -218,6 +218,9 @@ Public Class Frm_PedidosDetalle
                         Dim sql_pedc As String = "DELETE FROM pedcaja WHERE pc_codped='" + CODIGO_CHICO + "' AND pc_numpal='" + _pallet + "'"
                         fnc.MovimientoSQL(sql_pedc)
 
+                        Dim sql_detarece As String = "UPDATE DetaReceCajas SET caj_ped ='0' FROM DetaReceCajas INNER JOIN detapedcaja ON dpc_codcaja = Caj_cod and dpc_numpal = caj_Pcod WHERE dpc_codped='" + CODIGO_PEDIDO + "'"
+                        fnc.MovimientoSQL(sql_detarece)
+
                         Dim sql_dpedc As String = "DELETE FROM detapedcaja WHERE dpc_codped='" + CODIGO_CHICO + "' AND dpc_numpal='" + _pallet + "'"
                         fnc.MovimientoSQL(sql_dpedc)
 

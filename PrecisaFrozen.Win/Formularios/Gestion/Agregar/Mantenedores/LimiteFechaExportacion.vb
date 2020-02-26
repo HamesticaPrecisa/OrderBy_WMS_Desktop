@@ -74,11 +74,11 @@
 
         If tabla3.Rows.Count > 0 Then
             If txtlimite.Text > 8 Then
-                MsgBox("La cantidad limite es de 1-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
+                MsgBox("La cantidad limite es de 0-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
                 Exit Sub
             End If
-            If txtlimite.Text < 1 Then
-                MsgBox("La cantidad limite es de 1-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
+            If txtlimite.Text < 0 Then
+                MsgBox("La cantidad limite es de 0-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
                 Exit Sub
             End If
 
@@ -119,7 +119,7 @@
                 Exit Sub
             End If
 
-            
+
 
 
         End If
@@ -141,11 +141,11 @@
             Exit Sub
         End If
         If txtlimite.Text > 8 Then
-            MsgBox("La cantidad limite es de 1-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
+            MsgBox("La cantidad limite es de 0-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
             Exit Sub
         End If
-        If txtlimite.Text < 1 Then
-            MsgBox("La cantidad limite es de 1-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
+        If txtlimite.Text < 0 Then
+            MsgBox("La cantidad limite es de 0-8 dependiendo del Cliente.", MsgBoxStyle.Information, "Aviso")
             Exit Sub
         End If
 
