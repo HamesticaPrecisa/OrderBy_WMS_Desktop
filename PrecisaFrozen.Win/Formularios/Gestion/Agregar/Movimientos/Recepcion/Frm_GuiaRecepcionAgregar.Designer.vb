@@ -25,14 +25,14 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.components = New System.ComponentModel.Container()
         Dim TabPage1 As System.Windows.Forms.TabPage
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_GuiaRecepcionAgregar))
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lbladv = New System.Windows.Forms.Label()
         Me.Txtobs = New System.Windows.Forms.TextBox()
         Me.pbadvertencia = New System.Windows.Forms.PictureBox()
@@ -112,6 +112,11 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label39 = New System.Windows.Forms.Label()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.Gb_Encabezado = New System.Windows.Forms.GroupBox()
+        Me.txtSopCusCodi = New System.Windows.Forms.TextBox()
+        Me.Btn_buscasopcus = New System.Windows.Forms.Button()
+        Me.txtsopcusnombre = New System.Windows.Forms.TextBox()
+        Me.txtSopCustodia = New System.Windows.Forms.TextBox()
+        Me.Label66 = New System.Windows.Forms.Label()
         Me.produa = New System.Windows.Forms.ComboBox()
         Me.Label61 = New System.Windows.Forms.Label()
         Me.Label59 = New System.Windows.Forms.Label()
@@ -419,7 +424,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.lblkilguia.Name = "lblkilguia"
         Me.lblkilguia.Size = New System.Drawing.Size(78, 21)
         Me.lblkilguia.TabIndex = 66
-        Me.lblkilguia.Text = "KG.   GUIA"
+        Me.lblkilguia.Text = "KG. GUIA"
         Me.lblkilguia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.lblkilguia.Visible = False
         '
@@ -1129,6 +1134,11 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Gb_Encabezado
         '
         Me.Gb_Encabezado.BackColor = System.Drawing.Color.Transparent
+        Me.Gb_Encabezado.Controls.Add(Me.txtSopCusCodi)
+        Me.Gb_Encabezado.Controls.Add(Me.Btn_buscasopcus)
+        Me.Gb_Encabezado.Controls.Add(Me.txtsopcusnombre)
+        Me.Gb_Encabezado.Controls.Add(Me.txtSopCustodia)
+        Me.Gb_Encabezado.Controls.Add(Me.Label66)
         Me.Gb_Encabezado.Controls.Add(Me.produa)
         Me.Gb_Encabezado.Controls.Add(Me.Label61)
         Me.Gb_Encabezado.Controls.Add(Me.Label59)
@@ -1176,6 +1186,55 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Gb_Encabezado.Size = New System.Drawing.Size(672, 226)
         Me.Gb_Encabezado.TabIndex = 50
         Me.Gb_Encabezado.TabStop = False
+        '
+        'txtSopCusCodi
+        '
+        Me.txtSopCusCodi.Enabled = False
+        Me.txtSopCusCodi.Location = New System.Drawing.Point(363, 161)
+        Me.txtSopCusCodi.MaxLength = 4
+        Me.txtSopCusCodi.Name = "txtSopCusCodi"
+        Me.txtSopCusCodi.Size = New System.Drawing.Size(56, 21)
+        Me.txtSopCusCodi.TabIndex = 90
+        '
+        'Btn_buscasopcus
+        '
+        Me.Btn_buscasopcus.Enabled = False
+        Me.Btn_buscasopcus.Image = CType(resources.GetObject("Btn_buscasopcus.Image"), System.Drawing.Image)
+        Me.Btn_buscasopcus.Location = New System.Drawing.Point(422, 159)
+        Me.Btn_buscasopcus.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Btn_buscasopcus.Name = "Btn_buscasopcus"
+        Me.Btn_buscasopcus.Size = New System.Drawing.Size(21, 22)
+        Me.Btn_buscasopcus.TabIndex = 91
+        Me.Btn_buscasopcus.UseVisualStyleBackColor = True
+        '
+        'txtsopcusnombre
+        '
+        Me.txtsopcusnombre.Enabled = False
+        Me.txtsopcusnombre.Location = New System.Drawing.Point(449, 161)
+        Me.txtsopcusnombre.Name = "txtsopcusnombre"
+        Me.txtsopcusnombre.Size = New System.Drawing.Size(192, 21)
+        Me.txtsopcusnombre.TabIndex = 92
+        '
+        'txtSopCustodia
+        '
+        Me.txtSopCustodia.Enabled = False
+        Me.txtSopCustodia.Location = New System.Drawing.Point(298, 161)
+        Me.txtSopCustodia.MaxLength = 7
+        Me.txtSopCustodia.Name = "txtSopCustodia"
+        Me.txtSopCustodia.Size = New System.Drawing.Size(59, 21)
+        Me.txtSopCustodia.TabIndex = 89
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label66.ForeColor = System.Drawing.Color.White
+        Me.Label66.Location = New System.Drawing.Point(198, 164)
+        Me.Label66.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(98, 13)
+        Me.Label66.TabIndex = 88
+        Me.Label66.Text = "SOP CUSTODIA"
         '
         'produa
         '
@@ -1391,6 +1450,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'fecharece
         '
+        Me.fecharece.CustomFormat = "dd/MM/yyyy"
         Me.fecharece.Enabled = False
         Me.fecharece.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.fecharece.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
@@ -1918,8 +1978,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Cant_Pallets
         '
         Me.Cant_Pallets.DataPropertyName = "drec_unidades"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cant_Pallets.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cant_Pallets.DefaultCellStyle = DataGridViewCellStyle1
         Me.Cant_Pallets.HeaderText = "ENV."
         Me.Cant_Pallets.Name = "Cant_Pallets"
         Me.Cant_Pallets.ReadOnly = True
@@ -1929,10 +1989,10 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Peso
         '
         Me.Peso.DataPropertyName = "drec_peso"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle10.Format = "N2"
-        DataGridViewCellStyle10.NullValue = Nothing
-        Me.Peso.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.Peso.DefaultCellStyle = DataGridViewCellStyle2
         Me.Peso.HeaderText = "KILOS"
         Me.Peso.Name = "Peso"
         Me.Peso.ReadOnly = True
@@ -1943,9 +2003,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Elaboracion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.Elaboracion.DataPropertyName = "drec_fecprod"
-        DataGridViewCellStyle11.Format = "d"
-        DataGridViewCellStyle11.NullValue = Nothing
-        Me.Elaboracion.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle3.Format = "d"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.Elaboracion.DefaultCellStyle = DataGridViewCellStyle3
         Me.Elaboracion.HeaderText = "ELABORACION"
         Me.Elaboracion.Name = "Elaboracion"
         Me.Elaboracion.ReadOnly = True
@@ -1956,9 +2016,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Vencimiento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.Vencimiento.DataPropertyName = "Fechavencimiento"
-        DataGridViewCellStyle12.Format = "d"
-        DataGridViewCellStyle12.NullValue = Nothing
-        Me.Vencimiento.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Format = "d"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Vencimiento.DefaultCellStyle = DataGridViewCellStyle4
         Me.Vencimiento.HeaderText = "VENCIMIENTO"
         Me.Vencimiento.Name = "Vencimiento"
         Me.Vencimiento.ReadOnly = True
@@ -2720,8 +2780,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "drec_unidades"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn6.HeaderText = "Unid."
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -2731,10 +2791,10 @@ Partial Class Frm_GuiaRecepcionAgregar
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "drec_peso"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "N2"
-        DataGridViewCellStyle14.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn7.HeaderText = "Peso"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -2745,9 +2805,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "drec_fecprod"
-        DataGridViewCellStyle15.Format = "d"
-        DataGridViewCellStyle15.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle7.Format = "d"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridViewTextBoxColumn8.HeaderText = "Elaboración"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         Me.DataGridViewTextBoxColumn8.ReadOnly = True
@@ -2757,9 +2817,9 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.DataGridViewTextBoxColumn9.DataPropertyName = "Fechavencimiento"
-        DataGridViewCellStyle16.Format = "d"
-        DataGridViewCellStyle16.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle8.Format = "d"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn9.HeaderText = "Vencimiento"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.ReadOnly = True
@@ -3145,4 +3205,9 @@ Partial Class Frm_GuiaRecepcionAgregar
     Friend WithEvents cboMercado As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents Label65 As System.Windows.Forms.Label
+    Friend WithEvents txtSopCustodia As System.Windows.Forms.TextBox
+    Friend WithEvents Label66 As System.Windows.Forms.Label
+    Friend WithEvents txtSopCusCodi As System.Windows.Forms.TextBox
+    Friend WithEvents Btn_buscasopcus As System.Windows.Forms.Button
+    Friend WithEvents txtsopcusnombre As System.Windows.Forms.TextBox
 End Class

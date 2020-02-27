@@ -1518,3 +1518,12 @@ Z:\Work\Fuentes\NOI\DEV\ptech\OrderByWMS_PTECH\PrecisaFrozen.Win\bin\Debug\AxInt
 Z:\Work\Fuentes\NOI\DEV\ptech\OrderByWMS_PTECH\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_Orden_Pallets.resources
 Z:\Work\Fuentes\NOI\DEV\ptech\OrderByWMS_PTECH\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.exe.manifest
 Z:\Work\Fuentes\NOI\DEV\ptech\OrderByWMS_PTECH\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.application
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_AddMercados.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_Orden_Pallets.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Lst_Mercados.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_ContenidoTuneles.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_GuiasPendTunel.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_Tuneles.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.Frm_ConfProcesoTunel.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.frm_ReglaFCT.resources
+C:\Users\WEBMASTER\Documents\GitHub\OrderBy_WMS_Desktop\PrecisaFrozen.Win\obj\x86\Debug\PrecisaFrozen.Win.frm_ReglaRCT.resources

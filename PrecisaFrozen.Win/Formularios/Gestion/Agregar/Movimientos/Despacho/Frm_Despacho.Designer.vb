@@ -26,6 +26,7 @@ Partial Class Frm_Despacho
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Despacho))
         Me.txtcodigo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.chkSalPallets = New System.Windows.Forms.CheckBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.btnAdjuntarFotos = New System.Windows.Forms.Button()
         Me.CbCarga = New System.Windows.Forms.ComboBox()
@@ -56,6 +57,22 @@ Partial Class Frm_Despacho
         Me.txtorigen = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.DetaDespa = New System.Windows.Forms.DataGridView()
+        Me.SOPO_PRECISA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SOPOCLI = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PROD_COD = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PRODUCTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UNID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PESO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.F_PROD = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.COD_CONT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CONTRATO = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cod_sopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nom_sopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PALLET = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ca = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dpre_estadia = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DESP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SALDO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -108,6 +125,11 @@ Partial Class Frm_Despacho
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataAdicionales = New System.Windows.Forms.DataGridView()
         Me.cb = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.se = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.de = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.un = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.caj = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ki = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TxtRepa = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.chkSinCobEst = New System.Windows.Forms.CheckBox()
@@ -133,7 +155,11 @@ Partial Class Frm_Despacho
         Me.txtCodDesp = New System.Windows.Forms.TextBox()
         Me.Lbl_EstadoGuia = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
-        Me.chkSalPallets = New System.Windows.Forms.CheckBox()
+        Me.txtSopAdicCodi = New System.Windows.Forms.TextBox()
+        Me.Btn_buscasopadic = New System.Windows.Forms.Button()
+        Me.txtsopadicnombre = New System.Windows.Forms.TextBox()
+        Me.txtSopAdic = New System.Windows.Forms.TextBox()
+        Me.Label66 = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -155,27 +181,6 @@ Partial Class Frm_Despacho
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SOPO_PRECISA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SOPOCLI = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PROD_COD = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRODUCTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UNID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PESO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.F_PROD = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.COD_CONT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CONTRATO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cod_sopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nom_sopo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PALLET = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ca = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dpre_estadia = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DESP = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SALDO = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.se = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.de = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.un = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.caj = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ki = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DetaDespa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
@@ -233,6 +238,16 @@ Partial Class Frm_Despacho
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
+        'chkSalPallets
+        '
+        Me.chkSalPallets.AutoSize = True
+        Me.chkSalPallets.Location = New System.Drawing.Point(396, 148)
+        Me.chkSalPallets.Name = "chkSalPallets"
+        Me.chkSalPallets.Size = New System.Drawing.Size(158, 17)
+        Me.chkSalPallets.TabIndex = 72
+        Me.chkSalPallets.Text = "CAMIÓN LLEVA PALLET"
+        Me.chkSalPallets.UseVisualStyleBackColor = True
+        '
         'Label28
         '
         Me.Label28.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -266,7 +281,7 @@ Partial Class Frm_Despacho
         Me.Label17.AutoSize = True
         Me.Label17.Location = New System.Drawing.Point(302, 123)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(64, 13)
+        Me.Label17.Size = New System.Drawing.Size(62, 13)
         Me.Label17.TabIndex = 69
         Me.Label17.Text = "T. CARGA"
         '
@@ -430,7 +445,7 @@ Partial Class Frm_Despacho
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(389, 47)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(58, 13)
+        Me.Label3.Size = New System.Drawing.Size(57, 13)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "PATENTE"
         '
@@ -513,23 +528,174 @@ Partial Class Frm_Despacho
         Me.DetaDespa.Size = New System.Drawing.Size(577, 189)
         Me.DetaDespa.TabIndex = 24
         '
+        'SOPO_PRECISA
+        '
+        Me.SOPO_PRECISA.DataPropertyName = "dpre_folio"
+        Me.SOPO_PRECISA.HeaderText = "SOP"
+        Me.SOPO_PRECISA.Name = "SOPO_PRECISA"
+        Me.SOPO_PRECISA.ReadOnly = True
+        '
+        'SOPOCLI
+        '
+        Me.SOPOCLI.DataPropertyName = "dpre_sopocli"
+        Me.SOPOCLI.HeaderText = "S. CLIENTE"
+        Me.SOPOCLI.Name = "SOPOCLI"
+        Me.SOPOCLI.ReadOnly = True
+        '
+        'PROD_COD
+        '
+        Me.PROD_COD.DataPropertyName = "dpre_codpro"
+        Me.PROD_COD.HeaderText = ""
+        Me.PROD_COD.MinimumWidth = 2
+        Me.PROD_COD.Name = "PROD_COD"
+        Me.PROD_COD.ReadOnly = True
+        Me.PROD_COD.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PROD_COD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PROD_COD.Width = 2
+        '
+        'PRODUCTO
+        '
+        Me.PRODUCTO.DataPropertyName = "mae_descr"
+        Me.PRODUCTO.HeaderText = "PRODUCTO"
+        Me.PRODUCTO.Name = "PRODUCTO"
+        Me.PRODUCTO.ReadOnly = True
+        Me.PRODUCTO.Width = 140
+        '
+        'UNID
+        '
+        Me.UNID.DataPropertyName = "dpre_unidades"
+        Me.UNID.HeaderText = "UNID."
+        Me.UNID.Name = "UNID"
+        Me.UNID.ReadOnly = True
+        Me.UNID.Width = 50
+        '
+        'PESO
+        '
+        Me.PESO.DataPropertyName = "dpre_peso"
+        Me.PESO.HeaderText = "PESO"
+        Me.PESO.Name = "PESO"
+        Me.PESO.ReadOnly = True
+        Me.PESO.Width = 70
+        '
+        'F_PROD
+        '
+        Me.F_PROD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.F_PROD.DataPropertyName = "dpre_fecprod"
+        Me.F_PROD.HeaderText = "F. PROD."
+        Me.F_PROD.Name = "F_PROD"
+        Me.F_PROD.ReadOnly = True
+        Me.F_PROD.Width = 81
+        '
+        'COD_CONT
+        '
+        Me.COD_CONT.DataPropertyName = "dpre_contcli"
+        Me.COD_CONT.HeaderText = ""
+        Me.COD_CONT.MinimumWidth = 2
+        Me.COD_CONT.Name = "COD_CONT"
+        Me.COD_CONT.ReadOnly = True
+        Me.COD_CONT.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.COD_CONT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.COD_CONT.Width = 2
+        '
+        'CONTRATO
+        '
+        Me.CONTRATO.DataPropertyName = "cont_descr"
+        Me.CONTRATO.HeaderText = "CONTRATO"
+        Me.CONTRATO.MinimumWidth = 2
+        Me.CONTRATO.Name = "CONTRATO"
+        Me.CONTRATO.ReadOnly = True
+        Me.CONTRATO.Width = 70
+        '
+        'cod_sopo
+        '
+        Me.cod_sopo.DataPropertyName = "dpre_codsopo"
+        Me.cod_sopo.HeaderText = ""
+        Me.cod_sopo.MinimumWidth = 2
+        Me.cod_sopo.Name = "cod_sopo"
+        Me.cod_sopo.ReadOnly = True
+        Me.cod_sopo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.cod_sopo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.cod_sopo.Width = 2
+        '
+        'nom_sopo
+        '
+        Me.nom_sopo.DataPropertyName = "tsop_descr"
+        Me.nom_sopo.HeaderText = "SOPORTANTE"
+        Me.nom_sopo.Name = "nom_sopo"
+        Me.nom_sopo.ReadOnly = True
+        '
+        'PALLET
+        '
+        Me.PALLET.DataPropertyName = "dpre_pallet"
+        Me.PALLET.HeaderText = "PALLET"
+        Me.PALLET.MinimumWidth = 2
+        Me.PALLET.Name = "PALLET"
+        Me.PALLET.ReadOnly = True
+        Me.PALLET.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.PALLET.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.PALLET.Width = 20
+        '
+        'Ca
+        '
+        Me.Ca.DataPropertyName = "dpre_camara"
+        Me.Ca.HeaderText = "CA"
+        Me.Ca.MinimumWidth = 2
+        Me.Ca.Name = "Ca"
+        Me.Ca.ReadOnly = True
+        Me.Ca.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Ca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Ca.Width = 2
+        '
+        'dpre_estadia
+        '
+        Me.dpre_estadia.DataPropertyName = "estadia"
+        Me.dpre_estadia.HeaderText = "EST"
+        Me.dpre_estadia.MinimumWidth = 2
+        Me.dpre_estadia.Name = "dpre_estadia"
+        Me.dpre_estadia.ReadOnly = True
+        Me.dpre_estadia.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dpre_estadia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.dpre_estadia.Width = 2
+        '
+        'DESP
+        '
+        Me.DESP.DataPropertyName = "mov_despacho"
+        Me.DESP.HeaderText = "DESP"
+        Me.DESP.MinimumWidth = 2
+        Me.DESP.Name = "DESP"
+        Me.DESP.ReadOnly = True
+        Me.DESP.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DESP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.DESP.Width = 2
+        '
+        'SALDO
+        '
+        Me.SALDO.DataPropertyName = "mov_saldo"
+        Me.SALDO.HeaderText = "SALDO"
+        Me.SALDO.MinimumWidth = 2
+        Me.SALDO.Name = "SALDO"
+        Me.SALDO.ReadOnly = True
+        Me.SALDO.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.SALDO.Width = 2
+        '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.BackColor = System.Drawing.Color.Transparent
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(230, 672)
+        Me.Label11.Location = New System.Drawing.Point(266, 679)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(93, 13)
+        Me.Label11.Size = New System.Drawing.Size(31, 13)
         Me.Label11.TabIndex = 25
-        Me.Label11.Text = "SOPORTANTES"
+        Me.Label11.Text = "SOP"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.Transparent
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(387, 672)
+        Me.Label12.Location = New System.Drawing.Point(33, 679)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(45, 13)
         Me.Label12.TabIndex = 26
@@ -540,16 +706,16 @@ Partial Class Frm_Despacho
         Me.Label13.AutoSize = True
         Me.Label13.BackColor = System.Drawing.Color.Transparent
         Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(499, 672)
+        Me.Label13.Location = New System.Drawing.Point(134, 679)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(38, 13)
+        Me.Label13.Size = New System.Drawing.Size(32, 13)
         Me.Label13.TabIndex = 27
-        Me.Label13.Text = "PESO"
+        Me.Label13.Text = "KGS"
         '
         'txttotsopo
         '
         Me.txttotsopo.Enabled = False
-        Me.txttotsopo.Location = New System.Drawing.Point(324, 669)
+        Me.txttotsopo.Location = New System.Drawing.Point(299, 675)
         Me.txttotsopo.Name = "txttotsopo"
         Me.txttotsopo.ReadOnly = True
         Me.txttotsopo.Size = New System.Drawing.Size(46, 21)
@@ -560,7 +726,7 @@ Partial Class Frm_Despacho
         'txttotcajas
         '
         Me.txttotcajas.Enabled = False
-        Me.txttotcajas.Location = New System.Drawing.Point(438, 669)
+        Me.txttotcajas.Location = New System.Drawing.Point(79, 675)
         Me.txttotcajas.Name = "txttotcajas"
         Me.txttotcajas.ReadOnly = True
         Me.txttotcajas.Size = New System.Drawing.Size(46, 21)
@@ -571,7 +737,7 @@ Partial Class Frm_Despacho
         'txttotkilos
         '
         Me.txttotkilos.Enabled = False
-        Me.txttotkilos.Location = New System.Drawing.Point(548, 669)
+        Me.txttotkilos.Location = New System.Drawing.Point(168, 675)
         Me.txttotkilos.Name = "txttotkilos"
         Me.txttotkilos.ReadOnly = True
         Me.txttotkilos.Size = New System.Drawing.Size(88, 21)
@@ -1111,6 +1277,48 @@ Partial Class Frm_Despacho
         Me.cb.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.cb.Width = 30
         '
+        'se
+        '
+        Me.se.DataPropertyName = "serv_cod"
+        Me.se.HeaderText = "Servicio"
+        Me.se.MinimumWidth = 2
+        Me.se.Name = "se"
+        Me.se.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.se.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.se.Width = 2
+        '
+        'de
+        '
+        Me.de.DataPropertyName = "serv_nom"
+        Me.de.HeaderText = "DESCRIPCION"
+        Me.de.Name = "de"
+        Me.de.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.de.Width = 280
+        '
+        'un
+        '
+        Me.un.DataPropertyName = "Dvas_Unid"
+        Me.un.HeaderText = "SOP."
+        Me.un.Name = "un"
+        Me.un.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.un.Width = 65
+        '
+        'caj
+        '
+        Me.caj.DataPropertyName = "Dvas_Cajas"
+        Me.caj.HeaderText = "ENVASES"
+        Me.caj.Name = "caj"
+        Me.caj.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.caj.Width = 65
+        '
+        'ki
+        '
+        Me.ki.DataPropertyName = "Dvas_Kilos"
+        Me.ki.HeaderText = "KILOS"
+        Me.ki.Name = "ki"
+        Me.ki.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ki.Width = 80
+        '
         'TxtRepa
         '
         Me.TxtRepa.Location = New System.Drawing.Point(545, 339)
@@ -1203,7 +1411,7 @@ Partial Class Frm_Despacho
         Me.Label23.AutoSize = True
         Me.Label23.Location = New System.Drawing.Point(6, 20)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(160, 13)
+        Me.Label23.Size = New System.Drawing.Size(159, 13)
         Me.Label23.TabIndex = 86
         Me.Label23.Text = "ESTADÍA MENOR A (DÍAS)"
         '
@@ -1356,15 +1564,57 @@ Partial Class Frm_Despacho
         Me.Label35.TabIndex = 71
         Me.Label35.Text = "ESTADO :"
         '
-        'chkSalPallets
+        'txtSopAdicCodi
         '
-        Me.chkSalPallets.AutoSize = True
-        Me.chkSalPallets.Location = New System.Drawing.Point(396, 148)
-        Me.chkSalPallets.Name = "chkSalPallets"
-        Me.chkSalPallets.Size = New System.Drawing.Size(158, 17)
-        Me.chkSalPallets.TabIndex = 72
-        Me.chkSalPallets.Text = "CAMIÓN LLEVA PALLET"
-        Me.chkSalPallets.UseVisualStyleBackColor = True
+        Me.txtSopAdicCodi.Enabled = False
+        Me.txtSopAdicCodi.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSopAdicCodi.Location = New System.Drawing.Point(451, 675)
+        Me.txtSopAdicCodi.MaxLength = 4
+        Me.txtSopAdicCodi.Name = "txtSopAdicCodi"
+        Me.txtSopAdicCodi.Size = New System.Drawing.Size(42, 21)
+        Me.txtSopAdicCodi.TabIndex = 312
+        '
+        'Btn_buscasopadic
+        '
+        Me.Btn_buscasopadic.Enabled = False
+        Me.Btn_buscasopadic.Image = CType(resources.GetObject("Btn_buscasopadic.Image"), System.Drawing.Image)
+        Me.Btn_buscasopadic.Location = New System.Drawing.Point(498, 674)
+        Me.Btn_buscasopadic.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Btn_buscasopadic.Name = "Btn_buscasopadic"
+        Me.Btn_buscasopadic.Size = New System.Drawing.Size(21, 22)
+        Me.Btn_buscasopadic.TabIndex = 313
+        Me.Btn_buscasopadic.UseVisualStyleBackColor = True
+        '
+        'txtsopadicnombre
+        '
+        Me.txtsopadicnombre.Enabled = False
+        Me.txtsopadicnombre.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsopadicnombre.Location = New System.Drawing.Point(523, 675)
+        Me.txtsopadicnombre.Name = "txtsopadicnombre"
+        Me.txtsopadicnombre.Size = New System.Drawing.Size(117, 21)
+        Me.txtsopadicnombre.TabIndex = 314
+        '
+        'txtSopAdic
+        '
+        Me.txtSopAdic.Enabled = False
+        Me.txtSopAdic.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSopAdic.Location = New System.Drawing.Point(405, 675)
+        Me.txtSopAdic.MaxLength = 7
+        Me.txtSopAdic.Name = "txtSopAdic"
+        Me.txtSopAdic.Size = New System.Drawing.Size(40, 21)
+        Me.txtSopAdic.TabIndex = 311
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label66.ForeColor = System.Drawing.Color.White
+        Me.Label66.Location = New System.Drawing.Point(363, 679)
+        Me.Label66.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(38, 13)
+        Me.Label66.TabIndex = 310
+        Me.Label66.Text = "ADIC"
         '
         'DataGridViewTextBoxColumn1
         '
@@ -1422,7 +1672,6 @@ Partial Class Frm_Despacho
         Me.DataGridViewTextBoxColumn7.HeaderText = "F. PROD."
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 78
         '
         'DataGridViewTextBoxColumn8
         '
@@ -1559,199 +1808,6 @@ Partial Class Frm_Despacho
         Me.DataGridViewTextBoxColumn21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn21.Width = 80
         '
-        'SOPO_PRECISA
-        '
-        Me.SOPO_PRECISA.DataPropertyName = "dpre_folio"
-        Me.SOPO_PRECISA.HeaderText = "SOP"
-        Me.SOPO_PRECISA.Name = "SOPO_PRECISA"
-        Me.SOPO_PRECISA.ReadOnly = True
-        '
-        'SOPOCLI
-        '
-        Me.SOPOCLI.DataPropertyName = "dpre_sopocli"
-        Me.SOPOCLI.HeaderText = "S. CLIENTE"
-        Me.SOPOCLI.Name = "SOPOCLI"
-        Me.SOPOCLI.ReadOnly = True
-        '
-        'PROD_COD
-        '
-        Me.PROD_COD.DataPropertyName = "dpre_codpro"
-        Me.PROD_COD.HeaderText = ""
-        Me.PROD_COD.MinimumWidth = 2
-        Me.PROD_COD.Name = "PROD_COD"
-        Me.PROD_COD.ReadOnly = True
-        Me.PROD_COD.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.PROD_COD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.PROD_COD.Width = 2
-        '
-        'PRODUCTO
-        '
-        Me.PRODUCTO.DataPropertyName = "mae_descr"
-        Me.PRODUCTO.HeaderText = "PRODUCTO"
-        Me.PRODUCTO.Name = "PRODUCTO"
-        Me.PRODUCTO.ReadOnly = True
-        Me.PRODUCTO.Width = 140
-        '
-        'UNID
-        '
-        Me.UNID.DataPropertyName = "dpre_unidades"
-        Me.UNID.HeaderText = "UNID."
-        Me.UNID.Name = "UNID"
-        Me.UNID.ReadOnly = True
-        Me.UNID.Width = 50
-        '
-        'PESO
-        '
-        Me.PESO.DataPropertyName = "dpre_peso"
-        Me.PESO.HeaderText = "PESO"
-        Me.PESO.Name = "PESO"
-        Me.PESO.ReadOnly = True
-        Me.PESO.Width = 70
-        '
-        'F_PROD
-        '
-        Me.F_PROD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
-        Me.F_PROD.DataPropertyName = "dpre_fecprod"
-        Me.F_PROD.HeaderText = "F. PROD."
-        Me.F_PROD.Name = "F_PROD"
-        Me.F_PROD.ReadOnly = True
-        Me.F_PROD.Width = 83
-        '
-        'COD_CONT
-        '
-        Me.COD_CONT.DataPropertyName = "dpre_contcli"
-        Me.COD_CONT.HeaderText = ""
-        Me.COD_CONT.MinimumWidth = 2
-        Me.COD_CONT.Name = "COD_CONT"
-        Me.COD_CONT.ReadOnly = True
-        Me.COD_CONT.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.COD_CONT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.COD_CONT.Width = 2
-        '
-        'CONTRATO
-        '
-        Me.CONTRATO.DataPropertyName = "cont_descr"
-        Me.CONTRATO.HeaderText = "CONTRATO"
-        Me.CONTRATO.MinimumWidth = 2
-        Me.CONTRATO.Name = "CONTRATO"
-        Me.CONTRATO.ReadOnly = True
-        Me.CONTRATO.Width = 70
-        '
-        'cod_sopo
-        '
-        Me.cod_sopo.DataPropertyName = "dpre_codsopo"
-        Me.cod_sopo.HeaderText = ""
-        Me.cod_sopo.MinimumWidth = 2
-        Me.cod_sopo.Name = "cod_sopo"
-        Me.cod_sopo.ReadOnly = True
-        Me.cod_sopo.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.cod_sopo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.cod_sopo.Width = 2
-        '
-        'nom_sopo
-        '
-        Me.nom_sopo.DataPropertyName = "tsop_descr"
-        Me.nom_sopo.HeaderText = "SOPORTANTE"
-        Me.nom_sopo.Name = "nom_sopo"
-        Me.nom_sopo.ReadOnly = True
-        '
-        'PALLET
-        '
-        Me.PALLET.DataPropertyName = "dpre_pallet"
-        Me.PALLET.HeaderText = "PALLET"
-        Me.PALLET.MinimumWidth = 2
-        Me.PALLET.Name = "PALLET"
-        Me.PALLET.ReadOnly = True
-        Me.PALLET.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.PALLET.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.PALLET.Width = 20
-        '
-        'Ca
-        '
-        Me.Ca.DataPropertyName = "dpre_camara"
-        Me.Ca.HeaderText = "CA"
-        Me.Ca.MinimumWidth = 2
-        Me.Ca.Name = "Ca"
-        Me.Ca.ReadOnly = True
-        Me.Ca.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Ca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.Ca.Width = 2
-        '
-        'dpre_estadia
-        '
-        Me.dpre_estadia.DataPropertyName = "estadia"
-        Me.dpre_estadia.HeaderText = "EST"
-        Me.dpre_estadia.MinimumWidth = 2
-        Me.dpre_estadia.Name = "dpre_estadia"
-        Me.dpre_estadia.ReadOnly = True
-        Me.dpre_estadia.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dpre_estadia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.dpre_estadia.Width = 2
-        '
-        'DESP
-        '
-        Me.DESP.DataPropertyName = "mov_despacho"
-        Me.DESP.HeaderText = "DESP"
-        Me.DESP.MinimumWidth = 2
-        Me.DESP.Name = "DESP"
-        Me.DESP.ReadOnly = True
-        Me.DESP.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DESP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.DESP.Width = 2
-        '
-        'SALDO
-        '
-        Me.SALDO.DataPropertyName = "mov_saldo"
-        Me.SALDO.HeaderText = "SALDO"
-        Me.SALDO.MinimumWidth = 2
-        Me.SALDO.Name = "SALDO"
-        Me.SALDO.ReadOnly = True
-        Me.SALDO.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.SALDO.Width = 2
-        '
-        'se
-        '
-        Me.se.DataPropertyName = "serv_cod"
-        Me.se.HeaderText = "Servicio"
-        Me.se.MinimumWidth = 2
-        Me.se.Name = "se"
-        Me.se.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.se.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.se.Width = 2
-        '
-        'de
-        '
-        Me.de.DataPropertyName = "serv_nom"
-        Me.de.HeaderText = "DESCRIPCION"
-        Me.de.Name = "de"
-        Me.de.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.de.Width = 280
-        '
-        'un
-        '
-        Me.un.DataPropertyName = "Dvas_Unid"
-        Me.un.HeaderText = "SOP."
-        Me.un.Name = "un"
-        Me.un.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.un.Width = 65
-        '
-        'caj
-        '
-        Me.caj.DataPropertyName = "Dvas_Cajas"
-        Me.caj.HeaderText = "ENVASES"
-        Me.caj.Name = "caj"
-        Me.caj.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.caj.Width = 65
-        '
-        'ki
-        '
-        Me.ki.DataPropertyName = "Dvas_Kilos"
-        Me.ki.HeaderText = "KILOS"
-        Me.ki.Name = "ki"
-        Me.ki.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ki.Width = 80
-        '
         'Frm_Despacho
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
@@ -1759,6 +1815,11 @@ Partial Class Frm_Despacho
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ClientSize = New System.Drawing.Size(776, 732)
+        Me.Controls.Add(Me.txtSopAdicCodi)
+        Me.Controls.Add(Me.Btn_buscasopadic)
+        Me.Controls.Add(Me.txtsopadicnombre)
+        Me.Controls.Add(Me.txtSopAdic)
+        Me.Controls.Add(Me.Label66)
         Me.Controls.Add(Me.Lbl_EstadoGuia)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.txtCodDesp)
@@ -1952,4 +2013,9 @@ Partial Class Frm_Despacho
     Friend WithEvents Lbl_EstadoGuia As System.Windows.Forms.Label
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents chkSalPallets As System.Windows.Forms.CheckBox
+    Friend WithEvents txtSopAdicCodi As System.Windows.Forms.TextBox
+    Friend WithEvents Btn_buscasopadic As System.Windows.Forms.Button
+    Friend WithEvents txtsopadicnombre As System.Windows.Forms.TextBox
+    Friend WithEvents txtSopAdic As System.Windows.Forms.TextBox
+    Friend WithEvents Label66 As System.Windows.Forms.Label
 End Class

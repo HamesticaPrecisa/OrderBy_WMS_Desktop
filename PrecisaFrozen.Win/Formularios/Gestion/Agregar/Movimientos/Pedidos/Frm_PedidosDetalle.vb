@@ -30,7 +30,8 @@ Public Class Frm_PedidosDetalle
 
         If dt.Rows.Count > 0 Then
             txtdestino.Text = dt.Rows(0)(0).ToString()
-            dtfecha.Value = Convert.ToDateTime(dt.Rows(0)(1).ToString())
+            'dtfecha.Value = Convert.ToDateTime(dt.Rows(0)(1).ToString())
+            dtfecha.Value = DateTime.ParseExact(dt.Rows(0)(1).ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
             txtobs.Text = dt.Rows(0)(2).ToString()
             txtcliente.Text = dt.Rows(0)(3).ToString()
             txtHra.Text = dt.Rows(0)(4).ToString()
@@ -257,8 +258,21 @@ Public Class Frm_PedidosDetalle
             Exit Sub
         End If
 
-        Dim sqlLogUpd As String = "insert into Pedidos_Ficha_Log_Modificaciones select * from Pedidos_Ficha where Orden='" & txtcodorden.Text.Trim & "'"
-        fnc.MovimientoSQL(sqlLogUpd)
+        '
+        '   VES FEB 2020
+        '   SE INCLUYO LA LISTA DE COLUMNAS EXPLICITAMENTE PARA
+        '   EVITAR ERRORES POR DESINCRONIZACION ENTRE LA TABLA
+        '   LOG Y LA ORIGINAL
+        '
+        Dim sqlLogUpd As String = "insert into Pedidos_Ficha_Log_Modificaciones " & _
+                                  "  ([Orden],[pedido],[cliente],[transporte],[fecha],[hora],[destino],[observacion],[mail],[codvig],[terminado],[Encargado],[fechapedido],[fechaTermino],[ped_estpred],[ped_revision],[packinglist],[ordenconjunta],[cod_bod],[ped_enviado],[ped_carga],[ped_host],[destino_rut],[destino_dir],[fecha_modificacion],[usuario_modificacion])" & _
+                                  " select [Orden],[pedido],[cliente],[transporte],[fecha],[hora],[destino],[observacion],[mail],[codvig],[terminado],[Encargado],[fechapedido],[fechaTermino],[ped_estpred],[ped_revision],[packinglist],[ordenconjunta],[cod_bod],[ped_enviado],[ped_carga],[ped_host],[destino_rut],[destino_dir],GETDATE(),'" & Frm_Principal.InfoUsuario.Text & "'" & _
+                                  "   from pedidos_ficha " & _
+                                  "  where orden = '" & txtcodorden.Text.Trim() & "'"
+        If fnc.MovimientoSQL(sqlLogUpd) <= 0 Then
+            MsgBox("Error al actualizar la información: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
+            Exit Sub
+        End If
 
         Dim _update As String = "UPDATE pedidos_ficha SET destino='" + txtdestino.Text + "', fecha='" + devuelve_fecha_Formato2(dtfecha.Value) + "', observacion='" + txtobs.Text + "', hora='" & Hora & "' WHERE orden='" + txtcodorden.Text + "'  "
 
