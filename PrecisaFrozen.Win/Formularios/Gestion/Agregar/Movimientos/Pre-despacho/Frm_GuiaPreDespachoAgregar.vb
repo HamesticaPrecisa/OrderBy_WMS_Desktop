@@ -1658,8 +1658,12 @@ Public Class Frm_GuiaPreDespachoAgregar
                                         ' COMO LA DIFERENCIA ENTRE LO QUE HAY DISPONIBLE
                                         ' Y LO QUE SE PIDIO
                                         '
-                                        Dim cajsel As Integer = cantidad_disponible - CInt(Cant.Text)
-                                        If cajsel < 0 Then cajsel = 0
+                                        Dim cajsel As Integer = 0
+                                        If (txtrut.Text <> "91944000" And txtrut.Text <> "33333333") Then
+                                            cajsel = cantidad_disponible - CInt(Cant.Text)
+                                            If cajsel < 0 Then cajsel = 0
+                                        End If
+
                                         Dim sql As String = "INSERT INTO TMPDETAPRED (fpre_codi, dpre_codi, dpre_codpro, dpre_codsopo, dpre_sopocli, " & _
                                                             "dpre_unidades, dpre_peso, dpre_fecdes, dpre_rutcli, dpre_contcli, dpre_fecprod, " & _
                                                             "dpre_camara, dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_almacen, " & _
@@ -1785,8 +1789,12 @@ Public Class Frm_GuiaPreDespachoAgregar
                                 ' COMO LA DIFERENCIA ENTRE LO QUE HAY DISPONIBLE
                                 ' Y LO QUE SE PIDIO
                                 '
-                                Dim cajsel As Integer = racd_unidades - CajasRestantes
-                                If cajsel < 0 Then cajsel = 0
+                                Dim cajsel As Integer = 0
+                                If (txtrut.Text <> "91944000" And txtrut.Text <> "33333333") Then
+                                    cajsel = racd_unidades - CajasRestantes
+                                    If cajsel < 0 Then cajsel = 0
+                                End If
+
 
                                 Dim sql As String = "INSERT INTO TMPDETAPRED (fpre_codi, dpre_codi, dpre_codpro, dpre_codsopo, dpre_sopocli, " & _
                                                     "dpre_unidades, dpre_peso, dpre_fecdes, dpre_rutcli, dpre_contcli, dpre_fecprod, " & _
