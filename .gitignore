@@ -1,7 +1,9 @@
 *.msi
 *.exe
 *.cache
-PrecisaFrozen.Win/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-PrecisaFrozen.Win/obj/x86/Debug/PrecisaFrozen.Win.vbprojResolveAssemblyReference.cache
-*.cache
+*.bak
+PrecisaFrozen.Win/obj/*.*
+PrecisaFrozen.Win/bin/*.*
 *.rar
+*.suo
+*.vbproj*
