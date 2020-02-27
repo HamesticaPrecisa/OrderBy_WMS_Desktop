@@ -63,6 +63,13 @@ Public Class Frm_Pedidos
 
             Dim NPEDIDO As String = Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString()
 
+            '
+            '   VES FEB 2020
+            '   DETERMINAMOS LA CANTIDAD DE PALLETS ASOCIADOS AL PEDIDO
+            '
+            Dim Pallets As Integer = CInt(Me.DgvPedidos.Rows(e.RowIndex).Cells(10).Value.ToString().Split("/")(1).Trim())
+
+
             Try
                 con.conectar()
 
@@ -90,9 +97,14 @@ Public Class Frm_Pedidos
 
                 con.cerrar()
 
-                fnc.MovimientoSQL("INSERT INTO LOG_PEDIDOSELIMINADOS (LEM_CODI, LEM_FECHA, LEM_HORA, LEM_USU, LEM_PC, LEM_TIPO)" +
+                '
+                '  VES FEB 2020
+                '  SE GRABA LA CANTIDAD DE PALLETS ASOCIADOS AL PEDIDO ELIMINADO. ESTO ES NECESARIO PORQUE
+                '  UNA VEZ ELIMINADO EL PEDIDO, YA NO HAY FORMA DE SABER CUANTOS PALLETS TENIA
+                '
+                fnc.MovimientoSQL("INSERT INTO LOG_PEDIDOSELIMINADOS (LEM_CODI, LEM_FECHA, LEM_HORA, LEM_USU, LEM_PC, LEM_TIPO, LEM_SOP)" +
                                   "VALUES('" + NPEDIDO + "','" + devuelve_fecha_Formato2(fnc.DevuelveFechaServidor()) + "','" + DevuelveHora() + "'," +
-                                  "'" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "','SI')")
+                                  "'" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "','SI'," + Pallets.ToString() + ")")
                 fnc.MovimientoSQL("DELETE FROM Pedido_Est WHERE pedido ='" + Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString() + "'")
                 Dim sqll As String = ("DELETE FROM Pedido_Est WHERE pedido ='" + Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString() + "'")
                 MsgBox("Pedido anulado correctamente", MsgBoxStyle.Information, "Aviso")
@@ -183,7 +195,25 @@ Public Class Frm_Pedidos
             'Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
             'Dim sql As String = "select distinct a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
             'Dim sql As String = "select distinct a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end,Fecha_Frm=convert(date,a.fecha) from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by convert(date,a.fecha),a.hora asc"
-            Dim sql As String = "select distinct a.pedido,a.Orden,b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end,Fecha_Frm=convert(date,a.fecha),Kilos=f.kilos from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) inner join (select a.pedido,kilos=round(sum(a.kilos),0) from Pedidos_detalle a with(nolock) group by a.pedido) f on(a.pedido=f.pedido) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by convert(date,a.fecha),a.hora asc"
+            Dim sql As String = "WITH data AS (" & _
+                                "SELECT DISTINCT a.pedido,a.Orden,b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,'')," & _
+                                "                sopo=isnull(a.destino,''),a.codvig,'' AS Cajas," & _
+                                "                Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,'')," & _
+                                "                Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,'')," & _
+                                "                Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end," & _
+                                "                Fecha_Frm=convert(date,a.fecha,103),Kilos=f.kilos " & _
+                                "  FROM pedidos_ficha a with(nolock) " & _
+                                " INNER JOIN clientes b with(nolock) on (b.cli_rut=a.cliente) " & _
+                                "  LEFT OUTER JOIN (select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) " & _
+                                "  LEFT OUTER JOIN Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) " & _
+                                "  LEFT OUTER JOIN Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) " & _
+                                " INNER JOIN (select a.pedido,kilos=round(sum(a.kilos),0) from Pedidos_detalle a with(nolock) group by a.pedido) f on(a.pedido=f.pedido) " & _
+                                " WHERE a.terminado <>'3' " & _
+                                "   AND a.Ped_estpred<>'3' " & _
+                                "   AND a.codvig='0' " & _
+                                "   AND a.Orden not in(select fpre_nped from fichpred) " & _
+                                ")" & _
+                                "SELECT * FROM data ORDER BY convert(date,fecha),hora asc"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -562,7 +592,7 @@ Public Class Frm_Pedidos
             'Dim sql As String = "select a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
             'Dim sql As String = "select distinct a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by a.orden desc"
             'Dim sql As String = "select distinct a.pedido,a.Orden,a.cliente+' '+b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end,Fecha_Frm=convert(date,a.fecha) from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by convert(date,a.fecha),a.hora asc"
-            Dim sql As String = "select distinct a.pedido,a.Orden,b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end,Fecha_Frm=convert(date,a.fecha),Kilos=f.kilos from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) inner join (select a.pedido,kilos=round(sum(a.kilos),0) from Pedidos_detalle a with(nolock) group by a.pedido) f on(a.pedido=f.pedido) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by convert(date,a.fecha),a.hora asc"
+            Dim sql As String = "select distinct a.pedido,a.Orden,b.cli_nomb AS cliente,a.fecha,a.hora,destino=isnull(a.destino,''),sopo=isnull(a.destino,''),a.codvig,'' AS Cajas,Tipo=case when c.Orden is null then 'NORMAL' else 'LOCAL' end,Tipo_Carga=isnull(a.ped_carga,''),Tipo_Exportacion=isnull(e.Tipo,'Nacional'),Nro_Sol_Sag=isnull(d.Nro_Sol_SAG,''),Etiquetado_Adicional=case when isnull(d.Etiquetado_Adicional,0)=0 then 'No' else 'Si' end,Fecha_Frm=convert(date,a.fecha,103),Kilos=f.kilos from pedidos_ficha a with(nolock) inner join clientes b with(nolock) on(b.cli_rut=a.cliente) left outer join(select distinct Orden from Pedidos_Local with(nolock)) c on(a.Orden=c.Orden) left outer join Pedidos_Tipo_Exportacion_Creados d with(nolock) on(a.Orden=d.Orden_Pedido) left outer join Pedidos_Tipo_Exportacion e with(nolock) on(d.ID_Tipo_Exportacion=e.ID) inner join (select a.pedido,kilos=round(sum(a.kilos),0) from Pedidos_detalle a with(nolock) group by a.pedido) f on(a.pedido=f.pedido) where a.terminado <>'3' AND a.Ped_estpred<>'3' AND a.codvig='0' AND a.Orden not in(select fpre_nped from fichpred) order by convert(date,a.fecha,103),a.hora asc"
 
             Dim Data As DataTable = fnc.ListarTablasSQL(sql)
 

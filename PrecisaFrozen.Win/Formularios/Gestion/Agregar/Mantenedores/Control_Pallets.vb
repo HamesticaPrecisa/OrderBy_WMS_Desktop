@@ -218,14 +218,14 @@
 
                         limpiar2()
                     Else
-                        MsgBox("Ocurrió un error al registrar movimiento.", MsgBoxStyle.Critical, "Error")
+                        MsgBox("Ocurrió un error al registrar movimiento: ", MsgBoxStyle.Critical, "Error")
                     End If
                 Else
                     MsgBox("Ocurrió un error al registrar movimiento.", MsgBoxStyle.Critical, "Error")
                 End If
             End If
         Catch ex As Exception
-            MsgBox("Ocurrió un error al registrar movimiento.", MsgBoxStyle.Critical, "Error")
+            MsgBox("Ocurrió un error al registrar movimiento: " + ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
 

@@ -202,26 +202,43 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                 'fnc.MovimientoSQL(actualizacodbod)
 
-                'VALIDAR SOLICITUD MENOR A 24 HRS. HAmestica 27/07/2018
-                Dim sqlValid24Hrs = "select ExiPed=count(Orden) from Pedidos_24_Horas with(nolock) where Orden='" & TxtNped.Text.Trim & "'"
-                Dim TabExiPed As DataTable = fnc.ListarTablasSQL(sqlValid24Hrs)
-                Dim ExiPed = CInt(TabExiPed.Rows(0).Item(0).ToString.Trim)
-                If (ExiPed > 0) Then
-                    Dim sqlActPreDespMar = "update Pedidos_24_Horas set PreDesp_Marcado='1' where Orden='" & TxtNped.Text.Trim & "'"
-                    fnc.MovimientoSQL(sqlActPreDespMar)
-
-                    CBSI.Checked = True
-                    Cb1.Checked = True
-
-                    CBNO.Checked = False
+                '
+                '   VES FEB 2020
+                '   ARMAMOS UNA LISTA DE PEDIDOS A VERIFICAR POR PEDIDOS MENORES
+                '   A 24 HORAS, EN BASE A SI EL PEDIDO ESTA UNIDO O NO
+                '
+                Dim vePedidos As Collection = New Collection()
+                If ordemconj.Text = "" Then
+                    vePedidos.Add(TxtNped.Text.Trim())
                 Else
-                    CBSI.Checked = False
-                    Cb1.Checked = False
-
-                    CBNO.Checked = True
+                    vePedidos.Add(ordemconj.Text.Split("-")(0))
+                    vePedidos.Add(ordemconj.Text.Split("-")(1))
                 End If
-                'FIN VALIDAR SOLICITUD MENOR A 24 HRS. HAmestica 27/07/2018
 
+                Dim veNumPed As Integer
+                Dim vePedido As String
+                CBSI.Checked = False
+                Cb1.Checked = False
+                CBNO.Checked = True
+
+                For veNumPed = 1 To vePedidos.Count
+                    vePedido = vePedidos(veNumPed).ToString()
+
+                    'VALIDAR SOLICITUD MENOR A 24 HRS. HAmestica 27/07/2018
+                    Dim sqlValid24Hrs = "select ExiPed=count(Orden) from Pedidos_24_Horas with(nolock) where Orden='" & vePedido.Trim & "'"
+                    Dim TabExiPed As DataTable = fnc.ListarTablasSQL(sqlValid24Hrs)
+                    Dim ExiPed = CInt(TabExiPed.Rows(0).Item(0).ToString.Trim)
+                    If (ExiPed > 0) Then
+                        Dim sqlActPreDespMar = "update Pedidos_24_Horas set PreDesp_Marcado='1' where Orden='" & vePedido.Trim & "'"
+                        fnc.MovimientoSQL(sqlActPreDespMar)
+                        If CBSI.Checked = False Then
+                            CBSI.Checked = True
+                            Cb1.Checked = True
+                            CBNO.Checked = False
+                        End If
+                    End If
+                    'FIN VALIDAR SOLICITUD MENOR A 24 HRS. HAmestica 27/07/2018
+                Next
 
                 Dim cincuenta As String = ""
                 If Cb1.Checked = True Then
@@ -231,7 +248,10 @@ Public Class Frm_GuiaPreDespachoAgregar
                 End If
 
                 Dim sqlCincuenta As String = "SP_Cincuenta_Grabar '" & lblcodigo.Text.Trim & "','','" & txtrut.Text.Trim & verificador.Text.Trim & "','" & CmboCarga.SelectedValue.ToString.Trim & "','" & cincuenta & "','" & fnc.DevuelveFechaServidor().ToString.Trim & "'"
-                fnc.MovimientoSQL(sqlCincuenta)
+                If fnc.MovimientoSQL(sqlCincuenta) = 0 Then
+                    MsgBox("Ocurrio un error al actualizar cincuenta: " + lastSqlError)
+                    Exit Sub
+                End If
 
                 'If fnc.verificaExistencia("cincuenta", "folio", lblcodigo.Text) = False Then
 
@@ -328,7 +348,7 @@ Public Class Frm_GuiaPreDespachoAgregar
             e.Cancel = True
         ElseIf op = "SI" Then
             f_addPredespacho = False
-            'CancelaCorrelativo("007", lblcodigo.Text)
+            CancelaCorrelativo("007", lblcodigo.Text)
             Timer2.Stop()
         Else
             f_addPredespacho = False
@@ -363,6 +383,17 @@ Public Class Frm_GuiaPreDespachoAgregar
                 txtrut.Enabled = False
 
                 verificador.Enabled = False
+
+                '
+                '   VES FEB 2020
+                '   LA COLUMNA DE SELECCION DE CAJA SOLO SE ACTIVA
+                '   PARA MAXAGRO
+                '
+                Dim cajColIndex As Integer = getColumnIndex("dpre_cajsel")
+                Dgv.Columns(5).ReadOnly = (txtrut.Text <> "91944000" And txtrut.Text <> "33333333")
+                Dgv.Columns(5).Width = IIf(Dgv.Columns(cajColIndex).ReadOnly, 1, 60)
+                Dgv.Columns(5).Visible = (Dgv.Columns(cajColIndex).ReadOnly = False)
+
             End If
         End If
         Frm_Principal.buscavalor = ""
@@ -449,6 +480,8 @@ Public Class Frm_GuiaPreDespachoAgregar
         End If
     End Sub
     Private Sub DataGridView1_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgv.CellClick
+
+        ' MsgBox("Columna: " + e.ColumnIndex.ToString())
 
         If e.RowIndex > -1 AndAlso e.ColumnIndex = 0 AndAlso Lbl_EstadoGuia.Text <> "DESPACHADO" AndAlso _
             fnc.verificaExistenciaCondicional("TMPdetapred", "dpre_folio='" + Me.Dgv.Rows(e.RowIndex).Cells("pallet").Value.ToString() + "'") = True Then
@@ -622,17 +655,6 @@ Public Class Frm_GuiaPreDespachoAgregar
                 End If
                 lblcodigo.Text = BuscaCorrelativo("007")
 
-                Dim validarfolio As String = "select * from fichpred where fpre_codi='" + lblcodigo.Text + "'"
-                Dim tablavalidarfolio As New DataTable
-                tablavalidarfolio = fnc.ListarTablasSQL(validarfolio)
-
-                If tablavalidarfolio.Rows.Count > 0 Then
-                    MsgBox("El Numero de folio ya existe, por favor contactar a informatica.", MsgBoxStyle.Critical, "Aviso")
-                    lblcodigo.Text = ""
-                    Exit Sub
-                End If
-
-
                 Dim sqltemporal As String = "select top(1) tmps_codi, tmps_correl from Correlat_salto where tmps_correl='7' order by tmps_codi desc"
                 Dim foliotemporal As New DataTable
                 foliotemporal = fnc.ListarTablasSQL(sqltemporal)
@@ -698,6 +720,17 @@ Public Class Frm_GuiaPreDespachoAgregar
                         btn_BuscaCliente.Enabled = False
                         CbPedido.Visible = True
                     End If
+
+
+                    '
+                    '   VES FEB 2020
+                    '   LA COLUMNA DE SELECCION DE CAJA SOLO SE ACTIVA
+                    '   PARA MAXAGRO
+                    '
+                    Dim cajColIndex As Integer = getColumnIndex("dpre_cajsel")
+                    Dgv.Columns(5).ReadOnly = (txtrut.Text <> "91944000" And txtrut.Text <> "33333333")
+                    Dgv.Columns(5).Width = IIf(Dgv.Columns(cajColIndex).ReadOnly, 1, 60)
+                    Dgv.Columns(5).Visible = (Dgv.Columns(cajColIndex).ReadOnly = False)
 
 
                 Else
@@ -846,8 +879,12 @@ Public Class Frm_GuiaPreDespachoAgregar
     End Sub
 
     Sub CargaGrilla()
+        '
+        '  VES FEB 2020
+        '  INCLUIMOS LA NUEVA COLUMNA DPRE_CAJSEL
+        '
         Dim sql As String = "SELECT dpre_folio , dpre_codpro, mae_descr AS prod, dpre_unidades, dpre_peso, dpre_camara, " +
-                            "dpre_banda, dpre_colum, dpre_piso, dpre_nivel FROM TMPDETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
+                            "dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_cajsel FROM TMPDETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
                             "fpre_codi='" + lblcodigo.Text + "'"
 
         'Dim sql As String = ""
@@ -861,6 +898,19 @@ Public Class Frm_GuiaPreDespachoAgregar
         'End If
 
         Dgv.DataSource = fnc.ListarTablasSQL(sql)
+
+
+        '
+        '  VES FEB 2020
+        '  SE ACTIVA LA COLUMNA DE CANTIDAD DE CAJAS SELECCIONADAS EN 
+        '  EN BASE A SI ES POSIBLE INGRESAR EL VALOR O NO XXX 919440007
+        '
+        If Dgv.Columns(1).Width > 1 Then
+            Dgv.Columns(12).ReadOnly = False
+        End If
+
+
+
 
         Dim sqlTotales As String = "SELECT SUM(dpre_unidades) AS Unidades, SUM(dpre_peso) AS Peso FROM TMPDETAPRED WHERE fpre_codi='" + lblcodigo.Text + "'"
 
@@ -905,8 +955,12 @@ Public Class Frm_GuiaPreDespachoAgregar
     End Sub
 
     Sub CargaGrillaPred()
+        '
+        '  VES FEB 2020
+        '  INCLUIMOS LA NUEVA COLUMNA DPRE_CAJSEL
+        '
         Dim sql As String = "SELECT dpre_folio , dpre_codpro, mae_descr AS prod, dpre_unidades, dpre_peso, dpre_camara, " +
-                            "dpre_banda, dpre_colum, dpre_piso, dpre_nivel FROM DETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
+                            "dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_cajsel FROM DETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
                             "dpre_codi LIKE '%" + lblcodigo.Text + "__%'"
 
         Dgv.DataSource = fnc.ListarTablasSQL(sql)
@@ -977,10 +1031,10 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                     End If
 
-                    'CancelaCorrelativo("007", lblcodigo.Text)
+                    CancelaCorrelativo("007", lblcodigo.Text)
                     limpiarformulario()
                 Else
-                    'CancelaCorrelativo("007", lblcodigo.Text)
+                    CancelaCorrelativo("007", lblcodigo.Text)
                     limpiarformulario()
                 End If
             End If
@@ -1124,13 +1178,6 @@ Public Class Frm_GuiaPreDespachoAgregar
                     Exit Sub
                 Else
 
-
-
-
-
-
-
-
                     Dim PCA As String = txtpallet.Text
                     Dim pallet As String = PCA.Substring(1, PCA.Length - 1)
                     Dim pallet2 As String = pallet.Substring(1, 18)
@@ -1159,40 +1206,54 @@ Public Class Frm_GuiaPreDespachoAgregar
                     End If
 
 
-                    'Dim sqlped As String = "SELECT   CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='1' "
-                    ''Dim sqlped As String = "SELECT * FROM detapedcajas where pc_numpal = '" + txtpallet.Text + "'"
-                    'Dim tabla As DataTable = fnc.ListarTablasSQL(sqlped)
 
 
-                    'If tabla.Rows.Count > 0 Then
-                    '    '"SELECT    CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + txtpallet.Text + "'  "
-                    '    Dim sqlped2 As String = "SELECT   CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='0' "
-                    '    Dim tabla3 As DataTable = fnc.ListarTablasSQL(sqlped2)
-                    '    If tabla3.Rows.Count > 0 Then
-                    '        ejec = "2"
-                    '    Else
-                    '        ejec = "1"
-
-                    '    End If
+                    Dim sqlped As String = "SELECT CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO " & _
+                                           "  FROM DetaReceCajas " & _
+                                           " INNER JOIN rackdeta ON racd_codi=Caj_Pcod " & _
+                                           " INNER JOIN detarece ON drec_codi=racd_codi " & _
+                                           " WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='1' "
+                    'Dim sqlped As String = "SELECT * FROM detapedcajas where pc_numpal = '" + txtpallet.Text + "'"
+                    Dim tabla As DataTable = fnc.ListarTablasSQL(sqlped)
 
 
-                    '    If (ejec = "2") Then
+                    If tabla.Rows.Count > 0 Then
+                        '"SELECT    CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + txtpallet.Text + "'  "
+                        Dim sqlped2 As String = "SELECT CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO " & _
+                                                "  FROM DetaReceCajas " & _
+                                                " INNER JOIN rackdeta ON racd_codi=Caj_Pcod " & _
+                                                " INNER JOIN detarece ON drec_codi=racd_codi " & _
+                                                " WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='0' "
+                        Dim tabla3 As DataTable = fnc.ListarTablasSQL(sqlped2)
+                        If tabla3.Rows.Count > 0 Then
+                            ejec = "2"
+                        Else
+                            ejec = "1"
 
-                    '    Else
+                        End If
 
 
-                    '        Dim Sqlpedido As String = "select dpc_codped from detapedcaja where dpc_numpal= '" + pallet10 + "'"
-                    '        Dim tabla2 As DataTable = fnc.ListarTablasSQL(Sqlpedido)
+                        If (ejec = "2") Then
 
-                    '        Dim pedidostr As String = tabla2.Rows(0)(0).ToString()
-                    '        MsgBox("Este Pallet Esta Contenido en el pedido " + pedidostr + ", Imposible PRE-Despachar", MsgBoxStyle.Critical, "Aviso")
-
-                    '        Exit Sub
+                        Else
 
 
-                    '    End If
+                            Dim Sqlpedido As String = "select dpc_codped from detapedcaja where dpc_numpal= '" + pallet10 + "'"
+                            Dim tabla2 As DataTable = fnc.ListarTablasSQL(Sqlpedido)
 
-                    'End If
+                            Dim pedidostr As String = tabla2.Rows(0)(0).ToString()
+                            MsgBox("Este Pallet Esta Contenido en el pedido " + pedidostr + ", Imposible PRE-Despachar", MsgBoxStyle.Critical, "Aviso")
+
+                            Exit Sub
+
+
+
+
+                        End If
+
+
+
+                    End If
 
                 End If
 
@@ -1223,10 +1284,15 @@ Public Class Frm_GuiaPreDespachoAgregar
                     CbPedido.Enabled = False
                     CbEtiq.Enabled = False
 
-                    Dim sql_esta_bloqueado As String = "SELECT racd_estado FROM rackdeta WHERE racd_codi='" + valor_pallet.ToString() + "'"
+                    '
+                    '   VES FEB 2020
+                    '   SE APROVECHA LA CONSULTA PARA TRAER LA CANTIDAD DE UNIDADES ASOCIADAS AL PALLET
+                    '
+                    Dim sql_esta_bloqueado As String = "SELECT racd_estado,racd_unidades FROM rackdeta WHERE racd_codi='" + valor_pallet.ToString() + "'"
                     Dim tabla_bloqueado As DataTable = fnc.ListarTablasSQL(sql_esta_bloqueado)
-
+                    Dim racd_unidades As Integer = 0
                     If tabla_bloqueado.Rows.Count > 0 Then
+                        racd_unidades = CInt(tabla_bloqueado.Rows(0)("racd_unidades").ToString())
                         If Convert.ToInt32(tabla_bloqueado.Rows(0)(0).ToString()) > 2 AndAlso CbEtiq.Checked = False AndAlso Convert.ToInt32(tabla_bloqueado.Rows(0)(0).ToString()) <> 7 Then
                             MsgBox("Este soportante se encuentra bloqueado", MsgBoxStyle.Critical, "Aviso")
                             txtpallet.Text = ""
@@ -1235,17 +1301,29 @@ Public Class Frm_GuiaPreDespachoAgregar
                         End If
                     End If
 
-                    If fnc.verificaExistencia("rackdeta", "racd_codi", valor_pallet.ToString()) = True Then ' si el pallet esta en el stock, si no esta es porque se despacho
+                    '
+                    '   VES FEB 2020
+                    '   LA LLAMADA A verificaExistencia ES INNECESARIA PUES YA FUIMOS A RACKDETA RECIEN A
+                    '   BUSCAR EL ESTADO DEL MISMO PALLET, POR LO QUE PODEMOS USAR EL RESULTADO PARA SABER
+                    '   SI EL PALLET EXISTE O NO.
+                    '
+                    'If fnc.verificaExistencia("rackdeta", "racd_codi", valor_pallet.ToString()) = True Then ' si el pallet esta en el stock, si no esta es porque se despacho
+                    If tabla_bloqueado.Rows.Count > 0 Then
 
                         If CbPedido.CheckState = 1 Then
                             Dim esdelpedido As String = ""
                             If ordemconj.Text = "" Then
-
-                                esdelpedido = "SELECT parcial, pd.pedido FROM pedidos_detalle AS pd INNER JOIN Pedidos_ficha AS pf ON " +
-                                                            "pf.pedido=pd.pedido WHERE pallet='" + valor_pallet.ToString() + "' AND orden='" + TxtNped.Text + "'"
+                                esdelpedido = "SELECT parcial, pd.pedido, pd.cajas " & _
+                                              "  FROM pedidos_detalle AS pd " & _
+                                              " INNER JOIN Pedidos_ficha AS pf ON pf.pedido=pd.pedido " & _
+                                              " WHERE pallet='" + valor_pallet.ToString() + "' " & _
+                                              "   AND orden='" + TxtNped.Text + "'"
                             Else
-                                esdelpedido = "SELECT parcial, pd.pedido FROM pedidos_detalle AS pd INNER JOIN Pedidos_ficha AS pf ON " +
-                                                       "pf.pedido=pd.pedido WHERE pallet='" + valor_pallet.ToString() + "' AND ordenconjunta='" + ordemconj.Text + "'"
+                                esdelpedido = "SELECT parcial, pd.pedido, pd.cajas " & _
+                                              "  FROM pedidos_detalle AS pd " & _
+                                              " INNER JOIN Pedidos_ficha AS pf ON pf.pedido=pd.pedido " & _
+                                              " WHERE pallet='" + valor_pallet.ToString() + "' " & _
+                                              "   AND ordenconjunta='" + ordemconj.Text + "'"
 
                             End If
 
@@ -1260,8 +1338,12 @@ Public Class Frm_GuiaPreDespachoAgregar
                                 If tablacompleto.Rows(0)(0).ToString() = "1" Then
 
                                     'Verifica si corresponde al pedido de cajas
-                                    Dim sql_veri As String = "SELECT pf.pedido, cajas, pc_tpoped FROM Pedidos_detalle pd INNER JOIN Pedidos_ficha pf ON pf.pedido=pd.pedido " +
-                                                             "INNER JOIN pedcaja ON pd.pallet=pc_numpal AND pf.orden= pc_codped WHERE Orden='" + TxtNped.Text + "' AND pd.pallet='" + valor_pallet.ToString() + "'"
+                                    Dim sql_veri As String = "SELECT pf.pedido, pd.cajas, pc_tpoped " & _
+                                                             "  FROM Pedidos_detalle pd " & _
+                                                             " INNER JOIN Pedidos_ficha pf ON pf.pedido=pd.pedido " & _
+                                                             " INNER JOIN pedcaja ON pd.pallet=pc_numpal AND pf.orden= pc_codped " & _
+                                                             " WHERE Orden='" + TxtNped.Text + "' " & _
+                                                             "   AND pd.pallet='" + valor_pallet.ToString() + "'"
 
                                     Dim tabla_veri As DataTable = fnc.ListarTablasSQL(sql_veri)
 
@@ -2082,6 +2164,28 @@ Public Class Frm_GuiaPreDespachoAgregar
                     Timer2.Start()
                 Else
                     MsgBox("Este Pedido se encuentra unido " + ordemconj.Text, MsgBoxStyle.Information, "Aviso")
+
+                    'VALIDAR SOLICITUD MENOR A 24 HRS. HAmestica 27/07/2018
+                    Dim ordenes As String() = ordemconj.Text.Split("-")
+                    Dim sqlValid24Hrs = "select ExiPed=count(Orden) from Pedidos_24_Horas with(nolock) where Orden='" & ordenes(0).Trim() & "' OR orden = '" & ordenes(1).Trim() & "'"
+                    Dim TabExiPed As DataTable = fnc.ListarTablasSQL(sqlValid24Hrs)
+                    Dim ExiPed = CInt(TabExiPed.Rows(0).Item(0).ToString.Trim)
+                    If (ExiPed > 0) Then
+                        Dim sqlActPreDespMar = "update Pedidos_24_Horas set PreDesp_Marcado='1' where Orden='" & ordenes(0).Trim() & "' OR orden = '" & ordenes(1).Trim() & "'"
+                        fnc.MovimientoSQL(sqlActPreDespMar)
+
+                        CBSI.Checked = True
+                        Cb1.Checked = True
+
+                        CBNO.Checked = False
+                    Else
+                        CBSI.Checked = False
+                        Cb1.Checked = False
+
+                        CBNO.Checked = True
+                    End If
+                    'FIN VALIDAR SOLICITUD MENOR A 24 HRS. HAmestica 27/07/2018
+
                     Dim PALLETS As String = "SELECT  pd.pallet FALTAN  FROM Pedidos_detalle pd INNER JOIN Pedidos_ficha pf ON pd.pedido=pf.pedido " +
                       "WHERE ordenconjunta='" + ordemconj.Text + "' ORDER BY pd.pallet "
                     Dim TABLA As DataTable = fnc.ListarTablasSQL(PALLETS)
@@ -2171,7 +2275,7 @@ Public Class Frm_GuiaPreDespachoAgregar
         End If
     End Sub
 
-    Private Sub txtpallet_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtpallet.TextChanged
+    Private Sub txtpallet_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -2289,7 +2393,32 @@ Public Class Frm_GuiaPreDespachoAgregar
         calcTempProm()
     End Sub
 
-    Private Sub lblcodigo_TextChanged(sender As System.Object, e As System.EventArgs) Handles lblcodigo.TextChanged
+    Private Sub Dgv_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgv.CellContentClick
 
     End Sub
+
+    Private Sub Dgv_CellValidated(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgv.CellValidated
+        If (e.ColumnIndex = getColumnIndex("dpre_cajsel")) Then
+            Dim Cajas As String = Dgv.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString()
+            Dim Folio As String = Dgv.Rows(e.RowIndex).Cells(2).Value
+            Dim tabla As String = IIf(txtrut.Enabled, "TMPDETAPRED", "DETAPRED")
+            fnc.MovimientoSQL("UPDATE " & tabla & " SET dpre_cajsel = @cajas WHERE dpre_folio = @folio",
+                              New SqlParameter() {
+                                  New SqlParameter("@cajas", SqlDbType.Int) With {.Value = CInt(Cajas)},
+                                  New SqlParameter("@folio", SqlDbType.NVarChar) With {.Value = Folio}
+                             })
+        End If
+    End Sub
+
+    Private Function getColumnIndex(ByVal columnName As String) As Integer
+        Dim index As Integer = -1
+        Dim i As Integer = 0
+        For i = 0 To Dgv.ColumnCount
+            If Dgv.Columns(i).Name.ToLower() = columnName.ToLower() Then
+                index = i
+                Exit For
+            End If
+        Next
+        Return index
+    End Function
 End Class

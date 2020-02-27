@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Frm_GuiaRecepcionAgregar
     Inherits System.Windows.Forms.Form
 
@@ -37,6 +37,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Txtobs = New System.Windows.Forms.TextBox()
         Me.pbadvertencia = New System.Windows.Forms.PictureBox()
         Me.Gb_Cliente = New System.Windows.Forms.GroupBox()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.cboMercado = New System.Windows.Forms.ComboBox()
         Me.lblkilguia = New System.Windows.Forms.Label()
         Me.lblenvguia = New System.Windows.Forms.Label()
         Me.txtkilguia = New System.Windows.Forms.TextBox()
@@ -71,6 +73,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.txtrutchofer = New System.Windows.Forms.MaskedTextBox()
         Me.txtnom_contrato = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label64 = New System.Windows.Forms.Label()
         Me.OpcionImprimir = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.IMPRIMIRETIQUETAToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -109,6 +112,11 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label39 = New System.Windows.Forms.Label()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.Gb_Encabezado = New System.Windows.Forms.GroupBox()
+        Me.txtSopCusCodi = New System.Windows.Forms.TextBox()
+        Me.Btn_buscasopcus = New System.Windows.Forms.Button()
+        Me.txtsopcusnombre = New System.Windows.Forms.TextBox()
+        Me.txtSopCustodia = New System.Windows.Forms.TextBox()
+        Me.Label66 = New System.Windows.Forms.Label()
         Me.produa = New System.Windows.Forms.ComboBox()
         Me.Label61 = New System.Windows.Forms.Label()
         Me.Label59 = New System.Windows.Forms.Label()
@@ -164,7 +172,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.btn_nuevo = New System.Windows.Forms.Button()
         Me.Tab_Detalle = New System.Windows.Forms.TabControl()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Label64 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.DetaRece = New System.Windows.Forms.DataGridView()
         Me.Edit = New System.Windows.Forms.DataGridViewImageColumn()
@@ -315,7 +322,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.lbladv.Size = New System.Drawing.Size(284, 26)
         Me.lbladv.TabIndex = 68
         Me.lbladv.Text = "ADVERTENCIA! no se modificaran ni servicios a " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "etiquetado ni bloqueos a tuneles " & _
-    ""
+            ""
         Me.lbladv.Visible = False
         '
         'Txtobs
@@ -341,6 +348,8 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'Gb_Cliente
         '
+        Me.Gb_Cliente.Controls.Add(Me.Label65)
+        Me.Gb_Cliente.Controls.Add(Me.cboMercado)
         Me.Gb_Cliente.Controls.Add(Me.lblkilguia)
         Me.Gb_Cliente.Controls.Add(Me.lblenvguia)
         Me.Gb_Cliente.Controls.Add(Me.txtkilguia)
@@ -383,6 +392,30 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Gb_Cliente.TabIndex = 56
         Me.Gb_Cliente.TabStop = False
         '
+        'Label65
+        '
+        Me.Label65.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label65.Location = New System.Drawing.Point(16, 157)
+        Me.Label65.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(78, 21)
+        Me.Label65.TabIndex = 67
+        Me.Label65.Text = "MERCADO"
+        Me.Label65.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'cboMercado
+        '
+        Me.cboMercado.BackColor = System.Drawing.Color.White
+        Me.cboMercado.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.cboMercado.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboMercado.FormattingEnabled = True
+        Me.cboMercado.Items.AddRange(New Object() {"CONVENCIONAL", "ORGANICO"})
+        Me.cboMercado.Location = New System.Drawing.Point(104, 157)
+        Me.cboMercado.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.cboMercado.Name = "cboMercado"
+        Me.cboMercado.Size = New System.Drawing.Size(164, 21)
+        Me.cboMercado.TabIndex = 62
+        '
         'lblkilguia
         '
         Me.lblkilguia.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -391,7 +424,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.lblkilguia.Name = "lblkilguia"
         Me.lblkilguia.Size = New System.Drawing.Size(78, 21)
         Me.lblkilguia.TabIndex = 66
-        Me.lblkilguia.Text = "KG.   GUIA"
+        Me.lblkilguia.Text = "KG. GUIA"
         Me.lblkilguia.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.lblkilguia.Visible = False
         '
@@ -428,7 +461,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.chkdatosguia.AutoSize = True
         Me.chkdatosguia.Location = New System.Drawing.Point(104, 159)
         Me.chkdatosguia.Name = "chkdatosguia"
-        Me.chkdatosguia.Size = New System.Drawing.Size(101, 17)
+        Me.chkdatosguia.Size = New System.Drawing.Size(100, 17)
         Me.chkdatosguia.TabIndex = 62
         Me.chkdatosguia.Text = "DATOS GUIA"
         Me.chkdatosguia.UseVisualStyleBackColor = True
@@ -449,7 +482,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label23.ForeColor = System.Drawing.Color.Gold
         Me.Label23.Location = New System.Drawing.Point(302, 159)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(249, 13)
+        Me.Label23.Size = New System.Drawing.Size(248, 13)
         Me.Label23.TabIndex = 59
         Me.Label23.Text = "FORMATO CONTENEDOR: ABCD 123456-7"
         '
@@ -725,50 +758,62 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label25.TabIndex = 54
         Me.Label25.Text = "OBSERVACION"
         '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(10, 426)
+        Me.Label64.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(36, 13)
+        Me.Label64.TabIndex = 74
+        Me.Label64.Text = "Unid."
+        Me.Label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'OpcionImprimir
         '
         Me.OpcionImprimir.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator3, Me.IMPRIMIRETIQUETAToolStripMenuItem, Me.ToolStripSeparator1, Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem, Me.ToolStripSeparator2, Me.ETIQUETASDECAJASToolStripMenuItem, Me.ToolStripSeparator4})
         Me.OpcionImprimir.Name = "OpcionImprimir"
-        Me.OpcionImprimir.Size = New System.Drawing.Size(307, 94)
+        Me.OpcionImprimir.Size = New System.Drawing.Size(305, 94)
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(301, 6)
         '
         'IMPRIMIRETIQUETAToolStripMenuItem
         '
         Me.IMPRIMIRETIQUETAToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.IMPRIMIRETIQUETAToolStripMenuItem.Name = "IMPRIMIRETIQUETAToolStripMenuItem"
-        Me.IMPRIMIRETIQUETAToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
+        Me.IMPRIMIRETIQUETAToolStripMenuItem.Size = New System.Drawing.Size(304, 22)
         Me.IMPRIMIRETIQUETAToolStripMenuItem.Text = "IMPRIMIR ETIQUETA"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(301, 6)
         '
         'DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem
         '
         Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Name = "DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem"
-        Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
+        Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Size = New System.Drawing.Size(304, 22)
         Me.DESBLOQUEARTRAQUEODESOPORTANTEToolStripMenuItem.Text = "DESBLOQUEAR TRAQUEO DE SOPORTANTE"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(301, 6)
         '
         'ETIQUETASDECAJASToolStripMenuItem
         '
         Me.ETIQUETASDECAJASToolStripMenuItem.Name = "ETIQUETASDECAJASToolStripMenuItem"
-        Me.ETIQUETASDECAJASToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
+        Me.ETIQUETASDECAJASToolStripMenuItem.Size = New System.Drawing.Size(304, 22)
         Me.ETIQUETASDECAJASToolStripMenuItem.Text = "ETIQUETAS DE CAJAS"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(303, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(301, 6)
         '
         'ImageList1
         '
@@ -850,7 +895,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.chksecimp.ForeColor = System.Drawing.Color.White
         Me.chksecimp.Location = New System.Drawing.Point(404, 792)
         Me.chksecimp.Name = "chksecimp"
-        Me.chksecimp.Size = New System.Drawing.Size(220, 17)
+        Me.chksecimp.Size = New System.Drawing.Size(219, 17)
         Me.chksecimp.TabIndex = 88
         Me.chksecimp.Text = "COPIAS AL IMPRIMIR ETIQUETAS"
         Me.chksecimp.UseVisualStyleBackColor = True
@@ -913,7 +958,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label22.ForeColor = System.Drawing.Color.White
         Me.Label22.Location = New System.Drawing.Point(27, 831)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(215, 13)
+        Me.Label22.Size = New System.Drawing.Size(214, 13)
         Me.Label22.TabIndex = 75
         Me.Label22.Text = "'F2' - Para modificar una recepcion.-"
         '
@@ -924,7 +969,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label53.ForeColor = System.Drawing.Color.White
         Me.Label53.Location = New System.Drawing.Point(28, 812)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(255, 13)
+        Me.Label53.Size = New System.Drawing.Size(254, 13)
         Me.Label53.TabIndex = 74
         Me.Label53.Text = "'F1' - Para poder recuperar una recepcion.-"
         '
@@ -957,7 +1002,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label41.ForeColor = System.Drawing.Color.White
         Me.Label41.Location = New System.Drawing.Point(317, 812)
         Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(311, 13)
+        Me.Label41.Size = New System.Drawing.Size(310, 13)
         Me.Label41.TabIndex = 71
         Me.Label41.Text = "'F3' - Para imprimir las etiquetas de los soportantes.-"
         '
@@ -1038,7 +1083,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label27.ForeColor = System.Drawing.Color.White
         Me.Label27.Location = New System.Drawing.Point(208, 14)
         Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(93, 13)
+        Me.Label27.Size = New System.Drawing.Size(92, 13)
         Me.Label27.TabIndex = 60
         Me.Label27.Text = "SOPORTANTES"
         '
@@ -1089,6 +1134,11 @@ Partial Class Frm_GuiaRecepcionAgregar
         'Gb_Encabezado
         '
         Me.Gb_Encabezado.BackColor = System.Drawing.Color.Transparent
+        Me.Gb_Encabezado.Controls.Add(Me.txtSopCusCodi)
+        Me.Gb_Encabezado.Controls.Add(Me.Btn_buscasopcus)
+        Me.Gb_Encabezado.Controls.Add(Me.txtsopcusnombre)
+        Me.Gb_Encabezado.Controls.Add(Me.txtSopCustodia)
+        Me.Gb_Encabezado.Controls.Add(Me.Label66)
         Me.Gb_Encabezado.Controls.Add(Me.produa)
         Me.Gb_Encabezado.Controls.Add(Me.Label61)
         Me.Gb_Encabezado.Controls.Add(Me.Label59)
@@ -1137,6 +1187,55 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Gb_Encabezado.TabIndex = 50
         Me.Gb_Encabezado.TabStop = False
         '
+        'txtSopCusCodi
+        '
+        Me.txtSopCusCodi.Enabled = False
+        Me.txtSopCusCodi.Location = New System.Drawing.Point(363, 161)
+        Me.txtSopCusCodi.MaxLength = 4
+        Me.txtSopCusCodi.Name = "txtSopCusCodi"
+        Me.txtSopCusCodi.Size = New System.Drawing.Size(56, 21)
+        Me.txtSopCusCodi.TabIndex = 90
+        '
+        'Btn_buscasopcus
+        '
+        Me.Btn_buscasopcus.Enabled = False
+        Me.Btn_buscasopcus.Image = CType(resources.GetObject("Btn_buscasopcus.Image"), System.Drawing.Image)
+        Me.Btn_buscasopcus.Location = New System.Drawing.Point(422, 159)
+        Me.Btn_buscasopcus.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Btn_buscasopcus.Name = "Btn_buscasopcus"
+        Me.Btn_buscasopcus.Size = New System.Drawing.Size(21, 22)
+        Me.Btn_buscasopcus.TabIndex = 91
+        Me.Btn_buscasopcus.UseVisualStyleBackColor = True
+        '
+        'txtsopcusnombre
+        '
+        Me.txtsopcusnombre.Enabled = False
+        Me.txtsopcusnombre.Location = New System.Drawing.Point(449, 161)
+        Me.txtsopcusnombre.Name = "txtsopcusnombre"
+        Me.txtsopcusnombre.Size = New System.Drawing.Size(192, 21)
+        Me.txtsopcusnombre.TabIndex = 92
+        '
+        'txtSopCustodia
+        '
+        Me.txtSopCustodia.Enabled = False
+        Me.txtSopCustodia.Location = New System.Drawing.Point(298, 161)
+        Me.txtSopCustodia.MaxLength = 7
+        Me.txtSopCustodia.Name = "txtSopCustodia"
+        Me.txtSopCustodia.Size = New System.Drawing.Size(59, 21)
+        Me.txtSopCustodia.TabIndex = 89
+        '
+        'Label66
+        '
+        Me.Label66.AutoSize = True
+        Me.Label66.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label66.ForeColor = System.Drawing.Color.White
+        Me.Label66.Location = New System.Drawing.Point(198, 164)
+        Me.Label66.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(98, 13)
+        Me.Label66.TabIndex = 88
+        Me.Label66.Text = "SOP CUSTODIA"
+        '
         'produa
         '
         Me.produa.BackColor = System.Drawing.Color.White
@@ -1156,7 +1255,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label61.AutoSize = True
         Me.Label61.ForeColor = System.Drawing.Color.White
-        Me.Label61.Location = New System.Drawing.Point(7, 112)
+        Me.Label61.Location = New System.Drawing.Point(12, 108)
         Me.Label61.Name = "Label61"
         Me.Label61.Size = New System.Drawing.Size(78, 13)
         Me.Label61.TabIndex = 86
@@ -1166,7 +1265,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label59.AutoSize = True
         Me.Label59.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label59.Location = New System.Drawing.Point(7, 82)
+        Me.Label59.Location = New System.Drawing.Point(17, 82)
         Me.Label59.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label59.Name = "Label59"
         Me.Label59.Size = New System.Drawing.Size(73, 13)
@@ -1190,7 +1289,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label57.AutoSize = True
         Me.Label57.ForeColor = System.Drawing.Color.White
-        Me.Label57.Location = New System.Drawing.Point(266, 109)
+        Me.Label57.Location = New System.Drawing.Point(275, 109)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(21, 13)
         Me.Label57.TabIndex = 83
@@ -1216,7 +1315,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label56.AutoSize = True
         Me.Label56.ForeColor = System.Drawing.Color.White
-        Me.Label56.Location = New System.Drawing.Point(207, 143)
+        Me.Label56.Location = New System.Drawing.Point(205, 138)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(91, 13)
         Me.Label56.TabIndex = 81
@@ -1280,7 +1379,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label48.AutoSize = True
         Me.Label48.ForeColor = System.Drawing.Color.White
-        Me.Label48.Location = New System.Drawing.Point(251, 84)
+        Me.Label48.Location = New System.Drawing.Point(253, 84)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(43, 13)
         Me.Label48.TabIndex = 75
@@ -1334,7 +1433,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label42.AutoSize = True
         Me.Label42.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label42.ForeColor = System.Drawing.Color.White
-        Me.Label42.Location = New System.Drawing.Point(246, 57)
+        Me.Label42.Location = New System.Drawing.Point(249, 57)
         Me.Label42.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(47, 13)
@@ -1351,6 +1450,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         'fecharece
         '
+        Me.fecharece.CustomFormat = "dd/MM/yyyy"
         Me.fecharece.Enabled = False
         Me.fecharece.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.fecharece.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
@@ -1492,7 +1592,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.Label18.ForeColor = System.Drawing.Color.White
-        Me.Label18.Location = New System.Drawing.Point(222, 33)
+        Me.Label18.Location = New System.Drawing.Point(223, 33)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(73, 13)
@@ -1586,7 +1686,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(7, 57)
+        Me.Label6.Location = New System.Drawing.Point(14, 57)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(76, 13)
@@ -1789,15 +1889,6 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.TabPage2.Size = New System.Drawing.Size(667, 450)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Detalle Recepcion        "
-        '
-        'Label64
-        '
-        Me.Label64.AutoSize = True
-        Me.Label64.Location = New System.Drawing.Point(10, 426)
-        Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(31, 12)
-        Me.Label64.TabIndex = 74
-        Me.Label64.Text = "Unid."
         '
         'TextBox3
         '
@@ -2111,7 +2202,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label34.AutoSize = True
         Me.Label34.Location = New System.Drawing.Point(427, 124)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(59, 13)
+        Me.Label34.Size = New System.Drawing.Size(58, 13)
         Me.Label34.TabIndex = 79
         Me.Label34.Text = "ESTADO "
         '
@@ -2181,7 +2272,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label26.AutoSize = True
         Me.Label26.Location = New System.Drawing.Point(10, 35)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(85, 13)
+        Me.Label26.Size = New System.Drawing.Size(84, 13)
         Me.Label26.TabIndex = 23
         Me.Label26.Text = "SOPORTANTE"
         '
@@ -2253,7 +2344,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label16.AutoSize = True
         Me.Label16.Location = New System.Drawing.Point(10, 58)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(88, 13)
+        Me.Label16.Size = New System.Drawing.Size(86, 13)
         Me.Label16.TabIndex = 28
         Me.Label16.Text = "SOP. CLIENTE"
         '
@@ -2595,7 +2686,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label8.ForeColor = System.Drawing.Color.White
         Me.Label8.Location = New System.Drawing.Point(6, 13)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(87, 12)
+        Me.Label8.Size = New System.Drawing.Size(86, 12)
         Me.Label8.TabIndex = 0
         Me.Label8.Text = "TEMPERATURA"
         '
@@ -2613,7 +2704,7 @@ Partial Class Frm_GuiaRecepcionAgregar
         Me.Label11.ForeColor = System.Drawing.Color.White
         Me.Label11.Location = New System.Drawing.Point(167, 13)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(85, 12)
+        Me.Label11.Size = New System.Drawing.Size(84, 12)
         Me.Label11.TabIndex = 84
         Me.Label11.Text = "TEMP. GRACIA"
         '
@@ -3109,7 +3200,14 @@ Partial Class Frm_GuiaRecepcionAgregar
     Friend WithEvents ki As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label62 As System.Windows.Forms.Label
     Friend WithEvents Label63 As System.Windows.Forms.Label
-    Friend WithEvents chkCambioPallet As System.Windows.Forms.CheckBox
     Friend WithEvents Label64 As System.Windows.Forms.Label
+    Friend WithEvents chkCambioPallet As System.Windows.Forms.CheckBox
+    Friend WithEvents cboMercado As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents Label65 As System.Windows.Forms.Label
+    Friend WithEvents txtSopCustodia As System.Windows.Forms.TextBox
+    Friend WithEvents Label66 As System.Windows.Forms.Label
+    Friend WithEvents txtSopCusCodi As System.Windows.Forms.TextBox
+    Friend WithEvents Btn_buscasopcus As System.Windows.Forms.Button
+    Friend WithEvents txtsopcusnombre As System.Windows.Forms.TextBox
 End Class
