@@ -230,7 +230,7 @@ Partial Class Frm_Contratos
         'TxtHor5
         '
         Me.TxtHor5.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor5.Location = New System.Drawing.Point(170, 85)
+        Me.TxtHor5.Location = New System.Drawing.Point(310, 53)
         Me.TxtHor5.Mask = "00:00"
         Me.TxtHor5.Name = "TxtHor5"
         Me.TxtHor5.Size = New System.Drawing.Size(48, 23)
@@ -254,7 +254,7 @@ Partial Class Frm_Contratos
         'TxtHor6
         '
         Me.TxtHor6.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor6.Location = New System.Drawing.Point(239, 85)
+        Me.TxtHor6.Location = New System.Drawing.Point(379, 53)
         Me.TxtHor6.Mask = "00:00"
         Me.TxtHor6.Name = "TxtHor6"
         Me.TxtHor6.Size = New System.Drawing.Size(48, 23)
@@ -311,7 +311,7 @@ Partial Class Frm_Contratos
         'TxtHor3
         '
         Me.TxtHor3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor3.Location = New System.Drawing.Point(310, 54)
+        Me.TxtHor3.Location = New System.Drawing.Point(170, 85)
         Me.TxtHor3.Mask = "00:00"
         Me.TxtHor3.Name = "TxtHor3"
         Me.TxtHor3.Size = New System.Drawing.Size(48, 23)
@@ -323,7 +323,7 @@ Partial Class Frm_Contratos
         'TxtHor4
         '
         Me.TxtHor4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor4.Location = New System.Drawing.Point(379, 54)
+        Me.TxtHor4.Location = New System.Drawing.Point(239, 85)
         Me.TxtHor4.Mask = "00:00"
         Me.TxtHor4.Name = "TxtHor4"
         Me.TxtHor4.Size = New System.Drawing.Size(48, 23)
@@ -656,6 +656,8 @@ Partial Class Frm_Contratos
         Me.Panel1.Controls.Add(Me.TxtHor7)
         Me.Panel1.Controls.Add(Me.TxtHor8)
         Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.TxtHor3)
+        Me.Panel1.Controls.Add(Me.TxtHor4)
         Me.Panel1.Controls.Add(Me.Label17)
         Me.Panel1.Controls.Add(Me.Label16)
         Me.Panel1.Controls.Add(Me.Label20)
@@ -663,8 +665,6 @@ Partial Class Frm_Contratos
         Me.Panel1.Controls.Add(Me.TxtHor5)
         Me.Panel1.Controls.Add(Me.TxtHor6)
         Me.Panel1.Controls.Add(Me.TxtHor2)
-        Me.Panel1.Controls.Add(Me.TxtHor3)
-        Me.Panel1.Controls.Add(Me.TxtHor4)
         Me.Panel1.Location = New System.Drawing.Point(7, 373)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(503, 117)
