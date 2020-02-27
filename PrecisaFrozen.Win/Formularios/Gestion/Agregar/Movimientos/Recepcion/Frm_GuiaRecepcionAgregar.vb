@@ -1714,6 +1714,12 @@ Public Class Frm_GuiaRecepcionAgregar
         Dim Titulo2 As New Font("Arial", 34, FontStyle.Bold)
         ' dibuja rectangulo
         '    e.Graphics.DrawRectangle(Pens.Black, New Rectangle(3, 8, 375, 385))
+        Dim x As Single = 115.0F
+        Dim y As Single = 135.0F
+        Dim width As Single = 250.0F
+        Dim height As Single = 25.0F
+        Dim drawRect As New RectangleF(x, y, width, height)
+
         cargaimg()
         ' imprimir logo -----------------------------------------------
         Dim img_logo As New PictureBox
@@ -1730,8 +1736,12 @@ Public Class Frm_GuiaRecepcionAgregar
         e.Graphics.DrawString("CLIENTE", prFont, Brushes.Black, 10, 120)
         e.Graphics.DrawString(": " + cli, prFont, Brushes.Black, 105, 120)
 
-        e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 140)
-        e.Graphics.DrawString(": " + producto, prFont, Brushes.Black, 105, 140)
+
+        e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 135)
+        e.Graphics.DrawString(": ", prFont, Brushes.Black, 105, 135)
+        e.Graphics.DrawString(producto, prFont, Brushes.Black, drawRect)
+
+
 
         e.Graphics.DrawString("FOLIO CLIENTE", prFont, Brushes.Black, 10, 160)
         e.Graphics.DrawString(": " + folio_cliente + " UND: " + stock + " / " + unidades + "   KG: " + kilos, prFont, Brushes.Black, 105, 160)
@@ -1815,6 +1825,12 @@ Public Class Frm_GuiaRecepcionAgregar
         Dim Titulo2 As New Font("Arial", 34, FontStyle.Bold)
         ' dibuja rectangulo
         '    e.Graphics.DrawRectangle(Pens.Black, New Rectangle(3, 8, 375, 385))
+        Dim x As Single = 115.0F
+        Dim y As Single = 135.0F
+        Dim width As Single = 250.0F
+        Dim height As Single = 25.0F
+        Dim drawRect As New RectangleF(x, y, width, height)
+
         cargaimg()
         ' imprimir logo -----------------------------------------------
         Dim img_logo As New PictureBox
@@ -1831,8 +1847,10 @@ Public Class Frm_GuiaRecepcionAgregar
         e.Graphics.DrawString("CLIENTE", prFont, Brushes.Black, 10, 120)
         e.Graphics.DrawString(": " + cli, prFont, Brushes.Black, 105, 120)
 
-        e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 140)
-        e.Graphics.DrawString(": " + producto, prFont, Brushes.Black, 105, 140)
+        e.Graphics.DrawString("PRODUCTO", prFont, Brushes.Black, 10, 135)
+        e.Graphics.DrawString(": ", prFont, Brushes.Black, 105, 135)
+        e.Graphics.DrawString(producto, prFont, Brushes.Black, drawRect)
+
 
         e.Graphics.DrawString("FOLIO CLIENTE", prFont, Brushes.Black, 10, 160)
         e.Graphics.DrawString(": " + folio_cliente + " UND: " + stock + " / " + unidades + "   KG: " + kilos, prFont, Brushes.Black, 105, 160)
@@ -2127,28 +2145,35 @@ Public Class Frm_GuiaRecepcionAgregar
                     'TxtCodRece.Text = ""
                     'TxtCodRece.Focus()
 
-                    Dim sqlVerifNul As String = "SP_Recepciones_Nulas_Validar '" & TxtCodRece.Text.Trim & "'"
-                    Dim dtVerifNul As New DataTable
-                    dtVerifNul = fnc.ListarTablasSQL(sqlVerifNul)
+                    If MsgBox("Esta guia de recepcion puede estar llamada en un temporal, si la llama ahora es posible que quede en estado nulo. ¿Desea Continuar ?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
+                        Dim sqlVerifNul As String = "SP_Recepciones_Nulas_Validar '" & TxtCodRece.Text.Trim & "'"
+                        Dim dtVerifNul As New DataTable
+                        dtVerifNul = fnc.ListarTablasSQL(sqlVerifNul)
 
-                    If (dtVerifNul.Rows.Count > 0) Then
-                        Dim RespVerifNul As Integer = CInt(dtVerifNul.Rows(0).Item(0).ToString.Trim)
+                        If (dtVerifNul.Rows.Count > 0) Then
+                            Dim RespVerifNul As Integer = CInt(dtVerifNul.Rows(0).Item(0).ToString.Trim)
 
-                        If (RespVerifNul = -2 Or RespVerifNul = -4) Then
-                            MsgBox("La Recepción ingresada no existe", MsgBoxStyle.Critical, "Aviso")
-                            TxtCodRece.Text = ""
-                            TxtCodRece.Focus()
-                        ElseIf (RespVerifNul = -3) Then
-                            MsgBox("Recepción con problemas. Favor avisar a informática.", MsgBoxStyle.Critical, "Aviso")
-                            TxtCodRece.Text = ""
-                            TxtCodRece.Focus()
-                        ElseIf (RespVerifNul = 1) Then
-                            buscarRece()
-                        ElseIf (RespVerifNul = -1) Then
-                            MsgBox("Ocurrió un error al buscar la Recepción.", MsgBoxStyle.Critical, "Aviso")
-                            TxtCodRece.Text = ""
-                            TxtCodRece.Focus()
+                            If (RespVerifNul = -2 Or RespVerifNul = -4) Then
+                                MsgBox("La Recepción ingresada no existe", MsgBoxStyle.Critical, "Aviso")
+                                TxtCodRece.Text = ""
+                                TxtCodRece.Focus()
+                            ElseIf (RespVerifNul = -3) Then
+                                MsgBox("Recepción con problemas. Favor avisar a informática.", MsgBoxStyle.Critical, "Aviso")
+                                TxtCodRece.Text = ""
+                                TxtCodRece.Focus()
+                            ElseIf (RespVerifNul = 1) Then
+                                buscarRece()
+                            ElseIf (RespVerifNul = -1) Then
+                                MsgBox("Ocurrió un error al buscar la Recepción.", MsgBoxStyle.Critical, "Aviso")
+                                TxtCodRece.Text = ""
+                                TxtCodRece.Focus()
+                            End If
                         End If
+                    Else
+                        TxtCodRece.Text = ""
+                        TxtCodRece.Focus()
+                        Exit Sub
+
                     End If
                 End If
             End If

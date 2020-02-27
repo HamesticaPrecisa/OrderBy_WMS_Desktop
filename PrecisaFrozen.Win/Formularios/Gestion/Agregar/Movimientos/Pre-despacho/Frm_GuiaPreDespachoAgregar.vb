@@ -1207,53 +1207,56 @@ Public Class Frm_GuiaPreDespachoAgregar
 
 
 
-
-                    Dim sqlped As String = "SELECT CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO " & _
-                                           "  FROM DetaReceCajas " & _
-                                           " INNER JOIN rackdeta ON racd_codi=Caj_Pcod " & _
-                                           " INNER JOIN detarece ON drec_codi=racd_codi " & _
-                                           " WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='1' "
-                    'Dim sqlped As String = "SELECT * FROM detapedcajas where pc_numpal = '" + txtpallet.Text + "'"
-                    Dim tabla As DataTable = fnc.ListarTablasSQL(sqlped)
-
-
-                    If tabla.Rows.Count > 0 Then
-                        '"SELECT    CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + txtpallet.Text + "'  "
-                        Dim sqlped2 As String = "SELECT CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO " & _
-                                                "  FROM DetaReceCajas " & _
-                                                " INNER JOIN rackdeta ON racd_codi=Caj_Pcod " & _
-                                                " INNER JOIN detarece ON drec_codi=racd_codi " & _
-                                                " WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='0' "
-                        Dim tabla3 As DataTable = fnc.ListarTablasSQL(sqlped2)
-                        If tabla3.Rows.Count > 0 Then
-                            ejec = "2"
-                        Else
-                            ejec = "1"
-
-                        End If
+                    '
+                    '  JVERGARA FEB 2020
+                    '  SE ELIMINA ESTA VALIDACION
+                    '
+                    'Dim sqlped As String = "SELECT CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO " & _
+                    '                       "  FROM DetaReceCajas " & _
+                    '                       " INNER JOIN rackdeta ON racd_codi=Caj_Pcod " & _
+                    '                       " INNER JOIN detarece ON drec_codi=racd_codi " & _
+                    '                       " WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='1' "
+                    ''Dim sqlped As String = "SELECT * FROM detapedcajas where pc_numpal = '" + txtpallet.Text + "'"
+                    'Dim tabla As DataTable = fnc.ListarTablasSQL(sqlped)
 
 
-                        If (ejec = "2") Then
+                    'If tabla.Rows.Count > 0 Then
+                    '    '"SELECT    CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO FROM DetaReceCajas INNER JOIN rackdeta ON racd_codi=Caj_Pcod INNER JOIN detarece ON drec_codi=racd_codi WHERE CAJ_PCOD='" + txtpallet.Text + "'  "
+                    '    Dim sqlped2 As String = "SELECT CAJ_PCOD AS PALET,CAJ_COD as CAJA,CAJ_PED AS ESTADO " & _
+                    '                            "  FROM DetaReceCajas " & _
+                    '                            " INNER JOIN rackdeta ON racd_codi=Caj_Pcod " & _
+                    '                            " INNER JOIN detarece ON drec_codi=racd_codi " & _
+                    '                            " WHERE CAJ_PCOD='" + pallet10 + "' and caj_ped='0' "
+                    '    Dim tabla3 As DataTable = fnc.ListarTablasSQL(sqlped2)
+                    '    If tabla3.Rows.Count > 0 Then
+                    '        ejec = "2"
+                    '    Else
+                    '        ejec = "1"
 
-                        Else
+                    '    End If
 
 
-                            Dim Sqlpedido As String = "select dpc_codped from detapedcaja where dpc_numpal= '" + pallet10 + "'"
-                            Dim tabla2 As DataTable = fnc.ListarTablasSQL(Sqlpedido)
+                    '    If (ejec = "2") Then
 
-                            Dim pedidostr As String = tabla2.Rows(0)(0).ToString()
-                            MsgBox("Este Pallet Esta Contenido en el pedido " + pedidostr + ", Imposible PRE-Despachar", MsgBoxStyle.Critical, "Aviso")
-
-                            Exit Sub
+                    '    Else
 
 
+                    '        Dim Sqlpedido As String = "select dpc_codped from detapedcaja where dpc_numpal= '" + pallet10 + "'"
+                    '        Dim tabla2 As DataTable = fnc.ListarTablasSQL(Sqlpedido)
 
+                    '        Dim pedidostr As String = tabla2.Rows(0)(0).ToString()
+                    '        MsgBox("Este Pallet Esta Contenido en el pedido " + pedidostr + ", Imposible PRE-Despachar", MsgBoxStyle.Critical, "Aviso")
 
-                        End If
+                    '        Exit Sub
 
 
 
-                    End If
+
+                    '    End If
+
+
+
+                    'End If
 
                 End If
 
@@ -1278,6 +1281,9 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                 ' bloquea cmbopedido
                 ' CmboPedido.Enabled = False
+
+                ' VES FEB 2020
+                Dim cantidad_disponible As Integer = 0
 
                 If fnc.verificaExistencia("DetaRece", "drec_codi", valor_pallet) = True Then ' si el pallet existe
 
@@ -1397,7 +1403,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                                 Dim tabla_consulta As DataTable = fnc.ListarTablasSQL(sql)
 
 
-                                Dim cantidad_disponible As Integer = Convert.ToInt32(tabla_consulta.Rows(0)(1).ToString()) - (Convert.ToInt32(tabla_consulta.Rows(1)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(2)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(3)(1).ToString()))
+                                cantidad_disponible = Convert.ToInt32(tabla_consulta.Rows(0)(1).ToString()) - (Convert.ToInt32(tabla_consulta.Rows(1)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(2)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(3)(1).ToString()))
 
                                 If cantidad_disponible <= 0 Then
                                     MsgBox("El soportante no tiene cajas disponibles." + Environment.NewLine +
@@ -1476,7 +1482,8 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                             Dim tabla_consulta As DataTable = fnc.ListarTablasSQL(sql)
 
-                            Dim cantidad_disponible As Integer = Convert.ToInt32(tabla_consulta.Rows(0)(1).ToString()) - (Convert.ToInt32(tabla_consulta.Rows(1)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(2)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(3)(1).ToString()))
+                            ' VES FEB 2020
+                            cantidad_disponible = Convert.ToInt32(tabla_consulta.Rows(0)(1).ToString()) - (Convert.ToInt32(tabla_consulta.Rows(1)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(2)(1).ToString()) + Convert.ToInt32(tabla_consulta.Rows(3)(1).ToString()))
                             'cantidad_disponible = cantidad_disponible * -1
                             If cantidad_disponible <= 0 Then
 
@@ -1564,6 +1571,8 @@ Public Class Frm_GuiaPreDespachoAgregar
                         End If
 
 
+
+
                         Dim tabla As DataTable = fnc.ListarTablasSQL(sqlvalidapallet)
 
                         If tabla.Rows.Count > 0 Then 'si corresponde al cliente pasa el if **********************
@@ -1643,13 +1652,20 @@ Public Class Frm_GuiaPreDespachoAgregar
 
 
 
-
+                                        '
+                                        ' VES FEB 2020
+                                        ' SE CALCULA EL VALOR INCIAL DE DPRE_CAJSEL
+                                        ' COMO LA DIFERENCIA ENTRE LO QUE HAY DISPONIBLE
+                                        ' Y LO QUE SE PIDIO
+                                        '
+                                        Dim cajsel As Integer = cantidad_disponible - CInt(Cant.Text)
+                                        If cajsel < 0 Then cajsel = 0
                                         Dim sql As String = "INSERT INTO TMPDETAPRED (fpre_codi, dpre_codi, dpre_codpro, dpre_codsopo, dpre_sopocli, " & _
                                                             "dpre_unidades, dpre_peso, dpre_fecdes, dpre_rutcli, dpre_contcli, dpre_fecprod, " & _
                                                             "dpre_camara, dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_almacen, " & _
                                                             "dpre_folio, dpre_activa, dpre_radio, dpre_track, dpre_codvig, dpre_pallet, " & _
                                                             "dpre_slot, dpre_TS, dpre_TM, dpre_TI, dpre_Ptr, dpre_Pick, dpre_CodPer, dpre_Hora, " & _
-                                                            "dpre_fecn, dpre_ActUni, dpre_TotUni)" & _
+                                                            "dpre_fecn, dpre_ActUni, dpre_TotUni, dpre_cajsel)" & _
                                                             "VALUES('" + lblcodigo.Text + "','" + CerosAnteriorString(numeropallet.ToString(), 2).ToString() + "','" + tabla.Rows(0)(0).ToString() + "'," & _
                                                             "'" + Val(tabla.Rows(0)(1).ToString()).ToString() + "','" + tabla.Rows(0)(2).ToString() + "','" + Cant.Text() + "', " & _
                                                             "'" + Kilos.ToString().Replace(",", ".") + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "','" + tabla.Rows(0)(5).ToString() + "', " & _
@@ -1657,9 +1673,10 @@ Public Class Frm_GuiaPreDespachoAgregar
                                                             "'" + tabla.Rows(0)(9).ToString() + "','" + tabla.Rows(0)(10).ToString() + "','" + tabla.Rows(0)(11).ToString() + "', " & _
                                                             "'" + tabla.Rows(0)(12).ToString() + "','" + tabla.Rows(0)(13).ToString() + "','" + valor_pallet.ToString() + "', " & _
                                                             "'0','0','0','0','" + pallet_cod.ToString() + "','000','0','0','0','" + Val(numeropallet).ToString + "','0','" + Frm_Principal.InfoUsuario.Text + "','" + DevuelveHora() + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "'," & _
-                                                            "'" + Cant.Text + "','" + Val(tabla.Rows(0)(3).ToString() - (cantidadEnPredespacho + Val(Cant.Text))).ToString() + "')"
+                                                            "'" + Cant.Text + "','" + Val(tabla.Rows(0)(3).ToString() - (cantidadEnPredespacho + Val(Cant.Text))).ToString() + "'," & cajsel.ToString() & ")"
 
-                                        If fnc.MovimientoSQL(sql) > 0 Then
+
+                                        If fnc.MovimientoSQL(Sql) > 0 Then
                                             CargaGrilla()
                                             txtpallet.Text = ""
                                             CbCant.CheckState = 1
@@ -1762,12 +1779,21 @@ Public Class Frm_GuiaPreDespachoAgregar
 
 
 
+                                '
+                                ' VES FEB 2020
+                                ' SE CALCULA EL VALOR INCIAL DE DPRE_CAJSEL
+                                ' COMO LA DIFERENCIA ENTRE LO QUE HAY DISPONIBLE
+                                ' Y LO QUE SE PIDIO
+                                '
+                                Dim cajsel As Integer = racd_unidades - CajasRestantes
+                                If cajsel < 0 Then cajsel = 0
+
                                 Dim sql As String = "INSERT INTO TMPDETAPRED (fpre_codi, dpre_codi, dpre_codpro, dpre_codsopo, dpre_sopocli, " & _
                                                     "dpre_unidades, dpre_peso, dpre_fecdes, dpre_rutcli, dpre_contcli, dpre_fecprod, " & _
                                                     "dpre_camara, dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_almacen, " & _
                                                     "dpre_folio, dpre_activa, dpre_radio, dpre_track, dpre_codvig, dpre_pallet, " & _
                                                     "dpre_slot, dpre_TS, dpre_TM, dpre_TI, dpre_Ptr, dpre_Pick, dpre_CodPer, dpre_Hora, " & _
-                                                    "dpre_fecn, dpre_ActUni, dpre_TotUni)" & _
+                                                    "dpre_fecn, dpre_ActUni, dpre_TotUni, dpre_cajsel)" & _
                                                     "VALUES('" + lblcodigo.Text + "','" + CerosAnteriorString(numeropallet.ToString(), 2).ToString() + "','" + tabla.Rows(0)(0).ToString() + "'," & _
                                                     "'" + Val(tabla.Rows(0)(1).ToString()).ToString() + "','" + tabla.Rows(0)(2).ToString() + "','" + CajasRestantes.ToString() + "', " & _
                                                     "'" + KilosRestantes.ToString().Replace(",", ".") + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "','" + tabla.Rows(0)(5).ToString() + "', " & _
@@ -1775,7 +1801,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                                                     "'" + tabla.Rows(0)(9).ToString() + "','" + tabla.Rows(0)(10).ToString() + "','" + tabla.Rows(0)(11).ToString() + "', " & _
                                                     "'" + tabla.Rows(0)(12).ToString() + "','" + tabla.Rows(0)(13).ToString() + "','" + valor_pallet.ToString() + "', " & _
                                                     "'0','0','0','0','1','000','0','0','0','" + Val(numeropallet).ToString + "','0','" + usu_cod + "','" + DevuelveHora() + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "'," & _
-                                                    "'" + CajasRestantes.ToString + "','0')"
+                                                    "'" + CajasRestantes.ToString + "','0'," & cajsel.ToString() & ")"
 
                                 If fnc.MovimientoSQL(sql) > 0 Then
                                     CargaGrilla()
