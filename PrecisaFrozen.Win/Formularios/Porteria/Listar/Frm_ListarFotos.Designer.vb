@@ -37,6 +37,9 @@ Partial Class Frm_ListarFotos
         Me.GuardaImagen5 = New System.Windows.Forms.Button()
         Me.PictureBox7 = New System.Windows.Forms.PictureBox()
         Me.GuardaImagen4 = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.GuardaImagen7 = New System.Windows.Forms.Button()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -46,16 +49,18 @@ Partial Class Frm_ListarFotos
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox4
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.PictureBox4.Image = Global.PrecisaFrozen.Win.My.Resources.Resources._1391547217_File___Image_256x256_32
-        Me.PictureBox4.Location = New System.Drawing.Point(507, 88)
+        Me.PictureBox4.Location = New System.Drawing.Point(544, 4)
         Me.PictureBox4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(536, 416)
+        Me.PictureBox4.Size = New System.Drawing.Size(482, 356)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.PictureBox4.TabIndex = 3
         Me.PictureBox4.TabStop = False
@@ -238,12 +243,50 @@ Partial Class Frm_ListarFotos
         Me.GuardaImagen4.Text = "[ Guardar ]"
         Me.GuardaImagen4.UseVisualStyleBackColor = True
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox3.Controls.Add(Me.PictureBox8)
+        Me.GroupBox3.Controls.Add(Me.GuardaImagen7)
+        Me.GroupBox3.ForeColor = System.Drawing.Color.White
+        Me.GroupBox3.Location = New System.Drawing.Point(666, 372)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(241, 213)
+        Me.GroupBox3.TabIndex = 9
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Foto RUT"
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.PictureBox8.Image = Global.PrecisaFrozen.Win.My.Resources.Resources._1391547217_File___Image_256x256_32
+        Me.PictureBox8.Location = New System.Drawing.Point(19, 21)
+        Me.PictureBox8.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(204, 162)
+        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox8.TabIndex = 0
+        Me.PictureBox8.TabStop = False
+        '
+        'GuardaImagen7
+        '
+        Me.GuardaImagen7.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuardaImagen7.ForeColor = System.Drawing.Color.Black
+        Me.GuardaImagen7.Location = New System.Drawing.Point(143, 183)
+        Me.GuardaImagen7.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.GuardaImagen7.Name = "GuardaImagen7"
+        Me.GuardaImagen7.Size = New System.Drawing.Size(80, 23)
+        Me.GuardaImagen7.TabIndex = 4
+        Me.GuardaImagen7.Text = "[ Guardar ]"
+        Me.GuardaImagen7.UseVisualStyleBackColor = True
+        '
         'Frm_ListarFotos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1055, 606)
+        Me.ClientSize = New System.Drawing.Size(1075, 662)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PictureBox4)
@@ -264,6 +307,8 @@ Partial Class Frm_ListarFotos
         CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -282,4 +327,7 @@ Partial Class Frm_ListarFotos
     Friend WithEvents GuardaImagen5 As System.Windows.Forms.Button
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
     Friend WithEvents GuardaImagen4 As System.Windows.Forms.Button
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
+    Friend WithEvents GuardaImagen7 As System.Windows.Forms.Button
 End Class

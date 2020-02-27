@@ -873,11 +873,12 @@ Public Class Frm_Principal
         Next
 
         menLimPedExp.Enabled = True
-
+        menLimPedExpFecha.Enabled = True
         menNumDia.Visible = True
         menNumDia.Enabled = True
 
         MenOrdenPallets.Enabled = True
+        ChequeoCajasDuplicadasToolStripMenuItem.Enabled = True
     End Sub
 
     Private Sub Salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles M2_Salir.Click
@@ -2031,4 +2032,25 @@ Public Class Frm_Principal
             TabControl1.TabPages(Frm_Orden_Pallets).Select()
         End If
     End Sub
+
+    Private Sub menLimPedExpFecha_Click(sender As System.Object, e As System.EventArgs) Handles menLimPedExpFecha.Click
+        If Not TabControl1.TabPages(LimiteFechaExportacionPedidos) Is Nothing Then
+            TabControl1.TabPages(LimiteFechaExportacionPedidos).Show()
+        ElseIf LimiteFechaExportacionPedidos.Visible = True Then
+            TabControl1.TabPages(LimiteFechaExportacionPedidos).Select()
+        Else
+            TabControl1.TabPages.Add(LimiteFechaExportacionPedidos)
+        End If
+    End Sub
+
+    Private Sub ChequeoCajasDuplicadasToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ChequeoCajasDuplicadasToolStripMenuItem.Click
+        If Not TabControl1.TabPages(ChequeoCajas) Is Nothing Then
+            TabControl1.TabPages(ChequeoCajas).Show()
+        ElseIf ChequeoCajas.Visible = True Then
+            TabControl1.TabPages(ChequeoCajas).Select()
+        Else
+            TabControl1.TabPages.Add(ChequeoCajas)
+        End If
+    End Sub
+
 End Class

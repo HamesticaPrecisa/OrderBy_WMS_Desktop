@@ -295,6 +295,8 @@ Partial Public Class Ds_Imagenes
         
         Private columnImagen6 As Global.System.Data.DataColumn
         
+        Private columnImagen7 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -379,6 +381,14 @@ Partial Public Class Ds_Imagenes
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Imagen7Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImagen7
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -415,9 +425,9 @@ Partial Public Class Ds_Imagenes
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddImagenesRow(ByVal Imagen1() As Byte, ByVal Imagen2() As Byte, ByVal Imagen3() As Byte, ByVal Imagen4() As Byte, ByVal Imagen5() As Byte, ByVal Imagen6() As Byte) As ImagenesRow
+        Public Overloads Function AddImagenesRow(ByVal Imagen1() As Byte, ByVal Imagen2() As Byte, ByVal Imagen3() As Byte, ByVal Imagen4() As Byte, ByVal Imagen5() As Byte, ByVal Imagen6() As Byte, ByVal Imagen7() As Byte) As ImagenesRow
             Dim rowImagenesRow As ImagenesRow = CType(Me.NewRow,ImagenesRow)
-            Dim columnValuesArray() As Object = New Object() {Imagen1, Imagen2, Imagen3, Imagen4, Imagen5, Imagen6}
+            Dim columnValuesArray() As Object = New Object() {Imagen1, Imagen2, Imagen3, Imagen4, Imagen5, Imagen6, Imagen7}
             rowImagenesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowImagenesRow)
             Return rowImagenesRow
@@ -446,6 +456,7 @@ Partial Public Class Ds_Imagenes
             Me.columnImagen4 = MyBase.Columns("Imagen4")
             Me.columnImagen5 = MyBase.Columns("Imagen5")
             Me.columnImagen6 = MyBase.Columns("Imagen6")
+            Me.columnImagen7 = MyBase.Columns("Imagen7")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -463,6 +474,8 @@ Partial Public Class Ds_Imagenes
             MyBase.Columns.Add(Me.columnImagen5)
             Me.columnImagen6 = New Global.System.Data.DataColumn("Imagen6", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnImagen6)
+            Me.columnImagen7 = New Global.System.Data.DataColumn("Imagen7", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImagen7)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -699,6 +712,21 @@ Partial Public Class Ds_Imagenes
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Imagen7() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tableImagenes.Imagen7Column),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Imagen7' de la tabla 'Imagenes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableImagenes.Imagen7Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsImagen1Null() As Boolean
             Return Me.IsNull(Me.tableImagenes.Imagen1Column)
         End Function
@@ -767,6 +795,18 @@ Partial Public Class Ds_Imagenes
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetImagen6Null()
             Me(Me.tableImagenes.Imagen6Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsImagen7Null() As Boolean
+            Return Me.IsNull(Me.tableImagenes.Imagen7Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetImagen7Null()
+            Me(Me.tableImagenes.Imagen7Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     

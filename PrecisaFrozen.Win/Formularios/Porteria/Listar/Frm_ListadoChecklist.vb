@@ -33,7 +33,7 @@ Public Class Frm_ListadoChecklist
         BtnFiltrar.Enabled = False
         Dim sqlPrincipal As String = "SELECT cl_fol, usu_nombre+' '+usu_ap AS usu_nombre, tur_desc, cli_nomb, " +
                     "SUBSTRING(cho_rut, 0,3)+'.'+SUBSTRING(cho_rut,3,3)+'.'+SUBSTRING(cho_rut, 6,3)+'-'+SUBSTRING(cho_rut, 9,9) AS cho_rut, cho_nombre ,  " +
-                    "Cl_ChoEmp, mov_desc, 'S/T' AS Temp , cl_pate, cl_ram, 'S/G' AS GUIA_ENTRADA,  'S/G' AS GUIA_SALIDA,  '-' AS SOPORT_ENTRADA, '-' AS SOPORT_SALIDA, " +
+                    "Cl_ChoEmp, mov_desc,case when Cl_Ting='0' then 'S/T' else Cl_Ting end AS Temp  , cl_pate, cl_ram, 'S/G' AS GUIA_ENTRADA,  'S/G' AS GUIA_SALIDA,  '-' AS SOPORT_ENTRADA, '-' AS SOPORT_SALIDA, " +
                     "convert(nvarchar(20),cl_lleg , 20) AS Fecha1 , " +
                     "convert(nvarchar(MAX),cl_ing, 20) AS Fecha2 , " +
                     "convert(nvarchar(MAX),cl_des, 20) AS Fecha3, '-' AS NRECEPCION,'-' AS NDESPACHO," +
@@ -54,7 +54,7 @@ Public Class Frm_ListadoChecklist
                     Dim Sql As String = "SELECT Cl_Ting, frec_guiades, frec_totsopo, frec_codi FROM zCheckList, fichrece WHERE Cl_fol=frec_clfol AND Cl_fol='" + DgvResultados.Rows(i).Cells("FOLIO").Value.ToString() + "'"
                     Dim tabla As DataTable = fnc.ListarTablasSQL(Sql)
                     If tabla.Rows.Count > 0 Then
-                        DgvResultados.Rows(i).Cells("TEMP").Value = tabla.Rows(0)(0).ToString()
+
                         DgvResultados.Rows(i).Cells("GUIA_ENTRADA").Value = tabla.Rows(0)(1).ToString()
                         DgvResultados.Rows(i).Cells("SOPORT_ENTRADA").Value = tabla.Rows(0)(2).ToString()
                         DgvResultados.Rows(i).Cells("NRECEPCION").Value = tabla.Rows(0)(3).ToString()
