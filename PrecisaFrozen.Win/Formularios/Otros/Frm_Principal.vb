@@ -1951,13 +1951,14 @@ Public Class Frm_Principal
     End Sub
 
     Private Sub MenListRece_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenListRece.Click
-        If f_ReceProgList = False Then
+        If F_PlanRece = False Then
             Dim f As Form
-            f = Recepcion_Programacion_Listado
+            'f = Recepcion_Programacion_Listado
+            f = Frm_PlanRece
             TabControl1.TabPages.Add(f)
-            f_ReceProgList = True
+            F_PlanRece = True
         Else
-            TabControl1.TabPages(Recepcion_Programacion_Listado).Select()
+            TabControl1.TabPages(Frm_PlanRece).Select()
         End If
     End Sub
 
