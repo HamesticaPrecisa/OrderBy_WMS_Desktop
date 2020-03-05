@@ -665,8 +665,11 @@ Public Class Frm_AddEnvioEmail
                     campo = "cli_mail"
                 End If
 
-                sqlGuardar = "  UPDATE informes_programa SET prg_estado='" + estado + "' WHERE prg_rut_cli='" + RutCliente + "' AND prg_inf_cod='" + codigoInforme + "';" +
-                             "UPDATE Clientes SET " + campo + "='" + RetornaCorreos(dtgcorreos) + "' WHERE cli_rut='" + RutCliente + "';"
+                sqlGuardar = "  UPDATE informes_programa SET prg_hora='" + txthora.Text + "' , prg_mail='" + RetornaCorreos(dtgcorreos) + "', prg_lunes='" + Lu + "', prg_martes='" + Ma + "'," +
+                          "prg_miercoles='" + Mi + "', prg_jueves='" + Ju + "', prg_viernes='" + Vi + "', prg_sabado='" + Sa + "', prg_domingo='" + Dom + "', prg_estado='" + estado + "', prg_min='" +
+                          txtminutos.Text + "', prg_frec=" + txtFrec.Text + ", prg_interv=" + intervalo.ToString() + ", prg_horah='" + txtHoraH.Text + "'" +
+                          "WHERE prg_rut_cli='" + RutCliente + "' AND prg_inf_cod='" + codigoInforme + "';" +
+                          "UPDATE Clientes SET " + campo + "='" + RetornaCorreos(dtgcorreos) + "' WHERE cli_rut='" + RutCliente + "';"
             End If
 
             If fnc.MovimientoSQL(sqlGuardar) > 0 Then
