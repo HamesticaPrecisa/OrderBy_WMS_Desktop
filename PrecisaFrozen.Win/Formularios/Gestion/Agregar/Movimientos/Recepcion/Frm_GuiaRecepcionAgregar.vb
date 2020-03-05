@@ -3388,19 +3388,26 @@ Public Class Frm_GuiaRecepcionAgregar
                     Exit Sub
                 End If
 
+                Dim esttunel As String = "1"
+
+                If CmboTuneles.Text = "A TUNEL" Then
+                    esttunel = "2"
+
+                End If
+
                 ' VES SEP 2019:  Se incluye la columna MER_ID
                 Dim SQL_ModificaRecepcion = "UPDATE fichrece SET frec_rutcli='" + QuitarCaracteres(TxtClirut.Text, "-") + "', frec_contcli='" + txtcodcontrato.Text + "', " +
                     "frec_fecrec='" + devuelve_fecha(fecharece.Value) + "', frec_guiades='" + txtguia.Text + "', frec_totsopo='" + txtsoportantes.Text + "', " +
                     "frec_totunidad='" + txtcajas.Text + "', frec_totpeso='" + txtkilos.Text.Replace(",", ".") + "', frec_temppro='" + TxtPromTemp.Replace(",", ".") + "', " +
                     "frec_rutcond='" + QuitarCaracteres(txtrutchofer.Text, "-") + "', frec_observ='" + Txtobs.Text + "', frec_tipdesc='" + cmbo_descarga.SelectedValue.ToString() + "', " +
-                    "frec_origen='" + txtorigen.Text + "', frec_receptunel='" + CmboTuneles.SelectedValue.ToString() + "', " +
+                    "frec_origen='" + txtorigen.Text + "', frec_RecepTunel='" + CmboTuneles.SelectedValue.ToString() + "', " +
                     "frec_numsello='" + txtsello.Text + "', frec_tiporecepcion='" + Cmbotiporece.SelectedValue.ToString() + "', frec_tipoalmacenamiento='" + Cmbo_Almacenamiento.Text.ToString() + "', " +
                     "frec_olores='" + EstadoCheckBox(Cb_OloresExtraños.CheckState) + "', frec_higiene='" + (Convert.ToInt16(Rb_higieneB.Checked)).ToString() + "', frec_estiba='" + (Convert.ToInt16(Rb_EstibaB.Checked)).ToString() + "', " +
                     "frec_dañado='" + EstadoCheckBox(cbdañado.CheckState) + "', frec_antecamara='" + cmbAnden.SelectedValue.ToString() + "', frec_contenedor='" + TxtContenedor.Text +
                     "',frec_ntunel='" + cbonumtun.Text + "',frec_enviada='0',frec_modificado='" + modificar + "',frec_tippro='" + cboProductotip.Text.Trim() +
                     "',val_guia='" + datosguia.Trim() + "',uni_guia='" + txtenvguia.Text.Trim() + "',kilos_guia='" + txtkilguia.Text +
-                    "',frec_serv='" + ServActualizado + "', mer_id=" + cboMercado.SelectedValue.ToString() +
-                    " WHERE frec_codi='" + TxtCodRece.Text + "'"
+                    "',frec_serv='" + ServActualizado + "', mer_id='" + cboMercado.SelectedValue.ToString() +
+                    "' WHERE frec_codi='" + TxtCodRece.Text + "'"
                 lbladv.Visible = False
                 pbadvertencia.Visible = False
                 'BLOQUEA IMPORTACION
@@ -4632,8 +4639,7 @@ Public Class Frm_GuiaRecepcionAgregar
             cbonumtun.Text = ""
         End If
         If CmboTuneles.SelectedValue.ToString() = "2" Then
-            cboMercado.SelectedIndex = -1
-            cboMercado.Text = "SELECCIONAR"
+            cboMercado.SelectedValue = 1
         End If
         'If CmboTuneles.SelectedIndex = 0 Then
 
