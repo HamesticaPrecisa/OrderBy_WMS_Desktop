@@ -23,12 +23,12 @@ Partial Class Frm_GuiaPreDespachoAgregar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TxtObs = New System.Windows.Forms.TextBox()
         Me.Txtdestino = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -99,6 +99,19 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Dgv = New System.Windows.Forms.DataGridView()
+        Me.Eliminar = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.pallet = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pro_cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.unid = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dpre_cajsel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.peso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.camara = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.banda = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.columna = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.piso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nivel = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SALDO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.BtnBuscar = New System.Windows.Forms.Button()
@@ -129,19 +142,6 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Eliminar = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.pallet = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.pro_cod = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.unid = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dpre_cajsel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.peso = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.camara = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.banda = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.columna = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.piso = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nivel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SALDO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -337,7 +337,7 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.Label3.ForeColor = System.Drawing.Color.White
         Me.Label3.Location = New System.Drawing.Point(166, 253)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(92, 13)
+        Me.Label3.Size = New System.Drawing.Size(93, 13)
         Me.Label3.TabIndex = 288
         Me.Label3.Text = "SOPORTANTES"
         '
@@ -371,7 +371,7 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.Label7.ForeColor = System.Drawing.Color.White
         Me.Label7.Location = New System.Drawing.Point(12, 60)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(98, 13)
+        Me.Label7.Size = New System.Drawing.Size(99, 13)
         Me.Label7.TabIndex = 295
         Me.Label7.Text = "TEMPERATURAS"
         '
@@ -702,7 +702,7 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.Label14.ForeColor = System.Drawing.Color.White
         Me.Label14.Location = New System.Drawing.Point(396, 292)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(86, 13)
+        Me.Label14.Size = New System.Drawing.Size(87, 13)
         Me.Label14.TabIndex = 317
         Me.Label14.Text = "ETIQUETADO "
         '
@@ -779,7 +779,7 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.CbCant.ForeColor = System.Drawing.Color.White
         Me.CbCant.Location = New System.Drawing.Point(245, 291)
         Me.CbCant.Name = "CbCant"
-        Me.CbCant.Size = New System.Drawing.Size(93, 17)
+        Me.CbCant.Size = New System.Drawing.Size(94, 17)
         Me.CbCant.TabIndex = 306
         Me.CbCant.Text = "TOTALIDAD"
         Me.CbCant.UseVisualStyleBackColor = True
@@ -943,6 +943,126 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.Dgv.Size = New System.Drawing.Size(572, 235)
         Me.Dgv.TabIndex = 0
         '
+        'Eliminar
+        '
+        Me.Eliminar.HeaderText = "ELIM."
+        Me.Eliminar.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
+        Me.Eliminar.Name = "Eliminar"
+        Me.Eliminar.ReadOnly = True
+        Me.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Eliminar.Width = 45
+        '
+        'pallet
+        '
+        Me.pallet.DataPropertyName = "dpre_folio"
+        Me.pallet.HeaderText = "PALLET"
+        Me.pallet.Name = "pallet"
+        Me.pallet.ReadOnly = True
+        Me.pallet.Width = 70
+        '
+        'pro_cod
+        '
+        Me.pro_cod.DataPropertyName = "dpre_codpro"
+        Me.pro_cod.HeaderText = ""
+        Me.pro_cod.MinimumWidth = 2
+        Me.pro_cod.Name = "pro_cod"
+        Me.pro_cod.ReadOnly = True
+        Me.pro_cod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.pro_cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.pro_cod.Width = 2
+        '
+        'Producto
+        '
+        Me.Producto.DataPropertyName = "prod"
+        Me.Producto.HeaderText = "PRODUCTO"
+        Me.Producto.Name = "Producto"
+        Me.Producto.ReadOnly = True
+        Me.Producto.Width = 200
+        '
+        'unid
+        '
+        Me.unid.DataPropertyName = "dpre_unidades"
+        DataGridViewCellStyle1.Format = "N0"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.unid.DefaultCellStyle = DataGridViewCellStyle1
+        Me.unid.HeaderText = "UNID"
+        Me.unid.Name = "unid"
+        Me.unid.ReadOnly = True
+        Me.unid.Width = 60
+        '
+        'dpre_cajsel
+        '
+        Me.dpre_cajsel.DataPropertyName = "dpre_cajsel"
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.dpre_cajsel.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dpre_cajsel.HeaderText = "SELEC."
+        Me.dpre_cajsel.Name = "dpre_cajsel"
+        Me.dpre_cajsel.Width = 60
+        '
+        'peso
+        '
+        Me.peso.DataPropertyName = "dpre_peso"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N3"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.peso.DefaultCellStyle = DataGridViewCellStyle3
+        Me.peso.HeaderText = "PESO"
+        Me.peso.Name = "peso"
+        Me.peso.ReadOnly = True
+        Me.peso.Width = 60
+        '
+        'camara
+        '
+        Me.camara.DataPropertyName = "dpre_camara"
+        Me.camara.HeaderText = "CA"
+        Me.camara.Name = "camara"
+        Me.camara.ReadOnly = True
+        Me.camara.Width = 35
+        '
+        'banda
+        '
+        Me.banda.DataPropertyName = "dpre_banda"
+        Me.banda.HeaderText = "BA"
+        Me.banda.Name = "banda"
+        Me.banda.ReadOnly = True
+        Me.banda.Width = 35
+        '
+        'columna
+        '
+        Me.columna.DataPropertyName = "dpre_colum"
+        Me.columna.HeaderText = "CO"
+        Me.columna.Name = "columna"
+        Me.columna.ReadOnly = True
+        Me.columna.Width = 35
+        '
+        'piso
+        '
+        Me.piso.DataPropertyName = "dpre_piso"
+        Me.piso.HeaderText = "PI"
+        Me.piso.Name = "piso"
+        Me.piso.ReadOnly = True
+        Me.piso.Width = 35
+        '
+        'nivel
+        '
+        Me.nivel.DataPropertyName = "dpre_nivel"
+        Me.nivel.HeaderText = "NI"
+        Me.nivel.Name = "nivel"
+        Me.nivel.ReadOnly = True
+        Me.nivel.Width = 35
+        '
+        'SALDO
+        '
+        Me.SALDO.HeaderText = "SALDO"
+        Me.SALDO.MinimumWidth = 2
+        Me.SALDO.Name = "SALDO"
+        Me.SALDO.ReadOnly = True
+        Me.SALDO.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.SALDO.Width = 2
+        '
         'Label24
         '
         Me.Label24.AutoSize = True
@@ -1089,7 +1209,7 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.Label10.ForeColor = System.Drawing.Color.White
         Me.Label10.Location = New System.Drawing.Point(10, 724)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(184, 13)
+        Me.Label10.Size = New System.Drawing.Size(185, 13)
         Me.Label10.TabIndex = 312
         Me.Label10.Text = " SOPORTANTES DEL PEDIDO   "
         Me.Label10.Visible = False
@@ -1111,7 +1231,7 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.Label53.ForeColor = System.Drawing.Color.White
         Me.Label53.Location = New System.Drawing.Point(31, 750)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(270, 13)
+        Me.Label53.Size = New System.Drawing.Size(271, 13)
         Me.Label53.TabIndex = 332
         Me.Label53.Text = "'F1' - Para poder recuperar un pre-despacho.-"
         '
@@ -1249,126 +1369,6 @@ Partial Class Frm_GuiaPreDespachoAgregar
         Me.DataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn12.Width = 2
-        '
-        'Eliminar
-        '
-        Me.Eliminar.HeaderText = "ELIM."
-        Me.Eliminar.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.Eliminar_16
-        Me.Eliminar.Name = "Eliminar"
-        Me.Eliminar.ReadOnly = True
-        Me.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Eliminar.Width = 45
-        '
-        'pallet
-        '
-        Me.pallet.DataPropertyName = "dpre_folio"
-        Me.pallet.HeaderText = "PALLET"
-        Me.pallet.Name = "pallet"
-        Me.pallet.ReadOnly = True
-        Me.pallet.Width = 70
-        '
-        'pro_cod
-        '
-        Me.pro_cod.DataPropertyName = "dpre_codpro"
-        Me.pro_cod.HeaderText = ""
-        Me.pro_cod.MinimumWidth = 2
-        Me.pro_cod.Name = "pro_cod"
-        Me.pro_cod.ReadOnly = True
-        Me.pro_cod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.pro_cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.pro_cod.Width = 2
-        '
-        'Producto
-        '
-        Me.Producto.DataPropertyName = "prod"
-        Me.Producto.HeaderText = "PRODUCTO"
-        Me.Producto.Name = "Producto"
-        Me.Producto.ReadOnly = True
-        Me.Producto.Width = 200
-        '
-        'unid
-        '
-        Me.unid.DataPropertyName = "dpre_unidades"
-        DataGridViewCellStyle1.Format = "N0"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.unid.DefaultCellStyle = DataGridViewCellStyle1
-        Me.unid.HeaderText = "UNID"
-        Me.unid.Name = "unid"
-        Me.unid.ReadOnly = True
-        Me.unid.Width = 60
-        '
-        'dpre_cajsel
-        '
-        Me.dpre_cajsel.DataPropertyName = "dpre_cajsel"
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.dpre_cajsel.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dpre_cajsel.HeaderText = "SELEC."
-        Me.dpre_cajsel.Name = "dpre_cajsel"
-        Me.dpre_cajsel.Width = 60
-        '
-        'peso
-        '
-        Me.peso.DataPropertyName = "dpre_peso"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle3.Format = "N3"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.peso.DefaultCellStyle = DataGridViewCellStyle3
-        Me.peso.HeaderText = "PESO"
-        Me.peso.Name = "peso"
-        Me.peso.ReadOnly = True
-        Me.peso.Width = 60
-        '
-        'camara
-        '
-        Me.camara.DataPropertyName = "dpre_camara"
-        Me.camara.HeaderText = "CA"
-        Me.camara.Name = "camara"
-        Me.camara.ReadOnly = True
-        Me.camara.Width = 35
-        '
-        'banda
-        '
-        Me.banda.DataPropertyName = "dpre_banda"
-        Me.banda.HeaderText = "BA"
-        Me.banda.Name = "banda"
-        Me.banda.ReadOnly = True
-        Me.banda.Width = 35
-        '
-        'columna
-        '
-        Me.columna.DataPropertyName = "dpre_colum"
-        Me.columna.HeaderText = "CO"
-        Me.columna.Name = "columna"
-        Me.columna.ReadOnly = True
-        Me.columna.Width = 35
-        '
-        'piso
-        '
-        Me.piso.DataPropertyName = "dpre_piso"
-        Me.piso.HeaderText = "PI"
-        Me.piso.Name = "piso"
-        Me.piso.ReadOnly = True
-        Me.piso.Width = 35
-        '
-        'nivel
-        '
-        Me.nivel.DataPropertyName = "dpre_nivel"
-        Me.nivel.HeaderText = "NI"
-        Me.nivel.Name = "nivel"
-        Me.nivel.ReadOnly = True
-        Me.nivel.Width = 35
-        '
-        'SALDO
-        '
-        Me.SALDO.HeaderText = "SALDO"
-        Me.SALDO.MinimumWidth = 2
-        Me.SALDO.Name = "SALDO"
-        Me.SALDO.ReadOnly = True
-        Me.SALDO.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.SALDO.Width = 2
         '
         'Frm_GuiaPreDespachoAgregar
         '
