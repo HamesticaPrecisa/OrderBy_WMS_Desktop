@@ -654,6 +654,11 @@ Public Class Frm_GuiaPreDespachoAgregar
                 End If
                 lblcodigo.Text = BuscaCorrelativo("007")
 
+
+                Dim existencia As String = "select * from fichpred where fpre_codi='" + lblcodigo.Text + "'"
+                Dim existfolio As New DataTable
+                existfolio = fnc.ListarTablasSQL(existencia)
+
                 Dim sqltemporal As String = "select top(1) tmps_codi, tmps_correl from Correlat_salto where tmps_correl='7' order by tmps_codi desc"
                 Dim foliotemporal As New DataTable
                 foliotemporal = fnc.ListarTablasSQL(sqltemporal)
@@ -671,10 +676,10 @@ Public Class Frm_GuiaPreDespachoAgregar
                         "WHERE cor_codi='007'"
                         fnc.MovimientoSQL(sqlActualiza)
                     End If
-                Else
-                    Dim sqlActualiza As String = "UPDATE correlat SET Cor_correact='" + (Convert.ToInt32(lblcodigo.Text) + 1).ToString() + "' " & _
-                        "WHERE cor_codi='007'"
-                    fnc.MovimientoSQL(sqlActualiza)
+                    'Else
+                    '    Dim sqlActualiza As String = "UPDATE correlat SET Cor_correact='" + (Convert.ToInt32(lblcodigo.Text) + 1).ToString() + "' " & _
+                    '        "WHERE cor_codi='007'"
+                    '    fnc.MovimientoSQL(sqlActualiza)
                 End If
 
 
@@ -882,33 +887,64 @@ Public Class Frm_GuiaPreDespachoAgregar
         '  VES FEB 2020
         '  INCLUIMOS LA NUEVA COLUMNA DPRE_CAJSEL
 
-        If CbCant.Checked = True Then
-            Dim Sql As String = "SELECT   TM.dpre_folio                  AS dpre_folio" +
-     ",TM.dpre_codpro                   AS dpre_codpro" +
-     ",M.mae_descr               AS prod" +
-     ",(SELECT SALDOPEDIDO FROM dbo.SALDO_CAJAS(TM.dpre_folio, TM.dpre_rutcli)) AS dpre_unidades" +
-     ",(TM.dpre_peso - (SELECT SUM(PD.kilos) FROM Pedidos_detalle PD WHERE PD.pallet = dpre_folio GROUP BY PD.pallet)) AS dpre_peso" +
-     ",TM.dpre_camara                   AS dpre_camara" +
-     ",TM.dpre_banda                    AS dpre_banda" +
-     ",TM.dpre_colum                    AS dpre_colum" +
-     ",TM.dpre_piso              AS dpre_piso" +
-     ",TM.dpre_nivel                    AS dpre_nivel" +
-     ",TM.dpre_cajsel                   AS dpre_cajsel " +
-     "FROM TMPDETAPRED TM " +
-     "JOIN maeprod M ON " +
-     "M.mae_codi = TM.dpre_codpro " +
-     "WHERE fpre_codi='" + lblcodigo.Text + "'"
+        '        Dim validarCajas As String = "SELECT fpre_codi as CODIGO,(SELECT SALDOPEDIDO FROM dbo.SALDO_CAJAS(TM.dpre_folio, TM.dpre_rutcli)) AS dpre_unidades " +
+        '"FROM TMPDETAPRED TM WHERE fpre_codi='" + lblcodigo.Text + "'"
 
-            Dgv.DataSource = fnc.ListarTablasSQL(Sql)
-        Else
-            Dim Sql As String = "SELECT dpre_folio , dpre_codpro, mae_descr AS prod, dpre_unidades, dpre_peso, dpre_camara, " +
-                           "dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_cajsel FROM TMPDETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
-                           "fpre_codi='" + lblcodigo.Text + "'"
+        '        Dim tablaValidarC As DataTable = fnc.ListarTablasSQL(validarCajas)
 
-            Dgv.DataSource = fnc.ListarTablasSQL(Sql)
-        End If
+        'If Cant.Text.Length > 0 Then
+        '    Dim cantt As Integer = Cant.Text
+        '    If cantt > tablaValidarC.Rows(0)(1).ToString() Then
+        '        Dim sqleliminar As String = "Delete from TMPDETAPRED where fpre_codi='" + tablaValidarC.Rows(0)(0).ToString() + "'"
+        '        fnc.MovimientoSQL(sqleliminar)
+        '        Cant.Text = ""
+        '        MsgBox("No coincide las unidades con el saldo disponibles del pallet, " + tablaValidarC.Rows(0)(1).ToString() + ".", MsgBoxStyle.Information, "Aviso")
+        '        Exit Sub
+        '    End If
+        'End If
 
 
+        '   If CbCant.Checked = True Then
+
+        '       If CbPedido.Checked = True Then
+        '           Dim Sql As String = "SELECT dpre_folio , dpre_codpro, mae_descr AS prod, dpre_unidades, dpre_peso, dpre_camara, " +
+        '                      "dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_cajsel FROM TMPDETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
+        '                      "fpre_codi='" + lblcodigo.Text + "'"
+
+        '           Dgv.DataSource = fnc.ListarTablasSQL(Sql)
+        '       Else
+        '           Dim Sql As String = "SELECT   TM.dpre_folio                  AS dpre_folio" +
+        '",TM.dpre_codpro                   AS dpre_codpro" +
+        '",M.mae_descr               AS prod" +
+        '",(SELECT SALDOPEDIDO FROM dbo.SALDO_CAJAS(TM.dpre_folio, TM.dpre_rutcli)) AS dpre_unidades" +
+        '",(TM.dpre_peso - (SELECT SUM(PD.kilos) FROM Pedidos_detalle PD WHERE PD.pallet = dpre_folio GROUP BY PD.pallet)) AS dpre_peso" +
+        '",TM.dpre_camara                   AS dpre_camara" +
+        '",TM.dpre_banda                    AS dpre_banda" +
+        '",TM.dpre_colum                    AS dpre_colum" +
+        '",TM.dpre_piso              AS dpre_piso" +
+        '",TM.dpre_nivel                    AS dpre_nivel" +
+        '",TM.dpre_cajsel                   AS dpre_cajsel " +
+        '"FROM TMPDETAPRED TM " +
+        '"JOIN maeprod M ON " +
+        '"M.mae_codi = TM.dpre_codpro " +
+        '"WHERE fpre_codi='" + lblcodigo.Text + "'"
+
+        '           Dgv.DataSource = fnc.ListarTablasSQL(Sql)
+        '       End If
+
+        '   Else
+        '       Dim Sql As String = "SELECT dpre_folio , dpre_codpro, mae_descr AS prod, dpre_unidades, dpre_peso, dpre_camara, " +
+        '                      "dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_cajsel FROM TMPDETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
+        '                      "fpre_codi='" + lblcodigo.Text + "'"
+
+        '       Dgv.DataSource = fnc.ListarTablasSQL(Sql)
+        '   End If
+
+        Dim Sql As String = "SELECT dpre_folio , dpre_codpro, mae_descr AS prod, dpre_unidades, dpre_peso, dpre_camara, " +
+                          "dpre_banda, dpre_colum, dpre_piso, dpre_nivel, dpre_cajsel FROM TMPDETAPRED, maeprod WHERE mae_codi=dpre_codpro AND " +
+                          "fpre_codi='" + lblcodigo.Text + "'"
+
+        Dgv.DataSource = fnc.ListarTablasSQL(Sql)
 
         '
 
@@ -935,10 +971,23 @@ Public Class Frm_GuiaPreDespachoAgregar
             Dgv.Columns(12).ReadOnly = False
         End If
 
+        Dim sqlTotales As String = ""
 
+        'If CbCant.Checked = True Then
+        '    If CbPedido.Checked = False Then
+        '        sqlTotales = "SELECT SUM(dpre_unidades) AS Unidades, SUM(dpre_peso) AS Peso FROM TMPDETAPRED WHERE fpre_codi='" + lblcodigo.Text + "'"
+        '    Else
+        '        sqlTotales = "SELECT (SELECT SALDOPEDIDO FROM dbo.SALDO_CAJAS(TM.dpre_folio, TM.dpre_rutcli)) AS dpre_unidades, " +
+        '        "(TM.dpre_peso - (SELECT SUM(PD.kilos) FROM Pedidos_detalle PD WHERE PD.pallet = dpre_folio GROUP BY PD.pallet)) AS dpre_peso " +
+        '        "FROM TMPDETAPRED TM JOIN maeprod M ON M.mae_codi = TM.dpre_codpro WHERE fpre_codi='" + lblcodigo.Text + "'"
+        '    End If
+        'Else
+        '    sqlTotales = "SELECT SUM(dpre_unidades) AS Unidades, SUM(dpre_peso) AS Peso FROM TMPDETAPRED WHERE fpre_codi='" + lblcodigo.Text + "'"
+        'End If
 
+        sqlTotales = "SELECT SUM(dpre_unidades) AS Unidades, SUM(dpre_peso) AS Peso FROM TMPDETAPRED WHERE fpre_codi='" + lblcodigo.Text + "'"
 
-        Dim sqlTotales As String = "SELECT SUM(dpre_unidades) AS Unidades, SUM(dpre_peso) AS Peso FROM TMPDETAPRED WHERE fpre_codi='" + lblcodigo.Text + "'"
+        'Dim sqlTotales As String = "SELECT SUM(dpre_unidades) AS Unidades, SUM(dpre_peso) AS Peso FROM TMPDETAPRED WHERE fpre_codi='" + lblcodigo.Text + "'"
 
         'Dim sqlTotales As String = ""
 
@@ -976,6 +1025,7 @@ Public Class Frm_GuiaPreDespachoAgregar
             'End If
 
             txtpallet.Text = ""
+            Cant.Text = ""
             txtpallet.Focus()
         End If
     End Sub
@@ -1427,7 +1477,7 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                                 Dim sql As String = "SELECT 'EN STOCK' AS MOV, racd_unidades FROM rackdeta WHERE  racd_codi='" + valor_pallet + "' " +
                                                      "UNION ALL " +
-                                                     "SELECT 'PEDIDOS' AS MOV, isnull(SUM(cajas),0) AS CAJAS FROM Pedidos_detalle pd INNER JOIN Pedidos_ficha pf ON pd.pedido=pf.pedido WHERE codvig='0'  AND pallet='" + valor_pallet + "' AND Ped_EstPred!=3 AND orden<>'" + TxtNped.Text + "' AND terminado!=3 " +
+                                                     "SELECT 'PEDIDOS' AS MOV, isnull(SUM(cajas),0) AS CAJAS FROM Pedidos_detalle pd INNER JOIN Pedidos_ficha pf ON pd.pedido=pf.pedido WHERE codvig='0'  AND pallet='" + valor_pallet + "' AND Ped_EstPred!=3 AND terminado!=3 " +
                                                      "UNION ALL " +
                                                      "SELECT 'TEMPORAL' AS MOV, isnull(SUM(dpre_unidades),0) AS CAJAS  FROM TMPDETAPRED WHERE dpre_folio='" + valor_pallet + "' " +
                                                      "UNION ALL  " +
@@ -1486,9 +1536,12 @@ Public Class Frm_GuiaPreDespachoAgregar
                                         'parte de cajas
                                         If IsNumeric(Cant.Text) Then
                                             If Convert.ToInt32(Cant.Text) > cantidad_disponible Then
-                                                If MsgBox("¿El soportante tiene " + cantidad_disponible.ToString() + " cajas disponibles, las desea agregar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
+                                                If MsgBox("¿El soportante solo tiene " + cantidad_disponible.ToString() + " cajas disponibles, las desea agregarlas igualmente?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
+
                                                     CbCant.Checked = False
                                                     Cant.Text = cantidad_disponible.ToString()
+
+
                                                 Else
                                                     CbCant.Checked = False
                                                     txtpallet.Text = ""
@@ -1506,7 +1559,7 @@ Public Class Frm_GuiaPreDespachoAgregar
 
                             Dim sql As String = "SELECT 'EN STOCK' AS MOV, racd_unidades FROM rackdeta WHERE  racd_codi='" + valor_pallet + "' " +
                              "UNION ALL " +
-                             "SELECT 'PEDIDOS' AS MOV, isnull(SUM(cajas),0) AS CAJAS FROM Pedidos_detalle pd INNER JOIN Pedidos_ficha pf ON pd.pedido=pf.pedido WHERE codvig='0'  AND pallet='  ' AND Ped_EstPred!=3 AND orden<>'" + TxtNped.Text + "' AND terminado!=3" +
+                             "SELECT 'PEDIDOS' AS MOV, isnull(SUM(cajas),0) AS CAJAS FROM Pedidos_detalle pd INNER JOIN Pedidos_ficha pf ON pd.pedido=pf.pedido WHERE codvig='0'  AND pallet='" + valor_pallet + "' AND Ped_EstPred!=3 AND orden<>'" + TxtNped.Text + "' AND terminado!=3" +
                              "UNION ALL " +
                              "SELECT 'TEMPORAL' AS MOV, isnull(SUM(dpre_unidades),0) AS CAJAS  FROM TMPDETAPRED WHERE dpre_folio='" + valor_pallet + "' " +
                              "UNION ALL  " +
@@ -1545,7 +1598,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                                     End If
 
                                     If cantidad_disponible <> tabla_consulta.Rows(0)(1).ToString() Then
-                                        If MsgBox("¿El soportante tiene " + cantidad_disponible.ToString() + " cajas disponibles, las desea agregar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
+                                        If MsgBox("¿El soportante solo tiene " + cantidad_disponible.ToString() + " cajas disponibles, las desea agregar igualmente?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
                                             CbCant.Checked = False
                                             Cant.Text = cantidad_disponible.ToString()
                                         Else
@@ -1560,11 +1613,12 @@ Public Class Frm_GuiaPreDespachoAgregar
                                     'parte de cajas
                                     If IsNumeric(Cant.Text) Then
                                         If Convert.ToInt32(Cant.Text) > cantidad_disponible Then
-                                            If MsgBox("¿El soportante tiene " + cantidad_disponible.ToString() + " cajas disponibles, las desea agregar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
+                                            If MsgBox("¿El soportante solo tiene " + cantidad_disponible.ToString() + " cajas disponibles, las desea agregar igualmente?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
                                                 CbCant.Checked = False
                                                 Cant.Text = cantidad_disponible.ToString()
                                             Else
                                                 CbCant.Checked = True
+                                                Cant.Text = ""
                                                 txtpallet.Text = ""
                                                 txtpallet.Focus()
                                                 Exit Sub
