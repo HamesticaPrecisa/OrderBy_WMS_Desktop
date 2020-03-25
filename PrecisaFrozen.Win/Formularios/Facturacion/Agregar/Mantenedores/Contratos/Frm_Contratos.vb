@@ -42,7 +42,8 @@
         End If
 
         If Not IsDate(TxtHor1.Text) Or Not IsDate(TxtHor2.Text) Or Not IsDate(TxtHor3.Text) Or Not IsDate(TxtHor4.Text) _
-            Or Not IsDate(TxtHor5.Text) Or Not IsDate(TxtHor6.Text) Or Not IsDate(TxtHor7.Text) Or Not IsDate(TxtHor8.Text) Then
+            Or Not IsDate(TxtHor5.Text) Or Not IsDate(TxtHor6.Text) Or Not IsDate(TxtHor7.Text) Or Not IsDate(TxtHor8.Text) _
+            Or Not IsDate(TxtHor9.Text) Or Not IsDate(TxtHor10.Text) Or Not IsDate(TxtHor11.Text) Or Not IsDate(TxtHor12.Text) Then
             _mensaje = _mensaje + "- Debe ingresar el horario del contrato"
             _retorno = 1
         End If
@@ -121,7 +122,7 @@
         'cargar contrato
 
         Dim sql As String = "SELECT cont_descr, cont_feccont, cont_fecexpi, cont_tempcon, cont_tempgra, cont_diagracia, cont_pallet , cont_cc , cont_tunelG, cont_estado, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, " +
-            "Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT, cont_bloqimp, Cont_TipAlmc, cont_manual, cont_bloqfac, cont_lectura, cli_rut, cli_nomb, cont_tipseg,cont_tipalm FROM contrato INNER JOIN contratoshorarios ON cont_codi=Hor_contcod INNER JOIN clientes ON cli_rut=cont_rutclie WHERE cont_codi='" + CODIGO + "'"
+            "Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT, cont_bloqimp, Cont_TipAlmc, cont_manual, cont_bloqfac, cont_lectura, cli_rut, cli_nomb, cont_tipseg,cont_tipalm, Hor_DRI, Hor_DRT,Hor_DDI,Hor_DDT FROM contrato INNER JOIN contratoshorarios ON cont_codi=Hor_contcod INNER JOIN clientes ON cli_rut=cont_rutclie WHERE cont_codi='" + CODIGO + "'"
 
         Dim tabla As DataTable = fnc.ListarTablasSQL(sql)
         If tabla.Rows.Count > 0 Then
@@ -144,6 +145,10 @@
             TxtHor6.Text = tabla.Rows(0)(13).ToString()
             TxtHor7.Text = tabla.Rows(0)(16).ToString()
             TxtHor8.Text = tabla.Rows(0)(17).ToString()
+            TxtHor9.Text = tabla.Rows(0)(27).ToString()
+            TxtHor10.Text = tabla.Rows(0)(28).ToString()
+            TxtHor11.Text = tabla.Rows(0)(29).ToString()
+            TxtHor12.Text = tabla.Rows(0)(30).ToString()
             CbImportaciones.Checked = tabla.Rows(0)(18).ToString()
             CbNumerales.SelectedValue = tabla.Rows(0)(19).ToString()
             CbCarga.Checked = tabla.Rows(0)(20).ToString()
@@ -251,13 +256,13 @@
                 Dim SqlHorario As String = ""
 
                 If fnc.verificaExistencia("ContratosHorarios", "Hor_contcod", txtcontrato.Text) = False Then
-                    SqlHorario = "INSERT INTO ContratosHorarios(Hor_ContCod, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT)" +
+                    SqlHorario = "INSERT INTO ContratosHorarios(Hor_ContCod, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT, Hor_DRI, Hor_DRT, Hor_DDI, Hor_DDT)" +
                         "VALUES('" + txtcontrato.Text + "','" + TxtHor1.Text + "','" + TxtHor2.Text + "','" + TxtHor5.Text + "','" + TxtHor6.Text + "'," +
-                        "'" + TxtHor3.Text + "','" + TxtHor4.Text + "','" + TxtHor7.Text + "','" + TxtHor8.Text + "')"
+                        "'" + TxtHor3.Text + "','" + TxtHor4.Text + "','" + TxtHor7.Text + "','" + TxtHor8.Text + "','" + TxtHor9.Text + "','" + TxtHor10.Text + "','" + TxtHor11.Text + "', '" + TxtHor12.Text + "')"
                 Else
                     SqlHorario = "UPDATE ContratosHorarios SET Hor_SRI='" + TxtHor1.Text + "', Hor_SRT='" + TxtHor2.Text + "', " +
                         "Hor_SDI='" + TxtHor5.Text + "', Hor_SDT='" + TxtHor6.Text + "', Hor_FRI='" + TxtHor3.Text + "', Hor_FRT='" + TxtHor4.Text + "', " +
-                        "Hor_FDI='" + TxtHor7.Text + "', Hor_FDT='" + TxtHor8.Text + "' WHERE Hor_ContCod='" + txtcontrato.Text + "'"
+                        "Hor_FDI='" + TxtHor7.Text + "', Hor_FDT='" + TxtHor8.Text + "', Hor_DRI='" + TxtHor9.Text + "', Hor_DRT='" + TxtHor10.Text + "', Hor_DDI='" + TxtHor11.Text + "', Hor_DDT='" + TxtHor12.Text + "' WHERE Hor_ContCod='" + txtcontrato.Text + "'"
                 End If
 
                 If fnc.MovimientoSQL(sql) > 0 Then
@@ -281,9 +286,9 @@
                                     "'" + (Convert.ToInt32(CBBloquearfact.Checked)).ToString() + "', '" + (Convert.ToInt32(checklectura.Checked)).ToString() + "','" + CbSeguros.SelectedValue.ToString() + "','" + Cmbo_Almacenamiento.Text.Trim() + "')"
 
 
-                Dim SqlHorario As String = "INSERT INTO ContratosHorarios(Hor_ContCod, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT)" +
+                Dim SqlHorario As String = "INSERT INTO ContratosHorarios(Hor_ContCod, Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT, Hor_DRI, Hor_DRT, Hor_DDI, Hor_DDT)" +
                     "VALUES('" + txtcontrato.Text + "','" + TxtHor1.Text + "','" + TxtHor2.Text + "','" + TxtHor5.Text + "','" + TxtHor6.Text + "'," +
-                    "'" + TxtHor3.Text + "','" + TxtHor4.Text + "','" + TxtHor7.Text + "','" + TxtHor8.Text + "')"
+                    "'" + TxtHor3.Text + "','" + TxtHor4.Text + "','" + TxtHor7.Text + "','" + TxtHor8.Text + "','" + TxtHor9.Text + "','" + TxtHor10.Text + "','" + TxtHor11.Text + "', '" + TxtHor12.Text + "')"
 
                 If fnc.MovimientoSQL(sql) > 0 Then
                     grabarCobrosTracking(txtcontrato.Text.Trim)
@@ -373,6 +378,10 @@
                 TxtHor6.Text = "16:30"
                 TxtHor7.Text = "09:00"
                 TxtHor8.Text = "13:00"
+                TxtHor9.Text = "09:00"
+                TxtHor10.Text = "17:00"
+                TxtHor11.Text = "09:00"
+                TxtHor12.Text = "13:00"
                 txtcontrato.Enabled = False
                 Panel2.Enabled = True
             Else
@@ -413,7 +422,7 @@
 
     Public Sub HorarioDefecto()
 
-        Dim sql As String = "SELECT Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT FROM DefaultHorarios"
+        Dim sql As String = "SELECT Hor_SRI, Hor_SRT, Hor_SDI, Hor_SDT, Hor_FRI, Hor_FRT, Hor_FDI, Hor_FDT, Hor_DRI, Hor_DRT, Hor_DDI, Hor_DDT FROM DefaultHorarios"
 
         Dim dt As DataTable = fnc.ListarTablasSQL(sql)
 
@@ -426,6 +435,10 @@
             TxtHor6.Text = dt.Rows(0)(5).ToString()
             TxtHor7.Text = dt.Rows(0)(6).ToString()
             TxtHor8.Text = dt.Rows(0)(7).ToString()
+            TxtHor9.Text = dt.Rows(0)(8).ToString()
+            TxtHor10.Text = dt.Rows(0)(9).ToString()
+            TxtHor11.Text = dt.Rows(0)(10).ToString()
+            TxtHor12.Text = dt.Rows(0)(11).ToString()
         Else
             TxtHor1.Text = "08:30"
             TxtHor2.Text = "16:30"
@@ -435,6 +448,10 @@
             TxtHor6.Text = "16:30"
             TxtHor7.Text = "09:00"
             TxtHor8.Text = "13:00"
+            TxtHor9.Text = "09:00"
+            TxtHor10.Text = "13:00"
+            TxtHor11.Text = "09:00"
+            TxtHor12.Text = "13:00"
         End If
 
     End Sub

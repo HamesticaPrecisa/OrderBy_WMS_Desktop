@@ -85,6 +85,11 @@ Partial Class Frm_Contratos
         Me.btn_salir = New System.Windows.Forms.Button()
         Me.btn_nuevo = New System.Windows.Forms.Button()
         Me.btn_eliminar = New System.Windows.Forms.Button()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TxtHor11 = New System.Windows.Forms.MaskedTextBox()
+        Me.TxtHor12 = New System.Windows.Forms.MaskedTextBox()
+        Me.TxtHor9 = New System.Windows.Forms.MaskedTextBox()
+        Me.TxtHor10 = New System.Windows.Forms.MaskedTextBox()
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -183,7 +188,7 @@ Partial Class Frm_Contratos
         'TxtHor7
         '
         Me.TxtHor7.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor7.Location = New System.Drawing.Point(310, 85)
+        Me.TxtHor7.Location = New System.Drawing.Point(310, 117)
         Me.TxtHor7.Mask = "00:00"
         Me.TxtHor7.Name = "TxtHor7"
         Me.TxtHor7.Size = New System.Drawing.Size(48, 23)
@@ -195,7 +200,7 @@ Partial Class Frm_Contratos
         'TxtHor8
         '
         Me.TxtHor8.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor8.Location = New System.Drawing.Point(379, 85)
+        Me.TxtHor8.Location = New System.Drawing.Point(379, 117)
         Me.TxtHor8.Mask = "00:00"
         Me.TxtHor8.Name = "TxtHor8"
         Me.TxtHor8.Size = New System.Drawing.Size(48, 23)
@@ -311,7 +316,7 @@ Partial Class Frm_Contratos
         'TxtHor3
         '
         Me.TxtHor3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor3.Location = New System.Drawing.Point(170, 85)
+        Me.TxtHor3.Location = New System.Drawing.Point(170, 117)
         Me.TxtHor3.Mask = "00:00"
         Me.TxtHor3.Name = "TxtHor3"
         Me.TxtHor3.Size = New System.Drawing.Size(48, 23)
@@ -323,7 +328,7 @@ Partial Class Frm_Contratos
         'TxtHor4
         '
         Me.TxtHor4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtHor4.Location = New System.Drawing.Point(239, 85)
+        Me.TxtHor4.Location = New System.Drawing.Point(239, 117)
         Me.TxtHor4.Mask = "00:00"
         Me.TxtHor4.Name = "TxtHor4"
         Me.TxtHor4.Size = New System.Drawing.Size(48, 23)
@@ -496,7 +501,7 @@ Partial Class Frm_Contratos
         Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.detalle
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(381, 657)
+        Me.Button1.Location = New System.Drawing.Point(363, 694)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(154, 35)
         Me.Button1.TabIndex = 35
@@ -530,7 +535,7 @@ Partial Class Frm_Contratos
         Me.GroupBox2.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(613, 639)
+        Me.GroupBox2.Size = New System.Drawing.Size(613, 676)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         '
@@ -569,7 +574,7 @@ Partial Class Frm_Contratos
         Me.Panel2.Enabled = False
         Me.Panel2.Location = New System.Drawing.Point(9, 135)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(588, 498)
+        Me.Panel2.Size = New System.Drawing.Size(588, 526)
         Me.Panel2.TabIndex = 70
         '
         'chkCobOut
@@ -652,6 +657,11 @@ Partial Class Frm_Contratos
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.TxtHor11)
+        Me.Panel1.Controls.Add(Me.TxtHor12)
+        Me.Panel1.Controls.Add(Me.TxtHor9)
+        Me.Panel1.Controls.Add(Me.TxtHor10)
+        Me.Panel1.Controls.Add(Me.Label18)
         Me.Panel1.Controls.Add(Me.Label21)
         Me.Panel1.Controls.Add(Me.TxtHor7)
         Me.Panel1.Controls.Add(Me.TxtHor8)
@@ -667,7 +677,7 @@ Partial Class Frm_Contratos
         Me.Panel1.Controls.Add(Me.TxtHor2)
         Me.Panel1.Location = New System.Drawing.Point(7, 373)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(503, 117)
+        Me.Panel1.Size = New System.Drawing.Size(503, 150)
         Me.Panel1.TabIndex = 65
         '
         'Btn_BuscaCliente
@@ -836,13 +846,73 @@ Partial Class Frm_Contratos
         Me.btn_eliminar.UseVisualStyleBackColor = True
         Me.btn_eliminar.Visible = False
         '
+        'Label18
+        '
+        Me.Label18.BackColor = System.Drawing.Color.Gainsboro
+        Me.Label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label18.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(20, 117)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(123, 22)
+        Me.Label18.TabIndex = 55
+        Me.Label18.Text = "FERIADOS"
+        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TxtHor11
+        '
+        Me.TxtHor11.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtHor11.Location = New System.Drawing.Point(310, 84)
+        Me.TxtHor11.Mask = "00:00"
+        Me.TxtHor11.Name = "TxtHor11"
+        Me.TxtHor11.Size = New System.Drawing.Size(48, 23)
+        Me.TxtHor11.TabIndex = 58
+        Me.TxtHor11.Text = "0900"
+        Me.TxtHor11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtHor11.ValidatingType = GetType(Date)
+        '
+        'TxtHor12
+        '
+        Me.TxtHor12.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtHor12.Location = New System.Drawing.Point(379, 84)
+        Me.TxtHor12.Mask = "00:00"
+        Me.TxtHor12.Name = "TxtHor12"
+        Me.TxtHor12.Size = New System.Drawing.Size(48, 23)
+        Me.TxtHor12.TabIndex = 59
+        Me.TxtHor12.Text = "1300"
+        Me.TxtHor12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtHor12.ValidatingType = GetType(Date)
+        '
+        'TxtHor9
+        '
+        Me.TxtHor9.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtHor9.Location = New System.Drawing.Point(170, 84)
+        Me.TxtHor9.Mask = "00:00"
+        Me.TxtHor9.Name = "TxtHor9"
+        Me.TxtHor9.Size = New System.Drawing.Size(48, 23)
+        Me.TxtHor9.TabIndex = 56
+        Me.TxtHor9.Text = "0900"
+        Me.TxtHor9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtHor9.ValidatingType = GetType(Date)
+        '
+        'TxtHor10
+        '
+        Me.TxtHor10.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtHor10.Location = New System.Drawing.Point(239, 84)
+        Me.TxtHor10.Mask = "00:00"
+        Me.TxtHor10.Name = "TxtHor10"
+        Me.TxtHor10.Size = New System.Drawing.Size(48, 23)
+        Me.TxtHor10.TabIndex = 57
+        Me.TxtHor10.Text = "1700"
+        Me.TxtHor10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TxtHor10.ValidatingType = GetType(Date)
+        '
         'Frm_Contratos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(825, 699)
+        Me.ClientSize = New System.Drawing.Size(825, 759)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.btn_eliminar)
         Me.Controls.Add(Me.GroupBox2)
@@ -924,4 +994,9 @@ Partial Class Frm_Contratos
     Friend WithEvents Cmbo_Almacenamiento As System.Windows.Forms.ComboBox
     Friend WithEvents chkCobOut As System.Windows.Forms.CheckBox
     Friend WithEvents chkCobIn As System.Windows.Forms.CheckBox
+    Friend WithEvents TxtHor11 As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents TxtHor12 As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents TxtHor9 As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents TxtHor10 As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
 End Class

@@ -80,6 +80,26 @@ Public Class Frm_Pedidos
 
                 _cmd.Parameters.AddWithValue("@codped", NPEDIDO)
 
+
+                'Habilitar cobro o no en pedido Eliminado Jvergara 24 Marz 2020
+                Dim cobro As Integer
+                cobro = 0
+                If MsgBox("¿Desea Agregar cobro de igual manera a este pedido?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbNo Then
+                    cobro = 0
+                Else
+                    cobro = 1
+
+                End If
+
+                fnc.MovimientoSQL("INSERT INTO EVENTOS_FACTURABLES(Efa_Fecha,Efa_SrvCod,Efa_Referencia,Efa_Nota,Efa_Facturar,Efa_Fum,Efa_Codusr) VALUES" +
+                                " ('" & fnc.DevuelveFechaServidor() & "',25,'" & NPEDIDO & "','Pedido Eliminado'," +
+                                "'" & cobro & "','" & fnc.DevuelveFechaServidor() & "','" & Frm_Principal.InfoUsuario.Text & "')")
+
+                Dim frm As New Frm_PedidosObservCobro
+                frm.CODIGO_PEDIDO = Me.DgvPedidos.Rows(e.RowIndex).Cells(4).Value.ToString()
+                frm.CODIGO_CHICO = Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString()
+                frm.ShowDialog()
+
                 Dim resp As Integer = 0
                 Try
                     resp = Convert.ToInt32(_cmd.ExecuteScalar())

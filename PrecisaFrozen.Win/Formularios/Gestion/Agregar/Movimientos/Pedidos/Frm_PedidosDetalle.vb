@@ -7,7 +7,7 @@ Public Class Frm_PedidosDetalle
     Public cliente As String
 
     Dim fila = -1
-
+    Dim fechacobro As Date
     Dim fnc As New Funciones
 
 
@@ -30,11 +30,12 @@ Public Class Frm_PedidosDetalle
 
         If dt.Rows.Count > 0 Then
             txtdestino.Text = dt.Rows(0)(0).ToString()
-            'dtfecha.Value = Convert.ToDateTime(dt.Rows(0)(1).ToString())
-            dtfecha.Value = DateTime.ParseExact(dt.Rows(0)(1).ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
+            dtfecha.Value = Convert.ToDateTime(dt.Rows(0)(1).ToString())
             txtobs.Text = dt.Rows(0)(2).ToString()
             txtcliente.Text = dt.Rows(0)(3).ToString()
             txtHra.Text = dt.Rows(0)(4).ToString()
+            'dtfecha.Value = DateTime.ParseExact(dt.Rows(0)(1).ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
+            fechacobro = Convert.ToDateTime(dt.Rows(0)(1).ToString())
         End If
 
     End Sub
@@ -260,6 +261,26 @@ Public Class Frm_PedidosDetalle
             txtHra.Focus()
             Exit Sub
         End If
+
+        'Habilitar o no cobro de Pedidos no Despachados- Jvergara 24 marz 2020
+        If fechacobro <> dtfecha.Value Then
+            Dim cobro As Integer
+            cobro = 0
+            If MsgBox("¿Desea Agregar cobro de igual manera a este pedido?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbNo Then
+                cobro = 0
+            Else
+                cobro = 1
+
+            End If
+            fnc.MovimientoSQL("INSERT INTO EVENTOS_FACTURABLES(Efa_Fecha,Efa_SrvCod,Efa_Referencia,Efa_Nota,Efa_Facturar,Efa_Fum,Efa_Codusr) VALUES" +
+                 " ('" & fnc.DevuelveFechaServidor() & "',25,'" & CODIGO_CHICO & "','Pedido Modificado'," +
+                 "'" & cobro & "','" & fnc.DevuelveFechaServidor() & "','" & Frm_Principal.InfoUsuario.Text & "')")
+
+            Dim frm As New Frm_PedidosObservCobro
+            frm.CODIGO_CHICO = CODIGO_CHICO
+            frm.ShowDialog()
+        End If
+
 
         '
         '   VES FEB 2020
