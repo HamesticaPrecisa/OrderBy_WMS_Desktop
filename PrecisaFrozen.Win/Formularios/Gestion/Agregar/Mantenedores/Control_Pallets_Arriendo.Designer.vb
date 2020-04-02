@@ -63,6 +63,8 @@ Partial Class Control_Pallets_Arriendo
         Me.btn_BuscaCliente = New System.Windows.Forms.Button()
         Me.txtclinom = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TxtTotal = New System.Windows.Forms.TextBox()
         Me.GroupBox2.SuspendLayout()
         CType(Me.gvMov, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
@@ -469,11 +471,34 @@ Partial Class Control_Pallets_Arriendo
         Me.Label35.TabIndex = 70
         Me.Label35.Text = "ARRIENDO DE PALLETS"
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.White
+        Me.Label6.Location = New System.Drawing.Point(968, 668)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(44, 13)
+        Me.Label6.TabIndex = 101
+        Me.Label6.Text = "TOTAL"
+        '
+        'TxtTotal
+        '
+        Me.TxtTotal.Enabled = False
+        Me.TxtTotal.Location = New System.Drawing.Point(1019, 665)
+        Me.TxtTotal.MaxLength = 4
+        Me.TxtTotal.Name = "TxtTotal"
+        Me.TxtTotal.Size = New System.Drawing.Size(82, 20)
+        Me.TxtTotal.TabIndex = 100
+        '
         'Control_Pallets_Arriendo
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(1201, 671)
+        Me.ClientSize = New System.Drawing.Size(1201, 690)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.TxtTotal)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
@@ -485,6 +510,7 @@ Partial Class Control_Pallets_Arriendo
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents DataGridViewImageColumn1 As System.Windows.Forms.DataGridViewImageColumn
@@ -527,4 +553,6 @@ Partial Class Control_Pallets_Arriendo
     Friend WithEvents Fecha_Termino As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Fecha_Termino_Frm As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Despacho As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents TxtTotal As System.Windows.Forms.TextBox
 End Class

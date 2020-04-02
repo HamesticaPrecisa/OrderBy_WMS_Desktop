@@ -109,7 +109,7 @@
         Dim CodSopo As String = txtsopcodi.Text.Trim
         Dim FecIni As String = txtFec.Value.ToString("yyyyMMdd")
         Dim FecFin As String = txtFecFin.Value.ToString("yyyyMMdd")
-
+        Dim Total As Integer = 0
         Dim sql As String = "select a.* from V_Control_Pallet_Arriendo a with(nolock) where a.Rut_Cliente like '%" & RutCli & "' and a.Codigo_Contrato like '%" & CodCont & "' and a.Codigo_Tipo_Soportante like'%" & CodSopo & "' and convert(date,a.Fecha_Inicio)>='" & FecIni & "' and (convert(date,a.Fecha_Termino)<='" & FecFin & "' or a.Fecha_Termino is null) order by a.Fecha_Inicio,a.Cliente,a.Contrato,a.Codigo_Soportante,a.Soportante asc"
         Dim dt As New DataTable
 
@@ -122,6 +122,8 @@
         If (limpiar <> "") Then
             If (dt.Rows.Count = 0) Then
                 gvMov.DataSource = dt
+                Total = gvMov.RowCount
+                TxtTotal.Text = Total
             Else
                 Dim dtLim As New DataTable
 
@@ -130,9 +132,13 @@
                 Next
 
                 gvMov.DataSource = dtLim
+                Total = gvMov.RowCount
+                TxtTotal.Text = Total
             End If
         Else
-                gvMov.DataSource = dt
+            gvMov.DataSource = dt
+            Total = gvMov.RowCount
+            TxtTotal.Text = Total
         End If
     End Sub
 

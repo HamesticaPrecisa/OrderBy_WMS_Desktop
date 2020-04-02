@@ -31,7 +31,7 @@ Public Class Frm_Principal
         '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
         '       EL NOMBRE DE LA BD ACTIVA
         '
-        Me.Text = "Order By WMS - Precisa Tech 25.03.2020.13.30 - BD: " + CONFIG.mainCatalog
+        Me.Text = "Order By WMS - Precisa Tech 31.03.2020.17.00 - BD: " + CONFIG.mainCatalog
         InfoUsuario.Text = "001"
         If Not My.Computer.Name = " PROGRAMACION-PC" Then
             Presentacion.ShowDialog()
