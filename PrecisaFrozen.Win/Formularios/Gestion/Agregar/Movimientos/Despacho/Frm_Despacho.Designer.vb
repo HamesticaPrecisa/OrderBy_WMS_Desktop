@@ -181,6 +181,14 @@ Partial Class Frm_Despacho
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LblTitulo1 = New System.Windows.Forms.Label()
+        Me.LblProgreso = New System.Windows.Forms.Label()
+        Me.ProgressBar_GuardarDespacho = New System.Windows.Forms.ProgressBar()
+        Me.LblTitulo2 = New System.Windows.Forms.Label()
+        Me.LblProcesados = New System.Windows.Forms.Label()
+        Me.LblTot = New System.Windows.Forms.Label()
+        Me.ProgressBar_Pallets = New System.Windows.Forms.ProgressBar()
+        Me.LblAlerta = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DetaDespa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
@@ -281,7 +289,7 @@ Partial Class Frm_Despacho
         Me.Label17.AutoSize = True
         Me.Label17.Location = New System.Drawing.Point(302, 123)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(62, 13)
+        Me.Label17.Size = New System.Drawing.Size(64, 13)
         Me.Label17.TabIndex = 69
         Me.Label17.Text = "T. CARGA"
         '
@@ -445,7 +453,7 @@ Partial Class Frm_Despacho
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(389, 47)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 13)
+        Me.Label3.Size = New System.Drawing.Size(58, 13)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "PATENTE"
         '
@@ -584,7 +592,7 @@ Partial Class Frm_Despacho
         Me.F_PROD.HeaderText = "F. PROD."
         Me.F_PROD.Name = "F_PROD"
         Me.F_PROD.ReadOnly = True
-        Me.F_PROD.Width = 81
+        Me.F_PROD.Width = 83
         '
         'COD_CONT
         '
@@ -1411,7 +1419,7 @@ Partial Class Frm_Despacho
         Me.Label23.AutoSize = True
         Me.Label23.Location = New System.Drawing.Point(6, 20)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(159, 13)
+        Me.Label23.Size = New System.Drawing.Size(160, 13)
         Me.Label23.TabIndex = 86
         Me.Label23.Text = "ESTADÍA MENOR A (DÍAS)"
         '
@@ -1808,13 +1816,103 @@ Partial Class Frm_Despacho
         Me.DataGridViewTextBoxColumn21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.DataGridViewTextBoxColumn21.Width = 80
         '
+        'LblTitulo1
+        '
+        Me.LblTitulo1.AutoSize = True
+        Me.LblTitulo1.Location = New System.Drawing.Point(30, 716)
+        Me.LblTitulo1.Name = "LblTitulo1"
+        Me.LblTitulo1.Size = New System.Drawing.Size(212, 13)
+        Me.LblTitulo1.TabIndex = 322
+        Me.LblTitulo1.Text = "PROCESAR PALLETS A DESPACHAR"
+        Me.LblTitulo1.Visible = False
+        '
+        'LblProgreso
+        '
+        Me.LblProgreso.AutoSize = True
+        Me.LblProgreso.BackColor = System.Drawing.Color.Transparent
+        Me.LblProgreso.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblProgreso.Location = New System.Drawing.Point(30, 751)
+        Me.LblProgreso.Name = "LblProgreso"
+        Me.LblProgreso.Size = New System.Drawing.Size(39, 18)
+        Me.LblProgreso.TabIndex = 323
+        Me.LblProgreso.Text = "0%"
+        Me.LblProgreso.Visible = False
+        '
+        'ProgressBar_GuardarDespacho
+        '
+        Me.ProgressBar_GuardarDespacho.Location = New System.Drawing.Point(84, 741)
+        Me.ProgressBar_GuardarDespacho.Name = "ProgressBar_GuardarDespacho"
+        Me.ProgressBar_GuardarDespacho.Size = New System.Drawing.Size(556, 28)
+        Me.ProgressBar_GuardarDespacho.TabIndex = 324
+        Me.ProgressBar_GuardarDespacho.Visible = False
+        '
+        'LblTitulo2
+        '
+        Me.LblTitulo2.AutoSize = True
+        Me.LblTitulo2.Location = New System.Drawing.Point(29, 787)
+        Me.LblTitulo2.Name = "LblTitulo2"
+        Me.LblTitulo2.Size = New System.Drawing.Size(49, 13)
+        Me.LblTitulo2.TabIndex = 325
+        Me.LblTitulo2.Text = "Pallets:"
+        Me.LblTitulo2.Visible = False
+        '
+        'LblProcesados
+        '
+        Me.LblProcesados.AutoSize = True
+        Me.LblProcesados.Location = New System.Drawing.Point(29, 801)
+        Me.LblProcesados.Name = "LblProcesados"
+        Me.LblProcesados.Size = New System.Drawing.Size(21, 13)
+        Me.LblProcesados.TabIndex = 326
+        Me.LblProcesados.Text = "xx"
+        Me.LblProcesados.Visible = False
+        '
+        'LblTot
+        '
+        Me.LblTot.AutoSize = True
+        Me.LblTot.Location = New System.Drawing.Point(52, 801)
+        Me.LblTot.Name = "LblTot"
+        Me.LblTot.Size = New System.Drawing.Size(26, 13)
+        Me.LblTot.TabIndex = 327
+        Me.LblTot.Text = "/xx"
+        Me.LblTot.Visible = False
+        '
+        'ProgressBar_Pallets
+        '
+        Me.ProgressBar_Pallets.Location = New System.Drawing.Point(84, 787)
+        Me.ProgressBar_Pallets.MarqueeAnimationSpeed = 10000
+        Me.ProgressBar_Pallets.Name = "ProgressBar_Pallets"
+        Me.ProgressBar_Pallets.Size = New System.Drawing.Size(301, 27)
+        Me.ProgressBar_Pallets.TabIndex = 328
+        Me.ProgressBar_Pallets.Visible = False
+        '
+        'LblAlerta
+        '
+        Me.LblAlerta.AutoSize = True
+        Me.LblAlerta.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblAlerta.ForeColor = System.Drawing.Color.Blue
+        Me.LblAlerta.Location = New System.Drawing.Point(24, 835)
+        Me.LblAlerta.Name = "LblAlerta"
+        Me.LblAlerta.Size = New System.Drawing.Size(755, 50)
+        Me.LblAlerta.TabIndex = 329
+        Me.LblAlerta.Text = "Despacho en proceso!!, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Por favor no cierre la plataforma hasta que el proceso p" & _
+    "ueda finalizar."
+        Me.LblAlerta.Visible = False
+        '
         'Frm_Despacho
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(776, 732)
+        Me.ClientSize = New System.Drawing.Size(776, 960)
+        Me.Controls.Add(Me.LblAlerta)
+        Me.Controls.Add(Me.ProgressBar_Pallets)
+        Me.Controls.Add(Me.LblTot)
+        Me.Controls.Add(Me.LblProcesados)
+        Me.Controls.Add(Me.LblTitulo2)
+        Me.Controls.Add(Me.ProgressBar_GuardarDespacho)
+        Me.Controls.Add(Me.LblProgreso)
+        Me.Controls.Add(Me.LblTitulo1)
         Me.Controls.Add(Me.txtSopAdicCodi)
         Me.Controls.Add(Me.Btn_buscasopadic)
         Me.Controls.Add(Me.txtsopadicnombre)
@@ -2018,4 +2116,12 @@ Partial Class Frm_Despacho
     Friend WithEvents txtsopadicnombre As System.Windows.Forms.TextBox
     Friend WithEvents txtSopAdic As System.Windows.Forms.TextBox
     Friend WithEvents Label66 As System.Windows.Forms.Label
+    Friend WithEvents LblTitulo1 As System.Windows.Forms.Label
+    Friend WithEvents LblProgreso As System.Windows.Forms.Label
+    Friend WithEvents ProgressBar_GuardarDespacho As System.Windows.Forms.ProgressBar
+    Friend WithEvents LblTitulo2 As System.Windows.Forms.Label
+    Friend WithEvents LblProcesados As System.Windows.Forms.Label
+    Friend WithEvents LblTot As System.Windows.Forms.Label
+    Friend WithEvents ProgressBar_Pallets As System.Windows.Forms.ProgressBar
+    Friend WithEvents LblAlerta As System.Windows.Forms.Label
 End Class

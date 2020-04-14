@@ -5,6 +5,7 @@ Imports System.IO
 Public Class Frm_Despacho
 
     Dim fnc As New Funciones
+    Dim LRAM As New LiberarMemoria
     Public foliopu As String = ""
     Public nomcli As String = ""
 
@@ -382,99 +383,583 @@ Public Class Frm_Despacho
     End Sub
 
     Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
-        Dim Ingreso As Integer = 0
+        Try
+            'MMO ABRIL 2020
+            LblTitulo1.Visible = True
+            LblTitulo2.Visible = True
+            LblProgreso.Text = "0%"
+            LblProgreso.Visible = True
+            LblAlerta.Visible = True
+            LblProcesados.Visible = True
+            LblTot.Visible = True
 
-        'If Not fnc.verificaExistencia("fichdespa", "fdes_codi", lblcodigo.Text) Then
-        If Not fnc.verificaExistencia("fichdespa", "fdes_codi", txtCodDesp.Text) Then
+            'Liberar espacio en ram
+            LRAM.Liberar_Memoria()
 
-            Dim F_VALIDA As New Frm_VerificaServiciosDespa
-            Dim dt_as As DataTable = New DataTable
+            ProgressBar_GuardarDespacho.Visible = True
+            ProgressBar_GuardarDespacho.Maximum = 100
+            ProgressBar_GuardarDespacho.Minimum = 0
+            ProgressBar_GuardarDespacho.Value = 0
 
-            dt_as.Columns.Add("de")
-            dt_as.Columns.Add("un")
-            dt_as.Columns.Add("ca")
-            dt_as.Columns.Add("ki")
+            ProgressBar_Pallets.Visible = True
+            ProgressBar_Pallets.Maximum = DetaDespa.Rows.Count
+            ProgressBar_Pallets.Minimum = 0
+            ProgressBar_Pallets.Value = 0
 
-            For i As Integer = 0 To DataAdicionales.RowCount - 1
-                If DataAdicionales.Rows(i).Cells("cb").Value = True Then
-                    dt_as.Rows.Add(DataAdicionales.Rows(i).Cells("de").Value, _
-                                   DataAdicionales.Rows(i).Cells("un").Value, _
-                                   DataAdicionales.Rows(i).Cells("caj").Value, _
-                                   DataAdicionales.Rows(i).Cells("ki").Value.replace(",", "."))
+            LblTot.Text = "/ " & DetaDespa.Rows.Count.ToString()
+
+            Dim Ingreso As Integer = 0
+
+            'If Not fnc.verificaExistencia("fichdespa", "fdes_codi", lblcodigo.Text) Then
+            If Not fnc.verificaExistencia("fichdespa", "fdes_codi", txtCodDesp.Text) Then
+
+                Dim p As Int32 = Math.Abs(100 - DetaDespa.Rows.Count)
+
+                ProgressBar_GuardarDespacho.Increment(5)
+                LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                Dim F_VALIDA As New Frm_VerificaServiciosDespa
+                Dim dt_as As DataTable = New DataTable
+
+                dt_as.Columns.Add("de")
+                dt_as.Columns.Add("un")
+                dt_as.Columns.Add("ca")
+                dt_as.Columns.Add("ki")
+
+                For i As Integer = 0 To DataAdicionales.RowCount - 1
+                    If DataAdicionales.Rows(i).Cells("cb").Value = True Then
+                        dt_as.Rows.Add(DataAdicionales.Rows(i).Cells("de").Value, _
+                                       DataAdicionales.Rows(i).Cells("un").Value, _
+                                       DataAdicionales.Rows(i).Cells("caj").Value, _
+                                       DataAdicionales.Rows(i).Cells("ki").Value.replace(",", "."))
+                    End If
+                Next
+
+                ProgressBar_GuardarDespacho.Increment(5)
+                LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                F_VALIDA.DataAdicionales.DataSource = dt_as
+                F_VALIDA.ShowDialog(Frm_Principal)
+
+                If Frm_Principal.buscavalor = "NO" Or Frm_Principal.buscavalor = "" Then
+                    ProgressBar_GuardarDespacho.Value = 0
+                    ProgressBar_GuardarDespacho.Visible = False
+                    LblProgreso.Visible = False
+                    LblAlerta.Visible = False
+                    Exit Sub
                 End If
-            Next
-
-            F_VALIDA.DataAdicionales.DataSource = dt_as
-            F_VALIDA.ShowDialog(Frm_Principal)
-
-            If Frm_Principal.buscavalor = "NO" Or Frm_Principal.buscavalor = "" Then
-                Exit Sub
-            End If
 
 
-            ' VES ENE 2020
-            Dim numSopAdic As String = "0" + txtSopAdic.Text
-            Dim CodSopAdic As String = txtSopAdicCodi.Text
+                ' VES ENE 2020
+                Dim numSopAdic As String = "0" + txtSopAdic.Text
+                Dim CodSopAdic As String = txtSopAdicCodi.Text
 
 
-            If validacionIngreso() Then
-                'Validacion codigo despacho vacio HAmestica 14/08/18
-                Dim CodDesp = txtCodDesp.Text.Trim
-                If (CodDesp = "" Or CodDesp = "0000000") Then
-                    CodDesp = BuscaCorrelativo("009")
-                    txtCodDesp.Text = CodDesp
-                    MessageBox.Show("Se ha asignado el nro. " & CodDesp & " al despacho.", "Información!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If validacionIngreso() Then
+                    ProgressBar_GuardarDespacho.Increment(5)
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                    'Validacion codigo despacho vacio HAmestica 14/08/18
+                    Dim CodDesp = txtCodDesp.Text.Trim
+                    If (CodDesp = "" Or CodDesp = "0000000") Then
+                        CodDesp = BuscaCorrelativo("009")
+                        txtCodDesp.Text = CodDesp
+                        MessageBox.Show("Se ha asignado el nro. " & CodDesp & " al despacho.", "Información!", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+
+                    ProgressBar_GuardarDespacho.Increment(5) '20
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                    Dim temp As String = "Tº DESP. ºC: TºS: " + t1.Text + "    TºM: " + t2.Text + "     TºI: " + t3.Text + ""
+                    Dim lleg As Date = Horalleg.Text
+                    'Dim sql = "INSERT INTO fichdespa(fdes_codi, fdes_rutcli, fdes_horalleg, fdes_hora, fdes_fecha, fdes_codpred, fdes_totsopo, " +
+                    '    "fdes_totunidad, fdes_totpeso, fdes_rutcond, fdes_patente, fdes_transporte, fdes_carro, fdes_sello, fdes_horometro, " +
+                    '    "fdes_observ, fdes_tipcarga, fdes_codienca, fdes_codvig, fdes_origen, fdes_guiacliente, fdes_tempdespacho, fdes_destino, fdes_clfol, fdes_contenedor,cod_bod)" +
+                    '    "VALUES('" + lblcodigo.Text + "','" + txtrutcli.Text + "','" + lleg.ToString("HH:mm") + "','" + DevuelveHora() + "','" + devuelve_fecha(dt_fecha.Value) + "'," +
+                    '    "'" + txtcodigo.Text + "','" + txttotsopo.Text + "','" + txttotcajas.Text + "','" + txttotkilos.Text.Replace(",", ".") + "'," +
+                    '    "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "'," +
+                    '    "'" + TxtRampla.Text + "','" + TxtSello.Text + "','" + TxtHorometro.Text + "','" + TxtObs.Text + "', '" + CbCarga.SelectedValue.ToString() + "'," +
+                    '    "'" + Frm_Principal.InfoUsuario.Text + "','0','" + txtorigen.Text + "','" + txtGuiaCli.Text + "','" + temp.ToString() + "'," +
+                    '    "'" + TxtDestino.Text + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + sucursalglo.Trim() + "')"
+
+                    Dim sql = "INSERT INTO fichdespa(fdes_codi, fdes_rutcli, fdes_horalleg, fdes_hora, fdes_fecha, fdes_codpred, fdes_totsopo, " +
+                        "fdes_totunidad, fdes_totpeso, fdes_rutcond, fdes_patente, fdes_transporte, fdes_carro, fdes_sello, fdes_horometro, " +
+                        "fdes_observ, fdes_tipcarga, fdes_codienca, fdes_codvig, fdes_origen, fdes_guiacliente, fdes_tempdespacho, fdes_destino, " +
+                        "fdes_clfol, fdes_contenedor,cod_bod,fdes_numsopadic,fdes_codsopadic)" +
+                        "VALUES('" + txtCodDesp.Text + "','" + txtrutcli.Text + "','" + lleg.ToString("HH:mm") + "','" + DevuelveHora() + "','" + devuelve_fecha(dt_fecha.Value) + "'," +
+                        "'" + txtcodigo.Text + "','" + txttotsopo.Text + "','" + txttotcajas.Text + "','" + txttotkilos.Text.Replace(",", ".") + "'," +
+                        "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "'," +
+                        "'" + TxtRampla.Text + "','" + TxtSello.Text + "','" + TxtHorometro.Text + "','" + TxtObs.Text + "', '" + CbCarga.SelectedValue.ToString() + "'," +
+                        "'" + Frm_Principal.InfoUsuario.Text + "','0','" + txtorigen.Text + "','" + txtGuiaCli.Text + "','" + temp.ToString() + "'," +
+                        "'" + TxtDestino.Text + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + sucursalglo.Trim() + "'," + numSopAdic + ",'" + CodSopAdic + "')"
+
+                    If fnc.MovimientoSQL(sql) > 0 Then
+
+                        ProgressBar_GuardarDespacho.Increment(5)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        'Actualización Cierre camiones carga y descarga. 07-06-19
+                        Dim camionCargaDescarga As Boolean = False
+                        Dim sqlValidCarDes As String = "select CarDes=case when a.Cl_Mov='3' then '1' else '0' end from zCheckList a with(nolock) where a.cl_fol='" + TxtFolioPorteria.Text.Trim + "'"
+                        Dim dtCarDes As New DataTable
+                        dtCarDes = fnc.ListarTablasSQL(sqlValidCarDes)
+
+                        If (dtCarDes.Rows.Count > 0) Then
+                            If (dtCarDes.Rows(0).Item(0).ToString.Trim = "1") Then
+                                camionCargaDescarga = True
+                            End If
+                        End If
+
+                        ProgressBar_GuardarDespacho.Increment(5)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        If (camionCargaDescarga) Then
+                            Dim sqlCarDes As String = "SP_Camiones_Carga_Descarga_Grabar '0','" & TxtFolioPorteria.Text.Trim & "','0','1','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                            fnc.MovimientoSQL(sqlCarDes)
+                        Else
+                            Dim sqlcheck As String = "UPDATE zcheckList SET cl_estfrigo='1' WHERE cl_fol='" + TxtFolioPorteria.Text + "'"
+
+                            fnc.MovimientoSQL(sqlcheck)
+                        End If
+                        'Fin actualización Cierre camiones carga y descarga. 07-06-19
+
+                        ProgressBar_GuardarDespacho.Increment(5)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        'VAS Emisión guía Cliente y Excento Cobro Estadía. 25-06-19
+                        Dim sqlVasEmiGui As String = ""
+                        If (rbcliente.Checked) Then
+                            sqlVasEmiGui = "SP_Despachos_Guia_Cliente_Grabar '" & txtCodDesp.Text.Trim & "','1','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                        Else
+                            sqlVasEmiGui = "SP_Despachos_Guia_Cliente_Grabar '" & txtCodDesp.Text.Trim & "','0','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
+                        End If
+                        fnc.MovimientoSQL(sqlVasEmiGui)
+
+                        ProgressBar_GuardarDespacho.Increment(5)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        Dim sqlCobEst As String = ""
+                        If (chkSinCobEst.Checked) Then
+                            sqlCobEst = "Despacho_Cobro_Estadia_Grabar '" & txtCodDesp.Text.Trim & "','" & Frm_Principal.InfoUsuario.Text.Trim & "','1'"
+                        Else
+                            sqlCobEst = "Despacho_Cobro_Estadia_Grabar '" & txtCodDesp.Text.Trim & "','" & Frm_Principal.InfoUsuario.Text.Trim & "','0'"
+                        End If
+                        fnc.MovimientoSQL(sqlCobEst)
+                        'Fin VAS Emisión guía Cliente y Excento Cobro Estadía. 25-06-19
+
+                        ProgressBar_GuardarDespacho.Increment(10)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        Ingreso += 1
+                        btn_guardar.Enabled = False
+
+                        Dim sql_borra_saldos = "UPDATE movpallet SET mov_despacho='', mov_saldo='' WHERE mov_tipo='PD' AND mov_doc='" + txtcodigo.Text + "'"
+                        fnc.MovimientoSQL(sql_borra_saldos)
+
+                        ProgressBar_GuardarDespacho.Increment(10) '60
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        For i As Integer = 0 To DetaDespa.Rows.Count - 1
+
+                            ProgressBar_Pallets.Increment(1)
+                            LblProcesados.Text = Convert.ToString(i + 1)
+
+                            Dim pallet As String = ""
+
+                            Dim _ActualizaRackdeta = "SELECT racd_unidades, racd_peso FROM rackdeta WHERE racd_codi='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
+                            Dim _actualiza As DataTable = fnc.ListarTablasSQL(_ActualizaRackdeta)
+
+                            If _actualiza.Rows.Count > 0 Then
+
+                                If DetaDespa.Rows(i).Cells(4).Value.ToString() <> _actualiza.Rows(0)(0).ToString() Then
+
+                                    Dim Unidades As Integer = _actualiza.Rows(0)(0).ToString()
+                                    Dim peso As Double = _actualiza.Rows(0)(1).ToString()
+
+                                    Dim Unidad_Final As Integer = Unidades - Val(DetaDespa.Rows(i).Cells(4).Value.ToString())
+                                    Dim Peso_Final As Double = peso - Convert.ToDouble(DetaDespa.Rows(i).Cells(5).Value.ToString())
+
+                                    Dim _Actualiza_Rack = "UPDATE rackdeta SET racd_unidades='" + Unidad_Final.ToString() + "' , " +
+                                        "racd_peso='" + Peso_Final.ToString.Replace(",", ".") + "', racd_estado='0' WHERE racd_codi='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
+                                    pallet = "0"
+
+                                    'Actualizar estados del detarececajas
+
+                                    Dim sql_cjs As String = "UPDATE DetaReceCajas SET caj_ped='3' " +
+                                                            "WHERE Caj_cod in(SELECT dpre_caja FROM DetaPredCajas " +
+                                                            "WHERE dpre_npallet='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "') " +
+                                                            "AND Caj_Pcod='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
+
+                                    fnc.MovimientoSQL(sql_cjs)
+
+                                    If fnc.MovimientoSQL(_Actualiza_Rack) = 0 Then
+                                        MsgBox("Ocurrio un error al actualizar las cantidades del soportante", MsgBoxStyle.Critical, "Aviso")
+                                    End If
+
+                                Else
+                                    Dim _Delete As String = "DELETE FROM rackdeta WHERE racd_codi='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
+                                    fnc.MovimientoSQL(_Delete)
+                                    pallet = "1"
+
+                                    Dim SqlCambiaestado As String = "UPDATE DetaReceCajas SET caj_ped='3' WHERE caj_pcod='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
+                                    fnc.MovimientoSQL(SqlCambiaestado)
+                                End If
+                            Else
+                                MsgBox("Error al capturar las cantidades del soportante", MsgBoxStyle.Information, "Aviso")
+                            End If
+
+
+
+
+                            'Dim _Sql As String = "INSERT INTO detadespa(ddes_codi, ddes_codpro, ddes_codsopo, ddes_sopocli, ddes_unidades, ddes_peso, " +
+                            '    "ddes_fecprod, ddes_fecha, ddes_rutcli, ddes_contcli, ddes_camara, ddes_codpred, ddes_codrece, ddes_codvig, ddes_pallet, ddes_almacen,cod_bod)" +
+                            '    "VALUES('" + lblcodigo.Text + "" + CerosAnteriorString(i + 1, 2) + "','" + DetaDespa.Rows(i).Cells(2).Value.ToString() + "'," +
+                            '    "'" + DetaDespa.Rows(i).Cells(9).Value.ToString() + "'," +
+                            '    "'" + DetaDespa.Rows(i).Cells(1).Value.ToString() + "','" + DetaDespa.Rows(i).Cells(4).Value.ToString() + "'," +
+                            '    "'" + DetaDespa.Rows(i).Cells(5).Value.ToString().Replace(",", ".") + "','" + devuelve_fecha(DetaDespa.Rows(i).Cells(6).Value.ToString()) + "'," +
+                            '    "'" + devuelve_fecha(dt_fecha.Value) + "','" + txtrutcli.Text + "','" + DetaDespa.Rows(i).Cells(7).Value.ToString() + "'," +
+                            '    "'" + DetaDespa.Rows(i).Cells(12).Value.ToString() + "','" + txtcodigo.Text + "','" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
+                            '    "'0','" + pallet.ToString() + "','2','" + sucursalglo.Trim() + "')"
+
+                            Dim _Sql As String = "INSERT INTO detadespa(ddes_codi, ddes_codpro, ddes_codsopo, ddes_sopocli, ddes_unidades, ddes_peso, " +
+                                "ddes_fecprod, ddes_fecha, ddes_rutcli, ddes_contcli, ddes_camara, ddes_codpred, ddes_codrece, ddes_codvig, ddes_pallet, ddes_almacen,cod_bod)" +
+                                "VALUES('" + txtCodDesp.Text + "" + CerosAnteriorString(i + 1, 2) + "','" + DetaDespa.Rows(i).Cells(2).Value.ToString() + "'," +
+                                "'" + DetaDespa.Rows(i).Cells(9).Value.ToString() + "'," +
+                                "'" + DetaDespa.Rows(i).Cells(1).Value.ToString() + "','" + DetaDespa.Rows(i).Cells(4).Value.ToString() + "'," +
+                                "'" + DetaDespa.Rows(i).Cells(5).Value.ToString().Replace(",", ".") + "','" + devuelve_fecha(DetaDespa.Rows(i).Cells(6).Value.ToString()) + "'," +
+                                "'" + devuelve_fecha(dt_fecha.Value) + "','" + txtrutcli.Text + "','" + DetaDespa.Rows(i).Cells(7).Value.ToString() + "'," +
+                                "'" + DetaDespa.Rows(i).Cells(12).Value.ToString() + "','" + txtcodigo.Text + "','" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
+                                "'0','" + pallet.ToString() + "','2','" + sucursalglo.Trim() + "')"
+
+                            fnc.MovimientoSQL(_Sql)
+
+
+                            'Dim _MovPallet As String = "INSERT INTO movpallet(mov_folio, mov_codper, mov_fecha, mov_tipo, mov_hora, mov_doc, " +
+                            '    "mov_chorut, mov_chonom, mov_chopat, mov_chotra, mov_despacho, mov_saldo)VALUES('" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
+                            '    "'" + Frm_Principal.InfoUsuario.Text + "','" + devuelve_fecha(dt_fecha.Value) + "','SA','" + DevuelveHora() + "','" + lblcodigo.Text + "'," +
+                            '    "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtchonom.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "', " +
+                            '    "'" + DetaDespa.Rows(i).Cells(14).Value.ToString() + "','" + (Val(DetaDespa.Rows(i).Cells(15).Value.ToString())).ToString() + "')"
+
+                            Dim _MovPallet As String = "INSERT INTO movpallet(mov_folio, mov_codper, mov_fecha, mov_tipo, mov_hora, mov_doc, " +
+                                "mov_chorut, mov_chonom, mov_chopat, mov_chotra, mov_despacho, mov_saldo)VALUES('" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
+                                "'" + Frm_Principal.InfoUsuario.Text + "','" + devuelve_fecha(dt_fecha.Value) + "','SA','" + DevuelveHora() + "','" + txtCodDesp.Text + "'," +
+                                "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtchonom.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "', " +
+                                "'" + DetaDespa.Rows(i).Cells(14).Value.ToString() + "','" + (Val(DetaDespa.Rows(i).Cells(15).Value.ToString())).ToString() + "')"
+
+                            fnc.MovimientoSQL(_MovPallet)
+
+
+
+                            'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+                            Dim NumPal As String = DetaDespa.Rows(i).Cells(0).Value.ToString.Trim
+                            Dim RutCli As String = txtrutcli.Text.Trim
+                            Dim CodCont As String = DetaDespa.Rows(i).Cells(7).Value.ToString.Trim
+                            Dim TipPal As String = "000" & DetaDespa.Rows(i).Cells(9).Value.ToString.Trim
+                            Dim TipPalFrm As String = TipPal.Substring(TipPal.Length - 3, 3)
+                            Dim DocAsoc As String = txtCodDesp.Text.Trim
+                            Dim CantEnt As Integer = 0
+                            Dim CantSal As Integer = 1
+                            Dim Obs As String = "Despacho " & DocAsoc & ", Pallet " & NumPal & "."
+                            Dim Est As String = "1"
+                            Dim CodUsu As String = Frm_Principal.InfoUsuario.Text.Trim
+
+                            Dim TipCar As String = ""
+
+                            Dim sqlTipCar As String = "select a.tcar_descr from P_TipoCargaDescarga a with(nolock) inner join fichdespa b with(nolock) on(a.tcar_codi=b.fdes_tipcarga) where b.fdes_codi='" & DocAsoc & "'"
+                            Dim dtTipCar As New DataTable
+
+                            dtTipCar = fnc.ListarTablasSQL(sqlTipCar)
+
+                            If (dtTipCar.Rows.Count > 0) Then
+                                TipCar = dtTipCar.Rows(0).Item(0).ToString.Trim
+                            End If
+
+                            If (TipCar = "MECANICA") Then
+                                Dim sqlEsArr As String = "select EsArr=count(ID) from Control_Pallet_Arriendo with(nolock) where Codigo_Soportante='" & NumPal & "' and Estado_Arriendo='A' and Fecha_Termino is null"
+                                Dim dtEsArr As New DataTable
+
+                                dtEsArr = fnc.ListarTablasSQL(sqlEsArr)
+
+                                If (dtEsArr.Rows.Count > 0) Then
+                                    Dim EsArr As Integer = CInt(dtEsArr.Rows(0).Item(0).ToString.Trim)
+
+                                    If (EsArr > 0) Then
+                                        'Validar Saldo stock pallets, si no tiene venta, de lo contrario descuento de custodia
+                                        Dim sqlStockCust As String = "select a.Saldo,a.Contrato from Control_Pallet_Saldos a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1'"
+                                        Dim dtStockCust As New DataTable
+
+                                        dtStockCust = fnc.ListarTablasSQL(sqlStockCust)
+
+                                        Dim ConSaldo As Boolean = False
+                                        Dim ContratoPallet As String = ""
+
+                                        If (dtStockCust.Rows.Count > 0) Then
+                                            For j = 0 To dtStockCust.Rows.Count - 1
+                                                Dim Saldo As Integer = CInt(dtStockCust.Rows(j).Item(0).ToString.Trim)
+                                                ContratoPallet = dtStockCust.Rows(j).Item(1).ToString.Trim
+
+                                                If (Saldo > 0) Then
+                                                    ConSaldo = True
+                                                    Exit For
+                                                End If
+                                            Next
+                                        End If
+
+                                        If (ConSaldo) Then
+                                            Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & ContratoPallet & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','" & CantEnt & "','" & CantSal & "','" & Obs & "','" & Est & "','" & CodUsu & "'"
+                                            Dim dtMovCust As New DataTable
+
+                                            dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
+
+                                            If (dtMovCust.Rows.Count > 0) Then
+                                                Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
+
+                                                If (RespMovCust = "-1") Then
+                                                    MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                                                End If
+                                            Else
+                                                MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                                            End If
+                                        Else
+                                            Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
+                                            Dim dtVent As New DataTable
+
+                                            dtVent = fnc.ListarTablasSQL(sqlVent)
+                                        End If
+
+                                        Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
+                                        Dim dtMovArr As New DataTable
+
+                                        dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
+                                    End If
+                                End If
+
+                            ElseIf (TipCar = "MANUAL") Then
+                                'Validar arriendo o propios
+                                Dim EsArr As Boolean = False
+
+                                Dim sqlEsArr As String = "select Cont=count(a.ID) from Control_Pallet_Arriendo a with(nolock) where a.Codigo_Soportante='" & NumPal & "' and a.Estado_Arriendo='A'"
+                                Dim dtEsArr As New DataTable
+
+                                dtEsArr = fnc.ListarTablasSQL(sqlEsArr)
+
+                                If (dtEsArr.Rows.Count > 0) Then
+                                    Dim RespEsArr As Integer = CInt(dtEsArr.Rows(0).Item(0).ToString.Trim)
+
+                                    If (RespEsArr > 0) Then
+                                        EsArr = True
+                                    End If
+                                End If
+
+                                'Validar si se lleva los pallets
+                                Dim LlevaPallets As Boolean = False
+
+                                If (chkSalPallets.Checked) Then
+                                    LlevaPallets = True
+                                End If
+
+
+
+                                If (Not EsArr) Then
+                                    '   Propios: No se lleva pallets aumenta custodia, de lo contrario no pasa nada
+                                    If (LlevaPallets = False) Then
+                                        Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','1','0','" & Obs & "','" & Est & "','" & CodUsu & "'"
+                                        Dim dtMovCust As New DataTable
+
+                                        dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
+
+                                        If (dtMovCust.Rows.Count > 0) Then
+                                            Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
+
+                                            If (RespMovCust = "-1") Then
+                                                MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                                            End If
+                                        Else
+                                            MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                                        End If
+                                    End If
+                                Else
+                                    '   Arriendo: No se lleva pallets termina el arriendo, de lo contrario se vende
+                                    If (LlevaPallets) Then
+                                        Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
+                                        Dim dtVent As New DataTable
+
+                                        dtVent = fnc.ListarTablasSQL(sqlVent)
+                                    End If
+
+                                    Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
+                                    Dim dtMovArr As New DataTable
+
+                                    dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
+                                End If
+
+                            End If
+                            'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
+
+                        Next
+
+                        ProgressBar_GuardarDespacho.Increment(10)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        '
+                        ' VES ENE 2020
+                        ' SI SE INDICARON PALLETS ADICIONALES EN EL DESPACHO, SE INTENTA SACARLOS DE LOS 
+                        ' PALLETS EN CUSTODIA QUE TENGA EL CLIENTE. SI QUEDA ALGUN REMANENTE, SE LE VENDEN
+                        '
+                        If Not procesarPalletsCustodia() Then
+                            ProgressBar_GuardarDespacho.Value = 0
+                            ProgressBar_GuardarDespacho.Visible = False
+                            LblProgreso.Visible = False
+                            LblAlerta.Visible = False
+                            Exit Sub
+                        End If
+
+
+                        'Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + lblcodigo.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
+                        '                           "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
+
+                        Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + txtCodDesp.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
+                                                   "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
+
+                        fnc.MovimientoSQL(_Cincuenta)
+
+                        'Dim SQLPred As String = "UPDATE fichpred SET fpre_gdespa='" + lblcodigo.Text + "', " +
+                        '    "fpre_codvig='2', fpre_activa='0' WHERE fpre_codi ='" + txtcodigo.Text + "'"
+
+                        Dim SQLPred As String = "UPDATE fichpred SET fpre_gdespa='" + txtCodDesp.Text + "', " +
+                            "fpre_codvig='2', fpre_activa='0' WHERE fpre_codi ='" + txtcodigo.Text + "'"
+
+                        fnc.MovimientoSQL(SQLPred)
+
+                        ProgressBar_GuardarDespacho.Increment(10)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        Dim sqlPedCaja As String = "UPDATE pedcaja SET pc_estado='3' WHERE pc_codped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
+                        fnc.MovimientoSQL(sqlPedCaja)
+
+                        'Modificacion Liberar Pedidos 05-06-19
+
+                        'Dim sqlfichpred As String = "UPDATE pedidos_ficha SET terminado='3' WHERE orden=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
+                        'Dim sqlfichpred As String = "update c set c.terminado='3' from Pedidos_ficha a with(nolock) inner join fichpred b with(nolock) on(a.Orden=b.fpre_nped) inner join Pedidos_ficha c with(nolock) on(c.ordenconjunta like '%'+convert(varchar,a.Orden)+'%') where b.fpre_codi='" + txtcodigo.Text + "'"
+                        'Dim sqlfichpred As String = "update c set c.terminado='3' from fichpred a with(nolock) inner join(select Orden,ordenconjunta from Pedidos_ficha with(nolock)) b on(b.ordenconjunta like '%'+convert(varchar,a.fpre_nped)+'%') inner join Pedidos_ficha c with(nolock) on(b.Orden=c.Orden) where a.fpre_codi='" + txtcodigo.Text + "'"
+                        Dim sqlGetOrden As String = "select fpre_nped from fichpred with(nolock) where fpre_codi='" & txtcodigo.Text.Trim & "'"
+                        Dim dtOrden As New DataTable
+                        dtOrden = fnc.ListarTablasSQL(sqlGetOrden)
+
+                        If (dtOrden.Rows.Count > 0) Then
+                            Dim Orden As String = dtOrden.Rows(0).Item(0).ToString.Trim
+
+                            Dim sqlfichpred As String = "SP_Pedidos_Estados_Actualizar '" & Orden & "','D','3'"
+                            fnc.MovimientoSQL(sqlfichpred)
+                        Else
+                            ProgressBar_GuardarDespacho.Value = 0
+                            ProgressBar_GuardarDespacho.Visible = False
+                            LblProgreso.Visible = False
+                            LblAlerta.Visible = False
+                            MsgBox("Ocurrió un error al liberar Orden Pedidos del Pre Despacho Nro. " & txtcodigo.Text.Trim & "." & vbCrLf & "Favor avisar a Informática para liberar Pedidos.", MsgBoxStyle.Critical, "Error")
+                        End If
+
+                        ProgressBar_GuardarDespacho.Increment(10)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                        'Fin modificacion Liberar Pedidos 05-06-19
+
+                        Dim SqlCambiaestadocajas As String = "UPDATE DetaReceCajas SET caj_ped='3' WHERE caj_cod in (SELECT dpre_caja FROM detapredcajas WHERE dpc_nped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "'))"
+                        fnc.MovimientoSQL(SqlCambiaestadocajas)
+
+                        'Dim Sqlmovc = "INSERT INTO movcajas(movc_fecha, movc_codcaja, movc_codrece, movc_tipo, movc_ndoc) " +
+                        '              "SELECT GETDATE(),dpc_codcaja, dpc_numpal, 'SA', '" + lblcodigo.Text + "' FROM detapedcaja WHERE dpc_codped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
+
+                        Dim Sqlmovc = "INSERT INTO movcajas(movc_fecha, movc_codcaja, movc_codrece, movc_tipo, movc_ndoc) " +
+                                      "SELECT GETDATE(),dpc_codcaja, dpc_numpal, 'SA', '" + txtCodDesp.Text + "' FROM detapedcaja WHERE dpc_codped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
+
+                        fnc.MovimientoSQL(Sqlmovc)
+
+                        'vas Automatico
+                        GuardaVasAutomatico()
+
+
+                        BtnImprimir.Enabled = True
+
+                        ProgressBar_GuardarDespacho.Increment(10)
+                        LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                    Else
+                        ProgressBar_GuardarDespacho.Value = 0
+                        ProgressBar_GuardarDespacho.Visible = False
+                        LblProgreso.Visible = False
+                        LblAlerta.Visible = False
+                        MsgBox("Ocurrio un error al intentar grabar el despacho: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
+                    End If
+                Else
+                    ProgressBar_GuardarDespacho.Value = 0
+                    ProgressBar_GuardarDespacho.Visible = False
+                    LblProgreso.Visible = False
+                    LblAlerta.Visible = False
+                End If
+            Else
+
+                ProgressBar_GuardarDespacho.Increment(10)
+                LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                Dim modificar As String = "0"
+                If MsgBox("¿Enviar guia modificada al cliente?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
+                    modificar = "0"
+                Else
+                    modificar = "1"
                 End If
 
 
+                ' VES FEB 2020: Se reversan los movimientos de arriendo/custodia/venta asociados al documento
+                If fnc.MovimientoSQL("spReversarArriendoCustodiaPallets NULL,'" + txtCodDesp.Text + "'") = 0 Then
+                    ProgressBar_GuardarDespacho.Value = 0
+                    ProgressBar_GuardarDespacho.Visible = False
+                    LblProgreso.Visible = False
+                    MsgBox("Ocurrio un error al intentar reversar movimientos de arriendo/custodia de pallets: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
+                    Exit Sub
+                End If
 
-                Dim temp As String = "Tº DESP. ºC: TºS: " + t1.Text + "    TºM: " + t2.Text + "     TºI: " + t3.Text + ""
-                Dim lleg As Date = Horalleg.Text
-                'Dim sql = "INSERT INTO fichdespa(fdes_codi, fdes_rutcli, fdes_horalleg, fdes_hora, fdes_fecha, fdes_codpred, fdes_totsopo, " +
-                '    "fdes_totunidad, fdes_totpeso, fdes_rutcond, fdes_patente, fdes_transporte, fdes_carro, fdes_sello, fdes_horometro, " +
-                '    "fdes_observ, fdes_tipcarga, fdes_codienca, fdes_codvig, fdes_origen, fdes_guiacliente, fdes_tempdespacho, fdes_destino, fdes_clfol, fdes_contenedor,cod_bod)" +
-                '    "VALUES('" + lblcodigo.Text + "','" + txtrutcli.Text + "','" + lleg.ToString("HH:mm") + "','" + DevuelveHora() + "','" + devuelve_fecha(dt_fecha.Value) + "'," +
-                '    "'" + txtcodigo.Text + "','" + txttotsopo.Text + "','" + txttotcajas.Text + "','" + txttotkilos.Text.Replace(",", ".") + "'," +
-                '    "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "'," +
-                '    "'" + TxtRampla.Text + "','" + TxtSello.Text + "','" + TxtHorometro.Text + "','" + TxtObs.Text + "', '" + CbCarga.SelectedValue.ToString() + "'," +
-                '    "'" + Frm_Principal.InfoUsuario.Text + "','0','" + txtorigen.Text + "','" + txtGuiaCli.Text + "','" + temp.ToString() + "'," +
-                '    "'" + TxtDestino.Text + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + sucursalglo.Trim() + "')"
+                'Dim sql As String = "UPDATE fichdespa SET fdes_fecha='" + devuelve_fecha(dt_fecha.Value) + "'," +
+                '        "fdes_rutcond='" + Txtchorut.Text + "" + txtchover.Text + "', fdes_patente='" + txtpatente.Text + "', " +
+                '        "fdes_transporte='" + txtchoemp.Text + "', fdes_carro='" + TxtRampla.Text + "', fdes_sello='" + TxtSello.Text + "', " +
+                '        "fdes_horometro='" + TxtHorometro.Text + "', fdes_observ='" + TxtObs.Text + "', fdes_tipcarga='" + CbCarga.SelectedValue.ToString() + "', " +
+                '        "fdes_origen='" + txtorigen.Text + "', fdes_guiacliente='" + txtGuiaCli.Text + "', " +
+                '        "fdes_destino='" + TxtDestino.Text + "', fdes_contenedor='" + TxtContenedor.Text + "' WHERE fdes_codi='" + lblcodigo.Text + "' "
 
-                Dim sql = "INSERT INTO fichdespa(fdes_codi, fdes_rutcli, fdes_horalleg, fdes_hora, fdes_fecha, fdes_codpred, fdes_totsopo, " +
-                    "fdes_totunidad, fdes_totpeso, fdes_rutcond, fdes_patente, fdes_transporte, fdes_carro, fdes_sello, fdes_horometro, " +
-                    "fdes_observ, fdes_tipcarga, fdes_codienca, fdes_codvig, fdes_origen, fdes_guiacliente, fdes_tempdespacho, fdes_destino, " +
-                    "fdes_clfol, fdes_contenedor,cod_bod,fdes_numsopadic,fdes_codsopadic)" +
-                    "VALUES('" + txtCodDesp.Text + "','" + txtrutcli.Text + "','" + lleg.ToString("HH:mm") + "','" + DevuelveHora() + "','" + devuelve_fecha(dt_fecha.Value) + "'," +
-                    "'" + txtcodigo.Text + "','" + txttotsopo.Text + "','" + txttotcajas.Text + "','" + txttotkilos.Text.Replace(",", ".") + "'," +
-                    "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "'," +
-                    "'" + TxtRampla.Text + "','" + TxtSello.Text + "','" + TxtHorometro.Text + "','" + TxtObs.Text + "', '" + CbCarga.SelectedValue.ToString() + "'," +
-                    "'" + Frm_Principal.InfoUsuario.Text + "','0','" + txtorigen.Text + "','" + txtGuiaCli.Text + "','" + temp.ToString() + "'," +
-                    "'" + TxtDestino.Text + "','" + TxtFolioPorteria.Text + "','" + TxtContenedor.Text + "','" + sucursalglo.Trim() + "'," + numSopAdic + ",'" + CodSopAdic + "')"
+                Dim sql As String = "UPDATE fichdespa SET fdes_fecha='" + devuelve_fecha(dt_fecha.Value) + "'," +
+                        "fdes_rutcond='" + Txtchorut.Text + "" + txtchover.Text + "', fdes_patente='" + txtpatente.Text + "', " +
+                        "fdes_transporte='" + txtchoemp.Text + "', fdes_carro='" + TxtRampla.Text + "', fdes_sello='" + TxtSello.Text + "', " +
+                        "fdes_horometro='" + TxtHorometro.Text + "', fdes_observ='" + TxtObs.Text + "', fdes_tipcarga='" + CbCarga.SelectedValue.ToString() + "', " +
+                        "fdes_origen='" + txtorigen.Text + "', fdes_guiacliente='" + txtGuiaCli.Text + "', " +
+                        "fdes_destino='" + TxtDestino.Text + "', fdes_contenedor='" + TxtContenedor.Text + "'"
+
+                If (modificar = "0") Then
+                    sql = sql & ",fdes_enviada='" + modificar + "',fdes_emis=getdate()"
+                End If
+
+                sql = sql & " WHERE fdes_codi='" + txtCodDesp.Text + "'"
+
+                'Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + lblcodigo.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
+                '                           "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
+
+                Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + txtCodDesp.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
+                                           "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
+
+                fnc.MovimientoSQL(_Cincuenta)
+
+                ProgressBar_GuardarDespacho.Increment(10) '20
+                LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
+
+                'Dim fecha_detalle As String = "UPDATE detadespa SET ddes_fecha='" + devuelve_fecha(dt_fecha.Value) + "' WHERE ddes_codi LIKE '%" + lblcodigo.Text + "__%'"
+                'fnc.MovimientoSQL(fecha_detalle)
+
+                Dim fecha_detalle As String = "UPDATE detadespa SET ddes_fecha='" + devuelve_fecha(dt_fecha.Value) + "' WHERE ddes_codi LIKE '%" + txtCodDesp.Text + "__%'"
+                fnc.MovimientoSQL(fecha_detalle)
+
+                ProgressBar_GuardarDespacho.Increment(10)
+                LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
 
                 If fnc.MovimientoSQL(sql) > 0 Then
-
-                    'Actualización Cierre camiones carga y descarga. 07-06-19
-                    Dim camionCargaDescarga As Boolean = False
-                    Dim sqlValidCarDes As String = "select CarDes=case when a.Cl_Mov='3' then '1' else '0' end from zCheckList a with(nolock) where a.cl_fol='" + TxtFolioPorteria.Text.Trim + "'"
-                    Dim dtCarDes As New DataTable
-                    dtCarDes = fnc.ListarTablasSQL(sqlValidCarDes)
-
-                    If (dtCarDes.Rows.Count > 0) Then
-                        If (dtCarDes.Rows(0).Item(0).ToString.Trim = "1") Then
-                            camionCargaDescarga = True
-                        End If
-                    End If
-
-                    If (camionCargaDescarga) Then
-                        Dim sqlCarDes As String = "SP_Camiones_Carga_Descarga_Grabar '0','" & TxtFolioPorteria.Text.Trim & "','0','1','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                        fnc.MovimientoSQL(sqlCarDes)
-                    Else
-                        Dim sqlcheck As String = "UPDATE zcheckList SET cl_estfrigo='1' WHERE cl_fol='" + TxtFolioPorteria.Text + "'"
-
-                        fnc.MovimientoSQL(sqlcheck)
-                    End If
-                    'Fin actualización Cierre camiones carga y descarga. 07-06-19
-
                     'VAS Emisión guía Cliente y Excento Cobro Estadía. 25-06-19
                     Dim sqlVasEmiGui As String = ""
                     If (rbcliente.Checked) Then
@@ -483,6 +968,9 @@ Public Class Frm_Despacho
                         sqlVasEmiGui = "SP_Despachos_Guia_Cliente_Grabar '" & txtCodDesp.Text.Trim & "','0','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
                     End If
                     fnc.MovimientoSQL(sqlVasEmiGui)
+
+                    ProgressBar_GuardarDespacho.Increment(10)
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
 
                     Dim sqlCobEst As String = ""
                     If (chkSinCobEst.Checked) Then
@@ -493,98 +981,30 @@ Public Class Frm_Despacho
                     fnc.MovimientoSQL(sqlCobEst)
                     'Fin VAS Emisión guía Cliente y Excento Cobro Estadía. 25-06-19
 
-                    Ingreso += 1
-                    MsgBox("Información Agregada Correctamente", MsgBoxStyle.Information, "Aviso")
-                    btn_guardar.Enabled = False
+                    ProgressBar_GuardarDespacho.Increment(10) '50
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
 
-                    Dim sql_borra_saldos = "UPDATE movpallet SET mov_despacho='', mov_saldo='' WHERE mov_tipo='PD' AND mov_doc='" + txtcodigo.Text + "'"
-                    fnc.MovimientoSQL(sql_borra_saldos)
+                    'MsgBox("Guia Actualizada Correctamente", MsgBoxStyle.Information, "Aviso")
+
+                    'LOG MODIFICO DESPACHO *************************************************************************************
+                    'Dim _log As String = "INSERT INTO LOG_FICHDESPA(LFR_CODI, LFR_FECHA, LFR_HORA, LFR_USUARIO, LFR_PC)" +
+                    '    "VALUES('" + lblcodigo.Text + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "'," +
+                    '    "'" + DevuelveHora() + "','" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "')"
+
+                    Dim _log As String = "INSERT INTO LOG_FICHDESPA(LFR_CODI, LFR_FECHA, LFR_HORA, LFR_USUARIO, LFR_PC)" +
+                        "VALUES('" + txtCodDesp.Text + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "'," +
+                        "'" + DevuelveHora() + "','" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "')"
+
+                    fnc.MovimientoSQL(_log)
+                    'LOG MODIFICO DESPACHO *************************************************************************************
+
+                    ProgressBar_GuardarDespacho.Increment(10) '60
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
 
                     For i As Integer = 0 To DetaDespa.Rows.Count - 1
-
+                        ProgressBar_Pallets.Increment(1)
+                        LblProcesados.Text = Convert.ToString(i + 1)
                         Dim pallet As String = ""
-
-                        Dim _ActualizaRackdeta = "SELECT racd_unidades, racd_peso FROM rackdeta WHERE racd_codi='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
-                        Dim _actualiza As DataTable = fnc.ListarTablasSQL(_ActualizaRackdeta)
-
-                        If _actualiza.Rows.Count > 0 Then
-
-                            If DetaDespa.Rows(i).Cells(4).Value.ToString() <> _actualiza.Rows(0)(0).ToString() Then
-
-                                Dim Unidades As Integer = _actualiza.Rows(0)(0).ToString()
-                                Dim peso As Double = _actualiza.Rows(0)(1).ToString()
-
-                                Dim Unidad_Final As Integer = Unidades - Val(DetaDespa.Rows(i).Cells(4).Value.ToString())
-                                Dim Peso_Final As Double = peso - Convert.ToDouble(DetaDespa.Rows(i).Cells(5).Value.ToString())
-
-                                Dim _Actualiza_Rack = "UPDATE rackdeta SET racd_unidades='" + Unidad_Final.ToString() + "' , " +
-                                    "racd_peso='" + Peso_Final.ToString.Replace(",", ".") + "', racd_estado='0' WHERE racd_codi='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
-                                pallet = "0"
-
-                                'Actualizar estados del detarececajas
-
-                                Dim sql_cjs As String = "UPDATE DetaReceCajas SET caj_ped='3' " +
-                                                        "WHERE Caj_cod in(SELECT dpre_caja FROM DetaPredCajas " +
-                                                        "WHERE dpre_npallet='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "') " +
-                                                        "AND Caj_Pcod='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
-
-                                fnc.MovimientoSQL(sql_cjs)
-
-                                If fnc.MovimientoSQL(_Actualiza_Rack) = 0 Then
-                                    MsgBox("Ocurrio un error al actualizar las cantidades del soportante", MsgBoxStyle.Critical, "Aviso")
-                                End If
-
-                            Else
-                                Dim _Delete As String = "DELETE FROM rackdeta WHERE racd_codi='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
-                                fnc.MovimientoSQL(_Delete)
-                                pallet = "1"
-
-                                Dim SqlCambiaestado As String = "UPDATE DetaReceCajas SET caj_ped='3' WHERE caj_pcod='" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'"
-                                fnc.MovimientoSQL(SqlCambiaestado)
-                            End If
-                        Else
-                            MsgBox("Error al capturar las cantidades del soportante", MsgBoxStyle.Information, "Aviso")
-                        End If
-
-
-
-
-                        'Dim _Sql As String = "INSERT INTO detadespa(ddes_codi, ddes_codpro, ddes_codsopo, ddes_sopocli, ddes_unidades, ddes_peso, " +
-                        '    "ddes_fecprod, ddes_fecha, ddes_rutcli, ddes_contcli, ddes_camara, ddes_codpred, ddes_codrece, ddes_codvig, ddes_pallet, ddes_almacen,cod_bod)" +
-                        '    "VALUES('" + lblcodigo.Text + "" + CerosAnteriorString(i + 1, 2) + "','" + DetaDespa.Rows(i).Cells(2).Value.ToString() + "'," +
-                        '    "'" + DetaDespa.Rows(i).Cells(9).Value.ToString() + "'," +
-                        '    "'" + DetaDespa.Rows(i).Cells(1).Value.ToString() + "','" + DetaDespa.Rows(i).Cells(4).Value.ToString() + "'," +
-                        '    "'" + DetaDespa.Rows(i).Cells(5).Value.ToString().Replace(",", ".") + "','" + devuelve_fecha(DetaDespa.Rows(i).Cells(6).Value.ToString()) + "'," +
-                        '    "'" + devuelve_fecha(dt_fecha.Value) + "','" + txtrutcli.Text + "','" + DetaDespa.Rows(i).Cells(7).Value.ToString() + "'," +
-                        '    "'" + DetaDespa.Rows(i).Cells(12).Value.ToString() + "','" + txtcodigo.Text + "','" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
-                        '    "'0','" + pallet.ToString() + "','2','" + sucursalglo.Trim() + "')"
-
-                        Dim _Sql As String = "INSERT INTO detadespa(ddes_codi, ddes_codpro, ddes_codsopo, ddes_sopocli, ddes_unidades, ddes_peso, " +
-                            "ddes_fecprod, ddes_fecha, ddes_rutcli, ddes_contcli, ddes_camara, ddes_codpred, ddes_codrece, ddes_codvig, ddes_pallet, ddes_almacen,cod_bod)" +
-                            "VALUES('" + txtCodDesp.Text + "" + CerosAnteriorString(i + 1, 2) + "','" + DetaDespa.Rows(i).Cells(2).Value.ToString() + "'," +
-                            "'" + DetaDespa.Rows(i).Cells(9).Value.ToString() + "'," +
-                            "'" + DetaDespa.Rows(i).Cells(1).Value.ToString() + "','" + DetaDespa.Rows(i).Cells(4).Value.ToString() + "'," +
-                            "'" + DetaDespa.Rows(i).Cells(5).Value.ToString().Replace(",", ".") + "','" + devuelve_fecha(DetaDespa.Rows(i).Cells(6).Value.ToString()) + "'," +
-                            "'" + devuelve_fecha(dt_fecha.Value) + "','" + txtrutcli.Text + "','" + DetaDespa.Rows(i).Cells(7).Value.ToString() + "'," +
-                            "'" + DetaDespa.Rows(i).Cells(12).Value.ToString() + "','" + txtcodigo.Text + "','" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
-                            "'0','" + pallet.ToString() + "','2','" + sucursalglo.Trim() + "')"
-
-                        fnc.MovimientoSQL(_Sql)
-
-                        'Dim _MovPallet As String = "INSERT INTO movpallet(mov_folio, mov_codper, mov_fecha, mov_tipo, mov_hora, mov_doc, " +
-                        '    "mov_chorut, mov_chonom, mov_chopat, mov_chotra, mov_despacho, mov_saldo)VALUES('" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
-                        '    "'" + Frm_Principal.InfoUsuario.Text + "','" + devuelve_fecha(dt_fecha.Value) + "','SA','" + DevuelveHora() + "','" + lblcodigo.Text + "'," +
-                        '    "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtchonom.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "', " +
-                        '    "'" + DetaDespa.Rows(i).Cells(14).Value.ToString() + "','" + (Val(DetaDespa.Rows(i).Cells(15).Value.ToString())).ToString() + "')"
-
-                        Dim _MovPallet As String = "INSERT INTO movpallet(mov_folio, mov_codper, mov_fecha, mov_tipo, mov_hora, mov_doc, " +
-                            "mov_chorut, mov_chonom, mov_chopat, mov_chotra, mov_despacho, mov_saldo)VALUES('" + DetaDespa.Rows(i).Cells(0).Value.ToString() + "'," +
-                            "'" + Frm_Principal.InfoUsuario.Text + "','" + devuelve_fecha(dt_fecha.Value) + "','SA','" + DevuelveHora() + "','" + txtCodDesp.Text + "'," +
-                            "'" + Txtchorut.Text + "" + txtchover.Text + "','" + txtchonom.Text + "','" + txtpatente.Text + "','" + txtchoemp.Text + "', " +
-                            "'" + DetaDespa.Rows(i).Cells(14).Value.ToString() + "','" + (Val(DetaDespa.Rows(i).Cells(15).Value.ToString())).ToString() + "')"
-
-                        fnc.MovimientoSQL(_MovPallet)
-
 
                         'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
                         Dim NumPal As String = DetaDespa.Rows(i).Cells(0).Value.ToString.Trim
@@ -610,11 +1030,18 @@ Public Class Frm_Despacho
                             TipCar = dtTipCar.Rows(0).Item(0).ToString.Trim
                         End If
 
+
+
                         If (TipCar = "MECANICA") Then
+
+
+
                             Dim sqlEsArr As String = "select EsArr=count(ID) from Control_Pallet_Arriendo with(nolock) where Codigo_Soportante='" & NumPal & "' and Estado_Arriendo='A' and Fecha_Termino is null"
                             Dim dtEsArr As New DataTable
 
                             dtEsArr = fnc.ListarTablasSQL(sqlEsArr)
+
+
 
                             If (dtEsArr.Rows.Count > 0) Then
                                 Dim EsArr As Integer = CInt(dtEsArr.Rows(0).Item(0).ToString.Trim)
@@ -669,7 +1096,11 @@ Public Class Frm_Despacho
                                     dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
                                 End If
                             End If
+
+
                         ElseIf (TipCar = "MANUAL") Then
+
+
                             'Validar arriendo o propios
                             Dim EsArr As Boolean = False
 
@@ -693,6 +1124,8 @@ Public Class Frm_Despacho
                                 LlevaPallets = True
                             End If
 
+
+
                             If (Not EsArr) Then
                                 '   Propios: No se lleva pallets aumenta custodia, de lo contrario no pasa nada
                                 If (LlevaPallets = False) Then
@@ -711,6 +1144,7 @@ Public Class Frm_Despacho
                                         MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
                                     End If
                                 End If
+
                             Else
                                 '   Arriendo: No se lleva pallets termina el arriendo, de lo contrario se vende
                                 If (LlevaPallets) Then
@@ -724,6 +1158,7 @@ Public Class Frm_Despacho
                                 Dim dtMovArr As New DataTable
 
                                 dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
+
                             End If
                         End If
                         'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
@@ -737,323 +1172,42 @@ Public Class Frm_Despacho
                     ' PALLETS EN CUSTODIA QUE TENGA EL CLIENTE. SI QUEDA ALGUN REMANENTE, SE LE VENDEN
                     '
                     If Not procesarPalletsCustodia() Then
+                        ProgressBar_GuardarDespacho.Value = 0
+                        ProgressBar_GuardarDespacho.Visible = False
+                        LblProgreso.Visible = False
+                        LblAlerta.Visible = False
                         Exit Sub
                     End If
 
 
-                    'Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + lblcodigo.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
-                    '                           "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
-
-                    Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + txtCodDesp.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
-                                               "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
-
-                    fnc.MovimientoSQL(_Cincuenta)
-
-                    'Dim SQLPred As String = "UPDATE fichpred SET fpre_gdespa='" + lblcodigo.Text + "', " +
-                    '    "fpre_codvig='2', fpre_activa='0' WHERE fpre_codi ='" + txtcodigo.Text + "'"
-
-                    Dim SQLPred As String = "UPDATE fichpred SET fpre_gdespa='" + txtCodDesp.Text + "', " +
-                        "fpre_codvig='2', fpre_activa='0' WHERE fpre_codi ='" + txtcodigo.Text + "'"
-
-                    fnc.MovimientoSQL(SQLPred)
-
-                    Dim sqlPedCaja As String = "UPDATE pedcaja SET pc_estado='3' WHERE pc_codped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
-                    fnc.MovimientoSQL(sqlPedCaja)
-
-                    'Modificacion Liberar Pedidos 05-06-19
-
-                    'Dim sqlfichpred As String = "UPDATE pedidos_ficha SET terminado='3' WHERE orden=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
-                    'Dim sqlfichpred As String = "update c set c.terminado='3' from Pedidos_ficha a with(nolock) inner join fichpred b with(nolock) on(a.Orden=b.fpre_nped) inner join Pedidos_ficha c with(nolock) on(c.ordenconjunta like '%'+convert(varchar,a.Orden)+'%') where b.fpre_codi='" + txtcodigo.Text + "'"
-                    'Dim sqlfichpred As String = "update c set c.terminado='3' from fichpred a with(nolock) inner join(select Orden,ordenconjunta from Pedidos_ficha with(nolock)) b on(b.ordenconjunta like '%'+convert(varchar,a.fpre_nped)+'%') inner join Pedidos_ficha c with(nolock) on(b.Orden=c.Orden) where a.fpre_codi='" + txtcodigo.Text + "'"
-                    Dim sqlGetOrden As String = "select fpre_nped from fichpred with(nolock) where fpre_codi='" & txtcodigo.Text.Trim & "'"
-                    Dim dtOrden As New DataTable
-                    dtOrden = fnc.ListarTablasSQL(sqlGetOrden)
-
-                    If (dtOrden.Rows.Count > 0) Then
-                        Dim Orden As String = dtOrden.Rows(0).Item(0).ToString.Trim
-
-                        Dim sqlfichpred As String = "SP_Pedidos_Estados_Actualizar '" & Orden & "','D','3'"
-                        fnc.MovimientoSQL(sqlfichpred)
-                    Else
-                        MsgBox("Ocurrió un error al liberar Orden Pedidos del Pre Despacho Nro. " & txtcodigo.Text.Trim & "." & vbCrLf & "Favor avisar a Informática para liberar Pedidos.", MsgBoxStyle.Critical, "Error")
-                    End If
-
-                    'Fin modificacion Liberar Pedidos 05-06-19
-
-                    Dim SqlCambiaestadocajas As String = "UPDATE DetaReceCajas SET caj_ped='3' WHERE caj_cod in (SELECT dpre_caja FROM detapredcajas WHERE dpc_nped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "'))"
-                    fnc.MovimientoSQL(SqlCambiaestadocajas)
-
-                    'Dim Sqlmovc = "INSERT INTO movcajas(movc_fecha, movc_codcaja, movc_codrece, movc_tipo, movc_ndoc) " +
-                    '              "SELECT GETDATE(),dpc_codcaja, dpc_numpal, 'SA', '" + lblcodigo.Text + "' FROM detapedcaja WHERE dpc_codped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
-
-                    Dim Sqlmovc = "INSERT INTO movcajas(movc_fecha, movc_codcaja, movc_codrece, movc_tipo, movc_ndoc) " +
-                                  "SELECT GETDATE(),dpc_codcaja, dpc_numpal, 'SA', '" + txtCodDesp.Text + "' FROM detapedcaja WHERE dpc_codped=(SELECT fpre_nped FROM fichpred WHERE fpre_codi='" + txtcodigo.Text + "')"
-
-                    fnc.MovimientoSQL(Sqlmovc)
-
-
-
-                    'vas Automatico
+                    'Actualiza V.A.S Automatico
                     GuardaVasAutomatico()
+                    ProgressBar_GuardarDespacho.Increment(20)
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
 
-
-                    BtnImprimir.Enabled = True
-
+                    'Busca_Despacho(lblcodigo.Text)
+                    Busca_Despacho(txtCodDesp.Text)
+                    ProgressBar_GuardarDespacho.Increment(20)
+                    LblProgreso.Text = ProgressBar_GuardarDespacho.Value & ("%")
                 Else
-                    MsgBox("Ocurrio un error al intentar grabar el despacho: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
-                End If
-            End If
-        Else
-            Dim modificar As String = "0"
-            If MsgBox("¿Enviar guia modificada al cliente?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbYes Then
-                modificar = "0"
-            Else
-                modificar = "1"
-            End If
-
-
-            ' VES FEB 2020: Se reversan los movimientos de arriendo/custodia/venta asociados al documento
-            If fnc.MovimientoSQL("spReversarArriendoCustodiaPallets NULL,'" + txtCodDesp.Text + "'") = 0 Then
-                MsgBox("Ocurrio un error al intentar reversar movimientos de arriendo/custodia de pallets: " + lastSqlError, MsgBoxStyle.Critical, "Aviso")
-                Exit Sub
-            End If
-
-            'Dim sql As String = "UPDATE fichdespa SET fdes_fecha='" + devuelve_fecha(dt_fecha.Value) + "'," +
-            '        "fdes_rutcond='" + Txtchorut.Text + "" + txtchover.Text + "', fdes_patente='" + txtpatente.Text + "', " +
-            '        "fdes_transporte='" + txtchoemp.Text + "', fdes_carro='" + TxtRampla.Text + "', fdes_sello='" + TxtSello.Text + "', " +
-            '        "fdes_horometro='" + TxtHorometro.Text + "', fdes_observ='" + TxtObs.Text + "', fdes_tipcarga='" + CbCarga.SelectedValue.ToString() + "', " +
-            '        "fdes_origen='" + txtorigen.Text + "', fdes_guiacliente='" + txtGuiaCli.Text + "', " +
-            '        "fdes_destino='" + TxtDestino.Text + "', fdes_contenedor='" + TxtContenedor.Text + "' WHERE fdes_codi='" + lblcodigo.Text + "' "
-
-            Dim sql As String = "UPDATE fichdespa SET fdes_fecha='" + devuelve_fecha(dt_fecha.Value) + "'," +
-                    "fdes_rutcond='" + Txtchorut.Text + "" + txtchover.Text + "', fdes_patente='" + txtpatente.Text + "', " +
-                    "fdes_transporte='" + txtchoemp.Text + "', fdes_carro='" + TxtRampla.Text + "', fdes_sello='" + TxtSello.Text + "', " +
-                    "fdes_horometro='" + TxtHorometro.Text + "', fdes_observ='" + TxtObs.Text + "', fdes_tipcarga='" + CbCarga.SelectedValue.ToString() + "', " +
-                    "fdes_origen='" + txtorigen.Text + "', fdes_guiacliente='" + txtGuiaCli.Text + "', " +
-                    "fdes_destino='" + TxtDestino.Text + "', fdes_contenedor='" + TxtContenedor.Text + "'"
-
-            If (modificar = "0") Then
-                sql = sql & ",fdes_enviada='" + modificar + "',fdes_emis=getdate()"
-            End If
-
-            sql = sql & " WHERE fdes_codi='" + txtCodDesp.Text + "'"
-
-            'Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + lblcodigo.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
-            '                           "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
-
-            Dim _Cincuenta As String = "UPDATE cincuenta SET despacho='" + txtCodDesp.Text + "', carga='" + CbCarga.SelectedValue.ToString() + "', " +
-                                       "cincuenta='" + CbRecargo.Checked.ToString() + "' WHERE folio='" + txtcodigo.Text + "'"
-
-            fnc.MovimientoSQL(_Cincuenta)
-
-            'Dim fecha_detalle As String = "UPDATE detadespa SET ddes_fecha='" + devuelve_fecha(dt_fecha.Value) + "' WHERE ddes_codi LIKE '%" + lblcodigo.Text + "__%'"
-            'fnc.MovimientoSQL(fecha_detalle)
-
-            Dim fecha_detalle As String = "UPDATE detadespa SET ddes_fecha='" + devuelve_fecha(dt_fecha.Value) + "' WHERE ddes_codi LIKE '%" + txtCodDesp.Text + "__%'"
-            fnc.MovimientoSQL(fecha_detalle)
-
-            If fnc.MovimientoSQL(sql) > 0 Then
-                'VAS Emisión guía Cliente y Excento Cobro Estadía. 25-06-19
-                Dim sqlVasEmiGui As String = ""
-                If (rbcliente.Checked) Then
-                    sqlVasEmiGui = "SP_Despachos_Guia_Cliente_Grabar '" & txtCodDesp.Text.Trim & "','1','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                Else
-                    sqlVasEmiGui = "SP_Despachos_Guia_Cliente_Grabar '" & txtCodDesp.Text.Trim & "','0','" & Frm_Principal.InfoUsuario.Text.Trim & "'"
-                End If
-                fnc.MovimientoSQL(sqlVasEmiGui)
-
-                Dim sqlCobEst As String = ""
-                If (chkSinCobEst.Checked) Then
-                    sqlCobEst = "Despacho_Cobro_Estadia_Grabar '" & txtCodDesp.Text.Trim & "','" & Frm_Principal.InfoUsuario.Text.Trim & "','1'"
-                Else
-                    sqlCobEst = "Despacho_Cobro_Estadia_Grabar '" & txtCodDesp.Text.Trim & "','" & Frm_Principal.InfoUsuario.Text.Trim & "','0'"
-                End If
-                fnc.MovimientoSQL(sqlCobEst)
-                'Fin VAS Emisión guía Cliente y Excento Cobro Estadía. 25-06-19
-
-                MsgBox("Guia Actualizada Correctamente", MsgBoxStyle.Information, "Aviso")
-
-                'LOG MODIFICO DESPACHO *************************************************************************************
-                'Dim _log As String = "INSERT INTO LOG_FICHDESPA(LFR_CODI, LFR_FECHA, LFR_HORA, LFR_USUARIO, LFR_PC)" +
-                '    "VALUES('" + lblcodigo.Text + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "'," +
-                '    "'" + DevuelveHora() + "','" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "')"
-
-                Dim _log As String = "INSERT INTO LOG_FICHDESPA(LFR_CODI, LFR_FECHA, LFR_HORA, LFR_USUARIO, LFR_PC)" +
-                    "VALUES('" + txtCodDesp.Text + "','" + devuelve_fecha(fnc.DevuelveFechaServidor()) + "'," +
-                    "'" + DevuelveHora() + "','" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "')"
-
-                fnc.MovimientoSQL(_log)
-                'LOG MODIFICO DESPACHO *************************************************************************************
-
-
-                For i As Integer = 0 To DetaDespa.Rows.Count - 1
-
-                    Dim pallet As String = ""
-
-                    'Inicio Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
-                    Dim NumPal As String = DetaDespa.Rows(i).Cells(0).Value.ToString.Trim
-                    Dim RutCli As String = txtrutcli.Text.Trim
-                    Dim CodCont As String = DetaDespa.Rows(i).Cells(7).Value.ToString.Trim
-                    Dim TipPal As String = "000" & DetaDespa.Rows(i).Cells(9).Value.ToString.Trim
-                    Dim TipPalFrm As String = TipPal.Substring(TipPal.Length - 3, 3)
-                    Dim DocAsoc As String = txtCodDesp.Text.Trim
-                    Dim CantEnt As Integer = 0
-                    Dim CantSal As Integer = 1
-                    Dim Obs As String = "Despacho " & DocAsoc & ", Pallet " & NumPal & "."
-                    Dim Est As String = "1"
-                    Dim CodUsu As String = Frm_Principal.InfoUsuario.Text.Trim
-
-                    Dim TipCar As String = ""
-
-                    Dim sqlTipCar As String = "select a.tcar_descr from P_TipoCargaDescarga a with(nolock) inner join fichdespa b with(nolock) on(a.tcar_codi=b.fdes_tipcarga) where b.fdes_codi='" & DocAsoc & "'"
-                    Dim dtTipCar As New DataTable
-
-                    dtTipCar = fnc.ListarTablasSQL(sqlTipCar)
-
-                    If (dtTipCar.Rows.Count > 0) Then
-                        TipCar = dtTipCar.Rows(0).Item(0).ToString.Trim
-                    End If
-
-                    If (TipCar = "MECANICA") Then
-                        Dim sqlEsArr As String = "select EsArr=count(ID) from Control_Pallet_Arriendo with(nolock) where Codigo_Soportante='" & NumPal & "' and Estado_Arriendo='A' and Fecha_Termino is null"
-                        Dim dtEsArr As New DataTable
-
-                        dtEsArr = fnc.ListarTablasSQL(sqlEsArr)
-
-                        If (dtEsArr.Rows.Count > 0) Then
-                            Dim EsArr As Integer = CInt(dtEsArr.Rows(0).Item(0).ToString.Trim)
-
-                            If (EsArr > 0) Then
-                                'Validar Saldo stock pallets, si no tiene venta, de lo contrario descuento de custodia
-                                Dim sqlStockCust As String = "select a.Saldo,a.Contrato from Control_Pallet_Saldos a with(nolock) where a.Rut_Cliente='" & RutCli & "' and a.Tipo_Pallet='" & TipPalFrm & "' and a.Estado='1'"
-                                Dim dtStockCust As New DataTable
-
-                                dtStockCust = fnc.ListarTablasSQL(sqlStockCust)
-
-                                Dim ConSaldo As Boolean = False
-                                Dim ContratoPallet As String = ""
-
-                                If (dtStockCust.Rows.Count > 0) Then
-                                    For j = 0 To dtStockCust.Rows.Count - 1
-                                        Dim Saldo As Integer = CInt(dtStockCust.Rows(j).Item(0).ToString.Trim)
-                                        ContratoPallet = dtStockCust.Rows(j).Item(1).ToString.Trim
-
-                                        If (Saldo > 0) Then
-                                            ConSaldo = True
-                                            Exit For
-                                        End If
-                                    Next
-                                End If
-
-                                If (ConSaldo) Then
-                                    Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & ContratoPallet & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','" & CantEnt & "','" & CantSal & "','" & Obs & "','" & Est & "','" & CodUsu & "'"
-                                    Dim dtMovCust As New DataTable
-
-                                    dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
-
-                                    If (dtMovCust.Rows.Count > 0) Then
-                                        Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
-
-                                        If (RespMovCust = "-1") Then
-                                            MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
-                                        End If
-                                    Else
-                                        MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
-                                    End If
-                                Else
-                                    Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
-                                    Dim dtVent As New DataTable
-
-                                    dtVent = fnc.ListarTablasSQL(sqlVent)
-                                End If
-
-                                Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
-                                Dim dtMovArr As New DataTable
-
-                                dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
-                            End If
-                        End If
-                    ElseIf (TipCar = "MANUAL") Then
-                        'Validar arriendo o propios
-                        Dim EsArr As Boolean = False
-
-                        Dim sqlEsArr As String = "select Cont=count(a.ID) from Control_Pallet_Arriendo a with(nolock) where a.Codigo_Soportante='" & NumPal & "' and a.Estado_Arriendo='A'"
-                        Dim dtEsArr As New DataTable
-
-                        dtEsArr = fnc.ListarTablasSQL(sqlEsArr)
-
-                        If (dtEsArr.Rows.Count > 0) Then
-                            Dim RespEsArr As Integer = CInt(dtEsArr.Rows(0).Item(0).ToString.Trim)
-
-                            If (RespEsArr > 0) Then
-                                EsArr = True
-                            End If
-                        End If
-
-                        'Validar si se lleva los pallets
-                        Dim LlevaPallets As Boolean = False
-
-                        If (chkSalPallets.Checked) Then
-                            LlevaPallets = True
-                        End If
-
-                        If (Not EsArr) Then
-                            '   Propios: No se lleva pallets aumenta custodia, de lo contrario no pasa nada
-                            If (LlevaPallets = False) Then
-                                Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','1','0','" & Obs & "','" & Est & "','" & CodUsu & "'"
-                                Dim dtMovCust As New DataTable
-
-                                dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
-
-                                If (dtMovCust.Rows.Count > 0) Then
-                                    Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
-
-                                    If (RespMovCust = "-1") Then
-                                        MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
-                                    End If
-                                Else
-                                    MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
-                                End If
-                            End If
-                        Else
-                            '   Arriendo: No se lleva pallets termina el arriendo, de lo contrario se vende
-                            If (LlevaPallets) Then
-                                Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
-                                Dim dtVent As New DataTable
-
-                                dtVent = fnc.ListarTablasSQL(sqlVent)
-                            End If
-
-                            Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
-                            Dim dtMovArr As New DataTable
-
-                            dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
-                        End If
-                    End If
-                    'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
-
-                Next
-
-
-                '
-                ' VES ENE 2020
-                ' SI SE INDICARON PALLETS ADICIONALES EN EL DESPACHO, SE INTENTA SACARLOS DE LOS 
-                ' PALLETS EN CUSTODIA QUE TENGA EL CLIENTE. SI QUEDA ALGUN REMANENTE, SE LE VENDEN
-                '
-                If Not procesarPalletsCustodia() Then
-                    Exit Sub
+                    ProgressBar_GuardarDespacho.Value = 0
+                    ProgressBar_GuardarDespacho.Visible = False
+                    LblProgreso.Visible = False
+                    LblAlerta.Visible = False
+                    MsgBox("Error al actualizar documento", MsgBoxStyle.Critical, "Aviso")
                 End If
 
-
-                'Actualiza V.A.S Automatico
-                GuardaVasAutomatico()
-                'Busca_Despacho(lblcodigo.Text)
-                Busca_Despacho(txtCodDesp.Text)
-            Else
-                MsgBox("Error al actualizar documento", MsgBoxStyle.Critical, "Aviso")
             End If
+            LblAlerta.Visible = False
+            MsgBox("Información Agregada Correctamente", MsgBoxStyle.Information, "Aviso")
 
-        End If
+        Catch ex As Exception
+            ProgressBar_GuardarDespacho.Value = 0
+            ProgressBar_GuardarDespacho.Visible = False
+            LblProgreso.Visible = False
+            LblAlerta.Visible = False
+            My.Application.Log.WriteException(ex, TraceEventType.Error, "Exception in ExceptionLogTest ")
+        End Try
 
     End Sub
 
@@ -1623,6 +1777,20 @@ Public Class Frm_Despacho
         txtSopAdic.Enabled = True
         Btn_buscasopadic.Enabled = True
 
+        'MMO ABRIL 2020
+        LblTitulo1.Visible = False
+        LblTitulo2.Visible = False
+        ProgressBar_GuardarDespacho.Value = 0
+        ProgressBar_GuardarDespacho.Visible = False
+        ProgressBar_Pallets.Value = 0
+        ProgressBar_Pallets.Visible = False
+        LblProgreso.Text = "0%"
+        LblProgreso.Visible = False
+        LblAlerta.Visible = False
+        LblProcesados.Text = "xx"
+        LblTot.Text = "/xx"
+        LblProcesados.Visible = False
+        LblTot.Visible = False
     End Sub
 
     Private Sub BtnImprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnImprimir.Click
@@ -1750,12 +1918,42 @@ Public Class Frm_Despacho
     End Sub
 
     Sub activa_desactiva(ByVal i As Integer, ByVal true_false As Boolean)
-
         If true_false = True Then
             DataAdicionales.Rows(i).Cells("cb").Value = True
             DataAdicionales.Rows(i).Cells("un").Value = txttotsopo.Text
             DataAdicionales.Rows(i).Cells("caj").Value = txttotcajas.Text
             DataAdicionales.Rows(i).Cells("ki").Value = txttotkilos.Text
+        Else
+            DataAdicionales.Rows(i).Cells("cb").Value = False
+            DataAdicionales.Rows(i).Cells("un").Value = "0"
+            DataAdicionales.Rows(i).Cells("caj").Value = "0"
+            DataAdicionales.Rows(i).Cells("ki").Value = "0"
+        End If
+    End Sub
+
+    Sub activa_desactivaSolicitud(ByVal i As Integer, ByVal true_false As Boolean)
+        Dim TraerSolicitud As String = "SELECT CAST(CONVERT(DATE,d.fpre_fecdes) As VARCHAR) fecha, " +
+         "COUNT(*) AS pallet, MAX(d.fpre_totunidad) as unidad,MAX(d.fpre_totpeso) as peso,MAX(h.orden) as pedido " +
+    "FROM Precisa.dbo.cincuenta a " +
+   "INNER JOIN Precisa.dbo.fichpred d ON d.fpre_codi = a.folio " +
+   "INNER JOIN Precisa.dbo.detapred e ON LEFT(e.dpre_codi,7) = d.fpre_codi " +
+  " INNER JOIN Precisa.dbo.pedidos_ficha f ON f.orden = d.fpre_nped " +
+  " INNER JOIN Precisa.dbo.pedidos_detalle g ON g.pallet = e.dpre_folio AND g.pedido IN (SELECT pedido " +
+        "FROM precisa.dbo.pedidos_ficha" +
+                         " WHERE (f.ordenconjunta IS NULL AND pedido = f.pedido) " +
+                           " OR (f.ordenconjunta IS NOT NULL AND ordenconjunta = f.ordenconjunta)) " +
+     " INNER JOIN Precisa.dbo.pedidos_ficha h ON h.pedido = g.pedido  " +
+  " INNER JOIN Precisa.dbo.Pedidos_24_Horas i ON i.orden = h.orden " +
+  " WHERE d.fpre_codi='" + txtcodigo.Text + "' group by d.fpre_fecdes"
+
+
+        Dim tabla As DataTable = fnc.ListarTablasSQL(TraerSolicitud)
+
+        If true_false = True Then
+            DataAdicionales.Rows(i).Cells("cb").Value = True
+            DataAdicionales.Rows(i).Cells("un").Value = tabla.Rows(0)(1).ToString()
+            DataAdicionales.Rows(i).Cells("caj").Value = tabla.Rows(0)(2).ToString()
+            DataAdicionales.Rows(i).Cells("ki").Value = tabla.Rows(0)(3).ToString()
         Else
             DataAdicionales.Rows(i).Cells("cb").Value = False
             DataAdicionales.Rows(i).Cells("un").Value = "0"
@@ -1875,9 +2073,9 @@ Public Class Frm_Despacho
 
                     If (DescServ = "SOLICITUD DE PRODUCTOS MENOR A 24 HORAS") Then
                         If CbRecargo.CheckState = CheckState.Checked Then
-                            activa_desactiva(i, True)
+                            activa_desactivaSolicitud(i, True)
                         Else
-                            activa_desactiva(i, False)
+                            activa_desactivaSolicitud(i, False)
                         End If
                     End If
 
