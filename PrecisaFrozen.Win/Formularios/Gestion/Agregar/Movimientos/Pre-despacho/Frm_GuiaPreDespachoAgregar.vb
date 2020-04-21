@@ -389,7 +389,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                 '   PARA MAXAGRO
                 '
                 Dim cajColIndex As Integer = getColumnIndex("dpre_cajsel")
-                Dgv.Columns(5).ReadOnly = (txtrut.Text <> "91944000" And txtrut.Text <> "33333333")
+                Dgv.Columns(5).ReadOnly = (txtrut.Text <> "91944000" And txtrut.Text <> "33333333" And CerosAnteriorString(Frm_Principal.InfoUsuario.Text, 3) <> "050")
                 Dgv.Columns(5).Width = IIf(Dgv.Columns(cajColIndex).ReadOnly, 1, 60)
                 Dgv.Columns(5).Visible = (Dgv.Columns(cajColIndex).ReadOnly = False)
 
@@ -2524,7 +2524,7 @@ Public Class Frm_GuiaPreDespachoAgregar
             Dim Cajas As String = Dgv.Rows(e.RowIndex).Cells(e.ColumnIndex).Value.ToString()
             Dim Folio As String = Dgv.Rows(e.RowIndex).Cells(2).Value
             Dim tabla As String = IIf(txtrut.Enabled, "TMPDETAPRED", "DETAPRED")
-            fnc.MovimientoSQL("UPDATE " & tabla & " SET dpre_cajsel = @cajas WHERE dpre_folio = @folio",
+            fnc.MovimientoSQL("UPDATE " & tabla & " SET dpre_cajsel = @cajas WHERE dpre_codi LIKE '%" + lblcodigo.Text + "__%' AND dpre_folio = @folio",
                               New SqlParameter() {
                                   New SqlParameter("@cajas", SqlDbType.Int) With {.Value = CInt(Cajas)},
                                   New SqlParameter("@folio", SqlDbType.NVarChar) With {.Value = Folio}
