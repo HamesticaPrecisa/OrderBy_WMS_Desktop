@@ -31,7 +31,7 @@ Public Class Frm_Principal
         '       DEFINIMOS EL TITULO DE LA VENTANA PRINCIPAL INCLUYENDO
         '       EL NOMBRE DE LA BD ACTIVA
         '
-        Me.Text = "Order By WMS - Precisa Tech 21.04.2020.11.30 - BD: " + CONFIG.mainCatalog
+        Me.Text = "Order By WMS - Precisa Tech 22.05.2020.10.30 - BD: 91/" + CONFIG.mainCatalog
         InfoUsuario.Text = "001"
         If Not My.Computer.Name = " PROGRAMACION-PC" Then
             Presentacion.ShowDialog()
@@ -655,6 +655,7 @@ Public Class Frm_Principal
             If tabla.Rows(i)(1).ToString() = "014" Then
                 M2_PerfilesUsuario.Enabled = True
                 M3_Usuarios.Enabled = True
+                M2_ControlPedidosNoDespachados.Enabled = True
             End If
 
             If tabla.Rows(i)(0).ToString() = "039" Then
@@ -876,6 +877,7 @@ Public Class Frm_Principal
         menLimPedExpFecha.Enabled = True
         menNumDia.Visible = True
         menNumDia.Enabled = True
+
 
         MenOrdenPallets.Enabled = True
         ChequeoCajasDuplicadasToolStripMenuItem.Enabled = True
@@ -2054,4 +2056,13 @@ Public Class Frm_Principal
         End If
     End Sub
 
+    Private Sub M2_ControlPedidosNoDespachados_Click(sender As System.Object, e As System.EventArgs) Handles M2_ControlPedidosNoDespachados.Click
+        If Not TabControl1.TabPages(ControlPedidosnoDespachados) Is Nothing Then
+            TabControl1.TabPages(ControlPedidosnoDespachados).Show()
+        ElseIf ControlPedidosnoDespachados.Visible = True Then
+            TabControl1.TabPages(ControlPedidosnoDespachados).Select()
+        Else
+            TabControl1.TabPages.Add(ControlPedidosnoDespachados)
+        End If
+    End Sub
 End Class

@@ -1126,40 +1126,40 @@ Public Class Frm_Despacho
 
 
 
-                            If (Not EsArr) Then
-                                '   Propios: No se lleva pallets aumenta custodia, de lo contrario no pasa nada
-                                If (LlevaPallets = False) Then
-                                    Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','1','0','" & Obs & "','" & Est & "','" & CodUsu & "'"
-                                    Dim dtMovCust As New DataTable
+                            'If (Not EsArr) Then
+                            '    '   Propios: No se lleva pallets aumenta custodia, de lo contrario no pasa nada
+                            '    If (LlevaPallets = False) Then
+                            '        Dim sqlMovCust As String = "SP_Control_Pallet_Grabar '','" & RutCli & "','" & CodCont & "','" & Now.ToString("yyyyMMdd").Trim & "','" & TipPalFrm & "','" & DocAsoc & "','1','0','" & Obs & "','" & Est & "','" & CodUsu & "'"
+                            '        Dim dtMovCust As New DataTable
 
-                                    dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
+                            '        dtMovCust = fnc.ListarTablasSQL(sqlMovCust)
 
-                                    If (dtMovCust.Rows.Count > 0) Then
-                                        Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
+                            '        If (dtMovCust.Rows.Count > 0) Then
+                            '            Dim RespMovCust As String = dtMovCust.Rows(0).Item(0).ToString.Trim
 
-                                        If (RespMovCust = "-1") Then
-                                            MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
-                                        End If
-                                    Else
-                                        MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
-                                    End If
-                                End If
+                            '            If (RespMovCust = "-1") Then
+                            '                MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                            '            End If
+                            '        Else
+                            '            MsgBox("Ocurrio un error al registrar movimiento de custodia de pallet.", MsgBoxStyle.Critical, "Error")
+                            '        End If
+                            '    End If
 
-                            Else
-                                '   Arriendo: No se lleva pallets termina el arriendo, de lo contrario se vende
-                                If (LlevaPallets) Then
-                                    Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
-                                    Dim dtVent As New DataTable
+                            'Else
+                            '    '   Arriendo: No se lleva pallets termina el arriendo, de lo contrario se vende
+                            '    If (LlevaPallets) Then
+                            '        Dim sqlVent As String = "SP_Control_Pallet_Venta_Grabar '','" & NumPal & "','D','" & DocAsoc & "','','','" & CodUsu & "'"
+                            '        Dim dtVent As New DataTable
 
-                                    dtVent = fnc.ListarTablasSQL(sqlVent)
-                                End If
+                            '        dtVent = fnc.ListarTablasSQL(sqlVent)
+                            '    End If
 
-                                Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
-                                Dim dtMovArr As New DataTable
+                            '    Dim sqlMovArr As String = "SP_Control_Pallet_Arriendo_Grabar '','" & NumPal & "','','" & Now.ToString("yyyyMMdd") & "','','" & CodUsu & "'"
+                            '    Dim dtMovArr As New DataTable
 
-                                dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
+                            '    dtMovArr = fnc.ListarTablasSQL(sqlMovArr)
 
-                            End If
+                            'End If
                         End If
                         'Fin Modificación Custodia/Arriendo Pallets. HAmestica 24/10/19
 

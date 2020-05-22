@@ -1747,7 +1747,7 @@ Public Class Frm_GuiaPreDespachoAgregar
                                         ' Y LO QUE SE PIDIO
                                         '
                                         Dim cajsel As Integer = 0
-                                        If (txtrut.Text = "91944000" Or txtrut.Text = "33333333") Then
+                                        If (txtrut.Text = "91944000" Or txtrut.Text = "33333333" Or txtrut.Text = "96999710") Then
                                             cajsel = cantidad_disponible - CInt(Cant.Text)
                                             If cajsel < 0 Then cajsel = 0
                                         End If

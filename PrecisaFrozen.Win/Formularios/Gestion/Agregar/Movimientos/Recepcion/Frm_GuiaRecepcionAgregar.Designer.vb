@@ -3213,3 +3213,4 @@ Partial Class Frm_GuiaRecepcionAgregar
     Friend WithEvents Btn_buscasopcus As System.Windows.Forms.Button
     Friend WithEvents txtsopcusnombre As System.Windows.Forms.TextBox
 End Class
+

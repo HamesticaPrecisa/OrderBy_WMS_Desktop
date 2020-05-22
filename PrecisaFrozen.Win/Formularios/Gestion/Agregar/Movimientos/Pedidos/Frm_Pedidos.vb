@@ -81,25 +81,6 @@ Public Class Frm_Pedidos
                 _cmd.Parameters.AddWithValue("@codped", NPEDIDO)
 
 
-                'Habilitar cobro o no en pedido Eliminado Jvergara 24 Marz 2020
-                Dim cobro As Integer
-                cobro = 0
-                If MsgBox("¿Desea Agregar cobro de igual manera a este pedido?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbNo Then
-                    cobro = 0
-                Else
-                    cobro = 1
-
-                End If
-
-                fnc.MovimientoSQL("INSERT INTO EVENTOS_FACTURABLES(Efa_Fecha,Efa_SrvCod,Efa_Referencia,Efa_Nota,Efa_Facturar,Efa_Fum,Efa_Codusr) VALUES" +
-                                " ('" & fnc.DevuelveFechaServidor() & "',25,'" & NPEDIDO & "','Pedido Eliminado'," +
-                                "'" & cobro & "','" & fnc.DevuelveFechaServidor() & "','" & Frm_Principal.InfoUsuario.Text & "')")
-
-                Dim frm As New Frm_PedidosObservCobro
-                frm.CODIGO_PEDIDO = Me.DgvPedidos.Rows(e.RowIndex).Cells(4).Value.ToString()
-                frm.CODIGO_CHICO = Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString()
-                frm.ShowDialog()
-
                 Dim resp As Integer = 0
                 Try
                     resp = Convert.ToInt32(_cmd.ExecuteScalar())
@@ -126,7 +107,30 @@ Public Class Frm_Pedidos
                                   "VALUES('" + NPEDIDO + "','" + devuelve_fecha_Formato2(fnc.DevuelveFechaServidor()) + "','" + DevuelveHora() + "'," +
                                   "'" + Frm_Principal.InfoUsuario.Text + "','" + My.Computer.Name.ToString() + "','SI'," + Pallets.ToString() + ")")
                 fnc.MovimientoSQL("DELETE FROM Pedido_Est WHERE pedido ='" + Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString() + "'")
+
+                'Habilitar cobro o no en pedido Eliminado Jvergara 24 Marz 2020
+                Dim cobro As Integer
+                cobro = 0
+                If MsgBox("¿Desea Agregar cobro de igual manera a este pedido?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbNo Then
+                    cobro = 0
+                Else
+                    cobro = 1
+
+                End If
+
+                Dim dte As DataTable = fnc.ListarTablasSQL("select top(1) LEM_ID from LOG_PEDIDOSELIMINADOS where LEM_CODI='" & NPEDIDO & "' order by LEM_ID desc")
+
+                fnc.MovimientoSQL("INSERT INTO EVENTOS_FACTURABLES(Efa_Fecha,Efa_SrvCod,Efa_Referencia,Efa_IdLog,Efa_Nota,Efa_Facturar,Efa_Fum,Efa_Codusr) VALUES" +
+                                " ('" & fnc.DevuelveFechaServidor() & "',25,'" & NPEDIDO & "','" & dte.Rows(0).Item(0).ToString() & "','Pedido Eliminado'," +
+                                "'" & cobro & "','" & fnc.DevuelveFechaServidor() & "','" & Frm_Principal.InfoUsuario.Text & "')")
+
+                Dim frm As New Frm_PedidosObservCobro
+                frm.CODIGO_PEDIDO = Me.DgvPedidos.Rows(e.RowIndex).Cells(4).Value.ToString()
+                frm.CODIGO_CHICO = dte.Rows(0).Item(0).ToString()
+                frm.ShowDialog()
+
                 Dim sqll As String = ("DELETE FROM Pedido_Est WHERE pedido ='" + Me.DgvPedidos.Rows(e.RowIndex).Cells(5).Value.ToString() + "'")
+
                 MsgBox("Pedido anulado correctamente", MsgBoxStyle.Information, "Aviso")
                 cargarDatos()
             Catch ex As Exception

@@ -8,6 +8,7 @@ Public Class Frm_PedidosDetalle
 
     Dim fila = -1
     Dim fechacobro As Date
+    Dim horacobro As String
     Dim fnc As New Funciones
 
 
@@ -36,6 +37,7 @@ Public Class Frm_PedidosDetalle
             txtHra.Text = dt.Rows(0)(4).ToString()
             'dtfecha.Value = DateTime.ParseExact(dt.Rows(0)(1).ToString(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture)
             fechacobro = Convert.ToDateTime(dt.Rows(0)(1).ToString())
+            horacobro = dt.Rows(0)(4).ToString()
         End If
 
     End Sub
@@ -262,25 +264,6 @@ Public Class Frm_PedidosDetalle
             Exit Sub
         End If
 
-        'Habilitar o no cobro de Pedidos no Despachados- Jvergara 24 marz 2020
-        If fechacobro <> dtfecha.Value Then
-            Dim cobro As Integer
-            cobro = 0
-            If MsgBox("¿Desea Agregar cobro de igual manera a este pedido?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbNo Then
-                cobro = 0
-            Else
-                cobro = 1
-
-            End If
-            fnc.MovimientoSQL("INSERT INTO EVENTOS_FACTURABLES(Efa_Fecha,Efa_SrvCod,Efa_Referencia,Efa_Nota,Efa_Facturar,Efa_Fum,Efa_Codusr) VALUES" +
-                 " ('" & fnc.DevuelveFechaServidor() & "',25,'" & CODIGO_CHICO & "','Pedido Modificado'," +
-                 "'" & cobro & "','" & fnc.DevuelveFechaServidor() & "','" & Frm_Principal.InfoUsuario.Text & "')")
-
-            Dim frm As New Frm_PedidosObservCobro
-            frm.CODIGO_CHICO = CODIGO_CHICO
-            frm.ShowDialog()
-        End If
-
 
         '
         '   VES FEB 2020
@@ -299,6 +282,28 @@ Public Class Frm_PedidosDetalle
         End If
 
         Dim _update As String = "UPDATE pedidos_ficha SET destino='" + txtdestino.Text + "', fecha='" + devuelve_fecha_Formato2(dtfecha.Value) + "', observacion='" + txtobs.Text + "', hora='" & Hora & "' WHERE orden='" + txtcodorden.Text + "'  "
+
+        'Habilitar o no cobro de Pedidos no Despachados- Jvergara 24 marz 2020
+        If fechacobro <> dtfecha.Value Or horacobro <> Hora Then
+            Dim cobro As Integer
+            cobro = 0
+            If MsgBox("¿Desea Agregar cobro de igual manera a este pedido?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Aviso") = vbNo Then
+                cobro = 0
+            Else
+                cobro = 1
+
+            End If
+
+            Dim dti As DataTable = fnc.ListarTablasSQL("select top(1) log_id from Pedidos_Ficha_Log_Modificaciones where Orden='" & CODIGO_CHICO & "' order by log_id desc")
+
+            fnc.MovimientoSQL("INSERT INTO EVENTOS_FACTURABLES(Efa_Fecha,Efa_SrvCod,Efa_Referencia,Efa_IdLog,Efa_Nota,Efa_Facturar,Efa_Fum,Efa_Codusr) VALUES" +
+                 " ('" & fnc.DevuelveFechaServidor() & "',25,'" & CODIGO_CHICO & "','" & dti.Rows(0).Item(0).ToString() & "','Pedido Modificado'," +
+                 "'" & cobro & "','" & fnc.DevuelveFechaServidor() & "','" & Frm_Principal.InfoUsuario.Text & "')")
+
+            Dim frm As New Frm_PedidosObservCobro
+            frm.CODIGO_CHICO = dti.Rows(0).Item(0).ToString()
+            frm.ShowDialog()
+        End If
 
         If fnc.MovimientoSQL(_update) > 0 Then
             MsgBox("Información actualizada correctamente", MsgBoxStyle.Information, "Aviso")

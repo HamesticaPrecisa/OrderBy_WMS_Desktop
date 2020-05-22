@@ -23,20 +23,18 @@ Partial Class Frm_Principal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Principal))
         Dim ToolStripProfessionalRenderer1 As System.Windows.Forms.ToolStripProfessionalRenderer = New System.Windows.Forms.ToolStripProfessionalRenderer()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Principal))
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.MinimizaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AccesosDirectos = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.veri_conn = New System.Windows.Forms.Timer(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.VerifConectados = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblseccion = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblnombre = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.InfoUsuario = New System.Windows.Forms.Label()
@@ -44,6 +42,8 @@ Partial Class Frm_Principal
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TabControl1 = New MdiTabControl.TabControl()
         Me.CachedRpt_AcumuladoContrato1 = New PrecisaFrozen.Win.CachedRpt_AcumuladoContrato()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.M1_Inicio = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Salir = New System.Windows.Forms.ToolStripMenuItem()
@@ -99,6 +99,7 @@ Partial Class Frm_Principal
         Me.menLimPedExp = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Mercados = New System.Windows.Forms.ToolStripMenuItem()
         Me.menLimPedExpFecha = New System.Windows.Forms.ToolStripMenuItem()
+        Me.M2_ControlPedidosNoDespachados = New System.Windows.Forms.ToolStripMenuItem()
         Me.M1_Procesos = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_DesbloquearSoportantes = New System.Windows.Forms.ToolStripMenuItem()
         Me.M2_Etiquetado = New System.Windows.Forms.ToolStripMenuItem()
@@ -212,15 +213,6 @@ Partial Class Frm_Principal
         Me.ToolStripButton1.Size = New System.Drawing.Size(23, 36)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
-        '
         'veri_conn
         '
         Me.veri_conn.Interval = 1000
@@ -271,16 +263,6 @@ Partial Class Frm_Principal
         Me.lblseccion.Size = New System.Drawing.Size(59, 15)
         Me.lblseccion.TabIndex = 6
         Me.lblseccion.Text = "SECLBL"
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.usuario_anonimo
-        Me.PictureBox1.Location = New System.Drawing.Point(138, 19)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(191, 176)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
         '
         'lblnombre
         '
@@ -363,6 +345,25 @@ Partial Class Frm_Principal
         Me.TabControl1.TabIndex = 9
         Me.TabControl1.TabOffset = 1
         Me.TabControl1.Visible = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.PrecisaFrozen.Win.My.Resources.Resources.usuario_anonimo
+        Me.PictureBox1.Location = New System.Drawing.Point(138, 19)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(191, 176)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton2.Text = "ToolStripButton2"
         '
         'MenuStrip1
         '
@@ -622,7 +623,7 @@ Partial Class Frm_Principal
         '
         'M1_Mantenedores
         '
-        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem, Me.menLimPedExp, Me.M2_Mercados, Me.menLimPedExpFecha})
+        Me.M1_Mantenedores.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.M2_Clientes, Me.M2_Envases, Me.M2_Camaras, Me.M2_Choferes, Me.M2_MSoportantes, Me.M2_Familias, Me.M2_Medidas, Me.M2_MProductos, Me.EtiquetaClientesToolStripMenuItem, Me.M2_Origenes, Me.EnvioDeEmailToolStripMenuItem, Me.PosicionesToolStripMenuItem, Me.CamarasPlanoToolStripMenuItem, Me.ReglasAlmacenamientoToolStripMenuItem, Me.menLimPedExp, Me.M2_Mercados, Me.menLimPedExpFecha, Me.M2_ControlPedidosNoDespachados})
         Me.M1_Mantenedores.Name = "M1_Mantenedores"
         Me.M1_Mantenedores.Size = New System.Drawing.Size(95, 20)
         Me.M1_Mantenedores.Text = "Mantenedores"
@@ -632,7 +633,7 @@ Partial Class Frm_Principal
         Me.M2_Clientes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Clientes.Enabled = False
         Me.M2_Clientes.Name = "M2_Clientes"
-        Me.M2_Clientes.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Clientes.Size = New System.Drawing.Size(249, 22)
         Me.M2_Clientes.Text = "Clientes"
         '
         'M2_Envases
@@ -640,7 +641,7 @@ Partial Class Frm_Principal
         Me.M2_Envases.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Envases.Enabled = False
         Me.M2_Envases.Name = "M2_Envases"
-        Me.M2_Envases.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Envases.Size = New System.Drawing.Size(249, 22)
         Me.M2_Envases.Text = "Envases"
         '
         'M2_Camaras
@@ -648,7 +649,7 @@ Partial Class Frm_Principal
         Me.M2_Camaras.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Camaras.Enabled = False
         Me.M2_Camaras.Name = "M2_Camaras"
-        Me.M2_Camaras.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Camaras.Size = New System.Drawing.Size(249, 22)
         Me.M2_Camaras.Text = "Camaras"
         '
         'M2_Choferes
@@ -656,7 +657,7 @@ Partial Class Frm_Principal
         Me.M2_Choferes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Choferes.Enabled = False
         Me.M2_Choferes.Name = "M2_Choferes"
-        Me.M2_Choferes.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Choferes.Size = New System.Drawing.Size(249, 22)
         Me.M2_Choferes.Text = "Choferes"
         '
         'M2_MSoportantes
@@ -664,7 +665,7 @@ Partial Class Frm_Principal
         Me.M2_MSoportantes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_MSoportantes.Enabled = False
         Me.M2_MSoportantes.Name = "M2_MSoportantes"
-        Me.M2_MSoportantes.Size = New System.Drawing.Size(227, 22)
+        Me.M2_MSoportantes.Size = New System.Drawing.Size(249, 22)
         Me.M2_MSoportantes.Text = "Soportantes"
         '
         'M2_Familias
@@ -672,7 +673,7 @@ Partial Class Frm_Principal
         Me.M2_Familias.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Familias.Enabled = False
         Me.M2_Familias.Name = "M2_Familias"
-        Me.M2_Familias.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Familias.Size = New System.Drawing.Size(249, 22)
         Me.M2_Familias.Text = "Familias"
         '
         'M2_Medidas
@@ -680,7 +681,7 @@ Partial Class Frm_Principal
         Me.M2_Medidas.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Medidas.Enabled = False
         Me.M2_Medidas.Name = "M2_Medidas"
-        Me.M2_Medidas.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Medidas.Size = New System.Drawing.Size(249, 22)
         Me.M2_Medidas.Text = "Medidas"
         Me.M2_Medidas.Visible = False
         '
@@ -689,14 +690,14 @@ Partial Class Frm_Principal
         Me.M2_MProductos.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_MProductos.Enabled = False
         Me.M2_MProductos.Name = "M2_MProductos"
-        Me.M2_MProductos.Size = New System.Drawing.Size(227, 22)
+        Me.M2_MProductos.Size = New System.Drawing.Size(249, 22)
         Me.M2_MProductos.Text = "Productos"
         '
         'EtiquetaClientesToolStripMenuItem
         '
         Me.EtiquetaClientesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
         Me.EtiquetaClientesToolStripMenuItem.Name = "EtiquetaClientesToolStripMenuItem"
-        Me.EtiquetaClientesToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.EtiquetaClientesToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.EtiquetaClientesToolStripMenuItem.Text = "Etiqueta Clientes"
         '
         'M2_Origenes
@@ -704,7 +705,7 @@ Partial Class Frm_Principal
         Me.M2_Origenes.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.M2_Origenes.Enabled = False
         Me.M2_Origenes.Name = "M2_Origenes"
-        Me.M2_Origenes.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Origenes.Size = New System.Drawing.Size(249, 22)
         Me.M2_Origenes.Text = "Origenes"
         '
         'EnvioDeEmailToolStripMenuItem
@@ -712,14 +713,14 @@ Partial Class Frm_Principal
         Me.EnvioDeEmailToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.EnvioDeEmailToolStripMenuItem.Enabled = False
         Me.EnvioDeEmailToolStripMenuItem.Name = "EnvioDeEmailToolStripMenuItem"
-        Me.EnvioDeEmailToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.EnvioDeEmailToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.EnvioDeEmailToolStripMenuItem.Text = "Envio de E-mail"
         '
         'PosicionesToolStripMenuItem
         '
         Me.PosicionesToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.PosicionesToolStripMenuItem.Name = "PosicionesToolStripMenuItem"
-        Me.PosicionesToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.PosicionesToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.PosicionesToolStripMenuItem.Text = "Posiciones"
         Me.PosicionesToolStripMenuItem.Visible = False
         '
@@ -729,7 +730,7 @@ Partial Class Frm_Principal
         Me.CamarasPlanoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfiguraciónToolStripMenuItem, Me.Plano2DToolStripMenuItem, Me.ProgramarAuditoriasToolStripMenuItem, Me.InformePosicionesToolStripMenuItem})
         Me.CamarasPlanoToolStripMenuItem.Enabled = False
         Me.CamarasPlanoToolStripMenuItem.Name = "CamarasPlanoToolStripMenuItem"
-        Me.CamarasPlanoToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.CamarasPlanoToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.CamarasPlanoToolStripMenuItem.Text = "Camaras/Plano"
         '
         'ConfiguraciónToolStripMenuItem
@@ -768,7 +769,7 @@ Partial Class Frm_Principal
         Me.ReglasAlmacenamientoToolStripMenuItem.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
         Me.ReglasAlmacenamientoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FamiliasNoMezclablesToolStripMenuItem, Me.PosicionesParaPickingToolStripMenuItem, Me.SugerenciasAlmacenamientoToolStripMenuItem})
         Me.ReglasAlmacenamientoToolStripMenuItem.Name = "ReglasAlmacenamientoToolStripMenuItem"
-        Me.ReglasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(227, 22)
+        Me.ReglasAlmacenamientoToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.ReglasAlmacenamientoToolStripMenuItem.Text = "Reglas Almacenamiento"
         '
         'FamiliasNoMezclablesToolStripMenuItem
@@ -796,22 +797,30 @@ Partial Class Frm_Principal
         '
         Me.menLimPedExp.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.cuadrado
         Me.menLimPedExp.Name = "menLimPedExp"
-        Me.menLimPedExp.Size = New System.Drawing.Size(227, 22)
+        Me.menLimPedExp.Size = New System.Drawing.Size(249, 22)
         Me.menLimPedExp.Text = "Límite Pedidos Exportación"
         '
         'M2_Mercados
         '
         Me.M2_Mercados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
         Me.M2_Mercados.Name = "M2_Mercados"
-        Me.M2_Mercados.Size = New System.Drawing.Size(227, 22)
+        Me.M2_Mercados.Size = New System.Drawing.Size(249, 22)
         Me.M2_Mercados.Text = "Mercados"
         '
         'menLimPedExpFecha
         '
         Me.menLimPedExpFecha.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
         Me.menLimPedExpFecha.Name = "menLimPedExpFecha"
-        Me.menLimPedExpFecha.Size = New System.Drawing.Size(227, 22)
+        Me.menLimPedExpFecha.Size = New System.Drawing.Size(249, 22)
         Me.menLimPedExpFecha.Text = "Limite Exportacion por Fecha"
+        '
+        'M2_ControlPedidosNoDespachados
+        '
+        Me.M2_ControlPedidosNoDespachados.BackgroundImage = Global.PrecisaFrozen.Win.My.Resources.Resources.barra
+        Me.M2_ControlPedidosNoDespachados.Enabled = False
+        Me.M2_ControlPedidosNoDespachados.Name = "M2_ControlPedidosNoDespachados"
+        Me.M2_ControlPedidosNoDespachados.Size = New System.Drawing.Size(249, 22)
+        Me.M2_ControlPedidosNoDespachados.Text = "Control Pedidos no Despachados"
         '
         'M1_Procesos
         '
@@ -1356,7 +1365,7 @@ Partial Class Frm_Principal
         Me.MinimumSize = New System.Drawing.Size(944, 593)
         Me.Name = "Frm_Principal"
         Me.ShowIcon = False
-        Me.Text = "Order By WMS - Pecisa Tech 05.03.20.16.10 - BD: Precisa"
+        Me.Text = "Order By WMS - Pecisa Tech 05.03.20.16.10 - BD: Precisa/91"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.AccesosDirectos.ResumeLayout(False)
@@ -1516,5 +1525,6 @@ Partial Class Frm_Principal
     Friend WithEvents MenOrdenPallets As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menLimPedExpFecha As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ChequeoCajasDuplicadasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents M2_ControlPedidosNoDespachados As System.Windows.Forms.ToolStripMenuItem
 
 End Class
